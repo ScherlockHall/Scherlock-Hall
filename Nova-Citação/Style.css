@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #1e3c72, #2a5298);
+  color: white;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+#quote-box {
+  background-color: #fff;
+  color: #333;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  width: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.quote-text {
+  font-size: 24px;
+  margin-bottom: 15px;
+  line-height: 1.5;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.quote-text i {
+  color: #2a5298;
+  margin-right: 10px;
+  font-size: 28px;
+}
+
+#text {
+  font-style: italic;
+}
+
+.quote-author {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-weight: bold;
+  min-height: 24px;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+#new-quote {
+  flex: 1;
+  padding: 12px 20px;
+  background-color: #2a5298;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background 0.3s;
+}
+
+#new-quote:hover {
+  background-color: #1e3c72;
+}
+
+#tweet-quote {
+  flex: 0 0 auto;
+  padding: 12px 20px;
+  background-color: #1da1f2;
+  color: white;
+  border-radius: 6px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s;
+}
+
+#tweet-quote:hover {
+  background-color: #0d8bd9;
+}
+
+#tweet-quote i {
+  font-size: 20px;
+}
+
+/* Responsivo */
+@media (max-width: 480px) {
+  #quote-box {
+    padding: 20px;
+  }
+
+  .quote-text {
+    font-size: 20px;
+  }
+
+  .buttons {
+    flex-direction: column;
+  }
+
+  #new-quote, #tweet-quote {
+    font-size: 16px;
+  }
+}
