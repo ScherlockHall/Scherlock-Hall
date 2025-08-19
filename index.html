@@ -1,17 +1,323 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <title>Projetos FreeCodeCamp</title>
-    <style>
-        body { font-family: Arial, sans-serif; text-align: center; padding: 50px; }
-        h1 { margin-bottom: 40px; }
-        a { display: block; margin: 10px; font-size: 20px; text-decoration: none; color: #2c3e50; }
-        a:hover { color: #2980b9; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scherlock Hall 😎</title>
+<style>
+  * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+  body { background: #f7f9fc; color: #333; line-height: 1.6; }
+
+  /* Faixa fixa superior */
+  header {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    background: #0056b3;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  }
+  .header-content {
+    display: flex;
+    flex-direction: column;
+  }
+  header .nome {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+  }
+  header .descricao {
+    font-size: 1rem;
+    opacity: 0.9;
+  }
+
+  /* Botões de contato */
+  .contact-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+  .contact-btn {
+    padding: 0.6rem 1.2rem;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    font-size: 0.9rem;
+  }
+  .contact-btn:hover {
+    background: rgba(255,255,255,0.3);
+    transform: translateY(-2px);
+  }
+
+  /* Faixa de certificações */
+  .certificacoes {
+    margin-top: 7rem;
+    padding: 1.5rem 2rem;
+    background: #e6f0fb;
+    width: 100%;
+  }
+  .certificacoes-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+  .certificacoes .cert {
+    background:#fff;
+    padding:1.2rem;
+    border-radius:8px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+  }
+  .certificacoes .cert:hover {
+    transform: translateY(-5px);
+  }
+  .certificacoes .cert a {
+    font-weight:700;
+    color:#0056b3;
+    text-decoration:none;
+    font-size: 1.1rem;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .certificacoes .cert a:hover { text-decoration: underline; }
+  .certificacoes .cert p {
+    font-size:0.95rem;
+    color:#555;
+    line-height: 1.5;
+  }
+
+  /* Seção de projetos */
+  section.projetos {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 2rem;
+  }
+  section.projetos h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0056b3;
+  }
+  .projetos-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+  }
+  .projeto-card {
+    background:#fff;
+    padding:1.5rem;
+    border-radius:10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex:1 1 300px;
+    max-width: 350px;
+    transition: transform 0.3s ease;
+  }
+  .projeto-card:hover {
+    transform: translateY(-5px);
+  }
+  .projeto-card a {
+    text-decoration:none;
+    color:#0056b3;
+    font-weight:700;
+    font-size: 1.2rem;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+  }
+  .projeto-card a:hover { 
+    text-decoration: underline;
+    color:#003d80;
+  }
+  .projeto-card p {
+    color:#555;
+    line-height: 1.5;
+  }
+
+  /* Sobre mim */
+  section.sobre {
+    max-width:900px;
+    margin:3rem auto;
+    padding:2rem;
+    background: #fff;
+    border-radius: 10px;
+    box-shadow:0 4px 10px rgba(0,0,0,0.1);
+  }
+  section.sobre h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0056b3;
+  }
+  section.sobre p {
+    color:#555;
+    margin-bottom: 1.5rem;
+    line-height: 1.7;
+  }
+
+  /* Botões */
+  .action-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 2rem;
+    flex-wrap: wrap;
+  }
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 5px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .btn-primary {
+    background: #0056b3;
+    color: white;
+  }
+  .btn-primary:hover {
+    background: #003d80;
+    transform: translateY(-2px);
+  }
+  .btn-outline {
+    border: 2px solid #0056b3;
+    color: #0056b3;
+  }
+  .btn-outline:hover {
+    background: #e6f0fb;
+    transform: translateY(-2px);
+  }
+
+  footer {
+    text-align:center;
+    padding:2.5rem;
+    background:#0056b3;
+    color:#fff;
+    margin-top:3rem;
+  }
+  footer p {
+    opacity: 0.9;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    header {
+      flex-direction: column;
+      text-align: center;
+      padding: 1rem;
+    }
+    .header-content {
+      margin-bottom: 1rem;
+    }
+    .contact-buttons {
+      width: 100%;
+      justify-content: center;
+    }
+    .certificacoes {
+      margin-top: 9rem;
+      padding: 1rem;
+    }
+    .certificacoes-container {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
 </head>
 <body>
-    <h1>Meus Projetos FreeCodeCamp</h1>
-    <a href="Jogo da Velha Imbatível/index.html" target="_blank">Jogo da Velha Imbatível</a>
+
+<header>
+  <div class="header-content">
+    <span class="nome">Scherlock Hall</span>
+    <span class="descricao">
+  💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Ciência e Análise de Dados
+</span>
+  </div>
+  <div class="contact-buttons">
+    <a href="#contato" class="contact-btn">Contato</a>
+    <a href="#projetos" class="contact-btn">Projetos</a>
+  </div>
+</header>
+
+<div class="certificacoes">
+  <div class="certificacoes-container">
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">Responsive Web Design</a>
+      <p>Estudo de HTML5, CSS3, design responsivo, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
+    </div>
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">JavaScript Algorithms & DS</a>
+      <p>Em progresso: Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
+    </div>
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">Front End Libraries</a>
+      <p>Estudo de React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
+    </div>
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">Data Visualization</a>
+      <p>Aprendendo a criar visualizações de dados eficazes com D3.js e outras ferramentas.</p>
+    </div>
+    <div class="cert">
+      <a href="#" target="_blank">Ciência de Dados (IBM)</a>
+      <p>Curso em progresso na Coursera: Fundamentos de ciência de dados, Python e machine learning.</p>
+    </div>
+    <div class="cert">
+      <a href="#" target="_blank">Análise de Dados (Google)</a>
+      <p>Em desenvolvimento: Aprendendo análise exploratória, visualização e ferramentas profissionais.</p>
+    </div>
+  </div>
+</div>
+
+<section class="projetos" id="projetos">
+  <h2>Projetos</h2>
+  <div class="projetos-container">
+    <div class="projeto-card">
+      <a href="./Jogo-Da-Velha/index.html" target="_blank">Jogo da Velha Imbatível</a>
+      <p>Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
+    </div>
+  </div>
+</section>
+
+<section class="sobre">
+  <h2>Sobre mim</h2>
+  <p>Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp.</p>
+
+  <p>Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais , econômicos e políticas públicas.</p>
+
+  <p>Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar.</p>
+
+  <p>Desejo aplicar essa combinação de conhecimentos para:</p>
+  <ul>
+    <li>Analisar problemas sociais por meio de abordagens quantitativas rigorosas.</li>
+    <li>Desenvolver soluções baseadas em dados sem perder a perspectiva humanista.</li>
+    <li>Traduzir conceitos acadêmicos e econômicos em aplicações práticas e acessíveis.</li>
+    <li>Conectar teorias, análise de dados e demandas sociais reais.</li>
+  </ul>
+
+  <p>Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano — e compreender como o capitalismo digital molda a autonomia, os afetos, os vínculos e as desigualdades.</p>
+</section>
+
+<section id="contato" class="sobre" style="margin-top: 1rem;">
+  <h2>Contato</h2>
+  <p>Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto interessante ou quer discutir ideias, ficarei feliz em conversar!</p>
+  <div class="action-buttons">
+    <a href="mailto:scherlockhallneto@gmail.com" class="btn btn-primary">Enviar Email</a>
+    <!-- <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="btn btn-outline">LinkedIn</a> -->
+    <a href="https://github.com/seu-usuario" target="_blank" class="btn btn-outline">GitHub</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Scherlock Hall - Todos os direitos reservados</p>
+</footer>
+
 </body>
 </html>
+
