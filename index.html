@@ -70,34 +70,39 @@
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
-  justify-content: center;  /* centraliza os cards em cada linha */
+  justify-content: center;
 }
 
 .certificacoes .cert {
   background:#fff;
-  padding:1.2rem;
+  padding:1rem;
   border-radius:8px;
   box-shadow:0 3px 6px rgba(0,0,0,0.1);
   transition: transform 0.3s ease;
   flex: 0 0 280px; /* largura fixa */
 }
-  .certificacoes .cert:hover {
-    transform: translateY(-5px);
-  }
-  .certificacoes .cert a {
-    font-weight:700;
-    color:#0056b3;
-    text-decoration:none;
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .certificacoes .cert a:hover { text-decoration: underline; }
-  .certificacoes .cert p {
-    font-size:0.95rem;
-    color:#555;
-    line-height: 1.5;
-  }
+.certificacoes .cert:hover {
+  transform: translateY(-5px);
+}
+.certificacoes .cert a.cert-nome {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #0056b3;
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+.certificacoes .cert a.cert-nome:hover { text-decoration: underline; }
+.certificacoes .cert img {
+  width: 100%;
+  border-radius: 6px;
+  margin-bottom: 0.5rem;
+}
+.certificacoes .cert p {
+  font-size:0.95rem;
+  color:#555;
+  line-height: 1.5;
+}
 
   /* Seção de projetos */
   section.projetos {
@@ -226,7 +231,8 @@
       padding: 1rem;
     }
     .certificacoes-container {
-      grid-template-columns: 1fr;
+      flex-direction: column;
+      align-items: center;
     }
   }
 </style>
@@ -247,44 +253,73 @@
 </header>
 
 <div class="certificacoes">
-
   <div class="certificacoes-container">
+
+    <!-- Certificados concluídos com imagem e nome acima -->
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">Responsive Web Design</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" class="cert-nome">Responsive Web Design</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">
+        <img src="Certificados/Responsive-Web-Design.png" alt="Responsive Web Design">
+      </a>
       <p>Estudo de HTML5, CSS3, design responsivo, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">JavaScript Algorithms & DS</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" class="cert-nome">JavaScript Algorithms & DS</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">
+        <img src="Certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JavaScript Algorithms & DS">
+      </a>
       <p>Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">Front End Libraries</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" class="cert-nome">Front End Libraries</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">
+        <img src="Certificados/Front-End-Development-Libraries.png" alt="Front End Libraries">
+      </a>
       <p>Estudo de React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">Data Visualization</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" class="cert-nome">Data Visualization</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">
+        <img src="Certificados/Data-Visualization.png" alt="Data Visualization">
+      </a>
       <p>Criar visualizações de dados eficazes com D3.js e outras ferramentas.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank">Legacy Front End</a>
-      <p>Aprendizado prático de HTML e CSS, acessibilidade, Flexbox e Grid, criando projetos modernos e adaptáveis para diferentes telas.</p>
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" class="cert-nome">Legacy Front End</a>
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank">
+        <img src="Certificados/Legacy-Front-End.png" alt="Legacy Front End">
+      </a>
+      <p>Aprendizado prático de HTML e CSS, acessibilidade, Flexbox e Grid, criando projetos modernos e adaptáveis.</p>
     </div>
-         <div class="cert">
-      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank">Legacy JavaScript Algorithms and Data Structures</a>
+
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" class="cert-nome">Legacy JavaScript Algorithms and DS</a>
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank">
+        <img src="Certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JavaScript Algorithms and DS">
+      </a>
       <p>Certificação em JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
     </div>
-      <div class="cert">
-      <a href="https://www.freecodecamp.org/portuguese/learn/data-analysis-with-python/" target="_blank">Análise de dados com Python</a>
+
+    <!-- Certificados em andamento -->
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/portuguese/learn/data-analysis-with-python/" target="_blank" class="cert-nome">Análise de dados com Python</a>
       <p>Curso em Progresso no freeCodeCamp: Certificação em Análise de Dados com Python. Manipulação de dados, SQL e visualização com Pandas, NumPy e Matplotlib.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.coursera.org/professional-certificates/ibm-data-science/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_latam_ibm-data-science_ibm_ftcof_professional-certificates_px_dr_bau_gg_sem_pr-bd_s1-v2_en_m_hyb_23-12_x&campaignid=20849957655&adgroupid=155915853079&device=c&keyword=ibm%20data%20science&matchtype=e&network=g&devicemodel=&creativeid=688066025934&assetgroupid=&targetid=kwd-337478406714&extensionid=&placement=&gad_source=1&gad_campaignid=20849957655&gbraid=0AAAAADdKX6YoCQmP76lHcQER3w5xrjfVY&gclid=Cj0KCQjw4qHEBhCDARIsALYKFNP5zf1kBcQ0XXC7jbO6R27pLseazhKURwciVu-iR5eRrGyd8jD8pmkaAuaYEALw_wcB#courses" target="_blank">Ciência de Dados (IBM)</a>
+      <a href="https://www.coursera.org/professional-certificates/ibm-data-science/" target="_blank" class="cert-nome">Ciência de Dados (IBM)</a>
       <p>Curso em progresso na Coursera: Fundamentos de ciência de dados, Python e machine learning.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.coursera.org/professional-certificates/google-data-analytics/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_latam_google-data-analytics_google_ftcof_professional-certificates_px_dr_bau_gg_sem_pr-bd_br_pt_m_hyb_24-04_x&campaignid=21179153449&adgroupid=157727684141&device=c&keyword=curso%20data%20science&matchtype=b&network=g&devicemodel=&creativeid=696780772238&assetgroupid=&targetid=kwd-298181416023&extensionid=&placement=&gad_source=1&gad_campaignid=21179153449&gbraid=0AAAAADdKX6ZfbhFVs9mqwkAEdXqfDh4LP&gclid=Cj0KCQjw4qHEBhCDARIsALYKFNOGIlaJdcQuP1LvhSxX7v4FvfMrusb8jbggD5KR0p_J9eqNqQJQNSMaAonZEALw_wcB" target="_blank">Análise de Dados (Google)</a>
+      <a href="https://www.coursera.org/professional-certificates/google-data-analytics/" target="_blank" class="cert-nome">Análise de Dados (Google)</a>
       <p>Curso em progresso na Coursera: Aprendendo análise exploratória, visualização e ferramentas profissionais.</p>
     </div>
+
   </div>
 </div>
 
@@ -301,7 +336,6 @@
       <p>Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
 
     </div>
-  
 
   </div>
 </section>
@@ -322,7 +356,7 @@
     <li>Conectar teorias, análise de dados e demandas sociais reais.</li>
   </ul>
 
-  <p>Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano — e compreender como o capitalismo digital molda a autonomia, os afetos, os vínculos e as desigualdades.</p>
+  <p>Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano.</p>
 </section>
 
 <section id="contato" class="sobre" style="margin-top: 1rem;">
@@ -330,7 +364,6 @@
   <p>Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto interessante ou quer discutir ideias, ficarei feliz em conversar!</p>
   <div class="action-buttons">
     <a href="mailto:scherlockhallneto@gmail.com" class="btn btn-primary">Enviar Email</a>
-    <!-- <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="btn btn-outline">LinkedIn</a> -->
     <a href="https://github.com/seu-usuario" target="_blank" class="btn btn-outline">GitHub</a>
   </div>
 </section>
