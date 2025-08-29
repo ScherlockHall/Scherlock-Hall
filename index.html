@@ -259,6 +259,14 @@
       flex: 0 1 90%;
       max-width: 90%;
     }
+
+    /* Corrige a sobreposição do primeiro card pelo header */
+    .main-content {
+      margin-top: 10rem;
+    }
+    header.shrink ~ .main-content {
+      margin-top: 8rem;
+    }
   }
 </style>
 </head>
@@ -281,7 +289,7 @@
   <!-- Certificações -->
   <div class="certificacoes">
     <div class="certificacoes-container">
-      <!-- Aqui entram todos os seus certificados originais, exatamente como antes -->
+      <!-- TODOS os certificados originais exatamente como estavam antes -->
       <div class="cert">
         <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" class="cert-nome">Responsive Web Design</a>
         <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">
@@ -361,17 +369,14 @@
   <section class="projetos" id="projetos">
     <h2>Projetos</h2>
     <div class="projetos-container">
-
       <div class="projeto-card">
         <a href="./Jogo-Da-Velha/index.html" target="_blank">Jogo da Velha Imbatível</a>
         <p>Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
       </div>
-
       <div class="projeto-card">
         <a href="./Teste-Psicologico/index.html" target="_blank">Autoavaliação Psicológica</a>
         <p>Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
       </div>
-
     </div>
   </section>
 
@@ -412,7 +417,7 @@
 </footer>
 
 <script>
-  // Adiciona/remover a classe "shrink" quando rolar a página
+  // Header shrink ao rolar
   window.addEventListener("scroll", function() {
     const header = document.getElementById("main-header");
     if (window.scrollY > 50) {
@@ -425,6 +430,7 @@
 
 </body>
 </html>
+
 
 
 
