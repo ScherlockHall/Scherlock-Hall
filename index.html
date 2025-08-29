@@ -8,7 +8,6 @@
   * { margin:0; padding:0; box-sizing:border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
   body { background: #f7f9fc; color: #333; line-height: 1.6; }
 
-  /* Faixa fixa superior */
   header {
     position: fixed;
     top:0;
@@ -36,12 +35,7 @@
     font-size: 1rem;
     opacity: 0.9;
   }
-
-  /* Botões de contato */
-  .contact-buttons {
-    display: flex;
-    gap: 1rem;
-  }
+  .contact-buttons { display: flex; gap: 1rem; }
   .contact-btn {
     padding: 0.6rem 1.2rem;
     background: rgba(255,255,255,0.2);
@@ -54,68 +48,25 @@
     text-decoration: none;
     font-size: 0.9rem;
   }
-  .contact-btn:hover {
-    background: rgba(255,255,255,0.3);
-    transform: translateY(-2px);
-  }
+  .contact-btn:hover { background: rgba(255,255,255,0.3); transform: translateY(-2px); }
 
-  /* Faixa de certificações */
-  .certificacoes {
-    margin-top: 7rem;
-    padding: 1.5rem 2rem;
-    background: #e6f0fb;
-    width: 100%;
-  }
-.certificacoes-container {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  justify-content: center;  /* centraliza os cards em cada linha */
-}
+  .certificacoes { margin-top: 7rem; padding: 1.5rem 2rem; background: #e6f0fb; width: 100%; }
+  .certificacoes-container { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
 
-.certificacoes .cert {
-  background:#fff;
-  padding:1.2rem;
-  border-radius:8px;
-  box-shadow:0 3px 6px rgba(0,0,0,0.1);
-  transition: transform 0.3s ease;
-  flex: 0 0 280px; /* largura fixa */
-}
-  .certificacoes .cert:hover {
-    transform: translateY(-5px);
+  .certificacoes .cert {
+    background:#fff;
+    padding:1.2rem;
+    border-radius:8px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    flex: 0 0 280px;
   }
-  .certificacoes .cert a {
-    font-weight:700;
-    color:#0056b3;
-    text-decoration:none;
-    font-size: 1.1rem;
-    display: block;
-    margin-bottom: 0.5rem;
-  }
-  .certificacoes .cert a:hover { text-decoration: underline; }
-  .certificacoes .cert p {
-    font-size:0.95rem;
-    color:#555;
-    line-height: 1.5;
-  }
+  .certificacoes .cert:hover { transform: translateY(-5px); }
+  .certificacoes .cert p { font-size:0.95rem; color:#555; line-height: 1.5; }
 
-  /* Seção de projetos */
-  section.projetos {
-    max-width: 1200px;
-    margin: 3rem auto;
-    padding: 0 2rem;
-  }
-  section.projetos h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #0056b3;
-  }
-  .projetos-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-  }
+  section.projetos { max-width: 1200px; margin: 3rem auto; padding: 0 2rem; }
+  section.projetos h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #0056b3; }
+  .projetos-container { display: flex; flex-wrap: wrap; gap: 1.5rem; justify-content: center; }
   .projeto-card {
     background:#dbe9f9;
     padding:1.5rem;
@@ -125,109 +76,31 @@
     max-width: 350px;
     transition: transform 0.3s ease;
   }
-  .projeto-card:hover {
-    transform: translateY(-5px);
-  }
-  .projeto-card a {
-    text-decoration:none;
-    color:#0056b3;
-    font-weight:700;
-    font-size: 1.2rem;
-    display: inline-block;
-    margin-bottom: 0.8rem;
-  }
-  .projeto-card a:hover { 
-    text-decoration: underline;
-    color:#003d80;
-  }
-  .projeto-card p {
-    color:#555;
-    line-height: 1.5;
-  }
+  .projeto-card:hover { transform: translateY(-5px); }
+  .projeto-card a { text-decoration:none; color:#0056b3; font-weight:700; font-size: 1.2rem; display: inline-block; margin-bottom: 0.8rem; }
+  .projeto-card a:hover { text-decoration: underline; color:#003d80; }
+  .projeto-card p { color:#555; line-height: 1.5; }
 
-  /* Sobre mim */
-  section.sobre {
-    max-width:900px;
-    margin:3rem auto;
-    padding:2rem;
-    background: #fff;
-    border-radius: 10px;
-    box-shadow:0 4px 10px rgba(0,0,0,0.1);
-  }
-  section.sobre h2 {
-    font-size: 2rem;
-    margin-bottom: 1.5rem;
-    color: #0056b3;
-  }
-  section.sobre p {
-    color:#555;
-    margin-bottom: 1.5rem;
-    line-height: 1.7;
-  }
+  section.sobre { max-width:900px; margin:3rem auto; padding:2rem; background: #fff; border-radius: 10px; box-shadow:0 4px 10px rgba(0,0,0,0.1); }
+  section.sobre h2 { font-size: 2rem; margin-bottom: 1.5rem; color: #0056b3; }
+  section.sobre p { color:#555; margin-bottom: 1.5rem; line-height: 1.7; }
 
-  /* Botões */
-  .action-buttons {
-    display: flex;
-    gap: 1rem;
-    margin-top: 2rem;
-    flex-wrap: wrap;
-  }
-  .btn {
-    padding: 0.8rem 1.5rem;
-    border-radius: 5px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: all 0.3s ease;
-  }
-  .btn-primary {
-    background: #0056b3;
-    color: white;
-  }
-  .btn-primary:hover {
-    background: #003d80;
-    transform: translateY(-2px);
-  }
-  .btn-outline {
-    border: 2px solid #0056b3;
-    color: #0056b3;
-  }
-  .btn-outline:hover {
-    background: #e6f0fb;
-    transform: translateY(-2px);
-  }
+  .action-buttons { display: flex; gap: 1rem; margin-top: 2rem; flex-wrap: wrap; }
+  .btn { padding: 0.8rem 1.5rem; border-radius: 5px; font-weight: 600; text-decoration: none; transition: all 0.3s ease; }
+  .btn-primary { background: #0056b3; color: white; }
+  .btn-primary:hover { background: #003d80; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid #0056b3; color: #0056b3; }
+  .btn-outline:hover { background: #e6f0fb; transform: translateY(-2px); }
 
-  footer {
-    text-align:center;
-    padding:2.5rem;
-    background:#0056b3;
-    color:#fff;
-    margin-top:3rem;
-  }
-  footer p {
-    opacity: 0.9;
-  }
+  footer { text-align:center; padding:2.5rem; background:#0056b3; color:#fff; margin-top:3rem; }
+  footer p { opacity: 0.9; }
 
-  /* Responsividade */
   @media (max-width: 768px) {
-    header {
-      flex-direction: column;
-      text-align: center;
-      padding: 1rem;
-    }
-    .header-content {
-      margin-bottom: 1rem;
-    }
-    .contact-buttons {
-      width: 100%;
-      justify-content: center;
-    }
-    .certificacoes {
-      margin-top: 9rem;
-      padding: 1rem;
-    }
-    .certificacoes-container {
-      grid-template-columns: 1fr;
-    }
+    header { flex-direction: column; text-align: center; padding: 1rem; }
+    .header-content { margin-bottom: 1rem; }
+    .contact-buttons { width: 100%; justify-content: center; }
+    .certificacoes { margin-top: 9rem; padding: 1rem; }
+    .certificacoes-container { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -236,9 +109,7 @@
 <header>
   <div class="header-content">
     <span class="nome">Scherlock Hall</span>
-    <span class="descricao">
-  💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados.
-</span>
+    <span class="descricao">💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados.</span>
   </div>
   <div class="contact-buttons">
     <a href="#contato" class="contact-btn">Contato</a>
@@ -247,44 +118,67 @@
 </header>
 
 <div class="certificacoes">
-
   <div class="certificacoes-container">
+
+    <!-- Certificados com imagens -->
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">Responsive Web Design</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">
+        <img src="./Certificados/Responsive-Web-Design.png" alt="Responsive Web Design" style="width:100%; border-radius:8px;">
+      </a>
       <p>Estudo de HTML5, CSS3, design responsivo, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">JavaScript Algorithms & DS</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">
+        <img src="./Certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JavaScript Algorithms & DS" style="width:100%; border-radius:8px;">
+      </a>
       <p>Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">Front End Libraries</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">
+        <img src="./Certificados/Front-End-Development-Libraries.png" alt="Front End Libraries" style="width:100%; border-radius:8px;">
+      </a>
       <p>Estudo de React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">Data Visualization</a>
+      <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">
+        <img src="./Certificados/Data-Visualization.png" alt="Data Visualization" style="width:100%; border-radius:8px;">
+      </a>
       <p>Criar visualizações de dados eficazes com D3.js e outras ferramentas.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank">Legacy Front End</a>
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank">
+        <img src="./Certificados/Legacy-Front-End.png" alt="Legacy Front End" style="width:100%; border-radius:8px;">
+      </a>
       <p>Aprendizado prático de HTML e CSS, acessibilidade, Flexbox e Grid, criando projetos modernos e adaptáveis para diferentes telas.</p>
     </div>
-         <div class="cert">
-      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank">Legacy JavaScript Algorithms and Data Structures</a>
+
+    <div class="cert">
+      <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank">
+        <img src="./Certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JavaScript Algorithms & DS" style="width:100%; border-radius:8px;">
+      </a>
       <p>Certificação em JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
     </div>
-      <div class="cert">
+
+    <!-- Certificados em andamento (sem imagem) -->
+    <div class="cert">
       <a href="https://www.freecodecamp.org/portuguese/learn/data-analysis-with-python/" target="_blank">Análise de dados com Python</a>
       <p>Curso em Progresso no freeCodeCamp: Certificação em Análise de Dados com Python. Manipulação de dados, SQL e visualização com Pandas, NumPy e Matplotlib.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.coursera.org/professional-certificates/ibm-data-science/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_latam_ibm-data-science_ibm_ftcof_professional-certificates_px_dr_bau_gg_sem_pr-bd_s1-v2_en_m_hyb_23-12_x&campaignid=20849957655&adgroupid=155915853079&device=c&keyword=ibm%20data%20science&matchtype=e&network=g&devicemodel=&creativeid=688066025934&assetgroupid=&targetid=kwd-337478406714&extensionid=&placement=&gad_source=1&gad_campaignid=20849957655&gbraid=0AAAAADdKX6YoCQmP76lHcQER3w5xrjfVY&gclid=Cj0KCQjw4qHEBhCDARIsALYKFNP5zf1kBcQ0XXC7jbO6R27pLseazhKURwciVu-iR5eRrGyd8jD8pmkaAuaYEALw_wcB#courses" target="_blank">Ciência de Dados (IBM)</a>
+      <a href="https://www.coursera.org/professional-certificates/ibm-data-science" target="_blank">Ciência de Dados (IBM)</a>
       <p>Curso em progresso na Coursera: Fundamentos de ciência de dados, Python e machine learning.</p>
     </div>
+
     <div class="cert">
-      <a href="https://www.coursera.org/professional-certificates/google-data-analytics/paidmedia?utm_medium=sem&utm_source=gg&utm_campaign=b2c_latam_google-data-analytics_google_ftcof_professional-certificates_px_dr_bau_gg_sem_pr-bd_br_pt_m_hyb_24-04_x&campaignid=21179153449&adgroupid=157727684141&device=c&keyword=curso%20data%20science&matchtype=b&network=g&devicemodel=&creativeid=696780772238&assetgroupid=&targetid=kwd-298181416023&extensionid=&placement=&gad_source=1&gad_campaignid=21179153449&gbraid=0AAAAADdKX6ZfbhFVs9mqwkAEdXqfDh4LP&gclid=Cj0KCQjw4qHEBhCDARIsALYKFNOGIlaJdcQuP1LvhSxX7v4FvfMrusb8jbggD5KR0p_J9eqNqQJQNSMaAonZEALw_wcB" target="_blank">Análise de Dados (Google)</a>
+      <a href="https://www.coursera.org/professional-certificates/google-data-analytics" target="_blank">Análise de Dados (Google)</a>
       <p>Curso em progresso na Coursera: Aprendendo análise exploratória, visualização e ferramentas profissionais.</p>
     </div>
+
   </div>
 </div>
 
@@ -296,12 +190,11 @@
       <a href="./Jogo-Da-Velha/index.html" target="_blank">Jogo da Velha Imbatível</a>
       <p>Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
     </div>
- <div class="projeto-card">
+
+    <div class="projeto-card">
       <a href="./Teste-Psicologico/index.html" target="_blank">Autoavaliação Psicológica</a>
       <p>Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
-
     </div>
-  
 
   </div>
 </section>
@@ -310,7 +203,7 @@
   <h2>Sobre mim</h2>
   <p>Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp.</p>
 
-  <p>Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais , econômicos e políticas públicas.</p>
+  <p>Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais, econômicos e políticas públicas.</p>
 
   <p>Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar.</p>
 
@@ -330,7 +223,6 @@
   <p>Estou sempre aberto a novas oportunidades e colaborações. Se você tem um projeto interessante ou quer discutir ideias, ficarei feliz em conversar!</p>
   <div class="action-buttons">
     <a href="mailto:scherlockhallneto@gmail.com" class="btn btn-primary">Enviar Email</a>
-    <!-- <a href="https://linkedin.com/in/seu-perfil" target="_blank" class="btn btn-outline">LinkedIn</a> -->
     <a href="https://github.com/seu-usuario" target="_blank" class="btn btn-outline">GitHub</a>
   </div>
 </section>
