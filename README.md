@@ -11,7 +11,8 @@ Este repositório é uma coleção dos meus **projetos de aprendizado**, incluin
 - Front End Development Libraries  
 - Data Visualization  
 - Legacy Front End  
-- Legacy JavaScript Algorithms And Data Structures  
+- Legacy JavaScript Algorithms And Data Structures
+- Certificado Profissional de Análise de dados do Google
 
 ## 🚀 Objetivo
 Aprender e compartilhar minha evolução com projetos práticos. 
