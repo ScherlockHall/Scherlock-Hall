@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Impacto da Desinformação sobre Vacinação no Brasil</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: #333;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            overflow: hidden;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+        
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+        }
+        
+        .lang-btn {
+            background: rgba(255,255,255,0.2);
+            border: 2px solid white;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+        
+        .lang-btn:hover, .lang-btn.active {
+            background: white;
+            color: #1e3c72;
+        }
+        
+        .content {
+            padding: 40px;
+        }
+        
+        .section {
+            margin-bottom: 50px;
+        }
+        
+        .section h2 {
+            color: #1e3c72;
+            font-size: 2em;
+            margin-bottom: 20px;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 10px;
+        }
+        
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            transition: transform 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .card h3 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            opacity: 0.9;
+        }
+        
+        .card .value {
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+        
+        .chart-container {
+            background: #f8f9fa;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+        }
+        
+        .insights {
+            background: #fff3cd;
+            border-left: 5px solid #ffc107;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+        
+        .insights h3 {
+            color: #856404;
+            margin-bottom: 15px;
+        }
+        
+        .insights ul {
+            list-style-position: inside;
+            color: #856404;
+        }
+        
+        .insights li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        footer {
+            background: #1e3c72;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .methodology {
+            background: #e7f3ff;
+            padding: 25px;
+            border-radius: 10px;
+            border-left: 5px solid #2a5298;
+        }
+        
+        .methodology h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+            
+            .content {
+                padding: 20px;
+            }
+            
+            .cards {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header style="position: relative;">
+            <div class="lang-switch">
+                <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
+                <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
+            </div>
+            <h1 data-pt="Impacto da Desinformação sobre Vacinação no Brasil" 
+                data-fr="Impact de la désinformation sur la vaccination au Brésil">
+                Impacto da Desinformação sobre Vacinação no Brasil
+            </h1>
+            <p data-pt="Análise de dados públicos do Google Trends (2020-2025)" 
+               data-fr="Analyse des données publiques de Google Trends (2020-2025)">
+                Análise de dados públicos do Google Trends (2020-2025)
+            </p>
+        </header>
+        
+        <div class="content">
+            <div class="section">
+                <h2 data-pt="📊 Indicadores Principais" data-fr="📊 Indicateurs Principaux">
+                    📊 Indicadores Principais
+                </h2>
+                <div class="cards">
+                    <div class="card">
+                        <h3 data-pt="Pico de Buscas Negativas" data-fr="Pic de recherches négatives">
+                            Pico de Buscas Negativas
+                        </h3>
+                        <div class="value" id="peakMonth">Jun 2021</div>
+                    </div>
+                    <div class="card">
+                        <h3 data-pt="Termo Mais Buscado" data-fr="Terme le plus recherché">
+                            Termo Mais Buscado
+                        </h3>
+                        <div class="value" style="font-size: 1.5em;" data-pt="efeitos colaterais" data-fr="effets secondaires">efeitos colaterais</div>
+                    </div>
+                    <div class="card">
+                        <h3 data-pt="Redução desde o Pico" data-fr="Réduction depuis le pic">
+                            Redução desde o Pico
+                        </h3>
+                        <div class="value" id="reduction">-88%</div>
+                    </div>
+                    <div class="card">
+                        <h3 data-pt="Período Analisado" data-fr="Période analysée">
+                            Período Analisado
+                        </h3>
+                        <div class="value" style="font-size: 1.8em;">69 <span data-pt="meses" data-fr="mois">meses</span></div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 data-pt="📈 Evolução Temporal das Buscas por Desinformação" 
+                    data-fr="📈 Évolution temporelle des recherches de désinformation">
+                    📈 Evolução Temporal das Buscas por Desinformação
+                </h2>
+                <div class="chart-container">
+                    <canvas id="timelineChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 data-pt="🔍 Comparação entre Termos de Busca" 
+                    data-fr="🔍 Comparaison entre termes de recherche">
+                    🔍 Comparação entre Termos de Busca
+                </h2>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 data-pt="💡 Principais Insights" data-fr="💡 Principaux aperçus">
+                    💡 Principais Insights
+                </h2>
+                <div class="insights">
+                    <h3 data-pt="Descobertas da Análise:" data-fr="Découvertes de l'analyse:">
+                        Descobertas da Análise:
+                    </h3>
+                    <ul id="insightsList">
+                        <li data-pt="O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo com o início da vacinação em massa no Brasil"
+                            data-fr="Le pic de recherches de désinformation s'est produit entre janvier et août 2021, coïncidant avec le début de la vaccination de masse au Brésil">
+                            O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo com o início da vacinação em massa no Brasil
+                        </li>
+                        <li data-pt="'Efeitos colaterais vacina covid' foi o termo mais buscado, atingindo 100 pontos em junho de 2021"
+                            data-fr="'Effets secondaires vaccin covid' était le terme le plus recherché, atteignant 100 points en juin 2021">
+                            "Efeitos colaterais vacina covid" foi o termo mais buscado, atingindo 100 pontos em junho de 2021
+                        </li>
+                        <li data-pt="Desde 2022, há uma tendência clara de redução nas buscas relacionadas à desinformação vacinal"
+                            data-fr="Depuis 2022, il y a une tendance claire de réduction des recherches liées à la désinformation vaccinale">
+                            Desde 2022, há uma tendência clara de redução nas buscas relacionadas à desinformação vacinal
+                        </li>
+                        <li data-pt="O termo 'vacina causa autismo' manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica"
+                            data-fr="Le terme 'vaccin cause l'autisme' est resté constamment bas (0-3 points), indiquant une moindre propagation de cette fake news spécifique">
+                            O termo "vacina causa autismo" manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica
+                        </li>
+                        <li data-pt="Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo normalização do discurso público"
+                            data-fr="En octobre 2025, les niveaux de recherche restent 88% en dessous du pic, suggérant une normalisation du discours public">
+                            Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo normalização do discurso público
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2 data-pt="🔬 Metodologia" data-fr="🔬 Méthodologie">
+                    🔬 Metodologia
+                </h2>
+                <div class="methodology">
+                    <h3 data-pt="Fonte de Dados:" data-fr="Source des données:">
+                        Fonte de Dados:
+                    </h3>
+                    <p data-pt="Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico."
+                       data-fr="Données extraites de Google Trends (Brésil) pour la période de janvier 2020 à octobre 2025. Les valeurs représentent l'intérêt de recherche relatif au point le plus haut du graphique (100). Une valeur de 50 signifie que le terme avait la moitié de la popularité par rapport au pic.">
+                        Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico.
+                    </p>
+                    <br>
+                    <h3 data-pt="Termos Analisados:" data-fr="Termes analysés:">
+                        Termos Analisados:
+                    </h3>
+                    <ul>
+                        <li data-pt="'vacina faz mal' - termo genérico sobre danos causados por vacinas"
+                            data-fr="'vaccin fait mal' - terme générique sur les dommages causés par les vaccins">
+                            "vacina faz mal" - termo genérico sobre danos causados por vacinas
+                        </li>
+                        <li data-pt="'efeitos colaterais vacina covid' - preocupações específicas sobre a vacina COVID-19"
+                            data-fr="'effets secondaires vaccin covid' - préoccupations spécifiques concernant le vaccin COVID-19">
+                            "efeitos colaterais vacina covid" - preocupações específicas sobre a vacina COVID-19
+                        </li>
+                        <li data-pt="'vacina mata' - alegações extremas de letalidade"
+                            data-fr="'vaccin tue' - allégations extrêmes de létalité">
+                            "vacina mata" - alegações extremas de letalidade
+                        </li>
+                        <li data-pt="'vacina causa autismo' - fake news clássica desmentida cientificamente"
+                            data-fr="'vaccin cause l'autisme' - fake news classique scientifiquement réfutée">
+                            "vacina causa autismo" - fake news clássica desmentida cientificamente
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p data-pt="Projeto Open Source | Dados: Google Trends | Análise: 2020-2025"
+               data-fr="Projet Open Source | Données: Google Trends | Analyse: 2020-2025">
+                Projeto Open Source | Dados: Google Trends | Análise: 2020-2025
+            </p>
+            <p style="margin-top: 10px; opacity: 0.8;">
+                <a href="https://github.com" style="color: white;" data-pt="📂 Ver no GitHub" data-fr="📂 Voir sur GitHub">
+                    📂 Ver no GitHub
+                </a>
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const csvData = `MÃªs,vacina faz mal: (Brasil),efeitos colaterais vacina covid: (Brasil),vacina mata: (Brasil),vacina causa autismo: (Brasil)
+2020-01,6,0,3,0
+2020-02,8,0,7,0
+2020-03,13,0,20,0
+2020-04,10,2,14,2
+2020-05,9,2,12,1
+2020-06,10,1,7,1
+2020-07,10,3,8,0
+2020-08,8,2,9,2
+2020-09,8,5,12,2
+2020-10,9,4,11,2
+2020-11,7,2,15,2
+2020-12,12,36,20,1
+2021-01,17,43,47,0
+2021-02,13,28,15,2
+2021-03,18,38,27,0
+2021-04,30,55,21,2
+2021-05,43,82,32,2
+2021-06,68,100,40,1
+2021-07,68,74,30,0
+2021-08,72,54,40,2
+2021-09,45,24,33,3
+2021-10,31,17,17,2
+2021-11,31,16,18,2
+2021-12,31,22,22,0
+2022-01,66,64,92,0
+2022-02,33,27,21,1
+2022-03,20,17,12,3
+2022-04,18,11,9,3
+2022-05,17,13,9,2
+2022-06,26,22,11,1
+2022-07,23,18,9,1
+2022-08,15,15,8,2
+2022-09,14,10,8,3
+2022-10,8,9,7,1
+2022-11,14,17,7,0
+2022-12,9,13,7,0
+2023-01,11,13,7,1
+2023-02,11,15,7,0
+2023-03,17,30,14,2
+2023-04,17,17,12,2
+2023-05,19,18,10,2
+2023-06,14,12,8,1
+2023-07,9,7,8,1
+2023-08,7,6,6,0
+2023-09,8,5,8,2
+2023-10,6,6,5,0
+2023-11,7,12,10,0
+2023-12,7,9,14,0
+2024-01,9,14,26,0
+2024-02,8,9,14,1
+2024-03,8,6,10,0
+2024-04,10,7,9,0
+2024-05,11,13,9,1
+2024-06,11,11,7,3
+2024-07,8,5,7,0
+2024-08,8,6,5,2
+2024-09,7,4,9,0
+2024-10,6,4,7,3
+2024-11,8,5,7,0
+2024-12,8,5,7,0
+2025-01,11,7,12,0
+2025-02,8,10,9,2
+2025-03,9,7,9,2
+2025-04,13,9,9,0
+2025-05,17,7,12,1
+2025-06,13,5,10,2
+2025-07,10,5,8,2
+2025-08,8,4,7,0
+2025-09,11,4,9,2
+2025-10,9,5,8,1`;
+
+        let currentLang = 'pt';
+        let timelineChart, comparisonChart;
+        let chartData = null;
+
+        const translations = {
+            pt: {
+                months: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
+                labels: {
+                    term1: 'Vacina faz mal',
+                    term2: 'Efeitos colaterais COVID',
+                    term3: 'Vacina mata',
+                    term4: 'Vacina causa autismo'
+                },
+                chartTitles: {
+                    timeline: 'Interesse de Busca ao Longo do Tempo (0-100)',
+                    comparison: 'Comparação do Volume Total por Termo'
+                },
+                comparisonLabels: ['Vacina faz mal', 'Efeitos colaterais COVID', 'Vacina mata', 'Vacina causa autismo'],
+                volumeLabel: 'Volume Total de Buscas (2020-2025)'
+            },
+            fr: {
+                months: ['janv', 'févr', 'mars', 'avr', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc'],
+                labels: {
+                    term1: 'Vaccin fait mal',
+                    term2: 'Effets secondaires COVID',
+                    term3: 'Vaccin tue',
+                    term4: 'Vaccin cause autisme'
+                },
+                chartTitles: {
+                    timeline: 'Intérêt de recherche au fil du temps (0-100)',
+                    comparison: 'Comparaison du volume total par terme'
+                },
+                comparisonLabels: ['Vaccin fait mal', 'Effets secondaires COVID', 'Vaccin tue', 'Vaccin cause autisme'],
+                volumeLabel: 'Volume total de recherches (2020-2025)'
+            }
+        };
+
+        function translateMonth(monthStr, lang) {
+            const [year, month] = monthStr.split('-');
+            const monthIndex = parseInt(month) - 1;
+            const monthName = translations[lang].months[monthIndex];
+            return monthName + ' ' + year;
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            document.querySelectorAll('[data-pt]').forEach(el => {
+                el.textContent = el.getAttribute('data-' + lang);
+            });
+
+            updateCharts();
+        }
+
+        function updateCharts() {
+            if (!chartData) return;
+
+            const lang = currentLang;
+            const t = translations[lang];
+
+            const translatedLabels = chartData.labels.map(label => translateMonth(label, lang));
+
+            // Atualizar o mês do pico
+            const maxEfeitos = Math.max(...chartData.efeitosColaterais);
+            const maxIndex = chartData.efeitosColaterais.indexOf(maxEfeitos);
+            const peakMonthFormatted = translateMonth(chartData.labels[maxIndex], lang);
+            document.getElementById('peakMonth').textContent = peakMonthFormatted;
+
+            if (timelineChart) {
+                timelineChart.data.labels = translatedLabels;
+                timelineChart.data.datasets[0].label = t.labels.term1;
+                timelineChart.data.datasets[1].label = t.labels.term2;
+                timelineChart.data.datasets[2].label = t.labels.term3;
+                timelineChart.data.datasets[3].label = t.labels.term4;
+                timelineChart.options.plugins.title.text = t.chartTitles.timeline;
+                timelineChart.update();
+            }
+
+            if (comparisonChart) {
+                comparisonChart.data.labels = t.comparisonLabels;
+                comparisonChart.data.datasets[0].label = t.volumeLabel;
+                comparisonChart.options.plugins.title.text = t.chartTitles.comparison;
+                comparisonChart.update();
+            }
+        }
+
+        Papa.parse(csvData, {
+            header: true,
+            dynamicTyping: true,
+            skipEmptyLines: true,
+            complete: function(results) {
+                const data = results.data;
+                
+                const labels = data.map(row => row['MÃªs']);
+                const vacinaFazMal = data.map(row => row['vacina faz mal: (Brasil)']);
+                const efeitosColaterais = data.map(row => row['efeitos colaterais vacina covid: (Brasil)']);
+                const vacinaMata = data.map(row => row['vacina mata: (Brasil)']);
+                const vacinaCausaAutismo = data.map(row => row['vacina causa autismo: (Brasil)']);
+                
+                chartData = {
+                    labels: labels,
+                    vacinaFazMal: vacinaFazMal,
+                    efeitosColaterais: efeitosColaterais,
+                    vacinaMata: vacinaMata,
+                    vacinaCausaAutismo: vacinaCausaAutismo
+                };
+
+                const maxEfeitos = Math.max(...efeitosColaterais);
+                const maxIndex = efeitosColaterais.indexOf(maxEfeitos);
+                const currentValue = efeitosColaterais[efeitosColaterais.length - 1];
+                const reduction = Math.round(((maxEfeitos - currentValue) / maxEfeitos) * 100);
+                
+                const peakMonthFormatted = translateMonth(labels[maxIndex], currentLang);
+                document.getElementById('peakMonth').textContent = peakMonthFormatted;
+                document.getElementById('reduction').textContent = `-${reduction}%`;
+                
+                const translatedLabels = labels.map(label => translateMonth(label, currentLang));
+                const t = translations[currentLang];
+
+                const ctx1 = document.getElementById('timelineChart').getContext('2d');
+                timelineChart = new Chart(ctx1, {
+                    type: 'line',
+                    data: {
+                        labels: translatedLabels,
+                        datasets: [
+                            {
+                                label: t.labels.term1,
+                                data: vacinaFazMal,
+                                borderColor: '#ff6384',
+                                backgroundColor: 'rgba(255, 99, 132, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            },
+                            {
+                                label: t.labels.term2,
+                                data: efeitosColaterais,
+                                borderColor: '#36a2eb',
+                                backgroundColor: 'rgba(54, 162, 235, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            },
+                            {
+                                label: t.labels.term3,
+                                data: vacinaMata,
+                                borderColor: '#ff9f40',
+                                backgroundColor: 'rgba(255, 159, 64, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            },
+                            {
+                                label: t.labels.term4,
+                                data: vacinaCausaAutismo,
+                                borderColor: '#4bc0c0',
+                                backgroundColor: 'rgba(75, 192, 192, 0.1)',
+                                tension: 0.4,
+                                fill: true
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: {
+                                position: 'top',
+                                labels: {
+                                    font: { size: 12 },
+                                    usePointStyle: true
+                                }
+                            },
+                            title: {
+                                display: true,
+                                text: t.chartTitles.timeline,
+                                font: { size: 16, weight: 'bold' }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                max: 100,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value;
+                                    }
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    maxRotation: 45,
+                                    minRotation: 45,
+                                    font: { size: 10 }
+                                }
+                            }
+                        }
+                    }
+                });
+                
+                const totals = [
+                    vacinaFazMal.reduce((a, b) => a + b, 0),
+                    efeitosColaterais.reduce((a, b) => a + b, 0),
+                    vacinaMata.reduce((a, b) => a + b, 0),
+                    vacinaCausaAutismo.reduce((a, b) => a + b, 0)
+                ];
+                
+                const ctx2 = document.getElementById('comparisonChart').getContext('2d');
+                comparisonChart = new Chart(ctx2, {
+                    type: 'bar',
+                    data: {
+                        labels: t.comparisonLabels,
+                        datasets: [{
+                            label: t.volumeLabel,
+                            data: totals,
+                            backgroundColor: [
+                                'rgba(255, 99, 132, 0.7)',
+                                'rgba(54, 162, 235, 0.7)',
+                                'rgba(255, 159, 64, 0.7)',
+                                'rgba(75, 192, 192, 0.7)'
+                            ],
+                            borderColor: [
+                                'rgb(255, 99, 132)',
+                                'rgb(54, 162, 235)',
+                                'rgb(255, 159, 64)',
+                                'rgb(75, 192, 192)'
+                            ],
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: true,
+                        plugins: {
+                            legend: { display: false },
+                            title: {
+                                display: true,
+                                text: t.chartTitles.comparison,
+                                font: { size: 16, weight: 'bold' }
+                            }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    callback: function(value) {
+                                        return value.toLocaleString();
+                                    }
+                                }
+                            }
+                        }
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
