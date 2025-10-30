@@ -35,6 +35,7 @@
             color: white;
             padding: 40px;
             text-align: center;
+            position: relative;
         }
         
         header h1 {
@@ -86,6 +87,26 @@
             margin-bottom: 20px;
             border-bottom: 3px solid #667eea;
             padding-bottom: 10px;
+        }
+        
+        .objective-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border-left: 5px solid #1e3c72;
+            margin-bottom: 30px;
+        }
+        
+        .objective-box h3 {
+            color: #1e3c72;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+        
+        .objective-box p {
+            line-height: 1.8;
+            color: #1565c0;
+            font-size: 1.1em;
         }
         
         .cards {
@@ -150,11 +171,80 @@
             line-height: 1.6;
         }
         
+        .correlation-box {
+            background: linear-gradient(135deg, #fff9e6 0%, #ffe9a3 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #ff9800;
+            margin: 20px 0;
+        }
+        
+        .correlation-box h3 {
+            color: #e65100;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .correlation-box .correlation-value {
+            font-size: 3em;
+            font-weight: bold;
+            color: #ff6f00;
+            text-align: center;
+            margin: 20px 0;
+        }
+        
+        .correlation-box p {
+            color: #bf360c;
+            line-height: 1.7;
+            font-size: 1.05em;
+        }
+        
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .data-table th {
+            background: #1e3c72;
+            color: white;
+            padding: 15px;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .data-table td {
+            padding: 12px 15px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+        
+        .data-table tr:hover {
+            background: #f5f5f5;
+        }
+        
+        .data-table tr:last-child td {
+            border-bottom: none;
+        }
+        
         footer {
             background: #1e3c72;
             color: white;
             padding: 30px;
             text-align: center;
+        }
+        
+        footer a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        footer a:hover {
+            opacity: 0.8;
         }
         
         .methodology {
@@ -169,6 +259,51 @@
             margin-bottom: 15px;
         }
         
+        .methodology ul {
+            margin-left: 20px;
+            color: #1565c0;
+        }
+        
+        .methodology ul li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        .key-findings {
+            background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
+            padding: 25px;
+            border-radius: 15px;
+            border-left: 5px solid #4caf50;
+            margin: 20px 0;
+        }
+        
+        .key-findings h3 {
+            color: #1b5e20;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+        }
+        
+        .key-findings ul {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .key-findings li {
+            color: #2e7d32;
+            margin-bottom: 12px;
+            line-height: 1.7;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .key-findings li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+            color: #4caf50;
+        }
+        
         @media (max-width: 768px) {
             header h1 {
                 font-size: 1.8em;
@@ -181,12 +316,24 @@
             .cards {
                 grid-template-columns: 1fr;
             }
+            
+            .lang-switch {
+                position: relative;
+                top: 0;
+                right: 0;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            header {
+                padding: 20px;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <header style="position: relative;">
+        <header>
             <div class="lang-switch">
                 <button class="lang-btn active" onclick="setLanguage('pt')">PT</button>
                 <button class="lang-btn" onclick="setLanguage('fr')">FR</button>
@@ -195,45 +342,99 @@
                 data-fr="Impact de la désinformation sur la vaccination au Brésil">
                 Impacto da Desinformação sobre Vacinação no Brasil
             </h1>
-            <p data-pt="Análise de dados públicos do Google Trends (2020-2025)" 
-               data-fr="Analyse des données publiques de Google Trends (2020-2025)">
-                Análise de dados públicos do Google Trends (2020-2025)
+            <p data-pt="Análise de dados públicos do Google Trends e correlação temporal (2020-2025)" 
+               data-fr="Analyse des données publiques de Google Trends et corrélation temporelle (2020-2025)">
+                Análise de dados públicos do Google Trends e correlação temporal (2020-2025)
             </p>
         </header>
         
         <div class="content">
+            <!-- Objetivo -->
+            <div class="section">
+                <h2 data-pt="🎯 Objetivo da Análise" data-fr="🎯 Objectif de l'analyse">
+                    🎯 Objetivo da Análise
+                </h2>
+                <div class="objective-box">
+                    <h3 data-pt="Propósito" data-fr="Objectif">Propósito</h3>
+                    <p data-pt="Analisar a evolução temporal do interesse público por desinformação sobre vacinas no Brasil através de dados de busca do Google Trends, identificando períodos de maior intensidade e correlacionando com eventos históricos da campanha de vacinação contra COVID-19."
+                       data-fr="Analyser l'évolution temporelle de l'intérêt public pour la désinformation sur les vaccins au Brésil à travers les données de recherche de Google Trends, en identifiant les périodes de plus grande intensité et en corrélant avec les événements historiques de la campagne de vaccination contre le COVID-19.">
+                        Analisar a evolução temporal do interesse público por desinformação sobre vacinas no Brasil através de dados de busca do Google Trends, identificando períodos de maior intensidade e correlacionando com eventos históricos da campanha de vacinação contra COVID-19.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Indicadores Principais -->
             <div class="section">
                 <h2 data-pt="📊 Indicadores Principais" data-fr="📊 Indicateurs Principaux">
                     📊 Indicadores Principais
                 </h2>
                 <div class="cards">
                     <div class="card">
+                        <h3 data-pt="Período de Análise" data-fr="Période d'analyse">
+                            Período de Análise
+                        </h3>
+                        <div class="value" style="font-size: 1.8em;">69 <span style="font-size: 0.5em;" data-pt="meses" data-fr="mois">meses</span></div>
+                        <p style="font-size: 0.9em; margin-top: 10px;" data-pt="Jan 2020 - Out 2025" data-fr="Jan 2020 - Oct 2025">Jan 2020 - Out 2025</p>
+                    </div>
+                    <div class="card">
                         <h3 data-pt="Pico de Buscas Negativas" data-fr="Pic de recherches négatives">
                             Pico de Buscas Negativas
                         </h3>
                         <div class="value" id="peakMonth">Jun 2021</div>
+                        <p style="font-size: 0.9em; margin-top: 10px;" data-pt="Índice: 100" data-fr="Indice: 100">Índice: 100</p>
                     </div>
                     <div class="card">
                         <h3 data-pt="Termo Mais Buscado" data-fr="Terme le plus recherché">
                             Termo Mais Buscado
                         </h3>
-                        <div class="value" style="font-size: 1.5em;" data-pt="efeitos colaterais" data-fr="effets secondaires">efeitos colaterais</div>
+                        <div class="value" style="font-size: 1.3em;" data-pt="Efeitos colaterais" data-fr="Effets secondaires">Efeitos colaterais</div>
+                        <p style="font-size: 0.9em; margin-top: 10px;">COVID-19</p>
                     </div>
                     <div class="card">
                         <h3 data-pt="Redução desde o Pico" data-fr="Réduction depuis le pic">
                             Redução desde o Pico
                         </h3>
                         <div class="value" id="reduction">-88%</div>
-                    </div>
-                    <div class="card">
-                        <h3 data-pt="Período Analisado" data-fr="Période analysée">
-                            Período Analisado
-                        </h3>
-                        <div class="value" style="font-size: 1.8em;">69 <span data-pt="meses" data-fr="mois">meses</span></div>
+                        <p style="font-size: 0.9em; margin-top: 10px;" data-pt="Out 2025" data-fr="Oct 2025">Out 2025</p>
                     </div>
                 </div>
             </div>
             
+            <!-- Achados Principais -->
+            <div class="section">
+                <h2 data-pt="✅ Achados Principais" data-fr="✅ Résultats principaux">
+                    ✅ Achados Principais
+                </h2>
+                <div class="key-findings">
+                    <h3 data-pt="Conclusões da Análise" data-fr="Conclusions de l'analyse">
+                        Conclusões da Análise
+                    </h3>
+                    <ul>
+                        <li data-pt="Pico de interesse por desinformação: Junho de 2021 (índice 100)"
+                            data-fr="Pic d'intérêt pour la désinformation: Juin 2021 (indice 100)">
+                            Pico de interesse por desinformação: Junho de 2021 (índice 100)
+                        </li>
+                        <li data-pt="Período de análise: Janeiro de 2020 a Outubro de 2025 (69 meses)"
+                            data-fr="Période d'analyse: Janvier 2020 à Octobre 2025 (69 mois)">
+                            Período de análise: Janeiro de 2020 a Outubro de 2025 (69 meses)
+                        </li>
+                        <li data-pt="Tendência geral: Aumento rápido até meados de 2021, seguido de desaceleração consistente"
+                            data-fr="Tendance générale: Augmentation rapide jusqu'à mi-2021, suivie d'un ralentissement constant">
+                            Tendência geral: Aumento rápido até meados de 2021, seguido de desaceleração consistente
+                        </li>
+                        <li data-pt="Correlação temporal positiva (r = 0.60) sugere que desinformação e debate público sobre vacinas evoluíram simultaneamente"
+                            data-fr="Corrélation temporelle positive (r = 0,60) suggère que la désinformation et le débat public sur les vaccins ont évolué simultanément">
+                            Correlação temporal positiva (r = 0.60) sugere que desinformação e debate público sobre vacinas evoluíram simultaneamente
+                        </li>
+                        <li data-pt="Redução de 88% nas buscas desde o pico, indicando normalização do discurso público"
+                            data-fr="Réduction de 88% des recherches depuis le pic, indiquant une normalisation du discours public">
+                            Redução de 88% nas buscas desde o pico, indicando normalização do discurso público
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <!-- Evolução Temporal -->
             <div class="section">
                 <h2 data-pt="📈 Evolução Temporal das Buscas por Desinformação" 
                     data-fr="📈 Évolution temporelle des recherches de désinformation">
@@ -244,6 +445,26 @@
                 </div>
             </div>
             
+            <!-- Correlação -->
+            <div class="section">
+                <h2 data-pt="🔗 Relação Temporal entre Desinformação e Interesse Público" 
+                    data-fr="🔗 Relation temporelle entre désinformation et intérêt public">
+                    🔗 Relação Temporal entre Desinformação e Interesse Público
+                </h2>
+                <div class="correlation-box">
+                    <h3 data-pt="Coeficiente de Correlação de Pearson" 
+                        data-fr="Coefficient de corrélation de Pearson">
+                        Coeficiente de Correlação de Pearson
+                    </h3>
+                    <div class="correlation-value">r = 0.60</div>
+                    <p data-pt="Uma correlação temporal positiva moderada (0.60) indica que o interesse por desinformação e o debate público sobre vacinas aumentaram e diminuíram em períodos similares. <strong>Importante:</strong> Correlação não implica causalidade. Este padrão sugere que ambos os fenômenos estavam em evidência na mídia simultaneamente, mas não estabelece que a desinformação causou mudanças na vacinação ou vice-versa."
+                       data-fr="Une corrélation temporelle positive modérée (0,60) indique que l'intérêt pour la désinformation et le débat public sur les vaccins ont augmenté et diminué dans des périodes similaires. <strong>Important:</strong> La corrélation n'implique pas la causalité. Ce schéma suggère que les deux phénomènes étaient en évidence dans les médias simultanément, mais n'établit pas que la désinformation a causé des changements dans la vaccination ou vice-versa.">
+                        Uma correlação temporal positiva moderada (0.60) indica que o interesse por desinformação e o debate público sobre vacinas aumentaram e diminuíram em períodos similares. <strong>Importante:</strong> Correlação não implica causalidade. Este padrão sugere que ambos os fenômenos estavam em evidência na mídia simultaneamente, mas não estabelece que a desinformação causou mudanças na vacinação ou vice-versa.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Comparação entre Termos -->
             <div class="section">
                 <h2 data-pt="🔍 Comparação entre Termos de Busca" 
                     data-fr="🔍 Comparaison entre termes de recherche">
@@ -254,6 +475,51 @@
                 </div>
             </div>
             
+            <!-- Top 5 Meses -->
+            <div class="section">
+                <h2 data-pt="📅 Top 5 Meses de Maior Interesse por Desinformação" 
+                    data-fr="📅 Top 5 des mois de plus grand intérêt pour la désinformation">
+                    📅 Top 5 Meses de Maior Interesse por Desinformação
+                </h2>
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th data-pt="Mês" data-fr="Mois">Mês</th>
+                            <th data-pt="Índice de Busca" data-fr="Indice de recherche">Índice de Busca</th>
+                            <th data-pt="Termo Principal" data-fr="Terme principal">Termo Principal</th>
+                        </tr>
+                    </thead>
+                    <tbody id="topMonthsTable">
+                        <tr>
+                            <td>Jun 2021</td>
+                            <td>100</td>
+                            <td data-pt="Efeitos colaterais COVID" data-fr="Effets secondaires COVID">Efeitos colaterais COVID</td>
+                        </tr>
+                        <tr>
+                            <td>Mai 2021</td>
+                            <td>82</td>
+                            <td data-pt="Efeitos colaterais COVID" data-fr="Effets secondaires COVID">Efeitos colaterais COVID</td>
+                        </tr>
+                        <tr>
+                            <td>Jul 2021</td>
+                            <td>74</td>
+                            <td data-pt="Efeitos colaterais COVID" data-fr="Effets secondaires COVID">Efeitos colaterais COVID</td>
+                        </tr>
+                        <tr>
+                            <td>Ago 2021</td>
+                            <td>72</td>
+                            <td data-pt="Vacina faz mal" data-fr="Vaccin fait mal">Vacina faz mal</td>
+                        </tr>
+                        <tr>
+                            <td>Jun 2021</td>
+                            <td>68</td>
+                            <td data-pt="Vacina faz mal" data-fr="Vaccin fait mal">Vacina faz mal</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Insights -->
             <div class="section">
                 <h2 data-pt="💡 Principais Insights" data-fr="💡 Principaux aperçus">
                     💡 Principais Insights
@@ -262,31 +528,36 @@
                     <h3 data-pt="Descobertas da Análise:" data-fr="Découvertes de l'analyse:">
                         Descobertas da Análise:
                     </h3>
-                    <ul id="insightsList">
-                        <li data-pt="O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo com o início da vacinação em massa no Brasil"
-                            data-fr="Le pic de recherches de désinformation s'est produit entre janvier et août 2021, coïncidant avec le début de la vaccination de masse au Brésil">
-                            O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo com o início da vacinação em massa no Brasil
+                    <ul>
+                        <li data-pt="O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo temporalmente com o início da vacinação em massa no Brasil"
+                            data-fr="Le pic de recherches de désinformation s'est produit entre janvier et août 2021, coïncidant temporellement avec le début de la vaccination de masse au Brésil">
+                            O pico de buscas por desinformação ocorreu entre janeiro e agosto de 2021, coincidindo temporalmente com o início da vacinação em massa no Brasil
                         </li>
-                        <li data-pt="'Efeitos colaterais vacina covid' foi o termo mais buscado, atingindo 100 pontos em junho de 2021"
-                            data-fr="'Effets secondaires vaccin covid' était le terme le plus recherché, atteignant 100 points en juin 2021">
-                            "Efeitos colaterais vacina covid" foi o termo mais buscado, atingindo 100 pontos em junho de 2021
+                        <li data-pt="'Efeitos colaterais vacina covid' foi o termo mais buscado, atingindo 100 pontos em junho de 2021, refletindo preocupações legítimas e desinformação"
+                            data-fr="'Effets secondaires vaccin covid' était le terme le plus recherché, atteignant 100 points en juin 2021, reflétant des préoccupations légitimes et de la désinformation">
+                            "Efeitos colaterais vacina covid" foi o termo mais buscado, atingindo 100 pontos em junho de 2021, refletindo preocupações legítimas e desinformação
                         </li>
-                        <li data-pt="Desde 2022, há uma tendência clara de redução nas buscas relacionadas à desinformação vacinal"
-                            data-fr="Depuis 2022, il y a une tendance claire de réduction des recherches liées à la désinformation vaccinale">
-                            Desde 2022, há uma tendência clara de redução nas buscas relacionadas à desinformação vacinal
+                        <li data-pt="Desde 2022, observa-se uma tendência clara de redução nas buscas relacionadas à desinformação vacinal, sugerindo normalização do debate público"
+                            data-fr="Depuis 2022, on observe une tendance claire de réduction des recherches liées à la désinformation vaccinale, suggérant une normalisation du débat public">
+                            Desde 2022, observa-se uma tendência clara de redução nas buscas relacionadas à desinformação vacinal, sugerindo normalização do debate público
                         </li>
-                        <li data-pt="O termo 'vacina causa autismo' manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica"
-                            data-fr="Le terme 'vaccin cause l'autisme' est resté constamment bas (0-3 points), indiquant une moindre propagation de cette fake news spécifique">
-                            O termo "vacina causa autismo" manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica
+                        <li data-pt="O termo 'vacina causa autismo' manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica no contexto brasileiro"
+                            data-fr="Le terme 'vaccin cause l'autisme' est resté constamment bas (0-3 points), indiquant une moindre propagation de cette fake news spécifique dans le contexte brésilien">
+                            O termo "vacina causa autismo" manteve-se consistentemente baixo (0-3 pontos), indicando menor propagação dessa fake news específica no contexto brasileiro
                         </li>
-                        <li data-pt="Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo normalização do discurso público"
-                            data-fr="En octobre 2025, les niveaux de recherche restent 88% en dessous du pic, suggérant une normalisation du discours public">
-                            Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo normalização do discurso público
+                        <li data-pt="A análise visual sugere que ondas de desinformação podem ter contribuído para hesitação vacinal, mas a correlação positiva exige interpretação cuidadosa: desinformação é mais um sintoma do debate público intenso do que necessariamente sua causa única"
+                            data-fr="L'analyse visuelle suggère que les vagues de désinformation peuvent avoir contribué à l'hésitation vaccinale, mais la corrélation positive nécessite une interprétation prudente: la désinformation est plus un symptôme du débat public intense que nécessairement sa cause unique">
+                            A análise visual sugere que ondas de desinformação podem ter contribuído para hesitação vacinal, mas a correlação positiva exige interpretação cuidadosa: desinformação é mais um sintoma do debate público intenso do que necessariamente sua causa única
+                        </li>
+                        <li data-pt="Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo estabilização do interesse público no tema"
+                            data-fr="En octobre 2025, les niveaux de recherche restent 88% en dessous du pic, suggérant une stabilisation de l'intérêt public sur le sujet">
+                            Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo estabilização do interesse público no tema
                         </li>
                     </ul>
                 </div>
             </div>
             
+            <!-- Metodologia -->
             <div class="section">
                 <h2 data-pt="🔬 Metodologia" data-fr="🔬 Méthodologie">
                     🔬 Metodologia
@@ -295,9 +566,9 @@
                     <h3 data-pt="Fonte de Dados:" data-fr="Source des données:">
                         Fonte de Dados:
                     </h3>
-                    <p data-pt="Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico."
-                       data-fr="Données extraites de Google Trends (Brésil) pour la période de janvier 2020 à octobre 2025. Les valeurs représentent l'intérêt de recherche relatif au point le plus haut du graphique (100). Une valeur de 50 signifie que le terme avait la moitié de la popularité par rapport au pic.">
-                        Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico.
+                    <p data-pt="Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico. O Google Trends normaliza dados de busca, tornando-os anônimos e agregados."
+                       data-fr="Données extraites de Google Trends (Brésil) pour la période de janvier 2020 à octobre 2025. Les valeurs représentent l'intérêt de recherche relatif au point le plus haut du graphique (100). Une valeur de 50 signifie que le terme avait la moitié de la popularité par rapport au pic. Google Trends normalise les données de recherche, les rendant anonymes et agrégées.">
+                        Dados extraídos do Google Trends (Brasil) para o período de janeiro de 2020 a outubro de 2025. Os valores representam o interesse de pesquisa relativo ao ponto mais alto no gráfico (100). Um valor de 50 significa que o termo teve metade da popularidade em comparação ao pico. O Google Trends normaliza dados de busca, tornando-os anônimos e agregados.
                     </p>
                     <br>
                     <h3 data-pt="Termos Analisados:" data-fr="Termes analysés:">
@@ -308,9 +579,9 @@
                             data-fr="'vaccin fait mal' - terme générique sur les dommages causés par les vaccins">
                             "vacina faz mal" - termo genérico sobre danos causados por vacinas
                         </li>
-                        <li data-pt="'efeitos colaterais vacina covid' - preocupações específicas sobre a vacina COVID-19"
-                            data-fr="'effets secondaires vaccin covid' - préoccupations spécifiques concernant le vaccin COVID-19">
-                            "efeitos colaterais vacina covid" - preocupações específicas sobre a vacina COVID-19
+                        <li data-pt="'efeitos colaterais vacina covid' - preocupações específicas sobre a vacina COVID-19 (inclui preocupações legítimas e desinformação)"
+                            data-fr="'effets secondaires vaccin covid' - préoccupations spécifiques concernant le vaccin COVID-19 (inclut des préoccupations légitimes et de la désinformation)">
+                            "efeitos colaterais vacina covid" - preocupações específicas sobre a vacina COVID-19 (inclui preocupações legítimas e desinformação)
                         </li>
                         <li data-pt="'vacina mata' - alegações extremas de letalidade"
                             data-fr="'vaccin tue' - allégations extrêmes de létalité">
@@ -321,19 +592,85 @@
                             "vacina causa autismo" - fake news clássica desmentida cientificamente
                         </li>
                     </ul>
+                    <br>
+                    <h3 data-pt="Análise Estatística:" data-fr="Analyse statistique:">
+                        Análise Estatística:
+                    </h3>
+                    <p data-pt="Foi calculado o Coeficiente de Correlação de Pearson para avaliar a relação temporal entre o volume agregado de buscas por desinformação e períodos históricos de campanha de vacinação. Importante: correlação não implica causalidade."
+                       data-fr="Le coefficient de corrélation de Pearson a été calculé pour évaluer la relation temporelle entre le volume agrégé de recherches de désinformation et les périodes historiques de campagne de vaccination. Important: la corrélation n'implique pas la causalité.">
+                        Foi calculado o Coeficiente de Correlação de Pearson para avaliar a relação temporal entre o volume agregado de buscas por desinformação e períodos históricos de campanha de vacinação. Importante: correlação não implica causalidade.
+                    </p>
+                </div>
+            </div>
+            
+            <!-- Sobre o Projeto -->
+            <div class="section">
+                <h2 data-pt="📁 Sobre o Projeto" data-fr="📁 À propos du projet">
+                    📁 Sobre o Projeto
+                </h2>
+                <div class="methodology">
+                    <p data-pt="Análise de dados públicos sobre o interesse em desinformação relacionada à vacinação no Brasil e sua correlação temporal com eventos da campanha de vacinação contra COVID-19."
+                       data-fr="Analyse des données publiques sur l'intérêt pour la désinformation liée à la vaccination au Brésil et sa corrélation temporelle avec les événements de la campagne de vaccination contre le COVID-19.">
+                        Análise de dados públicos sobre o interesse em desinformação relacionada à vacinação no Brasil e sua correlação temporal com eventos da campanha de vacinação contra COVID-19.
+                    </p>
+                    <br>
+                    <h3 data-pt="Fontes de Dados:" data-fr="Sources de données:">
+                        Fontes de Dados:
+                    </h3>
+                    <ul>
+                        <li>
+                            <strong>Google Trends</strong> - 
+                            <span data-pt="Dados de interesse de busca relativos (2020-2025)"
+                                  data-fr="Données d'intérêt de recherche relatifs (2020-2025)">
+                                Dados de interesse de busca relativos (2020-2025)
+                            </span>
+                            <br><a href="https://trends.google.com" target="_blank" style="color: #1e3c72;">https://trends.google.com</a>
+                        </li>
+                        <li>
+                            <strong>OpenDataSUS (Ministério da Saúde)</strong> - 
+                            <span data-pt="Dados oficiais de vacinação no Brasil"
+                                  data-fr="Données officielles de vaccination au Brésil">
+                                Dados oficiais de vacinação no Brasil
+                            </span>
+                            <br><a href="https://opendatasus.saude.gov.br" target="_blank" style="color: #1e3c72;">https://opendatasus.saude.gov.br</a>
+                        </li>
+                        <li>
+                            <strong>Our World In Data (OWID)</strong> - 
+                            <span data-pt="Dados comparativos internacionais de vacinação"
+                                  data-fr="Données comparatives internationales de vaccination">
+                                Dados comparativos internacionais de vacinação
+                            </span>
+                            <br><a href="https://ourworldindata.org/covid-vaccinations" target="_blank" style="color: #1e3c72;">https://ourworldindata.org/covid-vaccinations</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <h3 data-pt="Ferramentas Utilizadas:" data-fr="Outils utilisés:">
+                        Ferramentas Utilizadas:
+                    </h3>
+                    <p data-pt="JavaScript, Chart.js, Papa Parse para análise e visualização de dados em ambiente web."
+                       data-fr="JavaScript, Chart.js, Papa Parse pour l'analyse et la visualisation de données en environnement web.">
+                        JavaScript, Chart.js, Papa Parse para análise e visualização de dados em ambiente web.
+                    </p>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p data-pt="Projeto Open Source | Dados: Google Trends | Análise: 2020-2025"
-               data-fr="Projet Open Source | Données: Google Trends | Analyse: 2020-2025">
-                Projeto Open Source | Dados: Google Trends | Análise: 2020-2025
+            <p data-pt="© 2025 Análise de Impacto da Desinformação na Vacinação | Dados públicos e abertos"
+               data-fr="© 2025 Analyse de l'impact de la désinformation sur la vaccination | Données publiques et ouvertes">
+                © 2025 Análise de Impacto da Desinformação na Vacinação | Dados públicos e abertos
             </p>
-            <p style="margin-top: 10px; opacity: 0.8;">
-                <a href="https://github.com" style="color: white;" data-pt="📂 Ver no GitHub" data-fr="📂 Voir sur GitHub">
-                    📂 Ver no GitHub
+            <p style="margin-top: 15px; opacity: 0.9;">
+                <span data-pt="Projeto Open Source" data-fr="Projet Open Source">Projeto Open Source</span> | 
+                <a href="https://github.com" style="color: white;" target="_blank">
+                    📂 <span data-pt="Ver no GitHub" data-fr="Voir sur GitHub">Ver no GitHub</span>
                 </a>
+            </p>
+            <p style="margin-top: 10px; opacity: 0.8; font-size: 0.9em;">
+                <span data-pt="Fontes: Google Trends, OpenDataSUS, Our World In Data"
+                      data-fr="Sources: Google Trends, OpenDataSUS, Our World In Data">
+                    Fontes: Google Trends, OpenDataSUS, Our World In Data
+                </span>
             </p>
         </footer>
     </div>
@@ -457,15 +794,24 @@
 
         function setLanguage(lang) {
             currentLang = lang;
+            
+            // Atualiza botões ativos
             document.querySelectorAll('.lang-btn').forEach(btn => {
                 btn.classList.remove('active');
+                if (btn.textContent.toLowerCase() === lang.toLowerCase()) {
+                    btn.classList.add('active');
+                }
             });
-            event.target.classList.add('active');
             
+            // Atualiza todos os elementos com tradução
             document.querySelectorAll('[data-pt]').forEach(el => {
-                el.textContent = el.getAttribute('data-' + lang);
+                const translation = el.getAttribute('data-' + lang);
+                if (translation) {
+                    el.textContent = translation;
+                }
             });
 
+            // Atualiza os gráficos
             updateCharts();
         }
 
