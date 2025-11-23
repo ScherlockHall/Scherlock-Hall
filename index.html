@@ -121,49 +121,6 @@
     margin-top: 5rem;
   }
 
-  /* Certificações */
-  .certificacoes {
-    padding: 1.5rem 2rem;
-    background: #e6f0fb;
-    width: 100%;
-  }
-  .certificacoes-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1.5rem;
-    justify-content: center;
-  }
-  .certificacoes .cert {
-    background:#fff;
-    padding:1rem;
-    border-radius:8px;
-    box-shadow:0 3px 6px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
-    flex: 0 1 280px;
-  }
-  .certificacoes .cert:hover {
-    transform: translateY(-5px);
-  }
-  .certificacoes .cert a.cert-nome {
-    font-size: 1rem;
-    font-weight: 700;
-    color: #0056b3;
-    text-decoration: none;
-    display: block;
-    margin-bottom: 0.3rem;
-  }
-  .certificacoes .cert a.cert-nome:hover { text-decoration: underline; }
-  .certificacoes .cert img {
-    width: 100%;
-    border-radius: 6px;
-    margin-bottom: 0.5rem;
-  }
-  .certificacoes .cert p {
-    font-size:0.95rem;
-    color:#555;
-    line-height: 1.5;
-  }
-
   /* Projetos */
   section.projetos {
     max-width: 1200px;
@@ -172,8 +129,16 @@
   }
   section.projetos h2 {
     font-size: 2rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 0.5rem;
     color: #0056b3;
+  }
+  section.projetos h3 {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    color: #0056b3;
+    border-bottom: 2px solid #dbe9f9;
+    padding-bottom: 0.5rem;
   }
   .projetos-container {
     display: flex;
@@ -206,6 +171,57 @@
     color:#003d80;
   }
   .projeto-card p {
+    color:#555;
+    line-height: 1.5;
+  }
+
+  /* Certificações */
+  .certificacoes {
+    padding: 3rem 2rem;
+    background: #e6f0fb;
+    width: 100%;
+  }
+  .certificacoes h2 {
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    color: #0056b3;
+    text-align: center;
+  }
+  .certificacoes-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .certificacoes .cert {
+    background:#fff;
+    padding:1rem;
+    border-radius:8px;
+    box-shadow:0 3px 6px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    flex: 0 1 280px;
+  }
+  .certificacoes .cert:hover {
+    transform: translateY(-5px);
+  }
+  .certificacoes .cert a.cert-nome {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #0056b3;
+    text-decoration: none;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .certificacoes .cert a.cert-nome:hover { text-decoration: underline; }
+  .certificacoes .cert img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 0.5rem;
+  }
+  .certificacoes .cert p {
+    font-size:0.95rem;
     color:#555;
     line-height: 1.5;
   }
@@ -320,7 +336,7 @@
 <header id="main-header">
   <div class="header-content">
     <span class="nome">Scherlock Hall</span>
-    <span class="descricao" data-pt="💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados." data-fr="💻 Programmeur | 🎓 Étudiant en Sciences Économiques (UnB) | 📊 Étudiant en Science et Analyse de Données.">
+    <span class="descricao" data-pt="💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados." data-fr="💻 Développeur Web | 🎓 Étudiant en Sciences Économiques (UnB) | 📊 Étudiant en Science et Analyse des Données.">
       💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados.
     </span>
   </div>
@@ -337,8 +353,39 @@
 </header>
 
 <div class="main-content">
+  <!-- Projetos -->
+  <section class="projetos" id="projetos">
+    <h2 data-pt="Projetos" data-fr="Projets">Projetos</h2>
+    
+    <h3 data-pt="📊 Análise de Dados" data-fr="📊 Analyse de Données">📊 Análise de Dados</h3>
+    <div class="projetos-container">
+      <div class="projeto-card">
+        <a href="vaccine-misinformation-brazil/index.html" target="_blank" data-pt="💉 Desinformação sobre Vacinação no Brasil" data-fr="💉 Désinformation sur la Vaccination au Brésil">💉 Desinformação sobre Vacinação no Brasil</a>
+        <p data-pt="Dashboard interativo analisando 69 meses de dados do Google Trends (2020-2025) sobre fake news de vacinas. Identifica padrões temporais, picos e redução de 88% nas buscas desde junho/2021." data-fr="Tableau de bord interactif analysant 69 mois de données Google Trends (2020-2025) sur les fake news de vaccins. Identifie les patterns temporels, pics et réduction de 88% des recherches depuis juin/2021.">Dashboard interativo analisando 69 meses de dados do Google Trends (2020-2025) sobre fake news de vacinas. Identifica padrões temporais, picos e redução de 88% nas buscas desde junho/2021.</p>
+      </div>
+
+      <div class="projeto-card">
+        <a href="https://github.com/seu-usuario/infovac" target="_blank" data-pt="🌐 infoVac – Informação Oficial sobre Vacinação" data-fr="🌐 infoVac – Informations Officielles sur la Vaccination">🌐 infoVac – Informação Oficial sobre Vacinação</a>
+        <p data-pt="Projeto desenvolvido para o curso de Introdução à Administração da UnB, com o objetivo de combater a desinformação sobre vacinas no Brasil. Reúne dados oficiais do governo e apresenta informações claras, acessíveis e atualizadas sobre campanhas de vacinação, cobertura e segurança das vacinas." data-fr="Projet développé pour le cours d’Introduction à l’Administration de l’UnB, visant à lutter contre la désinformation sur les vaccins au Brésil. Compile des données officielles du gouvernement et présente des informations claires, accessibles et à jour sur les campagnes de vaccination, la couverture vaccinale et la sécurité des vaccins.">Projeto desenvolvido para o curso de Introdução à Administração da UnB, com o objetivo de combater a desinformação sobre vacinas no Brasil. Reúne dados oficiais do governo e apresenta informações claras, acessíveis e atualizadas sobre campanhas de vacinação, cobertura e segurança das vacinas.</p>
+      </div>
+    </div>
+
+    <h3 data-pt="💻 Programação" data-fr="💻 Programmation">💻 Programação</h3>
+    <div class="projetos-container">
+      <div class="projeto-card">
+        <a href="./Jogo-Da-Velha/index.html" target="_blank" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable">🎮 Jogo da Velha Imbatível</a>
+        <p data-pt="Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível." data-fr="Implémentation d'un jeu de morpion avec l'algorithme minimax qui rend l'ordinateur invincible.">Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
+      </div>
+      <div class="projeto-card">
+        <a href="./Teste-Psicologico/index.html" target="_blank" data-pt="🧠 Autoavaliação Psicológica" data-fr="🧠 Auto-évaluation Psychologique">🧠 Autoavaliação Psicológica</a>
+        <p data-pt="Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica." data-fr="Faites une auto-évaluation rapide sur l'anxiété, la dépression et le stress, basée sur des échelles psychologiques adaptées à la recherche académique.">Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
+      </div>
+    </div>
+  </section>
+
   <!-- Certificações -->
   <div class="certificacoes">
+    <h2 data-pt="Certificações" data-fr="Certifications">Certificações</h2>
     <div class="certificacoes-container">
       <div class="cert">
         <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" class="cert-nome">Responsive Web Design</a>
@@ -414,27 +461,12 @@
     </div>
   </div>
 
-  <!-- Projetos -->
-  <section class="projetos" id="projetos">
-    <h2 data-pt="Projetos" data-fr="Projets">Projetos</h2>
-    <div class="projetos-container">
-      <div class="projeto-card">
-        <a href="./Jogo-Da-Velha/index.html" target="_blank" data-pt="Jogo da Velha Imbatível" data-fr="Morpion Imbattable">Jogo da Velha Imbatível</a>
-        <p data-pt="Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível." data-fr="Implémentation d'un jeu de morpion avec l'algorithme minimax qui rend l'ordinateur invincible.">Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
-      </div>
-      <div class="projeto-card">
-        <a href="./Teste-Psicologico/index.html" target="_blank" data-pt="Autoavaliação Psicológica" data-fr="Auto-évaluation Psychologique">Autoavaliação Psicológica</a>
-        <p data-pt="Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica." data-fr="Faites une auto-évaluation rapide sur l'anxiété, la dépression et le stress, basée sur des échelles psychologiques adaptées à la recherche académique.">Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
-      </div>
-    </div>
-  </section>
-
   <!-- Sobre mim -->
   <section class="sobre">
     <h2 data-pt="Sobre mim" data-fr="À propos de moi">Sobre mim</h2>
-    <p data-pt="Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp." data-fr="Programmeur, étudiant en Sciences Économiques à l'Université de Brasília (UnB). Je complète ma formation académique avec des cours spécialisés en Science des Données (IBM) et Analyse de Données (Google) via Coursera, ainsi que la certification en Analyse de Données avec Python par freeCodeCamp.">Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp.</p>
+    <p data-pt="Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp." data-fr="Développeur Web, étudiant en Sciences Économiques à l'Université de Brasília (UnB). Je complète ma formation académique avec des cours spécialisés en Science des Données (IBM) et Analyse des Données (Google) via Coursera, ainsi que la certification en Analyse des Données avec Python par freeCodeCamp.">Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp.</p>
 
-    <p data-pt="Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais , econômicos e políticas públicas." data-fr="Mon parcours combinera la maîtrise actuelle de la programmation avec l'approfondissement en Économie et Science des Données, construisant un ensemble de connaissances et de compétences pour agir dans des recherches interdisciplinaires, des défis sociaux, économiques et des politiques publiques.">Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais , econômicos e políticas públicas.</p>
+    <p data-pt="Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais, econômicos e políticas públicas." data-fr="Mon parcours combinera la maîtrise actuelle du développement web avec l'approfondissement en Économie et Science des Données, construisant un ensemble de connaissances et de compétences pour agir dans des recherches interdisciplinaires, des défis sociaux, économiques et des politiques publiques.">Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais, econômicos e políticas públicas.</p>
 
     <p data-pt="Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar." data-fr="J'ai des intérêts tournés vers les Sciences de l'Information, Comportementales et Sociales, que j'étudierai de manière complémentaire, afin de relever les défis sociaux les plus urgents à partir d'une perspective interdisciplinaire.">Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar.</p>
 
@@ -446,7 +478,7 @@
       <li data-pt="Conectar teorias, análise de dados e demandas sociais reais." data-fr="Connecter les théories, l'analyse de données et les demandes sociales réelles.">Conectar teorias, análise de dados e demandas sociais reais.</li>
     </ul>
 
-    <p data-pt="Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano." data-fr="Ainsi, mon objectif est d'unir la pratique de la programmation, de l'économie, des sciences sociales, de l'information et des données à l'engagement social, traduisant les connaissances techniques en impact humain.">Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano.</p>
+    <p data-pt="Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano." data-fr="Ainsi, mon objectif est d'unir la pratique du développement web, de l'économie, des sciences sociales, de l'information et des données à l'engagement social, traduisant les connaissances techniques en impact humain.">Assim, meu objetivo é unir a prática da programação, da economia, das ciências sociais, da informação e dos dados ao compromisso social, traduzindo conhecimento técnico em impacto humano.</p>
   </section>
 
   <!-- Contato -->
