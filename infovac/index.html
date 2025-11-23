@@ -1,0 +1,2791 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Infovac — Informação que Imuniza</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💉</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    :root{
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --accent: #1e88e5; /* azul principal */
+      --accent-light: #64b5f6;
+      --accent-secondary: #43a047; /* verde para destaques */
+      --muted: #64748b;
+      --glass: rgba(255,255,255,0.5);
+      --max-w:1200px;
+      --radius:12px;
+      --gap:18px;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    *{box-sizing:border-box; margin:0; padding:0;}
+    html, body {
+      width:100%;
+      overflow-x:hidden;
+    }
+    body{
+      background:linear-gradient(180deg, var(--bg), #e2e8f0);
+      color:#334155;
+      min-height:100vh;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      line-height:1.6;
+    }
+
+    .site-header{
+      width:100%;
+      background:rgba(255,255,255,0.9);
+      backdrop-filter: blur(6px);
+      border-bottom:1px solid rgba(0,0,0,0.05);
+      padding:12px 5%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
+
+    .brand{
+      font-weight:700;
+      font-size:20px;
+      color:var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .brand-logo {
+      font-size: 24px;
+    }
+
+    .main-nav{
+      display:flex;
+      gap:8px;
+      flex-wrap:wrap;
+    }
+
+    .main-nav .tab{
+      padding:8px 16px;
+      border-radius:8px;
+      background:transparent;
+      color:var(--muted);
+      border:none;
+      cursor:pointer;
+      transition:all 0.3s ease;
+      font-weight:500;
+      white-space:nowrap;
+    }
+    .main-nav .tab:hover{
+      background:rgba(30, 136, 229, 0.1);
+      color: var(--accent);
+    }
+    .main-nav .tab.active{
+      color:white;
+      background:linear-gradient(90deg, var(--accent), var(--accent-light));
+      box-shadow: 0 2px 8px rgba(30, 136, 229, 0.3);
+    }
+
+    main{
+      width:100%;
+      max-width:var(--max-w);
+      padding:22px 5%;
+      flex:1;
+    }
+
+    .tab-panel{
+      display:none;
+      width:100%;
+      animation:fadeIn 0.5s ease;
+    }
+    @keyframes fadeIn{
+      from{opacity:0; transform:translateY(10px)}
+      to{opacity:1; transform:translateY(0)}
+    }
+    .tab-panel.active{display:block}
+
+    .panel-inner h2{
+      margin-top:0;
+      color:#1e293b;
+      font-weight:600;
+      margin-bottom:20px;
+      font-size:1.8rem;
+    }
+
+    /* BANNER LUPAS - NOVO */
+    .lupa-banner {
+      width: 100%;
+      margin-bottom: 24px;
+      position: relative;
+    }
+
+    .lupa-carousel {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      height: 200px; /* Metade da altura vertical dos cards */
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      width: 100%;
+      border: 1px solid rgba(0,0,0,0.05);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .lupa-carousel:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 35px rgba(0,0,0,0.12);
+    }
+
+    .lupa-carousel-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .lupa-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      padding: 20px;
+      background: linear-gradient(135deg, rgba(30,136,229,0.05), rgba(67,160,71,0.05));
+    }
+
+    .lupa-slide.active {
+      display: flex;
+    }
+
+    .lupa-slide-content {
+      flex: 1;
+      padding-right: 20px;
+    }
+
+    .lupa-slide h3 {
+      margin: 0 0 12px 0;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 1.3rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .lupa-slide p {
+      margin: 0 0 16px 0;
+      color: var(--muted);
+      font-size: 14px;
+      display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.5;
+    }
+
+    .lupa-slide .lupa-source {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .lupa-slide .lupa-logo {
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .lupa-slide-image {
+      width: 120px;
+      height: 120px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: rgba(30,136,229,0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 40px;
+    }
+
+    .lupa-controls {
+      position: absolute;
+      bottom: 16px;
+      right: 16px;
+      display: flex;
+      gap: 8px;
+    }
+
+    .lupa-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: all 0.3s ease;
+      font-size: 12px;
+    }
+
+    .lupa-btn:hover {
+      background: var(--accent-light);
+      transform: scale(1.1);
+    }
+
+    .lupa-indicators {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .lupa-indicator {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(30,136,229,0.3);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .lupa-indicator.active {
+      background: var(--accent);
+      transform: scale(1.2);
+    }
+
+    /* PÁGINA INICIAL - LAYOUT CORRIGIDO */
+    .home-container {
+      width:100%;
+      max-width:100%;
+    }
+
+    .home-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr;
+      gap: 24px;
+      align-items: start;
+      width:100%;
+    }
+
+    .home-main {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+      width:100%;
+    }
+
+    .home-sidebar {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      width:100%;
+    }
+
+    .carousel {
+      background: var(--card);
+      border-radius: var(--radius);
+      overflow: hidden;
+      position: relative;
+      height: 400px;
+      box-shadow: 0 6px 30px rgba(0,0,0,0.08);
+      width:100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .carousel-inner {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      text-align: center;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .carousel-slide.active {
+      display: flex;
+    }
+
+    .carousel-slide.video-slide {
+      background: #000;
+    }
+
+    .carousel-slide.video-slide iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    .carousel-controls {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      gap: 10px;
+    }
+
+    .carousel-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .carousel-btn:hover {
+      background: var(--accent-light);
+      transform: scale(1.1);
+    }
+
+    .home-content-row {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      width:100%;
+    }
+
+    .home-card {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 20px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      flex: 1;
+      min-width: 0;
+      border: 1px solid rgba(0,0,0,0.05);
+      /* Garantir que o conteúdo não ultrapasse */
+      overflow: hidden;
+    }
+
+    .home-card h3 {
+      margin: 0 0 16px 0;
+      color: #1e293b;
+      font-weight: 600;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      width: 100%;
+    }
+
+    .news-item {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 12px;
+      border-radius: 8px;
+      background: rgba(30, 136, 229, 0.03);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: 1px solid rgba(0,0,0,0.03);
+      /* CORREÇÃO: Garantir que respeite o container */
+      width: 100%;
+      box-sizing: border-box;
+      /* Limitar altura máxima para não expandir demais */
+      max-height: 120px;
+      overflow: hidden;
+    }
+
+    .news-item:hover {
+      background: rgba(30, 136, 229, 0.08);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    }
+
+    .news-item-content {
+      flex: 1;
+      min-width: 0;
+      /* CORREÇÃO: Garantir que o conteúdo de texto não ultrapasse */
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    .news-item-content h4 {
+      margin: 0 0 8px 0;
+      color: #1e293b;
+      font-size: 14px;
+      /* CORREÇÃO: Limitar texto para não expandir */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.4;
+      max-height: 2.8em;
+      word-break: break-word;
+    }
+
+    .news-item-content p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      /* CORREÇÃO: Limitar texto para não expandir */
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      line-height: 1.4;
+      max-height: 2.8em;
+      word-break: break-word;
+    }
+
+    .news-item-content small {
+      margin-top: auto;
+      color: var(--muted);
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .thumbnails {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      padding: 10px 0;
+      width:100%;
+    }
+
+    .thumbnail {
+      width: 120px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .thumbnail:hover {
+      transform: scale(1.05);
+    }
+
+    .thumbnail img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+    }
+
+    .fact-check-item {
+      background: rgba(30, 136, 229, 0.03);
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      border-left: 3px solid var(--accent);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(0,0,0,0.03);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .fact-check-item:hover {
+      background: rgba(30, 136, 229, 0.08);
+      transform: translateX(5px);
+    }
+
+    .fact-check-item h4 {
+      margin: 0 0 8px 0;
+      color: #1e293b;
+      font-size: 14px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    .fact-check-item p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 12px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+    }
+
+    /* PAINEL RÁPIDO - ESTILOS ATUALIZADOS */
+    .stats-grid {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 16px;
+      justify-content: space-between;
+    }
+
+    .stat-card {
+      background: rgba(30, 136, 229, 0.05);
+      padding: 16px;
+      border-radius: 8px;
+      text-align: center;
+      flex: 1;
+      border: 1px solid rgba(30, 136, 229, 0.1);
+    }
+
+    .stat-value {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--muted);
+    }
+
+    .chart-wrapper {
+      height: 120px;
+      margin-bottom: 12px;
+      position: relative;
+    }
+
+    .chart-reference {
+      text-align: center;
+      font-size: 0.7rem;
+      color: var(--muted);
+      line-height: 1.3;
+      margin-top: 8px;
+    }
+
+    .chart-reference a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .chart-reference a:hover {
+      text-decoration: underline;
+    }
+
+    /* PÁGINA DE REDIRECIONAMENTO PARA SHINY */
+    .shiny-redirect {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 60px 20px;
+      background: var(--card);
+      border-radius: var(--radius);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .shiny-redirect h2 {
+      color: #1e293b;
+      margin-bottom: 16px;
+    }
+
+    .shiny-redirect p {
+      color: var(--muted);
+      margin-bottom: 32px;
+      max-width: 600px;
+      line-height: 1.6;
+    }
+
+    .shiny-btn {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 14px 28px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      font-size: 16px;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+    }
+
+    .shiny-btn:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30,136,229,0.3);
+    }
+
+    .shiny-icon {
+      font-size: 20px;
+    }
+
+    .video-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+      gap:16px;
+      margin-top:16px;
+      width:100%;
+    }
+    .video-card{
+      position:relative;
+      border-radius:10px;
+      overflow:hidden;
+      background:#f8fafc;
+      cursor:pointer;
+      transition:transform .3s ease;
+      width:100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+    .video-card:hover{
+      transform:translateY(-6px);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+    .video-card img{
+      width:100%;
+      height:160px;
+      object-fit:cover;
+      display:block;
+    }
+    .video-card .v-title{
+      padding:12px;
+      background:linear-gradient(180deg,transparent, rgba(0,0,0,0.7));
+      color:#fff;
+      font-weight:600;
+      position:absolute;
+      bottom:0;
+      left:0;
+      right:0;
+    }
+
+    .site-footer{
+      width:100%;
+      max-width:var(--max-w);
+      padding:20px 5%;
+      color:var(--muted);
+      text-align:center;
+      border-top:1px solid rgba(0,0,0,0.05);
+      margin-top:40px;
+    }
+
+    .author-credit {
+      margin-top: 8px;
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .hint{
+      margin-top:16px;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      padding:12px;
+      background:rgba(30,136,229,0.05);
+      border-radius:8px;
+    }
+
+    .analysis-result{
+      margin-top:20px;
+      padding:20px;
+      background:var(--card);
+      border-radius:var(--radius);
+      color:var(--muted);
+      border-left:4px solid var(--accent);
+      width:100%;
+      border: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* ESTILOS PARA NOTÍCIAS EXPANDIDAS */
+    .news-item-expanded {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 20px;
+      border: 1px solid rgba(0,0,0,0.05);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+    }
+
+    .news-item-expanded:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    }
+
+    .news-item-header {
+      margin-bottom: 16px;
+      padding-bottom: 16px;
+      border-bottom: 2px solid rgba(30, 136, 229, 0.1);
+    }
+
+    .news-item-header h3 {
+      margin: 0 0 12px 0;
+      color: #1e293b;
+      font-weight: 600;
+      font-size: 1.3rem;
+      line-height: 1.4;
+    }
+
+    .news-meta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .news-source {
+      background: rgba(30, 136, 229, 0.1);
+      color: var(--accent);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .news-date {
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .news-category {
+      background: rgba(67, 160, 71, 0.1);
+      color: var(--accent-secondary);
+      padding: 4px 8px;
+      border-radius: 4px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .news-summary {
+      font-size: 16px;
+      line-height: 1.6;
+      color: #334155;
+      margin-bottom: 16px;
+      font-weight: 500;
+    }
+
+    .news-full-content {
+      margin-bottom: 20px;
+    }
+
+    .news-full-content p {
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--muted);
+      margin: 0;
+    }
+
+    .btn-read-more {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .btn-read-more:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(30,136,229,0.3);
+    }
+
+    /* ESTILOS DO QUIZ */
+    .quiz-container {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    .quiz-header {
+      text-align: center;
+      margin-bottom: 24px;
+    }
+
+    .quiz-header h2 {
+      color: #1e293b;
+      margin-bottom: 8px;
+    }
+
+    .quiz-header p {
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .quiz-progress {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: rgba(30, 136, 229, 0.05);
+      padding: 12px 16px;
+      border-radius: 8px;
+    }
+
+    .progress-bar {
+      flex: 1;
+      height: 8px;
+      background: rgba(30, 136, 229, 0.2);
+      border-radius: 4px;
+      margin: 0 16px;
+      overflow: hidden;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 4px;
+      transition: width 0.5s ease;
+    }
+
+    .quiz-question {
+      margin-bottom: 24px;
+    }
+
+    .quiz-question h3 {
+      color: #1e293b;
+      margin-bottom: 16px;
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    .quiz-options {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .quiz-option {
+      padding: 16px;
+      border: 2px solid rgba(0,0,0,0.1);
+      border-radius: 8px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      background: white;
+    }
+
+    .quiz-option:hover {
+      border-color: var(--accent);
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .quiz-option.correct {
+      border-color: #22c55e;
+      background: rgba(34, 197, 94, 0.05);
+    }
+
+    .quiz-option.incorrect {
+      border-color: #ef4444;
+      background: rgba(239, 68, 68, 0.05);
+    }
+
+    .quiz-option.selected {
+      border-color: var(--accent);
+      background: rgba(30, 136, 229, 0.05);
+    }
+
+    .quiz-explanation {
+      margin-top: 20px;
+      padding: 16px;
+      background: rgba(30, 136, 229, 0.05);
+      border-radius: 8px;
+      border-left: 4px solid var(--accent);
+      display: none;
+    }
+
+    .quiz-explanation.show {
+      display: block;
+      animation: fadeIn 0.5s ease;
+    }
+
+    .quiz-explanation p {
+      margin: 0 0 12px 0;
+      color: #334155;
+    }
+
+    .quiz-explanation .source {
+      font-size: 12px;
+      color: var(--muted);
+    }
+
+    .quiz-explanation .source a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .quiz-explanation .source a:hover {
+      text-decoration: underline;
+    }
+
+    .quiz-navigation {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 24px;
+    }
+
+    .quiz-btn {
+      padding: 12px 24px;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      font-family: inherit;
+    }
+
+    .quiz-btn:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    .quiz-btn.prev {
+      background: rgba(30, 136, 229, 0.1);
+      color: var(--accent);
+    }
+
+    .quiz-btn.next {
+      background: var(--accent);
+      color: white;
+    }
+
+    .quiz-btn.restart {
+      background: var(--accent-secondary);
+      color: white;
+    }
+
+    .quiz-btn:hover:not(:disabled) {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .quiz-results {
+      text-align: center;
+      padding: 32px;
+    }
+
+    .quiz-score {
+      font-size: 3rem;
+      font-weight: 700;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .quiz-message {
+      font-size: 1.2rem;
+      margin-bottom: 24px;
+      color: #1e293b;
+    }
+
+    .confetti-container {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+      display: none;
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: var(--accent);
+      top: -10px;
+      animation: confetti-fall 5s linear forwards;
+    }
+
+    @keyframes confetti-fall {
+      0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    /* ESTILOS PARA A PÁGINA CORRENTES ADM */
+    .adm-content {
+      background: var(--card);
+      border-radius: var(--radius);
+      padding: 30px;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      border: 1px solid rgba(0,0,0,0.05);
+      margin-bottom: 24px;
+    }
+
+    .adm-section {
+      margin-bottom: 30px;
+      padding-bottom: 20px;
+      border-bottom: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .adm-section h3 {
+      color: var(--accent);
+      margin-bottom: 15px;
+      font-size: 1.4rem;
+    }
+
+    .adm-section h4 {
+      color: var(--accent-secondary);
+      margin: 20px 0 10px 0;
+      font-size: 1.1rem;
+    }
+
+    .adm-section p {
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .adm-section ul {
+      margin-left: 20px;
+      margin-bottom: 15px;
+    }
+
+    .adm-section li {
+      margin-bottom: 8px;
+      line-height: 1.5;
+    }
+
+    .adm-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+      font-size: 14px;
+    }
+
+    .adm-table th, .adm-table td {
+      padding: 12px;
+      text-align: left;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .adm-table th {
+      background: rgba(30, 136, 229, 0.05);
+      color: var(--accent);
+      font-weight: 600;
+    }
+
+    .adm-table tr:nth-child(even) {
+      background: rgba(0,0,0,0.02);
+    }
+
+    /* RESPONSIVIDADE MELHORADA */
+    @media (max-width: 1024px) {
+      .home-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+      }
+      
+      .home-sidebar {
+        order: -1;
+      }
+      
+      .home-content-row {
+        flex-direction: column;
+      }
+      
+      .home-card {
+        min-width: 100%;
+      }
+    }
+
+    @media (max-width: 768px){
+      .site-header{
+        flex-direction:column;
+        gap:12px;
+        padding:16px 5%;
+      }
+      
+      .main-nav{
+        flex-wrap:wrap;
+        justify-content:center;
+        width:100%;
+      }
+      
+      .news-item{
+        max-height: none;
+      }
+      
+      .carousel {
+        height: 300px;
+      }
+      
+      .lupa-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 16px;
+      }
+      
+      .lupa-slide-content {
+        padding-right: 0;
+        margin-bottom: 16px;
+      }
+      
+      .lupa-slide-image {
+        width: 80px;
+        height: 80px;
+        font-size: 30px;
+      }
+      
+      .news-meta {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+      }
+      
+      .news-item-expanded {
+        padding: 20px;
+      }
+      
+      .news-item-header h3 {
+        font-size: 1.1rem;
+      }
+
+      .quiz-navigation {
+        flex-direction: column;
+        gap: 12px;
+      }
+      
+      .quiz-btn {
+        width: 100%;
+      }
+
+      .adm-content {
+        padding: 20px;
+      }
+    }
+
+    @media (max-width: 480px){
+      main {
+        padding: 16px 4%;
+      }
+      
+      .carousel {
+        height: 250px;
+      }
+      
+      .home-card {
+        padding: 16px;
+      }
+      
+      .brand {
+        font-size: 18px;
+      }
+      
+      .main-nav .tab {
+        padding: 6px 12px;
+        font-size: 14px;
+      }
+      
+      .lupa-slide h3 {
+        font-size: 1.1rem;
+      }
+      
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="brand">
+      <span class="brand-logo">💉</span>
+      Infovac
+    </div>
+    <nav class="main-nav">
+      <button data-tab="home" class="tab active">Início</button>
+      <button data-tab="noticias" class="tab">Notícias</button>
+      <button data-tab="dados" class="tab">Amostragem de Dados</button>
+      <button data-tab="fake" class="tab">Fake ou Fato?</button>
+      <button data-tab="quiz" class="tab">Quiz Vacinas</button>
+      <button data-tab="flix" class="tab">Infovacflix</button>
+      <button data-tab="correntes" class="tab">Correntes ADM</button>
+    </nav>
+  </header>
+
+  <main>
+    <!-- PÁGINA INICIAL -->
+    <section id="home" class="tab-panel active">
+      <div class="home-container">
+        <div class="home-grid">
+          <div class="home-main">
+            <div class="carousel">
+              <div class="carousel-inner" id="carouselInner">
+                <!-- Slides serão preenchidos via JavaScript -->
+              </div>
+              <div class="carousel-controls">
+                <button class="carousel-btn" id="prevBtn">◀</button>
+                <button class="carousel-btn" id="nextBtn">▶</button>
+              </div>
+            </div>
+
+            <div class="home-content-row">
+              <div class="home-card">
+                <h3>Últimas Notícias</h3>
+                <div class="news-grid" id="newsPreview">
+                  <!-- Notícias em destaque -->
+                </div>
+              </div>
+              <div class="home-card">
+                <h3>Top Fact-Checks</h3>
+                <div id="topFacts">
+                  <!-- Fact-checks em destaque -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="home-sidebar">
+            <div class="home-card">
+              <h3>Painel Rápido</h3>
+              <div class="stats-grid">
+                <div class="stat-card">
+                  <div class="stat-value">85.2%</div>
+                  <div class="stat-label">Cobertura Vacinal</div>
+                </div>
+                <div class="stat-card">
+                  <div class="stat-value">+8.7%</div>
+                  <div class="stat-label">Crescimento 2024</div>
+                </div>
+              </div>
+              <div class="chart-wrapper">
+                <canvas id="miniChart"></canvas>
+              </div>
+              <div class="chart-reference">
+                Fonte: www.gov.br/saude/noticias/2025<br>
+                <a href="https://www.gov.br/saude/pt-br/assuntos/noticias/2025/outubro/brasil-apresenta-avancos-na-cobertura-vacinal-e-reforca-cooperacao-regional-em-reuniao-do-mercosul" target="_blank">
+                  Ver notícia oficial no portal do Ministério da Saúde
+                </a>
+              </div>
+            </div>
+
+            <div class="home-card">
+              <h3>Infovacflix - Destaques</h3>
+              <div class="thumbnails" id="videoThumbs">
+                <!-- Thumbnails de vídeos -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- NOTÍCIAS -->
+    <section id="noticias" class="tab-panel">
+      <div class="panel-inner">
+        <h2>Notícias sobre Vacinação</h2>
+        
+        <div id="news-list" class="news-list">
+          <!-- Notícias completas serão preenchidas via JavaScript -->
+        </div>
+      </div>
+    </section>
+
+    <!-- AMOSTRAGEM DE DADOS - REDIRECIONAMENTO PARA SHINY -->
+    <section id="dados" class="tab-panel">
+      <div class="panel-inner">
+        <div class="shiny-redirect">
+          <h2>Análise Avançada de Dados de Vacinação</h2>
+          <p>Acesse nossa aplicação interativa de análise de dados para explorar informações detalhadas sobre cobertura vacinal, tendências regionais e muito mais. A aplicação oferece visualizações dinâmicas e filtros avançados para uma análise aprofundada.</p>
+          <a href="https://vitofontenelle.shinyapps.io/vacinas/" target="_blank" class="shiny-btn">
+            <span class="shiny-icon">📊</span>
+            Acessar Análise de Dados
+          </a>
+          <p class="hint">A aplicação será aberta em uma nova aba. Pode levar alguns segundos para carregar completamente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAKE OU FATO? -->
+    <section id="fake" class="tab-panel">
+      <div class="panel-inner">
+        <h2>Fake ou Fato?</h2>
+        
+        <!-- BANNER LUPAS - NOVO -->
+        <div class="lupa-banner">
+          <div class="lupa-carousel">
+            <div class="lupa-carousel-inner" id="lupaCarouselInner">
+              <!-- Matérias da Lupa serão preenchidas via JavaScript -->
+            </div>
+            <div class="lupa-controls">
+              <button class="lupa-btn" id="lupaPrevBtn">◀</button>
+              <button class="lupa-btn" id="lupaNextBtn">▶</button>
+            </div>
+          </div>
+          <div class="lupa-indicators" id="lupaIndicators">
+            <!-- Indicadores serão preenchidos via JavaScript -->
+          </div>
+        </div>
+        
+        <div id="fake-cards" class="cards-grid">
+          <!-- Cards gerados por JS -->
+        </div>
+      </div>
+    </section>
+
+    <!-- QUIZ VACINAS -->
+    <section id="quiz" class="tab-panel">
+      <div class="panel-inner">
+        <h2>Quiz: Você sabe tudo sobre vacinas?</h2>
+        <p>Teste seus conhecimentos com estas perguntas baseadas no site oficial do Ministério da Saúde.</p>
+        
+        <div class="quiz-container">
+          <div class="quiz-header">
+            <h2>Quiz sobre Vacinas</h2>
+            <p>Teste seus conhecimentos sobre vacinação com base nas informações oficiais do Ministério da Saúde</p>
+          </div>
+          
+          <div class="quiz-progress">
+            <span id="currentQuestion">1</span>
+            <div class="progress-bar">
+              <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+            <span id="totalQuestions">18</span>
+          </div>
+          
+          <div class="quiz-question" id="questionContainer">
+            <!-- Perguntas serão preenchidas via JavaScript -->
+          </div>
+          
+          <div class="quiz-explanation" id="explanationContainer">
+            <!-- Explicações serão preenchidas via JavaScript -->
+          </div>
+          
+          <div class="quiz-navigation">
+            <button class="quiz-btn prev" id="prevBtnQuiz" disabled>Anterior</button>
+            <button class="quiz-btn next" id="nextBtnQuiz">Próxima</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- INFOVACFLIX -->
+    <section id="flix" class="tab-panel">
+      <div class="panel-inner">
+        <h2>Infovacflix — Vídeos sobre Imunização</h2>
+        <div id="video-grid" class="video-grid"></div>
+      </div>
+    </section>
+
+    <!-- CORRENTES ADM -->
+    <section id="correntes" class="tab-panel">
+      <div class="panel-inner">
+        <h2>Correntes ADM - Relação do INFOVAC com os Conteúdos de Introdução à Administração</h2>
+        
+        <div class="adm-content">
+          <div class="adm-section">
+            <p>O INFOVAC foi desenvolvido como produto principal do Projeto Final em Equipe da disciplina Introdução à Administração. Durante sua criação, aplicamos na prática diversos conceitos administrativos estudados ao longo do semestre, transformando teoria em um site funcional voltado ao combate à desinformação sobre vacinas.</p>
+            <p>A seguir, apresentamos como cada conceito da Administração se conectou diretamente ao desenvolvimento do INFOVAC.</p>
+          </div>
+
+          <div class="adm-section">
+            <h3>1. Planejamento: Estratégico, Tático e Operacional</h3>
+            <p>O projeto foi construído sobre um processo de planejamento completo, seguindo as etapas descritas nos autores clássicos da Administração.</p>
+            
+            <h4>Planejamento Estratégico</h4>
+            <p>A equipe iniciou o projeto com:</p>
+            <ul>
+              <li>Análise SWOT (forças, fraquezas, oportunidades e ameaças)</li>
+              <li>Definição de Missão, Visão e Valores (MVV)</li>
+              <li>Identificação do problema social a ser enfrentado: a desinformação vacinal</li>
+              <li>Delimitação do público-alvo: jovens universitários e comunidade escolar</li>
+            </ul>
+            
+            <h4>Missão, Visão e Valores</h4>
+            <p>Os elementos de MVV definidos pela equipe orientam diretamente a proposta do INFOVAC:</p>
+            <ul>
+              <li><strong>Missão:</strong> oferecer conteúdo confiável e colaborar eticamente para o combate à desinformação</li>
+              <li><strong>Visão:</strong> tornar-se referência pela organização e qualidade estratégica</li>
+              <li><strong>Valores:</strong> colaboração, respeito, comunicação e diversidade</li>
+            </ul>
+            
+            <p>Esses princípios são visíveis no site, que busca:</p>
+            <ul>
+              <li>Fomentar pensamento crítico</li>
+              <li>Tornar informações científicas acessíveis</li>
+              <li>Apoiar o público universitário e escolar</li>
+            </ul>
+            
+            <p>O próprio recorte do site (fake news, checagem, fontes confiáveis) reflete o compromisso com ética, precisão e responsabilidade informacional, valores estruturados pela equipe.</p>
+            
+            <p>Com isso, definimos que o INFOVAC teria como foco:</p>
+            <ul>
+              <li>Disponibilizar conteúdo confiável sobre vacinas</li>
+              <li>Ajudar o público a identificar fake news</li>
+              <li>Apresentar fontes oficiais e técnicas de checagem</li>
+              <li>Promover pensamento crítico</li>
+            </ul>
+            
+            <h4>Planejamento Tático</h4>
+            <p>Nesta etapa foram definidos:</p>
+            <ul>
+              <li>A estrutura do site</li>
+              <li>As seções informativas</li>
+              <li>O visual limpo e acessível</li>
+              <li>A linguagem clara</li>
+              <li>O recorte temático: "como identificar e refutar fake news sobre vacinas"</li>
+            </ul>
+            
+            <p>O planejamento tático transformou a estratégia em um produto digital concreto, com seções como:</p>
+            <ul>
+              <li>Por que vacinar?</li>
+              <li>Fake news mais comuns</li>
+              <li>Fontes confiáveis</li>
+            </ul>
+            
+            <h4>Planejamento Operacional</h4>
+            <p>Incluiu:</p>
+            <ul>
+              <li>Cronograma de atividades</li>
+              <li>Divisão de tarefas</li>
+              <li>Criação da EAP (Estrutura Analítica do Projeto)</li>
+              <li>Uso do Trello, Gantt e planilhas</li>
+              <li>Organização dos textos, design, revisão, prototipagem e coleta de dados</li>
+            </ul>
+          </div>
+
+          <div class="adm-section">
+            <h3>2. Estrutura Organizacional da Equipe</h3>
+            <p>O projeto adotou um modelo organizacional orgânico, caracterizado por:</p>
+            <ul>
+              <li>Baixa hierarquia</li>
+              <li>Flexibilidade</li>
+              <li>Comunicação horizontal</li>
+              <li>Colaboração constante</li>
+              <li>Adaptação às demandas</li>
+            </ul>
+            
+            <p>Esse modelo segue a abordagem contingencial, que afirma que não existe estrutura única ideal — ela deve se adaptar ao contexto. Para um projeto criativo, digital e interdisciplinar, essa foi a melhor escolha.</p>
+            
+            <h4>Distribuição das Funções</h4>
+            <p>A equipe foi organizada em núcleos, cada um contribuindo diretamente para o INFOVAC:</p>
+            <ul>
+              <li><strong>Coordenação Geral:</strong> integração das informações e alinhamento com o objetivo do site</li>
+              <li><strong>Planejamento e Coleta:</strong> pesquisas, análises e embasamento científico</li>
+              <li><strong>Execução:</strong> construção prática do site e das entregas</li>
+              <li><strong>Registro e Comunicação:</strong> organização, atas e clareza das informações</li>
+              <li><strong>Revisão e Design:</strong> estética, coesão textual e identidade visual</li>
+              <li><strong>Apoio Operacional:</strong> ideias, sugestões e suporte geral</li>
+            </ul>
+            
+            <p>Essa divisão reflete conteúdos estudados sobre:</p>
+            <ul>
+              <li>Departamentalização</li>
+              <li>Comunicação eficiente</li>
+              <li>Integração das áreas</li>
+              <li>Trabalho em equipe</li>
+            </ul>
+          </div>
+
+          <div class="adm-section">
+            <h3>3. Direção: Liderança, Motivação e Comunicação</h3>
+            <p>Durante o desenvolvimento, utilizamos práticas de direção administrativa, como:</p>
+            <ul>
+              <li>Liderança integradora, que guia sem autoritarismo</li>
+              <li>Comunicação clara e constante</li>
+              <li>Incentivo à participação de todos</li>
+              <li>Apoio mútuo</li>
+              <li>Reuniões periódicas para alinhamento</li>
+            </ul>
+            
+            <p>A colaboração foi um dos fatores mais importantes para o sucesso do projeto. Quando membros enfrentaram dificuldades, outros se dispuseram a ajudar — exemplo direto de como motivação e trabalho em equipe influenciam os resultados.</p>
+          </div>
+
+          <div class="adm-section">
+            <h3>4. Controle: Monitoramento e Avaliação Contínua</h3>
+            <p>O controle foi aplicado em todas as etapas do projeto, garantindo qualidade e cumprimento dos prazos. Utilizamos:</p>
+            <ul>
+              <li>Acompanhamento semanal do cronograma</li>
+              <li>Ferramentas como Trello e planilhas colaborativas</li>
+              <li>Reuniões de revisão de Sprint</li>
+              <li>Sínteses de retrospectivas para identificar melhorias</li>
+              <li>Indicadores como: entregas no prazo e comunicação interna</li>
+            </ul>
+            
+            <p>Além disso, o próprio conteúdo do INFOVAC passou por:</p>
+            <ul>
+              <li>Revisão constante</li>
+              <li>Checagem com fontes oficiais</li>
+              <li>Validação da veracidade das informações</li>
+            </ul>
+            
+            <p>Esse processo reflete o que é ensinado nos capítulos de controle organizacional: medir, comparar e corrigir.</p>
+          </div>
+
+          <div class="adm-section">
+            <h3>5. Integração Final entre Administração e INFOVAC</h3>
+            <p>O INFOVAC não é apenas um site — é a aplicação prática e completa das principais funções da Administração:</p>
+            <ul>
+              <li>O planejamento definiu o propósito, o foco e a estrutura do site.</li>
+              <li>A organização permitiu dividir tarefas de forma eficiente.</li>
+              <li>A direção manteve a equipe unida, motivada e produtiva.</li>
+              <li>O controle garantiu que o site fosse confiável, funcional e bem estruturado.</li>
+            </ul>
+            
+            <p>Com isso, o produto final integra responsabilidade social, pensamento crítico e gestão eficiente — mostrando como a Administração pode ser usada para criar soluções reais para problemas que afetam a sociedade, como a desinformação sobre vacinas.</p>
+          </div>
+
+          <div class="adm-section">
+            <h3>Como as Correntes Administrativas apareceram no Projeto INFOVAC</h3>
+            <p>O desenvolvimento do INFOVAC aplicou, na prática, diferentes correntes da Administração estudadas ao longo da disciplina. A seguir, mostramos como cada uma delas se manifestou dentro do projeto.</p>
+            
+            <h4>1. Teoria Clássica (Fayol) – Funções Administrativas</h4>
+            <p>A equipe aplicou diretamente as funções clássicas da administração — planejar, organizar, dirigir e controlar — ao longo do projeto.</p>
+            <ul>
+              <li>O planejamento estratégico, tático e operacional foi estruturado para definir o propósito, o público, o conteúdo e a execução do site.</li>
+              <li>A organização foi feita por meio da divisão de funções e da criação da EAP.</li>
+              <li>A direção ocorreu nas reuniões, alinhamentos e liderança integradora.</li>
+              <li>O controle aparece no uso de sprints, cronograma, indicadores e revisões constantes.</li>
+            </ul>
+            
+            <h4>2. Administração Científica – Padronização e Organização de Tarefas</h4>
+            <p>A organização operacional das atividades aplicou princípios da Administração Científica:</p>
+            <ul>
+              <li>As tarefas foram distribuídas por especialidade (pesquisa, execução, design, revisão), criando um fluxo eficiente.</li>
+              <li>O uso de Trello, planilhas e Gantt padronizou o processo de acompanhamento das entregas e reduziu retrabalhos.</li>
+            </ul>
+            
+            <h4>3. Teoria Burocrática – Controle, Normas e Procedimentos</h4>
+            <p>Embora a equipe trabalhe em estrutura flexível, elementos burocráticos apareceram no processo de controle:</p>
+            <ul>
+              <li>Registro de atividades, atas e documentação formal.</li>
+              <li>Definição clara de responsabilidades e critérios de avaliação das entregas (indicadores e prazos).</li>
+              <li>Revisões de sprint seguindo rotina pré-estabelecida.</li>
+            </ul>
+            
+            <h4>4. Escola das Relações Humanas – Colaboração e Motivação</h4>
+            <p>O projeto reforçou diversos princípios dessa corrente:</p>
+            <ul>
+              <li>A colaboração entre membros foi um dos principais fatores de sucesso identificados pela equipe.</li>
+              <li>Houve apoio mútuo quando alguém enfrentou dificuldades.</li>
+              <li>As reuniões, conversas e alinhamentos ajudaram na motivação e integração das pessoas.</li>
+            </ul>
+            
+            <h4>5. Abordagem Comportamental – Liderança e Comunicação</h4>
+            <p>A equipe utilizou práticas comportamentais como:</p>
+            <ul>
+              <li>Liderança integradora, sem autoritarismo;</li>
+              <li>Comunicação horizontal;</li>
+              <li>Incentivo à participação e tomada de decisão conjunta;</li>
+              <li>Foco no clima de cooperação e no respeito entre os membros.</li>
+            </ul>
+            
+            <h4>6. Abordagem Sistêmica – O Projeto como um Sistema Integrado</h4>
+            <p>O INFOVAC foi construído como um sistema:</p>
+            <ul>
+              <li>Entradas (pesquisas, coleta de dados, necessidades do público),</li>
+              <li>Processamento (planejamento tático, prototipagem, revisão),</li>
+              <li>Saídas (conteúdo final do site).</li>
+            </ul>
+            <p>O feedback das sprints alimentou a melhoria contínua das etapas.</p>
+            
+            <h4>7. Abordagem Contingencial – Estrutura Orgânica e Flexível</h4>
+            <p>A equipe adotou explicitamente a abordagem contingencial ao escolher um modelo organizacional orgânico, ideal para ambientes incertos e projetos criativos:</p>
+            <ul>
+              <li>Baixa hierarquia;</li>
+              <li>Flexibilidade;</li>
+              <li>Adaptação constante às demandas;</li>
+              <li>Comunicação horizontal;</li>
+              <li>Decisões coletivas e dinâmicas.</li>
+            </ul>
+          </div>
+
+          <div class="adm-section">
+            <h3>Resumo da Integração</h3>
+            <table class="adm-table">
+              <thead>
+                <tr>
+                  <th>Elemento do INFOVAC</th>
+                  <th>Conceito Administrativo Aplicado</th>
+                  <th>Evidência</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Combate à desinformação com base em fontes confiáveis</td>
+                  <td>Planejamento estratégico alinhado à análise do ambiente</td>
+                  <td>SWOT e recorte temático</td>
+                </tr>
+                <tr>
+                  <td>Seções organizadas e intuitivas</td>
+                  <td>Planejamento tático + departamentalização</td>
+                  <td>Estrutura do site</td>
+                </tr>
+                <tr>
+                  <td>Produção colaborativa e horizontal</td>
+                  <td>Modelo orgânico</td>
+                  <td>Justificativa do modelo</td>
+                </tr>
+                <tr>
+                  <td>Revisões, Sprint, Trello, Gantt</td>
+                  <td>Controle</td>
+                  <td>Métodos de acompanhamento e relatórios</td>
+                </tr>
+                <tr>
+                  <td>Missão e valores refletidos no conteúdo</td>
+                  <td>MVV aplicado ao produto</td>
+                  <td>Missão de combater desinformação</td>
+                </tr>
+                <tr>
+                  <td>Entregas dentro do prazo</td>
+                  <td>Controle de desempenho</td>
+                  <td>Indicadores e cronograma</td>
+                </tr>
+                <tr>
+                  <td>Uso de dados oficiais</td>
+                  <td>Ética administrativa e responsabilidade social</td>
+                  <td>Fundamentação do recorte temático</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <small>Infovac — Dados públicos e fontes verificadas. Projeto experimental educacional.</small>
+    <div class="author-credit">Desenvolvido por Scherlock Hall</div>
+  </footer>
+
+  <!-- Container para confetes -->
+  <div class="confetti-container" id="confettiContainer"></div>
+
+  <script>
+    // Dados e configurações - ATUALIZADO PARA CORRIGIR ERRO 153
+    const VIDEO_URLS = [
+      {
+        url: "https://www.youtube.com/watch?v=aTwDcLRNCCE",
+        title: "Como as vacinas funcionam",
+        thumb: "https://img.youtube.com/vi/aTwDcLRNCCE/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=BylqsLsYQ-k", 
+        title: "Importância da vacinação",
+        thumb: "https://img.youtube.com/vi/BylqsLsYQ-k/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=E-8gKW66hro",
+        title: "Mitos e verdades sobre vacinas",
+        thumb: "https://img.youtube.com/vi/E-8gKW66hro/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=n-6xTZtlq5o",
+        title: "Calendário vacinal brasileiro",
+        thumb: "https://img.youtube.com/vi/n-6xTZtlq5o/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=YJWANnbZeHo",
+        title: "Vacinas para crianças",
+        thumb: "https://img.youtube.com/vi/YJWANnbZeHo/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=5z9JnEu6ytg",
+        title: "Vacinas para idosos",
+        thumb: "https://img.youtube.com/vi/5z9JnEu6ytg/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=Yx3L4GH7NLQ",
+        title: "História das vacinas",
+        thumb: "https://img.youtube.com/vi/Yx3L4GH7NLQ/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=8qyyhbYkDB0",
+        title: "Tecnologia das vacinas",
+        thumb: "https://img.youtube.com/vi/8qyyhbYkDB0/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=UM_mnIhHOXs",
+        title: "Vacinas e saúde pública",
+        thumb: "https://img.youtube.com/vi/UM_mnIhHOXs/hqdefault.jpg"
+      },
+      {
+        url: "https://www.youtube.com/watch?v=oAwScrppcDE",
+        title: "Desafios da vacinação",
+        thumb: "https://img.youtube.com/vi/oAwScrppcDE/hqdefault.jpg"
+      }
+    ];
+
+    // Matérias da Agência Lupa
+    const LUPA_ARTICLES = [
+      {
+        title: "É falso que a vacina da dengue seja parte de um 'experimento letal'",
+        summary: "Publicações nas redes sociais afirmam, sem evidências, que a vacina Qdenga faz parte de um 'experimento letal' e que a Anvisa teria sido 'subornada' para aprová-la. A Agência Lupa verificou e a informação é falsa.",
+        url: "https://www.agencialupa.org/jornalismo/2025/06/10/e-falso-que-a-vacina-da-dengue-seja-parte-de-um-experimento-letal/",
+        date: "10/06/2025"
+      },
+      {
+        title: "Zinco, dente-de-leão e chá de agulhas de pinheiro branco não eliminam proteína spike do corpo",
+        summary: "Conteúdo nas redes sociais engana ao sugerir que substâncias como zinco, dente-de-leão e chá de agulhas de pinheiro branco eliminariam a proteína spike do organismo. Especialistas explicam que isso não tem fundamento científico.",
+        url: "https://www.agencialupa.org/jornalismo/2025/05/12/zinco-dente-de-leao-e-cha-de-agulhas-de-pinheiro-branco-nao-eliminam-proteina-spike-do-corpo/",
+        date: "12/05/2025"
+      },
+      {
+        title: "Post engana ao usar estudo preliminar da Cleveland Clinic para afirmar que vacina da gripe é ineficaz",
+        summary: "Publicações distorcem estudo preliminar da Cleveland Clinic para afirmar que vacinas contra influenza são ineficazes. Especialistas explicam que a pesquisa não avaliou eficácia das vacinas, mas fatores de risco.",
+        url: "https://www.agencialupa.org/jornalismo/2025/04/15/post-engana-ao-usar-estudo-preliminar-da-cleveland-clinic-para-afirmar-que-vacina-da-gripe-e-ineficaz/",
+        date: "15/04/2025"
+      },
+      {
+        title: "É falso que vacinas contra dengue e gripe sejam 'contaminadas' com grafeno",
+        summary: "Conteúdo nas redes sociais afirma, sem provas, que vacinas contra dengue e gripe estariam 'contaminadas' com óxido de grafeno. A Agência Lupa verificou e a informação é falsa.",
+        url: "https://www.agencialupa.org/jornalismo/2025/02/17/e-falso-que-vacinas-contra-dengue-e-gripe-sejam-contaminadas-com-grafeno/",
+        date: "17/02/2025"
+      },
+      {
+        title: "CEO da Pfizer não foi condenado à prisão perpétua por 'mentir sobre vacina'",
+        summary: "Publicações falsas circulam nas redes sociais afirmando que o CEO da Pfizer, Albert Bourla, teria sido condenado à prisão perpétua por 'mentir sobre vacinas'. A informação é completamente falsa.",
+        url: "https://www.agencialupa.org/jornalismo/2024/11/22/ceo-da-pfizer-nao-foi-condenado-a-prisao-perpetua-por-mentir-sobre-vacina/",
+        date: "22/11/2024"
+      },
+      {
+        title: "É falso que vacinas da Covid-19 contenham 'vermes animados' que causam 'câncer turbo'",
+        summary: "Vídeo que circula nas redes sociais usa imagens microscópicas para afirmar falsamente que vacinas contra Covid-19 conteriam 'vermes animados' que causariam 'câncer turbo'. Especialistas explicam que se trata de desinformação.",
+        url: "https://www.agencialupa.org/jornalismo/2024/09/01/e-falso-que-vacinas-da-covid-19-contem-vermes-animados-que-causam-cancer-turbo/",
+        date: "01/09/2024"
+      },
+      {
+        title: "É falso que Goiás enfrente um surto de mpox",
+        summary: "Publicações nas redes sociais afirmam falsamente que Goiás estaria enfrentando um surto de mpox (varíola dos macacos). Autoridades de saúde estaduais e municipais negam a existência de qualquer surto.",
+        url: "https://www.agencialupa.org/jornalismo/2024/08/27/e-falso-que-goias-enfrenta-um-surto-de-mpox/",
+        date: "27/08/2024"
+      },
+      {
+        title: "Médico desinforma ao alegar que vacinas causam 'Covid longa'",
+        summary: "Vídeo com médico brasileiro circula nas redes sociais com alegação enganosa de que vacinas contra Covid-19 causariam a 'Covid longa'. Especialistas explicam que não há evidências para essa afirmação.",
+        url: "https://www.agencialupa.org/jornalismo/2024/08/19/medico-desinforma-ao-alegar-que-vacinas-causam-covid-longa/",
+        date: "19/08/2024"
+      },
+      {
+        title: "Câncer e infertilidade: vacina contra HPV completa 10 anos no SUS e fakes ainda são um desafio",
+        summary: "Vacina contra HPV completa 10 anos de oferta no SUS, mas desinformação sobre supostos riscos de câncer e infertilidade ainda é desafio para adesão. Especialistas reforçam segurança e eficácia da imunização.",
+        url: "https://www.agencialupa.org/jornalismo/2024/07/02/cancer-e-infertilidade-vacina-contra-hpv-completa-10-anos-no-sus-e-fakes-ainda-sao-um-desafio/",
+        date: "02/07/2024"
+      }
+    ];
+
+    const exampleNews = [
+      {
+        title: "Campanha Nacional de Vacinação 2025 atinge 75% da meta em primeiras semanas",
+        summary: "Ministério da Saúde comemora adesão recorde na primeira fase da campanha anual de multivacinação. Dados preliminares mostram engajamento acima do esperado em todas as regiões do país.",
+        fullContent: "A Campanha Nacional de Vacinação 2025 registrou números históricos nas primeiras semanas de execução. De acordo com o Ministério da Saúde, 75% da meta inicial já foi alcançada, com destaque para a região Sul que atingiu 82% de cobertura. A estratégia de multivacinação inclui imunizantes para mais de 20 doenças, com foco especial em crianças, gestantes e idosos.",
+        source: "Ministério da Saúde",
+        date: "2025-03-15",
+        url: "https://www.gov.br/saude/pt-br/assuntos/noticias",
+        category: "campanhas",
+        sourceType: "governo"
+      },
+      {
+        title: "Diferentes tecnologias garantem segurança e eficácia das vacinas contra Covid-19",
+        summary: "Artigo do IPEA explica as diversas plataformas tecnológicas utilizadas no desenvolvimento das vacinas e como todas passam por rigorosos testes de segurança.",
+        fullContent: "As vacinas contra Covid-19 disponíveis no Brasil utilizam diferentes tecnologias, desde vírus inativados (CoronaVac) até RNA mensageiro (Pfizer) e vetor viral (AstraZeneca). Todas passaram por fases rigorosas de testes clínicos e foram aprovadas pela ANVISA. O artigo destaca que a diversidade de plataformas tecnológicas é uma vantagem para o combate à pandemia.",
+        source: "IPEA - Instituto de Pesquisa Econômica Aplicada",
+        date: "2024-11-20",
+        url: "https://www.ipea.gov.br/cts/pt/central-de-conteudo/artigos/artigos/233-diferentes-tecnologias-garantem-seguranca-e-eficacia-das-vacinas-contra-covid-19",
+        category: "pesquisas",
+        sourceType: "institutos"
+      },
+      {
+        title: "Importância e benefícios da vacinação vão além da proteção individual",
+        summary: "Material educativo destaca que vacinas protegem comunidades inteiras e são fundamentais para a saúde pública.",
+        fullContent: "A vacinação não é apenas uma questão de proteção individual, mas um ato de solidariedade coletiva. Quando uma parcela significativa da população está vacinada, criamos a chamada 'imunidade de rebanho', que protege inclusive quem não pode se vacinar por questões médicas. Este conceito é fundamental para o controle de doenças infectocontagiosas.",
+        source: "Tribunal Regional Eleitoral de Sergipe",
+        date: "2021-07-15",
+        url: "https://www.tre-se.jus.br/comunicacao/noticias/2021/Julho/importancia-e-beneficios-da-vacinacao",
+        category: "educacao",
+        sourceType: "governo"
+      },
+      {
+        title: "Como a hesitação vacinal impactou a rotina de imunização no Brasil",
+        summary: "Estudo do Butantan analisa os efeitos da desinformação sobre vacinas na cobertura vacinal brasileira.",
+        fullContent: "Pesquisadores do Instituto Butantan identificaram que a hesitação vacinal, impulsionada por notícias falsas, causou uma redução significativa na cobertura de vacinas tradicionais como sarampo, polio e febre amarela. O estudo mostra a necessidade de campanhas educativas contínuas para combater a desinformação.",
+        source: "Instituto Butantan",
+        date: "2024-09-10",
+        url: "https://butantan.gov.br/noticias/como-a-hesitacao-vacinal-impactou-a-rotina-de-imunizacao-no-brasil",
+        category: "pesquisas",
+        sourceType: "institutos"
+      },
+      {
+        title: "Por que algumas pessoas têm efeitos colaterais da vacina e outras não?",
+        summary: "Reportagem da BBC explica as diferenças individuais na resposta às vacinas e desmistifica preocupações sobre efeitos adversos.",
+        fullContent: "Especialistas consultados pela BBC explicam que a variação nos efeitos colaterais entre diferentes pessoas é normal e esperada. Fatores como idade, sexo, histórico médico e até genética influenciam na resposta imune. A reportagem destaca que efeitos leves como febre e dor no local da aplicação são sinais de que o sistema imunológico está respondendo adequadamente.",
+        source: "BBC News Brasil",
+        date: "2024-08-22",
+        url: "https://www.bbc.com/portuguese/articles/c7222y4myejo",
+        category: "educacao",
+        sourceType: "midia"
+      },
+      {
+        title: "Brasil amplia oferta de vacinas no calendário nacional para 2025",
+        summary: "Ministério da Saúde anuncia incorporação de novas vacinas e expansão de faixas etárias para imunizantes já existentes.",
+        fullContent: "O Programa Nacional de Imunizações (PNI) do Brasil, reconhecido internacionalmente, terá novidades em 2025. Serão incorporadas três novas vacinas e expandidas as indicações para outras cinco. A medida visa aumentar a proteção da população contra doenças preveníveis e manter o país como referência em saúde pública.",
+        source: "Ministério da Saúde",
+        date: "2025-02-28",
+        url: "https://www.gov.br/saude/pt-br/vacinacao",
+        category: "politicas",
+        sourceType: "governo"
+      },
+      {
+        title: "Estudo comprova: Informação qualificada aumenta cobertura vacinal em 23%",
+        summary: "Pesquisa da Fiocruz mostra impacto positivo de campanhas educativas nas taxas de imunização.",
+        fullContent: "Uma pesquisa conduzida pela Fiocruz em parceria com o Ministério da Saúde demonstrou que comunidades que receberam informações qualificadas sobre vacinas tiveram aumento de 23% na cobertura vacinal. O estudo acompanhou mais de 50 mil pessoas em 100 municípios brasileiros durante 12 meses.",
+        source: "Fiocruz",
+        date: "2025-03-10",
+        url: "https://portal.fiocruz.br",
+        category: "pesquisas",
+        sourceType: "institutos"
+      },
+      {
+        title: "Brasil supera meta de vacinação infantil pela primeira vez desde 2019",
+        summary: "Dados do PNI mostram recuperação histórica na cobertura de vacinas como polio e tríplice viral.",
+        fullContent: "Pela primeira vez desde o início da pandemia, o Brasil superou a meta de 95% de cobertura vacinal para as principais vacinas infantis. O resultado reflete o esforço conjunto de profissionais de saúde, gestores públicos e a população em retomar a cultura da vacinação.",
+        source: "Programa Nacional de Imunizações",
+        date: "2025-03-05",
+        url: "https://www.gov.br/saude/pt-br/assuntos/saude-de-a-a-z/c/calendario-nacional-de-vacinacao",
+        category: "campanhas",
+        sourceType: "governo"
+      }
+    ];
+
+    const FAKE_CARDS = [
+      {
+        title: "Vacinas causam autismo",
+        myth: "Afirma-se que vacinas podem causar autismo em crianças.",
+        fact: "Não existe evidência científica que vacinas causem autismo. Diversos estudos de grande porte mostraram ausência de associação.",
+        source: "Organização Mundial da Saúde (OMS), estudos revisados por pares"
+      },
+      {
+        title: "Vacinas sobrecarregam o sistema imunológico",
+        myth: "Alguns dizem que múltiplas vacinas dadas juntas 'sobrecarregam' o sistema imune.",
+        fact: "O sistema imunológico lida com milhares de antígenos diariamente; as vacinas expõem-no a uma fração muito pequena e segura.",
+        source: "Centros de Controle de Doenças (CDC) / Ministério da Saúde"
+      },
+      {
+        title: "Vacinas contêm microchips",
+        myth: "Teoria de que vacinas teriam microchips para rastrear pessoas.",
+        fact: "Não há nenhum componente desse tipo em vacinas; tais alegações são teorias conspiratórias sem qualquer prova.",
+        source: "Aos Fatos / Agência Lupa"
+      },
+      {
+        title: "Vacinas de RNA alteram o DNA humano",
+        myth: "Alega-se que vacinas de RNA mensageiro podem alterar o DNA das pessoas.",
+        fact: "O RNA mensageiro não tem acesso ao núcleo celular onde está o DNA. Ele age no citoplasma instruindo a produção de proteínas.",
+        source: "Sociedade Brasileira de Imunizações (SBIm)"
+      },
+      {
+        title: "Doenças já erradicadas não precisam de vacina",
+        myth: "Argumenta-se que não é necessário vacinar contra doenças que já foram eliminadas.",
+        fact: "A erradicação global é rara (apenas varíola). Sem vacinação, doenças como sarampo e polio podem retornar rapidamente.",
+        source: "Organização Pan-Americana da Saúde"
+      },
+      {
+        title: "Vacinas são experimentais e não testadas",
+        myth: "Alega-se que vacinas não passam por testes rigorosos antes da aprovação.",
+        fact: "Todas as vacinas passam por fases rigorosas de testes clínicos e são aprovadas por agências regulatórias antes do uso público.",
+        source: "ANVISA / FDA / EMA"
+      }
+    ];
+
+    // Dados do Quiz
+    const QUIZ_DATA = [
+      {
+        question: "O que são as vacinas?",
+        options: [
+          "Substâncias que induzem a resposta imunológica para proteger contra doenças.",
+          "Medicamentos que curam doenças infecciosas logo após a aplicação."
+        ],
+        correct: 0,
+        explanation: "As vacinas são substâncias biológicas que têm finalidade de induzir a resposta imunológica (imunidade adquirida ativa) do organismo, com o objetivo de proteger o indivíduo contra uma determinada doença (profilática) ou evitar que ela se desenvolva de maneira severa (terapêutica).",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Como as vacinas funcionam?",
+        options: [
+          "Elas treinam o sistema imunológico para reconhecer e combater patógenos.",
+          "Elas matam diretamente os vírus no body assim que entram em contato."
+        ],
+        correct: 0,
+        explanation: "As vacinas ajudam o sistema de defesa da pessoa a combater infecções de maneira mais eficiente, provocando uma resposta imunológica do corpo a doenças específicas. Assim, se um micro-organismo patogênico invadir o corpo dessa pessoa no futuro, o sistema imunológico dela já saberá como combatê-lo.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Qual a importância das vacinas?",
+        options: [
+          "Previnem doenças graves como sarampo, poliomielite, hepatite B e meningite.",
+          "Servem apenas para fortalecer o corpo contra resfriados comuns."
+        ],
+        correct: 0,
+        explanation: "As vacinas previnem a doença, a incapacidade e a morte por doenças evitáveis através da vacinação, tais como o câncer do colo do útero, a poliomielite, o sarampo, a rubéola, a parotidite, a difteria, o tétano, a tosse convulsa, a hepatite A e B, as pneumonias bacterianas, as doenças diarreicas por rotavírus e a meningite bacteriana.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "As vacinas são seguras?",
+        options: [
+          "Sim, são muito seguras e passam por rigorosos testes clínicos.",
+          "Não, pois causam mais doenças do que previnem."
+        ],
+        correct: 0,
+        explanation: "Sim! As vacinas são muito seguras. Todas as vacinas passam por rigorosos testes de segurança e qualidade, incluindo estudos clínicos, antes de serem aprovadas para o público. Reações graves são extremamente raras.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Por que devemos vacinar as crianças?",
+        options: [
+          "Para protegê-las de doenças graves, especialmente com sistemas imunológicos em desenvolvimento.",
+          "Porque elas precisam se acostumar com injeções desde cedo."
+        ],
+        correct: 0,
+        explanation: "As vacinas estão entre as principais medidas de saúde adotadas e, ao longo do tempo, têm ajudado a proteger as crianças contra diversas doenças que podem causar sérias consequências e até morte, especialmente em pessoas com sistemas imunológicos em desenvolvimento.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "A vacinação pode ter impacto sobre o desenvolvimento neurológico das crianças?",
+        options: [
+          "Não, as vacinas não afetam o desenvolvimento neurológico.",
+          "Sim, algumas vacinas podem causar autismo ou atrasos cognitivos."
+        ],
+        correct: 0,
+        explanation: "Não. As vacinas não afetam o desenvolvimento neurológico das crianças. Elas evitam que as crianças peguem doenças, que podem desenvolver quadros graves e afetar o sistema neurológico.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Qual a importância da vacinação para o recém-nascido?",
+        options: [
+          "Protege contra formas graves de tuberculose (BCG) e hepatite B logo após o nascimento.",
+          "Não é importante, pois bebês nascem com imunidade completa."
+        ],
+        correct: 0,
+        explanation: "Em relação à Hepatite B, a vacinação precoce é fundamental, principalmente nos locais em que a gestante possui pouco acesso ao pré-natal. No caso de mães HBsAg+, é fundamental que o bebê receba a vacina nas primeiras 12 horas de vida. A BCG protege o recém-nascido contra as formas graves da tuberculose.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "A vacina pode fazer o bebê ficar doente?",
+        options: [
+          "Pode causar mal-estar leve e temporário, como febre ou dor no local da injeção.",
+          "Sim, as vacinas frequentemente causam doenças graves nos bebês."
+        ],
+        correct: 0,
+        explanation: "As vacinas são extremamente seguras. Geralmente, o mal-estar ou desconforto após a vacinação é temporário, como uma dor no local da injeção ou febre moderada. Esses efeitos podem ser controlados com analgésicos e compressas, conforme orientação médica.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Quando o bebê não toma a vacina na idade recomendada, ele corre algum risco?",
+        options: [
+          "Sim, fica desprotegido e pode transmitir doenças.",
+          "Não, basta tomar depois, sem nenhum risco."
+        ],
+        correct: 0,
+        explanation: "Com certeza! Até o momento de se vacinar, além de ficar desprotegido e mais vulnerável, ele é também agente transmissor da doença caso fique doente.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Quais vacinas são ofertadas no Brasil?",
+        options: [
+          "O SUS oferece 31 tipos diferentes de vacinas pelo Calendário Nacional.",
+          "Apenas vacinas contra gripe e covid-19 são oferecidas gratuitamente."
+        ],
+        correct: 0,
+        explanation: "O Programa Nacional de Imunizações (PNI) oferta ao todo 31 tipos diferentes de vacinas, com indicações estabelecidas no Calendário Nacional de Vacinação e nos Centros de Referência para Imunobiológicos Especiais (CRIE).",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Posso atrasar o calendário de vacinas?",
+        options: [
+          "Não, atrasar aumenta a vulnerabilidade a doenças.",
+          "Sim, posso vacinar quando for conveniente, sem problema."
+        ],
+        correct: 0,
+        explanation: "Uma das melhores maneiras de se proteger contra diversas doenças é seguir o calendário de vacinas recomendado. Sempre que você adia uma vacina, aumenta a vulnerabilidade do seu organismo a doenças.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "O que é imunização?",
+        options: [
+          "Processo pelo qual uma pessoa se torna resistente a um patógeno, por meio de vacina ou infecção.",
+          "É o mesmo que medicar alguém com antibióticos."
+        ],
+        correct: 0,
+        explanation: "A imunização é o processo pelo qual uma pessoa se torna resistente a um patógeno (vírus ou bactéria), quer através do contato com certas doenças, quer através da administração de uma vacina.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "O que é imunidade?",
+        options: [
+          "Capacidade do organismo de resistir a um agente causador de doença.",
+          "É quando o corpo elimina todos os vírus e bactérias, bons e ruins."
+        ],
+        correct: 0,
+        explanation: "A imunidade é definida como a capacidade do organismo de resistir a um agente causador de doença. A imunidade adquirida é altamente específica para um patógeno particular, incluindo o desenvolvimento de memória imunológica.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "O que é imunidade coletiva ou 'imunidade de rebanho'?",
+        options: [
+          "Quando muitas pessoas estão imunes, dificultando a disseminação da doença.",
+          "É quando apenas os adultos são vacinados, protegendo a população."
+        ],
+        correct: 0,
+        explanation: "A imunidade coletiva ocorre quando uma pessoa infectada transmite o vírus ou a bactéria para menos de uma pessoa, proporcionalmente. Quando isso acontece, as doenças não podem se espalhar fácilmente, protegendo até mesmo quem não pode ser vacinado.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Pessoas resfriadas ou com rinite alérgica podem ser vacinadas?",
+        options: [
+          "Sim, desde que não tenham febre ou doença aguda grave.",
+          "Não, qualquer sintoma impede a vacinação."
+        ],
+        correct: 0,
+        explanation: "Sim. As vacinas são contraindicadas apenas em caso de doenças agudas graves que incluem febre.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Quem tem alergia a ovo pode tomar vacina?",
+        options: [
+          "A maioria pode; apenas casos graves de alergia devem consultar médico.",
+          "Nunca pode, todas as vacinas contêm ovo."
+        ],
+        correct: 0,
+        explanation: "Apenas os indivíduos com formas graves de alergia ao ovo, como urticária e reações anafiláticas, não devem receber as vacinas que possuem esse componente. É importante consultar um médico.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "O que é preciso ser feito para me vacinar?",
+        options: [
+          "Ir a uma unidade de saúde com cartão de vacinação (ou sem ele).",
+          "Preciso de receita médica e autorização judicial."
+        ],
+        correct: 0,
+        explanation: "Basta comparecer a um serviço de vacinação do SUS, com o cartão em mãos. A ausência da Caderneta de Vacinação não é um impeditivo para vacinar.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      },
+      {
+        question: "Vacinas causam autismo?",
+        options: [
+          "Não, vacinas não causam autismo.",
+          "Sim, há comprovação científica disso."
+        ],
+        correct: 0,
+        explanation: "Não, vacinas não causam autismo. Um estudo apresentado em 1998 que levantou essa hipótese foi considerado seriamente falho e o artigo foi retirado pela revista que o publicou.",
+        source: "https://www.gov.br/saude/pt-br/vacinacao/faq"
+      }
+    ];
+
+    // Dados para o gráfico mini do painel rápido
+    const miniChartData = {
+      labels: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+      cobertura: [78, 82, 85, 83, 87, 85, 88, 86, 90, 89, 91, 92],
+      doses: [980, 1120, 1250, 1180, 1320, 1280, 1350, 1240, 1410, 1360, 1390, 1450]
+    };
+
+    // ---- Sistema de Navegação ----
+    const tabs = document.querySelectorAll('.main-nav .tab');
+    const panels = document.querySelectorAll('.tab-panel');
+
+    function showTab(name) {
+      // Remover active de todas as tabs
+      tabs.forEach(t => t.classList.remove('active'));
+      // Remover active de todos os panels
+      panels.forEach(p => p.classList.remove('active'));
+      
+      // Adicionar active à tab clicada
+      document.querySelector(`[data-tab="${name}"]`).classList.add('active');
+      // Adicionar active ao panel correspondente
+      document.getElementById(name).classList.add('active');
+    }
+
+    // Adicionar event listeners às tabs
+    tabs.forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        e.preventDefault();
+        const tabName = tab.dataset.tab;
+        
+        // Se for a aba de dados, redirecionar para o Shiny
+        if (tabName === 'dados') {
+          window.open('https://vitofontenelle.shinyapps.io/vacinas/', '_blank');
+        } else {
+          showTab(tabName);
+        }
+      });
+    });
+
+    // ---- Sistema de Carousel ----
+    let currentSlide = 0;
+    const slides = [
+      {
+        type: 'video',
+        content: `
+          <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:#000;">
+            <div style="position:relative;width:100%;height:100%;">
+              <img src="${VIDEO_URLS[0].thumb}" alt="${VIDEO_URLS[0].title}" 
+                   style="width:100%;height:100%;object-fit:cover;opacity:0.7;"
+                   onerror="this.style.display='none'">
+              <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);text-align:center;color:white;z-index:2;">
+                <div style="font-size:3rem;margin-bottom:1rem;">▶</div>
+                <h3 style="margin:0;font-size:1.5rem;">${VIDEO_URLS[0].title}</h3>
+                <p style="margin:0.5rem 0 0 0;">Clique para assistir no YouTube</p>
+              </div>
+              <div style="position:absolute;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.3);z-index:1;"></div>
+            </div>
+          </div>
+        `
+      },
+      {
+        type: 'info',
+        content: `
+          <div style="background: linear-gradient(135deg, rgba(30,136,229,0.9), rgba(67,160,71,0.9)); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+            <div style="text-align: center; padding: 20px; max-width: 600px;">
+              <h2 style="margin-bottom: 16px; font-size: 2.5rem;">Informação que Imuniza</h2>
+              <p style="font-size: 1.2rem; margin-bottom: 20px;">Dados verificados e conteúdo educativo para combater a desinformação sobre vacinas</p>
+              <button class="btn" onclick="window.open('https://vitofontenelle.shinyapps.io/vacinas/', '_blank')" style="font-size: 1.1rem; padding: 12px 24px;">Ver Dados Completos</button>
+            </div>
+          </div>
+        `
+      },
+      {
+        type: 'stats',
+        content: `
+          <div style="background: linear-gradient(135deg, rgba(67,160,71,0.9), rgba(30,136,229,0.9)); width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; color: white;">
+            <div style="text-align: center; padding: 20px; max-width: 600px;">
+              <h2 style="margin-bottom: 16px; font-size: 2.5rem;">85.2% de Cobertura</h2>
+              <p style="font-size: 1.2rem; margin-bottom: 10px;">Taxa média de cobertura vacinal no Brasil em 2024</p>
+              <p style="margin-top: 10px; font-size: 1.1rem; background: rgba(255,255,255,0.2); padding: 10px; border-radius: 8px;">
+                +8.7% em relação a 2023 ✅
+              </p>
+            </div>
+          </div>
+        `
+      }
+    ];
+
+    function initializeCarousel() {
+      const carouselInner = document.getElementById('carouselInner');
+      carouselInner.innerHTML = '';
+      
+      slides.forEach((slide, index) => {
+        const slideElement = document.createElement('div');
+        slideElement.className = `carousel-slide ${slide.type}-slide ${index === 0 ? 'active' : ''}`;
+        
+        // Se for o slide de vídeo, usar apenas um vídeo confiável
+        if (slide.type === 'video') {
+          slideElement.innerHTML = slide.content;
+          slideElement.addEventListener('click', () => {
+            window.open(VIDEO_URLS[0].url, '_blank');
+          });
+        } else {
+          slideElement.innerHTML = slide.content;
+        }
+        
+        carouselInner.appendChild(slideElement);
+      });
+    }
+
+    function showSlide(index) {
+      const slideElements = document.querySelectorAll('.carousel-slide');
+      slideElements.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      currentSlide = index;
+    }
+
+    function nextSlide() {
+      const nextIndex = (currentSlide + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    function prevSlide() {
+      const prevIndex = (currentSlide - 1 + slides.length) % slides.length;
+      showSlide(prevIndex);
+    }
+
+    // ---- SISTEMA DO CARROSSEL LUPAS ----
+    let currentLupaSlide = 0;
+
+    function initializeLupaCarousel() {
+      const lupaCarouselInner = document.getElementById('lupaCarouselInner');
+      const lupaIndicators = document.getElementById('lupaIndicators');
+      
+      lupaCarouselInner.innerHTML = '';
+      lupaIndicators.innerHTML = '';
+      
+      LUPA_ARTICLES.forEach((article, index) => {
+        // Criar slide
+        const slideElement = document.createElement('div');
+        slideElement.className = `lupa-slide ${index === 0 ? 'active' : ''}`;
+        slideElement.innerHTML = `
+          <div class="lupa-slide-content">
+            <h3>${article.title}</h3>
+            <p>${article.summary}</p>
+            <div class="lupa-source">
+              <span class="lupa-logo">Lupa</span>
+              <span>• ${article.date}</span>
+            </div>
+          </div>
+          <div class="lupa-slide-image">
+            🔍
+          </div>
+        `;
+        slideElement.addEventListener('click', () => {
+          window.open(article.url, '_blank');
+        });
+        lupaCarouselInner.appendChild(slideElement);
+        
+        // Criar indicador
+        const indicator = document.createElement('div');
+        indicator.className = `lupa-indicator ${index === 0 ? 'active' : ''}`;
+        indicator.addEventListener('click', () => {
+          showLupaSlide(index);
+        });
+        lupaIndicators.appendChild(indicator);
+      });
+    }
+
+    function showLupaSlide(index) {
+      const slideElements = document.querySelectorAll('.lupa-slide');
+      const indicators = document.querySelectorAll('.lupa-indicator');
+      
+      slideElements.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+      });
+      
+      indicators.forEach((indicator, i) => {
+        indicator.classList.toggle('active', i === index);
+      });
+      
+      currentLupaSlide = index;
+    }
+
+    function nextLupaSlide() {
+      const nextIndex = (currentLupaSlide + 1) % LUPA_ARTICLES.length;
+      showLupaSlide(nextIndex);
+    }
+
+    function prevLupaSlide() {
+      const prevIndex = (currentLupaSlide - 1 + LUPA_ARTICLES.length) % LUPA_ARTICLES.length;
+      showLupaSlide(prevIndex);
+    }
+
+    // ---- Função para inicializar o gráfico mini ----
+    function initializeMiniChart() {
+      const miniCtx = document.getElementById('miniChart');
+      if (miniCtx) {
+        // Destruir gráfico existente se houver
+        if (window.miniChartInstance) {
+          window.miniChartInstance.destroy();
+        }
+        
+        window.miniChartInstance = new Chart(miniCtx, {
+          type: 'line',
+          data: {
+            labels: miniChartData.labels,
+            datasets: [{
+              label: 'Cobertura Vacinal (%)',
+              data: miniChartData.cobertura,
+              borderColor: 'rgb(30, 136, 229)',
+              backgroundColor: 'rgba(30, 136, 229, 0.1)',
+              tension: 0.4,
+              fill: true,
+              yAxisID: 'y'
+            }, {
+              label: 'Doses (mil)',
+              data: miniChartData.doses.map(d => d / 1000),
+              borderColor: 'rgb(67, 160, 71)',
+              backgroundColor: 'rgba(67, 160, 71, 0.1)',
+              tension: 0.4,
+              fill: true,
+              yAxisID: 'y1'
+            }]
+          },
+          options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            plugins: {
+              legend: {
+                display: true,
+                position: 'bottom',
+                labels: {
+                  boxWidth: 12,
+                  font: {
+                    size: 10
+                  }
+                }
+              }
+            },
+            scales: {
+              y: {
+                type: 'linear',
+                display: true,
+                position: 'left',
+                min: 70,
+                max: 100,
+                ticks: {
+                  callback: function(value) {
+                    return value + '%';
+                  }
+                }
+              },
+              y1: {
+                type: 'linear',
+                display: true,
+                position: 'right',
+                grid: {
+                  drawOnChartArea: false
+                },
+                ticks: {
+                  callback: function(value) {
+                    return value + 'k';
+                  }
+                }
+              }
+            }
+          }
+        });
+      }
+    }
+
+    // ---- Renderização de Conteúdo ----
+    function renderNews() {
+      const newsList = document.getElementById('news-list');
+      if (newsList) {
+        newsList.innerHTML = '';
+        
+        exampleNews.forEach(news => {
+          const newsItem = document.createElement('div');
+          newsItem.className = 'news-item-expanded';
+          newsItem.innerHTML = `
+            <div class="news-item-header">
+              <h3>${news.title}</h3>
+              <div class="news-meta">
+                <span class="news-source">${news.source}</span>
+                <span class="news-date">${news.date}</span>
+                <span class="news-category">${news.category}</span>
+              </div>
+            </div>
+            <div class="news-item-content">
+              <p class="news-summary">${news.summary}</p>
+              <div class="news-full-content">
+                <p>${news.fullContent}</p>
+              </div>
+              <button class="btn-read-more" onclick="window.open('${news.url}', '_blank')">
+                📖 Leia a notícia completa
+              </button>
+            </div>
+          `;
+          newsList.appendChild(newsItem);
+        });
+      }
+
+      // Também atualizar a preview na página inicial
+      const newsPreview = document.getElementById('newsPreview');
+      if (newsPreview) {
+        newsPreview.innerHTML = '';
+        exampleNews.slice(0, 2).forEach(news => {
+          const newsItem = document.createElement('div');
+          newsItem.className = 'news-item';
+          newsItem.innerHTML = `
+            <div class="news-item-content">
+              <h4>${news.title}</h4>
+              <p>${news.summary}</p>
+              <small>${news.source} • ${news.date}</small>
+            </div>
+          `;
+          newsItem.addEventListener('click', () => {
+            window.open(news.url, '_blank');
+          });
+          newsPreview.appendChild(newsItem);
+        });
+      }
+    }
+
+    function renderFakeCards() {
+      const fakeCards = document.getElementById('fake-cards');
+      if (fakeCards) {
+        fakeCards.innerHTML = '';
+        FAKE_CARDS.forEach(card => {
+          const cardElement = document.createElement('div');
+          cardElement.className = 'fact-check-item';
+          cardElement.innerHTML = `
+            <h4>${card.title}</h4>
+            <p><strong style="color:#ef4444">Mito:</strong> ${card.myth}</p>
+            <p style="margin-top:12px"><strong style="color:#22c55e">Fato:</strong> ${card.fact}</p>
+            <div style="margin-top:8px;font-size:11px;color:var(--muted)">Fonte: ${card.source}</div>
+          `;
+          fakeCards.appendChild(cardElement);
+        });
+      }
+    }
+
+    function renderVideos() {
+      const videoGrid = document.getElementById('video-grid');
+      const videoThumbs = document.getElementById('videoThumbs');
+      
+      // Função auxiliar para criar elemento de vídeo
+      function createVideoElement(videoData, isThumbnail = false) {
+        const videoId = videoData.url.match(/v=([^&]+)/)?.[1];
+        if (!videoId) return null;
+
+        const element = isThumbnail ? 
+          document.createElement('div') : 
+          document.createElement('div');
+        
+        if (isThumbnail) {
+          element.className = 'thumbnail';
+          element.innerHTML = `
+            <img src="${videoData.thumb}" alt="${videoData.title}" 
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTIwIiBoZWlnaHQ9IjkwIiB2aWV3Qm94PSIwIDAgMTIwIDkwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPjxyZWN0IHdpZHRoPSIxMjAiIGhlaWdodD0iOTAiIGZpbGw9IiNGMEY0RjgiLz48cGF0aCBkPSJNNDggMzcuNVY1Mi41TDU4LjUgNDVINDhWIiBmaWxsPSIjMUU4OEU1Ii8+PHRleHQgeD0iNjAiIHk9IjU1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmaWxsPSIjNjQ3NDhCIiBmb250LXNpemU9IjgiIGZvbnQtZmFtaWx5PSJJbnRlciwgdWktc2Fucy1zZXJpZiwgc3lzdGVtLXVpLCAtYXBwbGUtc3lzdGVtLCBTZWdvZSBVSSwgUm9ib3RvLCBIZWx2ZXRpY2EgTmV1ZSwgQXJpYWwsIHNhbnMtc2VyaWYiPvCfkaAgVmlkZW88L3RleHQ+PC9zdmc+'">
+          `;
+        } else {
+          element.className = 'video-card';
+          element.innerHTML = `
+            <img src="${videoData.thumb}" alt="${videoData.title}"
+                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQwIiBoZWlnaHQ9IjE2MCIgdmlld0JveD0iMCAwIDI0MCAxNjAiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PHJlY3Qgd2lkdGg9IjI0MCIgaGVpZ2h0PSIxNjAiIGZpbGw9IiNGMEY0RjgiLz48cGF0aCBkPSJNOTYgNzVWMTE1TDEyMyA5NUg5NloiIGZpbGw9IiMxRTg4RTUiLz48dGV4dCB4PSIxMjAiIHk9IjEzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZmlsbD0iIzY0NzQ4QiIgZm9udC1zaXplPSIxMiIgZm9udC1mYW1pbHk9IkludGVyLCB1aS1zYW5zLXNlcmlmLCBzeXN0ZW0tdWksIC1hcHBsZS1zeXN0ZW0sIFNlZ29lIFVJLCBSb2JvdG8sIEhlbHZldGljYSBOZXVlLCBBcmlhbCwgc2Fucy1zZXJpZiI+8J+RoCBWaWRlbzwvdGV4dD48L3N2Zz4='">
+            <div class="v-title">${videoData.title}</div>
+          `;
+        }
+
+        element.addEventListener('click', () => {
+          window.open(videoData.url, '_blank');
+        });
+
+        return element;
+      }
+
+      // Renderizar grade de vídeos na página Infovacflix
+      if (videoGrid) {
+        videoGrid.innerHTML = '';
+        VIDEO_URLS.forEach(video => {
+          const videoElement = createVideoElement(video, false);
+          if (videoElement) {
+            videoGrid.appendChild(videoElement);
+          }
+        });
+      }
+
+      // Renderizar thumbnails na página inicial
+      if (videoThumbs) {
+        videoThumbs.innerHTML = '';
+        VIDEO_URLS.slice(0, 4).forEach(video => {
+          const thumbElement = createVideoElement(video, true);
+          if (thumbElement) {
+            videoThumbs.appendChild(thumbElement);
+          }
+        });
+      }
+    }
+
+    function renderTopFacts() {
+      const topFacts = document.getElementById('topFacts');
+      if (topFacts) {
+        topFacts.innerHTML = '';
+        FAKE_CARDS.slice(0, 3).forEach(card => {
+          const factItem = document.createElement('div');
+          factItem.className = 'fact-check-item';
+          factItem.innerHTML = `
+            <h4>${card.title}</h4>
+            <p>${card.fact.substring(0, 100)}...</p>
+          `;
+          factItem.addEventListener('click', () => {
+            showTab('fake');
+          });
+          topFacts.appendChild(factItem);
+        });
+      }
+    }
+
+    // ---- Sistema do Quiz ----
+    let currentQuestion = 0;
+    let score = 0;
+    let userAnswers = [];
+
+    function initializeQuiz() {
+      currentQuestion = 0;
+      score = 0;
+      userAnswers = [];
+      updateQuizProgress();
+      showQuestion();
+      updateNavigationButtons();
+    }
+
+    function updateQuizProgress() {
+      const progressFill = document.getElementById('progressFill');
+      const currentQuestionElement = document.getElementById('currentQuestion');
+      const totalQuestionsElement = document.getElementById('totalQuestions');
+      
+      const progress = ((currentQuestion) / QUIZ_DATA.length) * 100;
+      progressFill.style.width = `${progress}%`;
+      currentQuestionElement.textContent = currentQuestion + 1;
+      totalQuestionsElement.textContent = QUIZ_DATA.length;
+    }
+
+    function showQuestion() {
+      const questionContainer = document.getElementById('questionContainer');
+      const explanationContainer = document.getElementById('explanationContainer');
+      
+      // Limpar containers
+      questionContainer.innerHTML = '';
+      explanationContainer.innerHTML = '';
+      explanationContainer.classList.remove('show');
+      
+      // Obter pergunta atual
+      const questionData = QUIZ_DATA[currentQuestion];
+      
+      // Criar elemento da pergunta
+      const questionElement = document.createElement('div');
+      questionElement.className = 'quiz-question';
+      questionElement.innerHTML = `
+        <h3>${questionData.question}</h3>
+        <div class="quiz-options" id="quizOptions">
+          ${questionData.options.map((option, index) => `
+            <div class="quiz-option" data-index="${index}">
+              ${option}
+            </div>
+          `).join('')}
+        </div>
+      `;
+      
+      questionContainer.appendChild(questionElement);
+      
+      // Adicionar event listeners às opções
+      const options = document.querySelectorAll('.quiz-option');
+      options.forEach(option => {
+        option.addEventListener('click', () => {
+          selectOption(parseInt(option.dataset.index));
+        });
+      });
+      
+      // Verificar se o usuário já respondeu esta pergunta
+      if (userAnswers[currentQuestion] !== undefined) {
+        const selectedOption = userAnswers[currentQuestion];
+        showAnswerFeedback(selectedOption, questionData.correct);
+      }
+    }
+
+    function selectOption(selectedIndex) {
+      const questionData = QUIZ_DATA[currentQuestion];
+      userAnswers[currentQuestion] = selectedIndex;
+      
+      // Verificar se a resposta está correta
+      if (selectedIndex === questionData.correct) {
+        score++;
+      }
+      
+      showAnswerFeedback(selectedIndex, questionData.correct);
+      updateNavigationButtons();
+    }
+
+    function showAnswerFeedback(selectedIndex, correctIndex) {
+      const options = document.querySelectorAll('.quiz-option');
+      const explanationContainer = document.getElementById('explanationContainer');
+      const questionData = QUIZ_DATA[currentQuestion];
+      
+      // Resetar todas as opções
+      options.forEach(option => {
+        option.classList.remove('selected', 'correct', 'incorrect');
+      });
+      
+      // Marcar opção selecionada
+      options[selectedIndex].classList.add('selected');
+      
+      // Marcar opção correta
+      options[correctIndex].classList.add('correct');
+      
+      // Se a opção selecionada estiver errada, marcar como incorreta
+      if (selectedIndex !== correctIndex) {
+        options[selectedIndex].classList.add('incorrect');
+      }
+      
+      // Mostrar explicação
+      explanationContainer.innerHTML = `
+        <p><strong>Resposta oficial:</strong> ${questionData.explanation}</p>
+        <div class="source">
+          Fonte: <a href="${questionData.source}" target="_blank">Ministério da Saúde - FAQ sobre Vacinação</a>
+        </div>
+      `;
+      explanationContainer.classList.add('show');
+    }
+
+    function updateNavigationButtons() {
+      const prevBtn = document.getElementById('prevBtnQuiz');
+      const nextBtn = document.getElementById('nextBtnQuiz');
+      
+      // Atualizar botão anterior
+      if (currentQuestion === 0) {
+        prevBtn.disabled = true;
+      } else {
+        prevBtn.disabled = false;
+      }
+      
+      // Atualizar botão próximo
+      if (currentQuestion === QUIZ_DATA.length - 1) {
+        nextBtn.textContent = 'Ver Resultado';
+      } else {
+        nextBtn.textContent = 'Próxima';
+      }
+    }
+
+    function showResults() {
+      const questionContainer = document.getElementById('questionContainer');
+      const explanationContainer = document.getElementById('explanationContainer');
+      const navigation = document.querySelector('.quiz-navigation');
+      
+      // Calcular porcentagem de acertos
+      const percentage = Math.round((score / QUIZ_DATA.length) * 100);
+      
+      // Limpar containers
+      questionContainer.innerHTML = '';
+      explanationContainer.innerHTML = '';
+      explanationContainer.classList.remove('show');
+      
+      // Mostrar resultados
+      questionContainer.innerHTML = `
+        <div class="quiz-results">
+          <div class="quiz-score">${percentage}%</div>
+          <div class="quiz-message">
+            ${percentage >= 66 ? '🎉 Parabéns! Você está muito bem informado sobre vacinas!' : '📚 Continue estudando sobre vacinas para se proteger e proteger sua comunidade!'}
+          </div>
+          <p>Você acertou ${score} de ${QUIZ_DATA.length} perguntas.</p>
+          <button class="quiz-btn restart" id="restartBtnQuiz">Refazer Quiz</button>
+        </div>
+      `;
+      
+      // Atualizar navegação
+      navigation.innerHTML = '';
+      
+      // Lançar confetes se a pontuação for >= 66%
+      if (percentage >= 66) {
+        createConfetti();
+      }
+      
+      // Adicionar event listener ao botão de reiniciar
+      document.getElementById('restartBtnQuiz').addEventListener('click', initializeQuiz);
+    }
+
+    function nextQuestion() {
+      if (currentQuestion < QUIZ_DATA.length - 1) {
+        currentQuestion++;
+        updateQuizProgress();
+        showQuestion();
+        updateNavigationButtons();
+      } else {
+        showResults();
+      }
+    }
+
+    function prevQuestion() {
+      if (currentQuestion > 0) {
+        currentQuestion--;
+        updateQuizProgress();
+        showQuestion();
+        updateNavigationButtons();
+      }
+    }
+
+    function createConfetti() {
+      const confettiContainer = document.getElementById('confettiContainer');
+      confettiContainer.style.display = 'block';
+      confettiContainer.innerHTML = '';
+      
+      // Criar confetes
+      for (let i = 0; i < 150; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        
+        // Cores aleatórias
+        const colors = ['#1e88e5', '#43a047', '#ff9800', '#e53935', '#8e24aa'];
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        
+        // Posição e animação aleatórias
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.animationDelay = Math.random() * 5 + 's';
+        confetti.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        
+        confettiContainer.appendChild(confetti);
+      }
+      
+      // Esconder confetes após a animação
+      setTimeout(() => {
+        confettiContainer.style.display = 'none';
+      }, 8000);
+    }
+
+    // ---- Inicialização da Página ----
+    document.addEventListener('DOMContentLoaded', function() {
+      // Inicializar carousel
+      initializeCarousel();
+      
+      // Inicializar carousel da Lupa
+      initializeLupaCarousel();
+      
+      // Renderizar conteúdo
+      renderNews();
+      renderFakeCards();
+      renderVideos();
+      renderTopFacts();
+      
+      // Inicializar quiz
+      initializeQuiz();
+      
+      // Inicializar gráfico mini
+      setTimeout(initializeMiniChart, 500);
+      
+      // Event listeners para carousel
+      document.getElementById('nextBtn').addEventListener('click', nextSlide);
+      document.getElementById('prevBtn').addEventListener('click', prevSlide);
+      
+      // Event listeners para carousel da Lupa
+      document.getElementById('lupaNextBtn').addEventListener('click', nextLupaSlide);
+      document.getElementById('lupaPrevBtn').addEventListener('click', prevLupaSlide);
+      
+      // Event listeners para quiz
+      document.getElementById('nextBtnQuiz').addEventListener('click', nextQuestion);
+      document.getElementById('prevBtnQuiz').addEventListener('click', prevQuestion);
+      
+      // Auto-avançar slides
+      setInterval(nextSlide, 8000);
+      setInterval(nextLupaSlide, 6000);
+    });
+  </script>
+</body>
+</html>
