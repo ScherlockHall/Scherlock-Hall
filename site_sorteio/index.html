@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Sorteador Pro</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: #fff;
+    }
+
+    .page {
+      display: none;
+      min-height: 100vh;
+      padding: 20px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .page.active {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .game-container {
+      width: 100%;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .game-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .logo {
+      font-size: 4rem;
+      margin-bottom: 10px;
+      animation: bounce 2s infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .game-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .game-subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
+      font-weight: 300;
+    }
+
+    .game-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 25px;
+      padding: 35px;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .card-section {
+      margin-bottom: 30px;
+    }
+
+    .game-label {
+      display: flex;
+      align-items: center;
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 15px;
+      gap: 10px;
+    }
+
+    .label-icon {
+      font-size: 1.5rem;
+    }
+
+    .game-select,
+    .game-input {
+      width: 100%;
+      padding: 15px 20px;
+      font-size: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 15px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .game-select:focus,
+    .game-input:focus {
+      outline: none;
+      border-color: #fff;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+    }
+
+    .number-grid {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 10px;
+    }
+
+    .num-btn {
+      padding: 15px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: 2px solid rgba(255, 255, 255, 0.4);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.1);
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .num-btn:hover {
+      background: rgba(255, 255, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .num-btn.active {
+      background: #fff;
+      color: #667eea;
+      border-color: #fff;
+      box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+    }
+
+    .game-btn {
+      width: 100%;
+      padding: 18px 30px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      border: none;
+      border-radius: 15px;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .game-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s;
+    }
+
+    .game-btn:hover::before {
+      left: 100%;
+    }
+
+    .game-btn-primary {
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+    }
+
+    .game-btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 15px 35px rgba(102, 126, 234, 0.5);
+    }
+
+    .game-btn-danger {
+      background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+      color: #fff;
+      box-shadow: 0 10px 25px rgba(245, 87, 108, 0.4);
+      font-size: 1.5rem;
+      padding: 22px 40px;
+    }
+
+    .game-btn-danger:hover {
+      transform: scale(1.05);
+      box-shadow: 0 15px 40px rgba(245, 87, 108, 0.6);
+    }
+
+    .game-btn-danger:disabled {
+      background: #95a5a6;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .game-btn-secondary {
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+    }
+
+    .game-btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.35);
+      transform: translateY(-3px);
+    }
+
+    .btn-icon {
+      font-size: 1.5rem;
+    }
+
+    .btn-arrow {
+      font-size: 1.5rem;
+      margin-left: auto;
+    }
+
+    .names-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 15px;
+    }
+
+    .nome-input {
+      padding: 15px 20px;
+      font-size: 1rem;
+      border: 2px solid rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.9);
+      color: #333;
+      font-weight: 500;
+      transition: all 0.3s;
+    }
+
+    .nome-input:focus {
+      outline: none;
+      border-color: #fff;
+      background: #fff;
+      box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.2);
+    }
+
+    /* SLOT MACHINE */
+    .slot-machine-wrapper {
+      margin: 40px 0;
+      display: flex;
+      justify-content: center;
+    }
+
+    .slot-machine {
+      position: relative;
+    }
+
+    .slot-glow {
+      position: absolute;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+      border-radius: 30px;
+      animation: pulse-glow 2s infinite;
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { opacity: 0.5; }
+      50% { opacity: 1; }
+    }
+
+    .slot-frame {
+      position: relative;
+      width: 450px;
+      height: 180px;
+      background: linear-gradient(145deg, #1a1a2e, #16213e);
+      border-radius: 25px;
+      padding: 25px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.5),
+                  inset 0 2px 10px rgba(255,255,255,0.1);
+      border: 3px solid rgba(255,255,255,0.2);
+    }
+
+    .slot-window {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      background: #000;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: inset 0 10px 30px rgba(0,0,0,0.8);
+    }
+
+    .slot-reel {
+      position: absolute;
+      width: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    .slot-item {
+      height: 130px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: white;
+      text-shadow: 0 4px 15px rgba(0,0,0,0.7);
+      background: linear-gradient(180deg, #667eea, #764ba2);
+      border-bottom: 2px solid rgba(255,255,255,0.1);
+    }
+
+    .slot-item:nth-child(4n+1) {
+      background: linear-gradient(180deg, #f093fb, #f5576c);
+    }
+
+    .slot-item:nth-child(4n+2) {
+      background: linear-gradient(180deg, #4facfe, #00f2fe);
+    }
+
+    .slot-item:nth-child(4n+3) {
+      background: linear-gradient(180deg, #43e97b, #38f9d7);
+    }
+
+    .slot-pointer-left,
+    .slot-pointer-right {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 0;
+      height: 0;
+      border-style: solid;
+      filter: drop-shadow(0 0 10px #ffd700);
+      z-index: 10;
+    }
+
+    .slot-pointer-left {
+      left: -15px;
+      border-width: 20px 20px 20px 0;
+      border-color: transparent #ffd700 transparent transparent;
+      animation: blink-left 1s infinite;
+    }
+
+    .slot-pointer-right {
+      right: -15px;
+      border-width: 20px 0 20px 20px;
+      border-color: transparent transparent transparent #ffd700;
+      animation: blink-right 1s infinite;
+    }
+
+    @keyframes blink-left {
+      0%, 100% { 
+        opacity: 1;
+        left: -15px;
+      }
+      50% { 
+        opacity: 0.5;
+        left: -10px;
+      }
+    }
+
+    @keyframes blink-right {
+      0%, 100% { 
+        opacity: 1;
+        right: -15px;
+      }
+      50% { 
+        opacity: 0.5;
+        right: -10px;
+      }
+    }
+
+    /* RESULTADO */
+    #confetti-canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1000;
+    }
+
+    .resultado-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(15px);
+      border-radius: 30px;
+      padding: 50px 40px;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      z-index: 1001;
+    }
+
+    @keyframes scaleIn {
+      0% {
+        opacity: 0;
+        transform: scale(0.5) rotate(-5deg);
+      }
+      100% {
+        opacity: 1;
+        transform: scale(1) rotate(0deg);
+      }
+    }
+
+    .trophy-icon {
+      font-size: 5rem;
+      margin-bottom: 20px;
+      animation: bounce 2s infinite;
+    }
+
+    .resultado-titulo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 25px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    }
+
+    .resultado-nome-wrapper {
+      margin: 30px 0;
+    }
+
+    .resultado-nome {
+      display: inline-block;
+      font-size: 3.5rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #ffd700, #ffed4e);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-shadow: 0 4px 20px rgba(255, 215, 0, 0.5);
+      padding: 20px 40px;
+      border-radius: 20px;
+      background-color: rgba(255, 255, 255, 0.2);
+      animation: winner-pulse 1.5s infinite;
+    }
+
+    @keyframes winner-pulse {
+      0%, 100% {
+        transform: scale(1);
+      }
+      50% {
+        transform: scale(1.05);
+      }
+    }
+
+    .resultado-message {
+      font-size: 1.5rem;
+      font-weight: 600;
+      margin-top: 20px;
+      opacity: 0.9;
+    }
+
+    /* FOOTER */
+    .game-footer {
+      text-align: center;
+      padding: 20px;
+      color: rgba(255, 255, 255, 0.8);
+      font-size: 0.9rem;
+    }
+
+    .footer-text {
+      margin-bottom: 5px;
+    }
+
+    .footer-contact a {
+      color: rgba(255, 255, 255, 0.9);
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .footer-contact a:hover {
+      color: #fff;
+      text-decoration: underline;
+    }
+
+    /* RESPONSIVO */
+    @media (max-width: 768px) {
+      .game-title {
+        font-size: 2rem;
+      }
+      
+      .logo {
+        font-size: 3rem;
+      }
+      
+      .number-grid {
+        grid-template-columns: repeat(4, 1fr);
+      }
+      
+      .slot-frame {
+        width: 350px;
+        height: 150px;
+      }
+      
+      .slot-item {
+        height: 110px;
+        font-size: 2.2rem;
+      }
+      
+      .resultado-nome {
+        font-size: 2.5rem;
+        padding: 15px 30px;
+      }
+      
+      .trophy-icon {
+        font-size: 4rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .names-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .slot-frame {
+        width: 280px;
+        height: 130px;
+      }
+      
+      .slot-item {
+        height: 90px;
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<!-- PÁGINA 1 -->
+<div id="page1" class="page active">
+  <div class="game-container">
+    <div class="game-header">
+      <div class="logo">🎲</div>
+      <h1 class="game-title">Sorteador Pro</h1>
+      <p class="game-subtitle">Decisões justas em segundos</p>
+    </div>
+    
+    <div class="game-card">
+      <div class="card-section">
+        <label class="game-label">
+          <span class="label-icon">🎯</span>
+          Escolha a ação
+        </label>
+        <select id="acao" class="game-select">
+          <option value="Motorista da rodada">🚗 Motorista da rodada</option>
+          <option value="Quem paga a conta">💰 Quem paga a conta</option>
+          <option value="Quem limpa a casa">🧹 Quem limpa a casa</option>
+          <option value="Quem faz as compras">🛒 Quem faz as compras</option>
+          <option value="Quem lava a louça">🍽️ Quem lava a louça</option>
+          <option value="Quem escolhe o filme">🎬 Quem escolhe o filme</option>
+          <option value="">✏️ Digite você mesmo</option>
+        </select>
+        <input type="text" id="acao-custom" class="game-input mt-3" placeholder="Digite a ação personalizada" style="display: none;" />
+      </div>
+      
+      <div class="card-section">
+        <label class="game-label">
+          <span class="label-icon">👥</span>
+          Quantas pessoas?
+        </label>
+        <div class="number-grid">
+          <button class="num-btn" data-num="2">2</button>
+          <button class="num-btn" data-num="3">3</button>
+          <button class="num-btn" data-num="4">4</button>
+          <button class="num-btn" data-num="5">5</button>
+          <button class="num-btn" data-num="6">6</button>
+          <button class="num-btn" data-num="7">7</button>
+          <button class="num-btn" data-num="8">8</button>
+          <button class="num-btn" data-num="9">9</button>
+          <button class="num-btn" data-num="10">10</button>
+          <button class="num-btn" data-num="11">11</button>
+          <button class="num-btn" data-num="12">12</button>
+        </div>
+      </div>
+      
+      <button id="btn-proximo1" class="game-btn game-btn-primary">
+        <span>Continuar</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PÁGINA 2 -->
+<div id="page2" class="page">
+  <div class="game-container">
+    <div class="game-header">
+      <h2 class="game-title" id="titulo-nomes">Digite os nomes</h2>
+      <p class="game-subtitle">Insira o nome de cada participante</p>
+    </div>
+    
+    <div class="game-card">
+      <div id="campos-nomes" class="names-grid"></div>
+      
+      <button id="btn-proximo2" class="game-btn game-btn-primary mt-4">
+        <span>Iniciar Sorteio</span>
+        <span class="btn-arrow">→</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- PÁGINA 3 - SLOT MACHINE -->
+<div id="page3" class="page">
+  <div class="game-container">
+    <div class="game-header">
+      <h2 class="game-title" id="titulo-roleta">Sorteando...</h2>
+      <p class="game-subtitle">Boa sorte a todos! 🍀</p>
+    </div>
+    
+    <div class="slot-machine-wrapper">
+      <div class="slot-machine">
+        <div class="slot-glow"></div>
+        <div class="slot-frame">
+          <div class="slot-window">
+            <div id="slot-reel" class="slot-reel"></div>
+          </div>
+          <div class="slot-pointer-left"></div>
+          <div class="slot-pointer-right"></div>
+        </div>
+      </div>
+    </div>
+    
+    <button id="btn-girar" class="game-btn game-btn-danger">
+      <span class="btn-icon">🎰</span>
+      <span>GIRAR</span>
+    </button>
+    
+    <audio id="audio-suspense" src="https://www.soundjay.com/buttons/sounds/button-09.mp3" loop></audio>
+  </div>
+</div>
+
+<!-- PÁGINA 4 - RESULTADO -->
+<div id="page4" class="page">
+  <canvas id="confetti-canvas"></canvas>
+  <div class="game-container">
+    <div class="resultado-card">
+      <div class="trophy-icon">🏆</div>
+      <h2 class="resultado-titulo" id="resultado-titulo">Motorista da rodada:</h2>
+      <div class="resultado-nome-wrapper">
+        <div class="resultado-nome" id="nome-ganhador">João</div>
+      </div>
+      <div class="resultado-message">Parabéns! 🎉</div>
+      
+      <button id="btn-reiniciar" class="game-btn game-btn-secondary mt-4">
+        <span class="btn-icon">🔄</span>
+        <span>Sortear Novamente</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- RODAPÉ -->
+<footer class="game-footer">
+  <p class="footer-text">
+    Criado por <strong>Scherlock Hall</strong>
+  </p>
+  <p class="footer-contact">
+    <a href="mailto:scherlocknagafutihall@gmail.com">
+      scherlocknagafutihall@gmail.com
+    </a>
+  </p>
+</footer>
+
+<!-- SCRIPTS -->
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+  let numPessoas = 0;
+  let acao = '';
+  let nomes = [];
+  let girando = false;
+
+  const audio = document.getElementById('audio-suspense');
+
+  // Mostrar campo customizado
+  $('#acao').change(function() {
+    const val = $(this).val();
+    $('#acao-custom').toggle(val === '');
+  });
+
+  // Selecionar número
+  $('.num-btn').click(function() {
+    $('.num-btn').removeClass('active');
+    $(this).addClass('active');
+    numPessoas = parseInt($(this).data('num'));
+  });
+
+  // Ir para página 2
+  $('#btn-proximo1').click(function() {
+    if (!numPessoas) {
+      mostrarAlerta("Selecione o número de pessoas!");
+      return;
+    }
+    
+    acao = $('#acao').val() || $('#acao-custom').val().trim();
+    if (!acao) {
+      mostrarAlerta("Digite a ação!");
+      return;
+    }
+    
+    // Remover emoji se existir
+    acao = acao.replace(/[^\w\sÀ-ÿ]/g, '').trim();
+
+    $('#titulo-nomes').text(`Digite os nomes`);
+    $('#campos-nomes').empty();
+    for (let i = 0; i < numPessoas; i++) {
+      $('#campos-nomes').append(`
+        <input type="text" class="nome-input" placeholder="Participante ${i+1}" />
+      `);
+    }
+    goToPage(2);
+  });
+
+  // Ir para página 3
+  $('#btn-proximo2').click(function() {
+    nomes = [];
+    $('.nome-input').each(function() {
+      const nome = $(this).val().trim();
+      if (!nome) {
+        mostrarAlerta("Preencha todos os nomes!");
+        return false;
+      }
+      nomes.push(nome);
+    });
+    
+    if (nomes.length !== numPessoas) return;
+
+    criarSlotMachine();
+    $('#titulo-roleta').text(`Sorteando...`);
+    goToPage(3);
+  });
+
+  // Criar a máquina caça-níquel
+  function criarSlotMachine() {
+    const slotReel = $('#slot-reel');
+    slotReel.empty();
+    
+    const repeticoes = 20;
+    for (let i = 0; i < repeticoes; i++) {
+      nomes.forEach(nome => {
+        slotReel.append(`<div class="slot-item">${nome}</div>`);
+      });
+    }
+    
+    slotReel.css('top', '0px');
+  }
+
+  // Girar slot machine
+  $('#btn-girar').click(function() {
+    if (girando) return;
+    
+    girando = true;
+    $(this).prop('disabled', true);
+    audio.play();
+    
+    const slotReel = $('#slot-reel');
+    const itemHeight = window.innerWidth <= 480 ? 90 : (window.innerWidth <= 768 ? 110 : 130);
+    
+    // Escolher vencedor aleatório
+    const indiceVencedor = Math.floor(Math.random() * nomes.length);
+    const nomeVencedor = nomes[indiceVencedor];
+    
+    // Calcular posição final
+    const voltasCompletas = 15;
+    const posicaoFinalItem = (voltasCompletas * nomes.length) + indiceVencedor;
+    const posicaoFinal = -(posicaoFinalItem * itemHeight) + (itemHeight / 2 - 65);
+    
+    let posicaoAtual = 0;
+    let velocidade = 10;
+    const velocidadeMaxima = 80;
+    const aceleracao = 2;
+    const desaceleracao = 0.97;
+    let fase = 'acelerando';
+    
+    function animar() {
+      if (fase === 'acelerando') {
+        velocidade += aceleracao;
+        if (velocidade >= velocidadeMaxima) {
+          fase = 'constante';
+        }
+      } else if (fase === 'constante') {
+        if (posicaoAtual <= posicaoFinal + 2000) {
+          fase = 'desacelerando';
+        }
+      } else if (fase === 'desacelerando') {
+        velocidade *= desaceleracao;
+        if (velocidade < 1) velocidade = 1;
+      }
+      
+      posicaoAtual -= velocidade;
+      slotReel.css('top', posicaoAtual + 'px');
+      
+      if (fase === 'desacelerando' && posicaoAtual <= posicaoFinal) {
+        slotReel.css('top', posicaoFinal + 'px');
+        audio.pause();
+        audio.currentTime = 0;
+        
+        // Aguardar 2 segundos antes de mostrar resultado
+        setTimeout(() => {
+          mostrarVencedor(nomeVencedor);
+        }, 2000);
+        
+        return;
+      }
+      
+      requestAnimationFrame(animar);
+    }
+    
+    requestAnimationFrame(animar);
+  });
+
+  // Mostrar vencedor com confetes
+  function mostrarVencedor(nome) {
+    $('#nome-ganhador').text(nome);
+    $('#resultado-titulo').text(acao + ':');
+    goToPage(4);
+    
+    iniciarConfetes();
+    
+    girando = false;
+  }
+
+  // Sistema de confetes
+  function iniciarConfetes() {
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    
+    const confetes = [];
+    const cores = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff', '#ffa500', '#ff1493', '#ffd700'];
+    
+    class Confete {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = -20;
+        this.w = Math.random() * 10 + 5;
+        this.h = Math.random() * 5 + 3;
+        this.cor = cores[Math.floor(Math.random() * cores.length)];
+        this.velocidadeY = Math.random() * 3 + 2;
+        this.velocidadeX = Math.random() * 2 - 1;
+        this.rotacao = Math.random() * 360;
+        this.velocidadeRotacao = Math.random() * 10 - 5;
+      }
+      
+      update() {
+        this.y += this.velocidadeY;
+        this.x += this.velocidadeX;
+        this.rotacao += this.velocidadeRotacao;
+        
+        if (this.y > canvas.height) {
+          this.y = -20;
+          this.x = Math.random() * canvas.width;
+        }
+      }
+      
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate(this.rotacao * Math.PI / 180);
+        ctx.fillStyle = this.cor;
+        ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
+        ctx.restore();
+      }
+    }
+    
+    for (let i = 0; i < 200; i++) {
+      confetes.push(new Confete());
+    }
+    
+    let animando = true;
+    let frameCount = 0;
+    const duracaoTotal = 360;
+    
+    function animar() {
+      if (!animando) return;
+      
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      
+      confetes.forEach(confete => {
+        confete.update();
+        confete.draw();
+      });
+      
+      frameCount++;
+      
+      if (frameCount < duracaoTotal) {
+        requestAnimationFrame(animar);
+      } else {
+        let alpha = 1;
+        function fadeOut() {
+          alpha -= 0.02;
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          ctx.globalAlpha = alpha;
+          
+          confetes.forEach(confete => {
+            confete.update();
+            confete.draw();
+          });
+          
+          if (alpha > 0) {
+            requestAnimationFrame(fadeOut);
+          } else {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            animando = false;
+          }
+        }
+        fadeOut();
+      }
+    }
+    
+    animar();
+    
+    window.addEventListener('resize', () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    });
+  }
+
+  // Reiniciar
+  $('#btn-reiniciar').click(function() {
+    audio.pause();
+    audio.currentTime = 0;
+    
+    const canvas = document.getElementById('confetti-canvas');
+    const ctx = canvas.getContext('2d');
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    
+    goToPage(1);
+    $('.num-btn').removeClass('active');
+    $('#acao').val('Motorista da rodada');
+    $('#acao-custom').val('').hide();
+    $('#btn-girar').prop('disabled', false);
+    numPessoas = 0;
+    nomes = [];
+    girando = false;
+  });
+
+  // Função de navegação
+  function goToPage(pageNum) {
+    $('.page').removeClass('active').hide();
+    $(`#page${pageNum}`).addClass('active').show();
+  }
+
+  // Alerta customizado
+  function mostrarAlerta(mensagem) {
+    alert(mensagem);
+  }
+</script>
+</body>
+</html>
