@@ -3,14 +3,15 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scherlock Hall | Web Developer & Data Analyst</title>
+<title>Scherlock Hall — Portfólio</title>
 
 <!-- ─── SEO ─────────────────────────────────────────── -->
-
+<meta name="description" content="Portfólio de Scherlock Hall — Desenvolvedor web e estudante de Ciências Econômicas (UnB). Projetos em HTML, CSS, JavaScript, análise de dados e visualização.">
 <meta name="author" content="Scherlock Hall">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://scherlockhall.github.io/Scherlock-Hall/">
-<meta name="description" content="Web Developer & Data Analyst. Projetos em JavaScript, análise de dados e visualização. Construindo soluções orientadas por dados no Brasil e França.">
+
+<!-- Open Graph (Facebook, WhatsApp, LinkedIn) -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://scherlockhall.github.io/Scherlock-Hall/">
 <meta property="og:title" content="Scherlock Hall — Portfólio">
@@ -18,17 +19,20 @@
 <meta property="og:image" content="https://scherlockhall.github.io/Scherlock-Hall/cards/og-image.png">
 <meta property="og:locale" content="pt_BR">
 
+<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:url" content="https://scherlockhall.github.io/Scherlock-Hall/">
 <meta name="twitter:title" content="Scherlock Hall — Portfólio">
 <meta name="twitter:description" content="Desenvolvedor web e estudante de Ciências Econômicas (UnB). Projetos em JavaScript, análise de dados e visualização.">
 <meta name="twitter:image" content="https://scherlockhall.github.io/Scherlock-Hall/cards/og-image.png">
 
+<!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
 
+<!-- Structured Data (JSON-LD) -->
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -41,7 +45,7 @@
     "http://lattes.cnpq.br/8597239590066524",
     "https://www.instagram.com/scherlockhall04"
   ],
-  "jobTitle": "Web Developer & Data Analyst",
+  "jobTitle": "Desenvolvedor Web",
   "description": "Desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB).",
   "alumniOf": {
     "@type": "CollegeOrUniversity",
@@ -56,6 +60,10 @@
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Mono:wght@400;500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ... todo o CSS existente permanece aqui sem alteração ... */
+</style>
+</head>
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
@@ -215,6 +223,7 @@ footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;paddi
 </style>
 </head>
 <body>
+
 <nav id="navbar">
   <div class="nav-inner">
     <a href="#" class="nav-logo">Scherlock<span class="dot">.</span></a>
@@ -229,180 +238,6 @@ footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;paddi
           <button data-lang="fr" onclick="changeLang('fr')">FR</button>
         </div>
       </li>
-
-<header id="main-header">
-  <div class="header-content">
-    <span class="nome">Scherlock Hall</span>
-    <span class="descricao" data-pt="💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados." data-fr="💻 Développeur Web | 🎓 Étudiant en Sciences Économiques (UnB) | 📊 Étudiant en Science et Analyse des Données.">
-      💻 Programador | 🎓 Estudante de Ciências Econômicas (UnB) | 📊 Estudante de Ciência e Análise de Dados.
-    </span>
-  </div>
-  <div class="header-controls">
-    <div class="language-selector">
-      <button class="lang-btn active" data-lang="pt" onclick="changeLang('pt')">PT</button>
-      <button class="lang-btn" data-lang="fr" onclick="changeLang('fr')">FR</button>
-    </div>
-    <div class="contact-buttons">
-      <a href="#contato" class="contact-btn" data-pt="Contato" data-fr="Contact">Contato</a>
-      <a href="#projetos" class="contact-btn" data-pt="Projetos" data-fr="Projets">Projetos</a>
-    </div>
-  </div>
-</header>
-
-<div class="main-content">
-  <!-- Projetos -->
-  <section class="projetos" id="projetos">
-    <h2 data-pt="Projetos" data-fr="Projets">Projetos</h2>
-    
-    <h3 data-pt="📊 Análise de Dados" data-fr="📊 Analyse de Données">📊 Análise de Dados</h3>
-    <div class="projetos-container">
-      <div class="projeto-card">
-        <a href="vaccine-misinformation-brazil/index.html" target="_blank" data-pt="💉 Desinformação sobre Vacinação no Brasil" data-fr="💉 Désinformation sur la Vaccination au Brésil">💉 Desinformação sobre Vacinação no Brasil</a>
-        <p data-pt="Dashboard interativo analisando 69 meses de dados do Google Trends (2020-2025) sobre fake news de vacinas. Identifica padrões temporais, picos e redução de 88% nas buscas desde junho/2021." data-fr="Tableau de bord interactif analysant 69 mois de données Google Trends (2020-2025) sur les fake news de vaccins. Identifie les patterns temporels, pics et réduction de 88% des recherches depuis juin/2021.">Dashboard interativo analisando 69 meses de dados do Google Trends (2020-2025) sobre fake news de vacinas. Identifica padrões temporais, picos e redução de 88% nas buscas desde junho/2021.</p>
-      </div>
-
-      <div class="projeto-card">
-        <a href="infovac/index.html" target="_blank" data-pt="💉🇧🇷 Infovac — Analisando dados, combatendo desinformação e promovendo saúde" data-fr="💉🇧🇷 Infovac — Analyse des données, lutte contre la désinformation et promotion de la santé">💉🇧🇷 Infovac — Analisando dados, combatendo desinformação e promovendo saúde</a>
-        <p data-pt="Plataforma criada para analisar dados reais e públicos sobre vacinação no Brasil, combater fake news com checagens verificadas e apresentar conteúdo educacional. Inclui quiz interativo, vídeos informativos e visualizações de dados com fontes oficiais do governo brasileiro." data-fr="Plateforme conçue pour analyser des données publiques réelles sur la vaccination au Brésil, combattre les fake news grâce à des vérifications fiables et fournir du contenu éducatif. Comprend un quiz interactif, des vidéos explicatives et des visualisations basées sur des sources officielles du gouvernement brésilien.">Plataforma criada para analisar dados reais e públicos sobre vacinação no Brasil, combater fake news com checagens verificadas e apresentar conteúdo educacional. Inclui quiz interativo, vídeos informativos e visualizações de dados com fontes oficiais do governo brasileiro.</p>
-      </div>
-    </div>
-
-    <h3 data-pt="💻 Programação" data-fr="💻 Programmation">💻 Programação</h3>
-    <div class="projetos-container">
-      <div class="projeto-card">
-        <a href="./site_sorteio/index.html" target="_blank" data-pt="🎲 Sorteador Pro - Decisões justas em segundos" data-fr="🎲 Sorteador Pro - Décisions justes en quelques secondes">🎲 Sorteador Pro - Decisões justas em segundos</a>
-        <p data-pt="Aplicação interativa para sorteios e decisões em grupo. Permite sortear quem será o motorista, quem pagará a conta, entre outras ações. Interface moderna com efeitos visuais, animação de roleta e confetes para celebrar o resultado." data-fr="Application interactive pour les tirages au sort et les décisions de groupe. Permet de tirer au sort qui sera le conducteur, qui paiera l'addition, entre autres actions. Interface moderne avec effets visuels, animation de roulette et confettis pour célébrer le résultat.">Aplicação interativa para sorteios e decisões em grupo. Permite sortear quem será o motorista, quem pagará a conta, entre outras ações. Interface moderna com efeitos visuais, animação de roleta e confetes para celebrar o resultado.</p>
-      </div>
-      <div class="projeto-card">
-        <a href="./Jogo-Da-Velha/index.html" target="_blank" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable">🎮 Jogo da Velha Imbatível</a>
-        <p data-pt="Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível." data-fr="Implémentation d'un jeu de morpion avec l'algorithme minimax qui rend l'ordinateur invincible.">Implementação de um jogo da velha com algoritmo minimax que torna o computador invencível.</p>
-      </div>
-      <div class="projeto-card">
-        <a href="./Teste-Psicologico/index.html" target="_blank" data-pt="🧠 Autoavaliação Psicológica" data-fr="🧠 Auto-évaluation Psychologique">🧠 Autoavaliação Psicológica</a>
-        <p data-pt="Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica." data-fr="Faites une auto-évaluation rapide sur l'anxiété, la dépression et le stress, basée sur des échelles psychologiques adaptées à la recherche académique.">Faça uma autoavaliação rápida sobre ansiedade, depressão e estresse, baseada em escalas psicológicas adaptadas para pesquisa acadêmica.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Certificações -->
-  <div class="certificacoes">
-    <h2 data-pt="Certificações" data-fr="Certifications">Certificações</h2>
-    <div class="certificacoes-container">
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" class="cert-nome">Responsive Web Design</a>
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank">
-          <img src="Certificados/Responsive-Web-Design.png" alt="Responsive Web Design">
-        </a>
-        <p data-pt="Estudo de HTML5, CSS3, design responsivo, Flexbox e Grid para criação de layouts modernos e adaptáveis." data-fr="Étude de HTML5, CSS3, design responsive, Flexbox et Grid pour créer des mises en page modernes et adaptables.">Estudo de HTML5, CSS3, design responsivo, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" class="cert-nome">JavaScript Algorithms & DS</a>
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank">
-          <img src="Certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JavaScript Algorithms & DS">
-        </a>
-        <p data-pt="Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+." data-fr="Logique de programmation, algorithmes efficaces et structures de données avec ES6+.">Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" class="cert-nome">Front End Libraries</a>
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank">
-          <img src="Certificados/Front-End-Development-Libraries.png" alt="Front End Libraries">
-        </a>
-        <p data-pt="Estudo de React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente." data-fr="Étude de React, Redux et d'autres bibliothèques modernes pour un développement front-end efficace.">Estudo de React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" class="cert-nome">Data Visualization</a>
-        <a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank">
-          <img src="Certificados/Data-Visualization.png" alt="Data Visualization">
-        </a>
-        <p data-pt="Criar visualizações de dados eficazes com D3.js e outras ferramentas." data-fr="Créer des visualisations de données efficaces avec D3.js et d'autres outils.">Criar visualizações de dados eficazes com D3.js e outras ferramentas.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" class="cert-nome">Legacy Front End</a>
-        <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank">
-          <img src="Certificados/Legacy-Front-End.png" alt="Legacy Front End">
-        </a>
-        <p data-pt="Aprendizado prático de HTML e CSS, acessibilidade, Flexbox e Grid, criando projetos modernos e adaptáveis." data-fr="Apprentissage pratique de HTML et CSS, accessibilité, Flexbox et Grid, créant des projets modernes et adaptables.">Aprendizado prático de HTML e CSS, acessibilidade, Flexbox e Grid, criando projetos modernos e adaptáveis.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" class="cert-nome">Legacy JavaScript Algorithms and DS</a>
-        <a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank">
-          <img src="Certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JavaScript Algorithms and DS">
-        </a>
-        <p data-pt="Certificação em JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional." data-fr="Certification en JavaScript : fondamentaux, algorithmes, programmation orientée objet et fonctionnelle.">Certificação em JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.freecodecamp.org/portuguese/learn/data-analysis-with-python/" target="_blank" class="cert-nome" data-pt="Análise de Dados com Python" data-fr="Analyse de Données avec Python">Análise de Dados com Python</a>
-        <a href="https://www.freecodecamp.org/portuguese/learn/data-analysis-with-python/" target="_blank">
-          <img src="Certificados/Analise-De-Dados-Com-Python.png" alt="Análise de Dados com Python">
-        </a>
-        <p data-pt="Curso em Progresso no freeCodeCamp: Certificação em Análise de Dados com Python. Manipulação de dados, SQL e visualização com Pandas, NumPy e Matplotlib." data-fr="Cours en cours sur freeCodeCamp : Certification en Analyse de Données avec Python. Manipulation de données, SQL et visualisation avec Pandas, NumPy et Matplotlib.">Curso em Progresso no freeCodeCamp: Certificação em Análise de Dados com Python. Manipulação de dados, SQL e visualização com Pandas, NumPy e Matplotlib.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://www.coursera.org/professional-certificates/ibm-data-science/" target="_blank" class="cert-nome" data-pt="Ciência de Dados (IBM)" data-fr="Science des Données (IBM)">Ciência de Dados (IBM)</a>
-        <a href="https://www.coursera.org/professional-certificates/ibm-data-science/" target="_blank">
-          <img src="Certificados/Ciencia-De-Dados-Da-IBM.png" alt="Ciência de Dados (IBM)">
-        </a>
-        <p data-pt="Curso em progresso na Coursera: Fundamentos de ciência de dados, Python e machine learning." data-fr="Cours en cours sur Coursera : Fondamentaux de la science des données, Python et machine learning.">Curso em progresso na Coursera: Fundamentos de ciência de dados, Python e machine learning.</p>
-      </div>
-
-      <!-- Novos certificados do Google Data Analytics -->
-      <div class="cert">
-        <a href="https://coursera.org/share/c409f37f954044a7fc2a4062cb815d26" target="_blank" class="cert-nome" data-pt="Fundamentos: Dados, Dados, em Todo Lugar" data-fr="Fondements : Données, Données, Partout">Fundamentos: Dados, Dados, em Todo Lugar</a>
-        <a href="https://coursera.org/share/c409f37f954044a7fc2a4062cb815d26" target="_blank">
-          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP.jpeg" alt="Fundamentos: Dados, Dados, em Todo Lugar">
-        </a>
-        <p data-pt="Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico. Parte do programa de Análise de Dados do Google." data-fr="Introduction aux concepts fondamentaux de l'analyse de données, aux écosystèmes de données et à la pensée analytique. Fait partie du programme Google d'analyse de données.">Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico. Parte do programa de Análise de Dados do Google.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://coursera.org/share/05ec13c96128591ea64ac9fcac26a44c" target="_blank" class="cert-nome" data-pt="Pensar Analiticamente" data-fr="Penser de Façon Analytique">Pensar Analiticamente</a>
-        <a href="https://coursera.org/share/05ec13c96128591ea64ac9fcac26a44c" target="_blank">
-          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP.jpeg" alt="Pensar Analiticamente">
-        </a>
-        <p data-pt="Desenvolvimento de habilidades de raciocínio estruturado, formulação de perguntas orientadas por dados e comunicação de insights. Parte do programa do Google." data-fr="Développement de compétences en raisonnement structuré, formulation de questions orientées par les données et communication d'insights. Fait partie du programme Google.">Desenvolvimento de habilidades de raciocínio estruturado, formulação de perguntas orientadas por dados e comunicação de insights. Parte do programa do Google.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://coursera.org/share/d01f255f4a08c4538e3fad62be37ccb7" target="_blank" class="cert-nome" data-pt="Preparação de Dados para Exploração" data-fr="Préparation des Données pour l'Exploration">Preparação de Dados para Exploração</a>
-        <a href="https://coursera.org/share/d01f255f4a08c4538e3fad62be37ccb7" target="_blank">
-          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP.jpeg" alt="Preparação de Dados para Exploração">
-        </a>
-        <p data-pt="Aprenda a coletar, armazenar e gerenciar dados de forma ética e eficiente. Inclui introdução ao SQL e boas práticas de governança de dados." data-fr="Apprenez à collecter, stocker et gérer les données de façon éthique et efficace. Inclut une introduction à SQL et aux bonnes pratiques de gouvernance des données.">Aprenda a coletar, armazenar e gerenciar dados de forma ética e eficiente. Inclui introdução ao SQL e boas práticas de governança de dados.</p>
-      </div>
-
-      <div class="cert">
-        <a href="https://coursera.org/share/7afa096b9e6b893163894c040ea49b9a" target="_blank" class="cert-nome" data-pt="Processo de Análise de Dados do Google" data-fr="Processus d'Analyse de Données de Google">Processo de Análise de Dados do Google</a>
-        <a href="https://coursera.org/share/7afa096b9e6b893163894c040ea49b9a" target="_blank">
-          <img src="https://s3.amazonaws.com/coursera_assets/meta_images/generated/CERTIFICATE_LANDING_PAGE/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP/CERTIFICATE_LANDING_PAGE~4B6ACAP138RP.jpeg" alt="Processo de Análise de Dados do Google">
-        </a>
-        <p data-pt="Domine as etapas do processo de análise de dados: perguntar, preparar, processar, analisar, compartilhar e agir — com foco em decisões orientadas por dados." data-fr="Maîtrisez les étapes du processus d'analyse de données : poser des questions, préparer, traiter, analyser, partager et agir — avec un accent sur la prise de décision fondée sur les données.">Domine as etapas do processo de análise de dados: perguntar, preparar, processar, analisar, compartilhar e agir — com foco em decisões orientadas por dados.</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- Sobre mim -->
-  <section class="sobre">
-    <h2 data-pt="Sobre mim" data-fr="À propos de moi">Sobre mim</h2>
-    <p data-pt="Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp." data-fr="Développeur Web, étudiant en Sciences Économiques à l'Université de Brasília (UnB). Je complète ma formation académique avec des cours spécialisés en Science des Données (IBM) et Analyse des Données (Google) via Coursera, ainsi que la certification en Analyse des Données avec Python par freeCodeCamp.">Programador, estudante de Ciências Econômicas na Universidade de Brasília (UnB). Complementando minha formação acadêmica com cursos especializados em Ciência de Dados (IBM) e Análise de Dados (Google) pela Coursera, além da certificação em Análise de Dados com Python pelo freeCodeCamp.</p>
-
-    <p data-pt="Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais, econômicos e políticas públicas." data-fr="Mon parcours combinera la maîtrise actuelle du développement web avec l'approfondissement en Économie et Science des Données, construisant un ensemble de connaissances et de compétences pour agir dans des recherches interdisciplinares, des défis sociaux, économiques et des politiques publiques.">Minha trajetória combinará o domínio atual da programação com o aprofundamento em Economia e Ciência de Dados, construindo um conjunto de conhecimentos e habilidades para atuar em pesquisas interdisciplinares, desafios sociais, econômicos e políticas públicas.</p>
-
-    <p data-pt="Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar." data-fr="J'ai des intérêts tournés vers les Sciences de l'Information, Comportementales et Sociales, que j'étudierai de manière complémentaire, afin de relever les défis sociaux les plus urgents à partir d'une perspective interdisciplinaire.">Tenho interesses voltados para as Ciências da Informação, Comportamentais e Sociais, que estudarei de forma complementar, a fim de enfrentar os desafios sociais mais urgentes a partir de uma perspectiva interdisciplinar.</p>
-
-    <p data-pt="Desejo aplicar essa combinação de conhecimentos para:" data-fr="Je souhaite appliquer cette combinaison de connaissances pour :">Desejo aplicar essa combinação de conhecimentos para:</p>
-    <ul>
-      <li data-pt="Analisar problemas sociais por meio de abordagens quantitativas rigorosas." data-fr="Analyser les problèmes sociaux à travers des approches quantitatives rigoureuses.">Analisar problemas sociais por meio de abordagens quantitativas rigorosas.</li>
-      <li data-pt="Desenvolver soluções baseadas em dados sem perder a perspectiva humanista." data-fr="Développer des solutions basées sur les données sans perdre la perspective humaniste.">Desenvolver soluções baseadas em dados sem perder a perspectiva humanista.</li>
-      <li data-pt="Traduzir conceitos acadêmicos e econômicos em aplicações práticas e acessíveis." data-fr="Traduire les concepts académiques et économiques en applications pratiques et accessibles.">Traduzir conceitos acadêmicos e econômicos em aplicações práticas e acessíveis.</li>
-      <li data-pt="Conectar teorias, análise de dados e demandas sociais reais." data-fr="Connecter les théories, l'analyse de données et les demandes sociales réelles.">Conectar teorias, análise de dados e demandas sociais reais.</li>
->>>>>>> f1499d122b9b0387d1c657a0ded09b8aaf44244f
     </ul>
     <div class="hamburger" id="hamburger" onclick="toggleMenu()">
       <span></span><span></span><span></span>
