@@ -1,0 +1,1651 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="BioReviva - Projeto de Restauração de Ecossistemas em Grande Escala">
+    <title>BioReviva | Restauração de Ecossistemas</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-green: #1e4d0f;
+            --secondary-green: #3a6b22;
+            --accent-gold: #c8a45a;
+            --accent-warm: #d4845a;
+            --light-bg: rgba(248, 245, 238, 0.88);
+            --white: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #555;
+            --border-color: rgba(200, 195, 180, 0.5);
+            --glass-white: rgba(255, 255, 255, 0.72);
+            --glass-light: rgba(248, 245, 238, 0.78);
+            --glass-green: rgba(30, 77, 15, 0.82);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            color: var(--text-dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+            background: #f0ede4;
+        }
+
+        /* === LANGUAGE SYSTEM === */
+        [data-pt], [data-en] { display: none; }
+        body[data-lang="pt"] [data-pt] { display: revert; }
+        body[data-lang="en"] [data-en] { display: revert; }
+        /* span and inline elements need inline */
+        span[data-pt], span[data-en],
+        a[data-pt], a[data-en],
+        label[data-pt], label[data-en],
+        strong[data-pt], strong[data-en],
+        button[data-pt], button[data-en] {
+            display: none;
+        }
+        body[data-lang="pt"] span[data-pt],
+        body[data-lang="pt"] a[data-pt],
+        body[data-lang="pt"] label[data-pt],
+        body[data-lang="pt"] strong[data-pt],
+        body[data-lang="pt"] button[data-pt] { display: inline; }
+        body[data-lang="en"] span[data-en],
+        body[data-lang="en"] a[data-en],
+        body[data-lang="en"] label[data-en],
+        body[data-lang="en"] strong[data-en],
+        body[data-lang="en"] button[data-en] { display: inline; }
+
+        /* === NAVBAR === */
+        .navbar {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255,255,255,0.82);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(200,164,90,0.2);
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255,255,255,0.92);
+            box-shadow: 0 4px 30px rgba(0,0,0,0.08);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            max-width: 1300px;
+            margin: 0 auto;
+            gap: 1rem;
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.7rem;
+            font-weight: 900;
+            color: var(--primary-green);
+            text-decoration: none;
+            letter-spacing: -0.5px;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+
+        .logo span {
+            color: var(--accent-gold);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: flex-end;
+        }
+
+        .nav-links li a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.3px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links li a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--accent-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links li a:hover { color: var(--secondary-green); }
+        .nav-links li a:hover::after { width: 100%; }
+
+        .lang-switcher {
+            display: flex;
+            align-items: center;
+            gap: 0.2rem;
+            background: rgba(30,77,15,0.08);
+            border-radius: 20px;
+            padding: 0.25rem 0.5rem;
+            flex-shrink: 0;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            color: #888;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            padding: 0.25rem 0.4rem;
+            border-radius: 12px;
+            transition: all 0.2s ease;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn.active {
+            background: var(--primary-green);
+            color: white;
+        }
+
+        .lang-sep { color: #ccc; font-size: 0.75rem; }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            padding: 5px;
+            flex-shrink: 0;
+        }
+
+        .menu-toggle span {
+            width: 24px;
+            height: 2px;
+            background: var(--primary-green);
+            transition: all 0.3s ease;
+            display: block;
+        }
+
+        .menu-toggle.open span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .menu-toggle.open span:nth-child(2) { opacity: 0; }
+        .menu-toggle.open span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background-image: url('imagens/hero-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(
+                to bottom,
+                rgba(10, 35, 5, 0.38) 0%,
+                rgba(20, 55, 10, 0.52) 60%,
+                rgba(10, 30, 5, 0.65) 100%
+            );
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 860px;
+            padding: 2rem 1.5rem;
+            animation: fadeUp 1.2s ease-out;
+        }
+
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-eyebrow {
+            display: inline-block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-bottom: 1.2rem;
+            padding: 0.4rem 1.2rem;
+            border: 1px solid rgba(200, 164, 90, 0.5);
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+            background: rgba(200, 164, 90, 0.1);
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.4rem, 6vw, 5rem);
+            font-weight: 900;
+            color: var(--white);
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 20px rgba(0,0,0,0.4);
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-gold);
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            color: rgba(255,255,255,0.88);
+            margin-bottom: 2.5rem;
+            font-weight: 300;
+            line-height: 1.8;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 0.9rem 2rem;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95rem;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            display: inline-block;
+            letter-spacing: 0.3px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background: var(--primary-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30,77,15,0.35);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.15);
+            color: var(--white);
+            border: 1.5px solid rgba(255,255,255,0.6);
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255,255,255,0.92);
+            color: var(--primary-green);
+            transform: translateY(-2px);
+        }
+
+        /* === SECTIONS === */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; }
+
+        section { padding: 7rem 0; position: relative; }
+
+        .section-header { text-align: center; margin-bottom: 4.5rem; }
+
+        .section-tag {
+            font-size: 0.75rem;
+            color: var(--accent-gold);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            color: var(--primary-green);
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            line-height: 1.2;
+        }
+
+        .section-description {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 620px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* === ABOUT === */
+        .about {
+            background-image: url('imagens/about-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .about::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.78);
+        }
+
+        .about .container { position: relative; }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .about-card {
+            padding: 2.2rem;
+            background: var(--glass-white);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.7);
+            border-left: 4px solid var(--accent-gold);
+            box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            transform: translateY(24px);
+        }
+
+        .about-card.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .about-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.12);
+        }
+
+        .about-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .about-card p { color: #555; line-height: 1.8; }
+
+        /* === OBJECTIVES === */
+        .objectives {
+            background-image: url('imagens/objectives-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .objectives::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(248, 245, 238, 0.82);
+        }
+
+        .objectives .container { position: relative; }
+
+        .objectives-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 2rem;
+        }
+
+        .objective-item {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: var(--glass-white);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.65);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: scale(0.96);
+        }
+
+        .objective-item.visible {
+            opacity: 1;
+            transform: scale(1);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+
+        .objective-item:hover {
+            transform: translateY(-8px);
+            border-color: rgba(200,164,90,0.5);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+
+        .objective-icon {
+            width: 75px;
+            height: 75px;
+            margin: 0 auto 1.5rem;
+            background: linear-gradient(135deg, var(--primary-green), var(--secondary-green));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.9rem;
+        }
+
+        .objective-item h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.4rem;
+            color: var(--primary-green);
+            margin-bottom: 0.8rem;
+        }
+
+        .objective-item p { color: #555; line-height: 1.7; font-size: 0.95rem; }
+
+        /* === IMPACT === */
+        .impact {
+            background-image: url('imagens/impact-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .impact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(20, 58, 10, 0.78);
+        }
+
+        .impact .container { position: relative; }
+        .impact .section-title { color: white; }
+        .impact .section-description { color: rgba(255,255,255,0.85); }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 2.5rem;
+            margin-top: 3.5rem;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 2rem 1rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(12px);
+            border-radius: 16px;
+            border: 1px solid rgba(255,255,255,0.15);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .stat-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--accent-gold);
+            display: block;
+            margin-bottom: 0.5rem;
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.88);
+            font-weight: 300;
+        }
+
+        /* === SAFEGUARDS === */
+        .safeguards {
+            background-image: url('imagens/safeguards-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .safeguards::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(248, 245, 238, 0.82);
+        }
+
+        .safeguards .container { position: relative; }
+
+        .safeguards-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+
+        .safeguard-badge {
+            padding: 2rem 1.5rem;
+            background: var(--glass-white);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-radius: 14px;
+            border: 1px solid rgba(255,255,255,0.65);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+            opacity: 0;
+        }
+
+        .safeguard-badge.visible {
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        .safeguard-badge:hover {
+            transform: translateY(-5px);
+            border-color: rgba(58, 107, 34, 0.4);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+        }
+
+        .safeguard-badge h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            margin-bottom: 0.7rem;
+        }
+
+        .safeguard-badge p { color: var(--text-light); font-size: 0.93rem; line-height: 1.6; }
+
+        /* === PARTNERS === */
+        .partners {
+            background: url('imagens/partners-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .partners::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255,255,255,0.82);
+        }
+
+        .partners .container { position: relative; }
+
+        .partners-logos {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 3.5rem;
+            opacity: 0;
+        }
+
+        .partners-logos.visible {
+            opacity: 1;
+            transition: opacity 0.8s ease;
+        }
+
+        .partner-logo {
+            padding: 1.2rem 2rem;
+            min-width: 160px;
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            color: var(--primary-green);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(200,195,180,0.4);
+        }
+
+        .partner-logo:hover {
+            transform: scale(1.05);
+            border-color: var(--accent-gold);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+        }
+
+        /* === CONTACT === */
+        .contact {
+            background-image: url('imagens/contact-bg.jpg');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .contact::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(248,245,238,0.85);
+        }
+
+        .contact .container { position: relative; }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .contact-info h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--primary-green);
+            margin-bottom: 1rem;
+        }
+
+        .contact-info > p { color: var(--text-light); margin-bottom: 2rem; line-height: 1.8; }
+
+        .contact-details { display: flex; flex-direction: column; gap: 1rem; }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem;
+            background: var(--glass-white);
+            backdrop-filter: blur(12px);
+            border-radius: 10px;
+            border-left: 3px solid var(--accent-gold);
+        }
+
+        .contact-icon {
+            width: 46px;
+            height: 46px;
+            background: var(--primary-green);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+        }
+
+        .contact-item div { font-size: 0.9rem; color: var(--text-dark); }
+        .contact-item strong { display: block; margin-bottom: 0.2rem; }
+
+        .mrq-form {
+            background: var(--glass-white);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 16px 50px rgba(0,0,0,0.08);
+            border: 1px solid rgba(255,255,255,0.75);
+        }
+
+        .mrq-form h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            color: var(--primary-green);
+            margin-bottom: 0.7rem;
+        }
+
+        .mrq-form > p { color: var(--text-light); margin-bottom: 1.8rem; line-height: 1.7; font-size: 0.95rem; }
+
+        .form-group { margin-bottom: 1.2rem; }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.4rem;
+            font-weight: 600;
+            font-size: 0.88rem;
+            color: var(--text-dark);
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            border: 1.5px solid rgba(200,195,180,0.6);
+            border-radius: 10px;
+            font-family: 'DM Sans', sans-serif;
+            font-size: 0.95rem;
+            transition: border-color 0.3s ease, background 0.3s ease;
+            background: rgba(255,255,255,0.7);
+            color: var(--text-dark);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--secondary-green);
+            background: rgba(255,255,255,0.95);
+        }
+
+        .form-group textarea { resize: vertical; min-height: 110px; }
+
+        .form-checkbox {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.7rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .form-checkbox input[type="checkbox"] {
+            width: 17px;
+            height: 17px;
+            margin-top: 3px;
+            cursor: pointer;
+            accent-color: var(--primary-green);
+            flex-shrink: 0;
+        }
+
+        .form-checkbox label { font-size: 0.88rem; color: var(--text-light); cursor: pointer; line-height: 1.5; }
+
+        .submit-btn {
+            width: 100%;
+            padding: 1.1rem;
+            background: var(--primary-green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            letter-spacing: 0.3px;
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        .submit-btn:hover {
+            background: var(--secondary-green);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(30,77,15,0.3);
+        }
+
+        /* === FOOTER === */
+        .footer {
+            background-image: url('imagens/footer-bg.jpg');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(14, 40, 7, 0.90);
+        }
+
+        .footer .container { position: relative; }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-section h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 1.2rem;
+            color: var(--accent-gold);
+        }
+
+        .footer-section p,
+        .footer-section a {
+            color: rgba(255,255,255,0.72);
+            line-height: 1.9;
+            text-decoration: none;
+            display: block;
+            font-size: 0.93rem;
+            transition: color 0.2s;
+        }
+
+        .footer-section a:hover { color: white; }
+
+        .social-links { display: flex; gap: 0.8rem; margin-top: 1.2rem; }
+
+        .social-link {
+            width: 38px;
+            height: 38px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .social-link:hover { background: var(--accent-gold); transform: translateY(-3px); }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255,255,255,0.12);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255,255,255,0.45);
+            font-size: 0.85rem;
+            line-height: 2;
+        }
+
+        /* Scherlock Hall Signature */
+        .scherlock-signature {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid rgba(255,255,255,0.08);
+        }
+
+        .scherlock-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: rgba(255,255,255,0.35);
+            letter-spacing: 1px;
+        }
+
+        .scherlock-brand {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--accent-gold);
+            opacity: 0.8;
+            letter-spacing: 0.5px;
+        }
+
+        .scherlock-brand span { font-style: italic; opacity: 0.9; }
+
+        /* === SCROLL TOP === */
+        .scroll-top {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            width: 46px;
+            height: 46px;
+            background: var(--accent-gold);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+
+        .scroll-top.visible { display: flex; }
+        .scroll-top:hover { background: var(--primary-green); transform: translateY(-4px); }
+
+        /* === RESPONSIVE === */
+        @media (max-width: 900px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: min(75vw, 320px);
+                height: 100vh;
+                background: rgba(255,255,255,0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 2rem;
+                transition: right 0.3s ease;
+                box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+                z-index: 999;
+            }
+
+            .nav-links.open { right: 0; }
+            .menu-toggle { display: flex; }
+
+            .contact-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+
+            section { padding: 5rem 0; }
+
+            .about, .objectives, .impact, .safeguards, .partners, .contact {
+                background-attachment: scroll;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .nav-container { padding: 0.9rem 1.2rem; }
+            .logo { font-size: 1.35rem; }
+
+            .hero-content { padding: 2rem 1.2rem; }
+
+            .cta-buttons { flex-direction: column; align-items: stretch; }
+            .btn { text-align: center; }
+
+            .stats-grid { grid-template-columns: 1fr 1fr; gap: 1.2rem; }
+
+            .about-grid, .objectives-grid, .safeguards-list {
+                grid-template-columns: 1fr;
+            }
+
+            .mrq-form { padding: 1.8rem 1.3rem; }
+
+            .about-card, .objective-item, .safeguard-badge {
+                padding: 1.8rem 1.5rem;
+            }
+
+            .partners-logos { gap: 1rem; }
+            .partner-logo { min-width: 130px; padding: 1rem 1.5rem; font-size: 1rem; }
+
+            .section-title { font-size: 1.8rem; }
+            .section-header { margin-bottom: 3rem; }
+        }
+
+        @media (max-width: 400px) {
+            .stats-grid { grid-template-columns: 1fr; }
+            .stat-number { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body data-lang="pt">
+
+    <!-- NAVBAR -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">Bio<span>Reviva</span></a>
+
+            <ul class="nav-links" id="navLinks">
+                <li>
+                    <a href="#about" data-pt>Sobre</a>
+                    <a href="#about" data-en>About</a>
+                </li>
+                <li>
+                    <a href="#objectives" data-pt>Objetivos</a>
+                    <a href="#objectives" data-en>Objectives</a>
+                </li>
+                <li>
+                    <a href="#impact" data-pt>Impacto</a>
+                    <a href="#impact" data-en>Impact</a>
+                </li>
+                <li>
+                    <a href="#safeguards" data-pt>Salvaguardas</a>
+                    <a href="#safeguards" data-en>Safeguards</a>
+                </li>
+                <li>
+                    <a href="#contact" data-pt>Contato</a>
+                    <a href="#contact" data-en>Contact</a>
+                </li>
+                <li>
+                    <div class="lang-switcher">
+                        <button class="lang-btn active" id="btnPt" onclick="setLang('pt')">PT</button>
+                        <span class="lang-sep">|</span>
+                        <button class="lang-btn" id="btnEn" onclick="setLang('en')">EN</button>
+                    </div>
+                </li>
+            </ul>
+
+            <div class="menu-toggle" id="menuToggle" aria-label="Abrir menu">
+                <span></span><span></span><span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-eyebrow">
+                <span data-pt>Projeto de Restauração Ecossistêmica</span>
+                <span data-en>Ecosystem Restoration Project</span>
+            </div>
+
+            <h1 class="hero-title">
+                <span data-pt>Restauração em <em>grande escala</em> para um Brasil sustentável</span>
+                <span data-en>Large-scale restoration for a <em>sustainable</em> future</span>
+            </h1>
+
+            <p class="hero-subtitle">
+                <span data-pt>Uma iniciativa estruturante para viabilizar a restauração de ecossistemas, fortalecendo políticas, conectando recursos e mobilizando comunidades.</span>
+                <span data-en>A structural initiative to enable ecosystem restoration, strengthening policies, connecting resources, and mobilizing communities.</span>
+            </p>
+
+            <div class="cta-buttons">
+                <a href="#about" class="btn btn-primary">
+                    <span data-pt>Conheça o projeto</span>
+                    <span data-en>Learn About the Project</span>
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <span data-pt>Mecanismo de reclamações</span>
+                    <span data-en>Grievance Mechanism</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="about" id="about">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Sobre o projeto</span>
+                    <span data-en>About the Project</span>
+                </span>
+                <h2 class="section-title">BioReviva</h2>
+                <p class="section-description">
+                    <span data-pt>O projeto BioReviva representa uma iniciativa estruturante para viabilizar a restauração em grande escala, integrando políticas públicas, ciência e participação comunitária.</span>
+                    <span data-en>The BioReviva project represents a structural initiative to enable large-scale restoration, integrating public policies, science, and community participation.</span>
+                </p>
+            </div>
+            <div class="about-grid">
+                <div class="about-card">
+                    <h3>
+                        <span data-pt>Nossa missão</span>
+                        <span data-en>Our Mission</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Atuar de forma integrada à implementação das políticas nacionais e subnacionais de recuperação da vegetação nativa, promovendo um modelo de desenvolvimento sustentável e inclusivo.</span>
+                        <span data-en>Act in an integrated manner with the implementation of national and subnational policies for native vegetation recovery, promoting a sustainable and inclusive development model.</span>
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>
+                        <span data-pt>Base científica</span>
+                        <span data-en>Scientific Basis</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Soluções inovadoras de baixo carbono, baseadas em rigor científico e parcerias estratégicas para uma sociedade mais equitativa e resiliente às mudanças climáticas.</span>
+                        <span data-en>Innovative low-carbon solutions based on scientific rigor and strategic partnerships for a more equitable society, resilient to climate change.</span>
+                    </p>
+                </div>
+                <div class="about-card">
+                    <h3>
+                        <span data-pt>Abordagem integrada</span>
+                        <span data-en>Integrated Approach</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Fortalecimento institucional, mobilização de comunidades de prática e conexão de fluxos financeiros para acelerar a restauração de ecossistemas em todos os biomas.</span>
+                        <span data-en>Institutional strengthening, mobilization of communities of practice, and connection of financial flows to accelerate ecosystem restoration across all biomes.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- OBJECTIVES -->
+    <section class="objectives" id="objectives">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Nossos pilares</span>
+                    <span data-en>Our Pillars</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-pt>Objetivos estratégicos</span>
+                    <span data-en>Strategic Objectives</span>
+                </h2>
+                <p class="section-description">
+                    <span data-pt>Três pilares fundamentais que estruturam nossa atuação para viabilizar a restauração em grande escala.</span>
+                    <span data-en>Three fundamental pillars that structure our actions to enable large-scale restoration.</span>
+                </p>
+            </div>
+            <div class="objectives-grid">
+                <div class="objective-item">
+                    <div class="objective-icon">🏛️</div>
+                    <h3>
+                        <span data-pt>Fortalecimento institucional</span>
+                        <span data-en>Institutional Strengthening</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Capacitação de instituições públicas e privadas para implementação efetiva de políticas de restauração e recuperação da vegetação nativa.</span>
+                        <span data-en>Capacity building of public and private institutions for the effective implementation of restoration and native vegetation recovery policies.</span>
+                    </p>
+                </div>
+                <div class="objective-item">
+                    <div class="objective-icon">🤝</div>
+                    <h3>
+                        <span data-pt>Comunidade de prática</span>
+                        <span data-en>Community of Practice</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Mobilização e articulação de atores diversos para compartilhar conhecimento, experiências e boas práticas em restauração de ecossistemas.</span>
+                        <span data-en>Mobilization and articulation of diverse actors to share knowledge, experiences, and best practices in ecosystem restoration.</span>
+                    </p>
+                </div>
+                <div class="objective-item">
+                    <div class="objective-icon">💰</div>
+                    <h3>
+                        <span data-pt>Conexão financeira</span>
+                        <span data-en>Financial Connection</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Articulação de fluxos financeiros e mecanismos de financiamento para viabilizar projetos de restauração em larga escala nos biomas brasileiros.</span>
+                        <span data-en>Articulation of financial flows and financing mechanisms to enable large-scale restoration projects across Brazilian biomes.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- IMPACT -->
+    <section class="impact" id="impact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Nosso impacto</span>
+                    <span data-en>Our Impact</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-pt>Transformando o Brasil</span>
+                    <span data-en>Transforming Brazil</span>
+                </h2>
+                <p class="section-description">
+                    <span data-pt>Resultados que demonstram o alcance e a efetividade do projeto na restauração de ecossistemas.</span>
+                    <span data-en>Results that demonstrate the reach and effectiveness of the project in ecosystem restoration.</span>
+                </p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <span class="stat-number">150+</span>
+                    <span class="stat-label">
+                        <span data-pt>Instituições parceiras</span>
+                        <span data-en>Partner Institutions</span>
+                    </span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">6</span>
+                    <span class="stat-label">
+                        <span data-pt>Biomas brasileiros</span>
+                        <span data-en>Brazilian Biomes</span>
+                    </span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">1M+</span>
+                    <span class="stat-label">
+                        <span data-pt>Hectares em restauração</span>
+                        <span data-en>Hectares Under Restoration</span>
+                    </span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">
+                        <span data-pt>Profissionais capacitados</span>
+                        <span data-en>Trained Professionals</span>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SAFEGUARDS -->
+    <section class="safeguards" id="safeguards">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Compromisso e responsabilidade</span>
+                    <span data-en>Commitment and Responsibility</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-pt>Salvaguardas socioambientais</span>
+                    <span data-en>Social and Environmental Safeguards</span>
+                </h2>
+                <p class="section-description">
+                    <span data-pt>O BioReviva adota diretrizes transversais de proteção ambiental e social, assegurando transparência e participação de todas as partes interessadas.</span>
+                    <span data-en>BioReviva adopts cross-cutting environmental and social protection guidelines, ensuring transparency and participation of all stakeholders.</span>
+                </p>
+            </div>
+            <div class="safeguards-list">
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>🌍 Proteção ambiental</span>
+                        <span data-en>🌍 Environmental Protection</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Mitigação de impactos negativos e proteção dos ecossistemas e biodiversidade.</span>
+                        <span data-en>Mitigation of negative impacts and protection of ecosystems and biodiversity.</span>
+                    </p>
+                </div>
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>👥 Engajamento social</span>
+                        <span data-en>👥 Social Engagement</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Participação ampla de partes interessadas em todas as fases do projeto.</span>
+                        <span data-en>Broad participation of stakeholders in all phases of the project.</span>
+                    </p>
+                </div>
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>⚖️ Igualdade de gênero</span>
+                        <span data-en>⚖️ Gender Equality</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Promoção da equidade de gênero e empoderamento de mulheres e grupos vulneráveis.</span>
+                        <span data-en>Promotion of gender equity and empowerment of women and vulnerable groups.</span>
+                    </p>
+                </div>
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>🏘️ Povos tradicionais</span>
+                        <span data-en>🏘️ Traditional Peoples</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Respeito aos direitos de povos indígenas e comunidades tradicionais.</span>
+                        <span data-en>Respect for the rights of indigenous peoples and traditional communities.</span>
+                    </p>
+                </div>
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>📢 Transparência</span>
+                        <span data-en>📢 Transparency</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Comunicação aberta e acesso à informação sobre todas as atividades do projeto.</span>
+                        <span data-en>Open communication and access to information about all project activities.</span>
+                    </p>
+                </div>
+                <div class="safeguard-badge">
+                    <h4>
+                        <span data-pt>🔒 Proteção de dados</span>
+                        <span data-en>🔒 Data Protection</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Conformidade com a LGPD e proteção de dados pessoais e sensíveis dos participantes.</span>
+                        <span data-en>Compliance with LGPD and protection of personal and sensitive data of participants.</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PARTNERS -->
+    <section class="partners">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Colaboração</span>
+                    <span data-en>Collaboration</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-pt>Parceiros estratégicos</span>
+                    <span data-en>Strategic Partners</span>
+                </h2>
+                <p class="section-description">
+                    <span data-pt>Trabalhamos em conjunto com organizações comprometidas com a restauração e conservação dos ecossistemas.</span>
+                    <span data-en>We work together with organizations committed to the restoration and conservation of ecosystems.</span>
+                </p>
+            </div>
+            <div class="partners-logos">
+                <div class="partner-logo">Instituto Verde</div>
+                <div class="partner-logo">EcoFundo</div>
+                <div class="partner-logo">
+                    <span data-pt>Gov. Federal</span>
+                    <span data-en>Federal Gov.</span>
+                </div>
+                <div class="partner-logo">
+                    <span data-pt>Ministério</span>
+                    <span data-en>Ministry</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">
+                    <span data-pt>Fale conosco</span>
+                    <span data-en>Contact Us</span>
+                </span>
+                <h2 class="section-title">
+                    <span data-pt>Contato & Mecanismo de Reclamações</span>
+                    <span data-en>Contact & Grievance Mechanism</span>
+                </h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <h3>
+                        <span data-pt>Entre em contato</span>
+                        <span data-en>Get in Touch</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Estamos abertos ao diálogo com todas as partes interessadas. Se você tem dúvidas, sugestões ou deseja saber mais sobre o projeto, entre em contato.</span>
+                        <span data-en>We are open to dialogue with all stakeholders. If you have questions, suggestions, or want to know more about the project, please reach out.</span>
+                    </p>
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <div class="contact-icon">📧</div>
+                            <div>
+                                <strong>E-mail</strong>
+                                contato@bioreviva.example.com
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📞</div>
+                            <div>
+                                <strong>
+                                    <span data-pt>Telefone</span>
+                                    <span data-en>Phone</span>
+                                </strong>
+                                +55 (11) 9000-0000
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <div class="contact-icon">📍</div>
+                            <div>
+                                <strong>
+                                    <span data-pt>Endereço</span>
+                                    <span data-en>Address</span>
+                                </strong>
+                                São Paulo, SP — Brasil
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mrq-form">
+                    <h3>
+                        <span data-pt>Mecanismo de Reclamações (MRQ)</span>
+                        <span data-en>Grievance Mechanism (GCM)</span>
+                    </h3>
+                    <p>
+                        <span data-pt>Canal destinado ao recebimento de reclamações, queixas e denúncias, garantindo transparência e participação social.</span>
+                        <span data-en>Channel for receiving complaints, grievances, and reports, ensuring transparency and social participation.</span>
+                    </p>
+
+                    <form id="mrqForm" novalidate>
+                        <div class="form-group">
+                            <label>
+                                <span data-pt>Tipo de submissão</span>
+                                <span data-en>Submission Type</span>
+                            </label>
+                            <select name="submissionType" required>
+                                <option value="">
+                                    <span data-pt>Selecione...</span>
+                                    <span data-en>Select...</span>
+                                </option>
+                                <option value="reclamacao" data-pt>Reclamação</option>
+                                <option value="complaint" data-en>Complaint</option>
+                                <option value="queixa" data-pt>Queixa</option>
+                                <option value="grievance" data-en>Grievance</option>
+                                <option value="denuncia" data-pt>Denúncia</option>
+                                <option value="report" data-en>Report</option>
+                                <option value="sugestao" data-pt>Sugestão</option>
+                                <option value="suggestion" data-en>Suggestion</option>
+                            </select>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="anonymous" name="anonymous">
+                            <label for="anonymous">
+                                <span data-pt>Desejo enviar anonimamente</span>
+                                <span data-en>I wish to submit anonymously</span>
+                            </label>
+                        </div>
+
+                        <div id="identifiedFields">
+                            <div class="form-group">
+                                <label>
+                                    <span data-pt>Nome (opcional)</span>
+                                    <span data-en>Name (optional)</span>
+                                </label>
+                                <input type="text" name="name">
+                            </div>
+                            <div class="form-group">
+                                <label>E-mail (opcional / optional)</label>
+                                <input type="email" name="email">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>
+                                <span data-pt>Mensagem *</span>
+                                <span data-en>Message *</span>
+                            </label>
+                            <textarea name="message" required></textarea>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="confidential" name="confidential">
+                            <label for="confidential">
+                                <span data-pt>Solicito tratamento confidencial desta submissão</span>
+                                <span data-en>I request confidential treatment of this submission</span>
+                            </label>
+                        </div>
+
+                        <div class="form-checkbox">
+                            <input type="checkbox" id="lgpd" name="lgpd" required>
+                            <label for="lgpd">
+                                <span data-pt>Declaro estar ciente sobre o tratamento de dados pessoais conforme a LGPD *</span>
+                                <span data-en>I declare awareness of personal data processing in accordance with LGPD *</span>
+                            </label>
+                        </div>
+
+                        <button type="submit" class="submit-btn">
+                            <span data-pt>Enviar submissão</span>
+                            <span data-en>Submit</span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h4>BioReviva</h4>
+                    <p>
+                        <span data-pt>Projeto fictício desenvolvido como portfólio, inspirado em iniciativas reais de restauração ecossistêmica no Brasil.</span>
+                        <span data-en>Fictional project developed as a portfolio piece, inspired by real ecosystem restoration initiatives in Brazil.</span>
+                    </p>
+                    <div class="social-links">
+                        <a href="#" class="social-link">📘</a>
+                        <a href="#" class="social-link">🐦</a>
+                        <a href="#" class="social-link">📸</a>
+                        <a href="#" class="social-link">💼</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4>
+                        <span data-pt>Links úteis</span>
+                        <span data-en>Useful Links</span>
+                    </h4>
+                    <a href="#about">
+                        <span data-pt>Sobre o projeto</span>
+                        <span data-en>About the Project</span>
+                    </a>
+                    <a href="#objectives">
+                        <span data-pt>Objetivos</span>
+                        <span data-en>Objectives</span>
+                    </a>
+                    <a href="#impact">
+                        <span data-pt>Impacto</span>
+                        <span data-en>Impact</span>
+                    </a>
+                    <a href="#safeguards">
+                        <span data-pt>Salvaguardas</span>
+                        <span data-en>Safeguards</span>
+                    </a>
+                    <a href="#contact">
+                        <span data-pt>Contato</span>
+                        <span data-en>Contact</span>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>
+                        <span data-pt>Documentos</span>
+                        <span data-en>Documents</span>
+                    </h4>
+                    <a href="#">
+                        <span data-pt>Relatórios de atividades</span>
+                        <span data-en>Activity Reports</span>
+                    </a>
+                    <a href="#">
+                        <span data-pt>Políticas de salvaguardas</span>
+                        <span data-en>Safeguard Policies</span>
+                    </a>
+                    <a href="#">
+                        <span data-pt>Política de privacidade</span>
+                        <span data-en>Privacy Policy</span>
+                    </a>
+                    <a href="#">
+                        <span data-pt>Termos de uso</span>
+                        <span data-en>Terms of Use</span>
+                    </a>
+                </div>
+                <div class="footer-section">
+                    <h4>
+                        <span data-pt>Sobre este projeto</span>
+                        <span data-en>About this Work</span>
+                    </h4>
+                    <p>
+                        <span data-pt>Este site é um projeto de portfólio. Os dados, nomes e informações de contato apresentados são fictícios.</span>
+                        <span data-en>This website is a portfolio project. All data, names, and contact information shown are fictional.</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>
+                    <span data-pt>&copy; 2026 BioReviva — Projeto de portfólio. Dados e informações fictícios.</span>
+                    <span data-en>&copy; 2026 BioReviva — Portfolio project. All data and information are fictional.</span>
+                </p>
+                <div class="scherlock-signature">
+                    <span class="scherlock-text">
+                        <span data-pt>Criado por</span>
+                        <span data-en>Created by</span>
+                    </span>
+                    <span class="scherlock-brand">Scherlock <span>Hall</span></span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <button class="scroll-top" id="scrollTop" aria-label="Voltar ao topo">↑</button>
+
+    <script>
+        // === LANGUAGE SYSTEM ===
+        function setLang(lang) {
+            document.body.setAttribute('data-lang', lang);
+            document.getElementById('btnPt').classList.toggle('active', lang === 'pt');
+            document.getElementById('btnEn').classList.toggle('active', lang === 'en');
+            document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+        }
+
+        // === NAVBAR ===
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            navbar.classList.toggle('scrolled', window.scrollY > 60);
+            scrollTopBtn.classList.toggle('visible', window.scrollY > 400);
+        }, { passive: true });
+
+        // === MOBILE MENU ===
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('open');
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(a => {
+            a.addEventListener('click', () => {
+                menuToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // Close menu clicking outside
+        document.addEventListener('click', (e) => {
+            if (!navbar.contains(e.target)) {
+                menuToggle.classList.remove('open');
+                navLinks.classList.remove('open');
+            }
+        });
+
+        // === SMOOTH SCROLL ===
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+
+        // === INTERSECTION OBSERVER - ANIMATIONS ===
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry, i) => {
+                if (entry.isIntersecting) {
+                    const el = entry.target;
+                    const siblings = [...el.parentElement.children].filter(c => c.classList.contains(el.classList[0]));
+                    const idx = siblings.indexOf(el);
+                    setTimeout(() => el.classList.add('visible'), idx * 120);
+                    observer.unobserve(el);
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
+
+        document.querySelectorAll('.about-card, .objective-item, .stat-item, .safeguard-badge, .partners-logos').forEach(el => {
+            observer.observe(el);
+        });
+
+        // === SCROLL TO TOP ===
+        const scrollTopBtn = document.getElementById('scrollTop');
+        scrollTopBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // === FORM ===
+        const anonymousBox = document.getElementById('anonymous');
+        const identifiedFields = document.getElementById('identifiedFields');
+
+        anonymousBox.addEventListener('change', () => {
+            identifiedFields.style.display = anonymousBox.checked ? 'none' : 'block';
+        });
+
+        document.getElementById('mrqForm').addEventListener('submit', (e) => {
+            e.preventDefault();
+            const isEn = document.body.getAttribute('data-lang') === 'en';
+            const msg = isEn
+                ? '✅ Your submission was sent successfully!\nYou will receive a service protocol soon.'
+                : '✅ Sua submissão foi enviada com sucesso!\nVocê receberá um protocolo de atendimento em breve.';
+            alert(msg);
+            e.target.reset();
+            identifiedFields.style.display = 'block';
+        });
+    </script>
+</body>
+</html>
