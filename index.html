@@ -4,51 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Scherlock Hall — Portfólio</title>
-<!-- ─── SEO ─────────────────────────────────────────── -->
 <meta name="description" content="Portfólio de Scherlock Hall — Desenvolvedor web e estudante de Ciências Econômicas (UnB). Projetos em HTML, CSS, JavaScript, análise de dados e visualização.">
 <meta name="author" content="Scherlock Hall">
 <meta name="robots" content="index, follow">
 <link rel="canonical" href="https://scherlockhall.github.io/Scherlock-Hall/">
-<!-- Open Graph -->
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://scherlockhall.github.io/Scherlock-Hall/">
 <meta property="og:title" content="Scherlock Hall — Portfólio">
 <meta property="og:description" content="Desenvolvedor web e estudante de Ciências Econômicas (UnB). Projetos em JavaScript, análise de dados e visualização.">
 <meta property="og:image" content="https://scherlockhall.github.io/Scherlock-Hall/cards/og-image.png">
 <meta property="og:locale" content="pt_BR">
-<!-- Twitter Card -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:url" content="https://scherlockhall.github.io/Scherlock-Hall/">
 <meta name="twitter:title" content="Scherlock Hall — Portfólio">
 <meta name="twitter:description" content="Desenvolvedor web e estudante de Ciências Econômicas (UnB). Projetos em JavaScript, análise de dados e visualização.">
 <meta name="twitter:image" content="https://scherlockhall.github.io/Scherlock-Hall/cards/og-image.png">
-<!-- Favicon -->
 <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
 <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
 <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<!-- Structured Data -->
 <script type="application/ld+json">
 {
-"@context": "https://schema.org",
-"@type": "Person",
-"name": "Scherlock Hall",
-"url": "https://scherlockhall.github.io/Scherlock-Hall/",
-"sameAs": [
-"https://github.com/ScherlockHall",
-"https://www.linkedin.com/in/scherlock-hall-929773383",
-"http://lattes.cnpq.br/8597239590066524",
-"https://www.instagram.com/scherlockhall04"
-],
-"jobTitle": "Desenvolvedor Web",
-"description": "Desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB).",
-"alumniOf": {
-"@type": "CollegeOrUniversity",
-"name": "Universidade de Brasília",
-"alternateName": "UnB"
-},
-"knowsLanguage": ["pt", "fr"],
-"knowsAbout": ["Desenvolvimento Web", "Análise de Dados", "JavaScript", "Ciências Econômicas"]
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Scherlock Hall",
+  "url": "https://scherlockhall.github.io/Scherlock-Hall/",
+  "sameAs": [
+    "https://github.com/ScherlockHall",
+    "https://www.linkedin.com/in/scherlock-hall-929773383",
+    "http://lattes.cnpq.br/8597239590066524",
+    "https://www.instagram.com/scherlockhall04"
+  ],
+  "jobTitle": "Desenvolvedor Web",
+  "description": "Desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB).",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade de Brasília", "alternateName": "UnB" },
+  "knowsLanguage": ["pt", "fr"],
+  "knowsAbout": ["Desenvolvimento Web", "Análise de Dados", "JavaScript", "Ciências Econômicas"]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,16 +46,16 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
---ink:#0b0f17; --navy:#101828; --navy2:#1a2435;
---cream:#f7f3ec; --paper:#faf8f4;
---gold:#c9a84c; --gold-l:#e8c97a;
---blue:#2563eb; --blue-s:#1d4ed8;
---teal:#0d9488; --muted:#64748b;
---border:rgba(0,0,0,.08); --border-d:rgba(255,255,255,.07);
---serif:'Instrument Serif',Georgia,serif;
---sans:'Outfit',system-ui,sans-serif;
---mono:'DM Mono',monospace;
---r:10px; --r-lg:18px; --nav-h:60px;
+  --ink:#0b0f17;--navy:#101828;--navy2:#1a2435;
+  --cream:#f7f3ec;--paper:#faf8f4;
+  --gold:#c9a84c;--gold-l:#e8c97a;
+  --blue:#2563eb;--blue-s:#1d4ed8;
+  --teal:#0d9488;--muted:#64748b;
+  --border:rgba(0,0,0,.08);--border-d:rgba(255,255,255,.07);
+  --serif:'Instrument Serif',Georgia,serif;
+  --sans:'Outfit',system-ui,sans-serif;
+  --mono:'DM Mono',monospace;
+  --r:10px;--r-lg:18px;--nav-h:60px;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
@@ -73,6 +63,8 @@ body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-heigh
 .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
 .eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:var(--gold);flex-shrink:0}
 .sec-title{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;letter-spacing:-.03em;color:var(--ink);line-height:1.1;margin-bottom:.6rem}
+
+/* ─── Nav ─────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;height:var(--nav-h);display:flex;align-items:center;background:rgba(11,15,23,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-d);transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .nav-inner{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:1100px;margin:0 auto;padding:0 2rem}
@@ -96,6 +88,8 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .mobile-menu a{padding:.65rem .9rem;border-radius:8px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95rem;font-weight:500;transition:all .2s}
 .mobile-menu a:hover{background:rgba(255,255,255,.06);color:#fff}
 .mob-lang-row{display:flex;align-items:center;gap:.6rem;padding:.5rem .9rem;color:rgba(255,255,255,.3);font-size:.78rem;font-family:var(--mono);border-top:1px solid var(--border-d);margin-top:.4rem;padding-top:.8rem}
+
+/* ─── Hero ────────────────────────────────────── */
 #hero{min-height:100vh;display:flex;align-items:center;background:var(--navy);padding:calc(var(--nav-h) + 4rem) 2rem 5rem;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px)}
 #hero::after{content:'';position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle at 30% 40%,rgba(201,168,76,.1),transparent 65%);top:-200px;right:-200px;pointer-events:none}
@@ -121,12 +115,16 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .social-pill{display:inline-flex;align-items:center;gap:6px;padding:.32rem .8rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);font-size:.76rem;font-weight:500;text-decoration:none;transition:all .2s}
 .social-pill:hover{border-color:rgba(201,168,76,.4);color:var(--gold-l);background:rgba(201,168,76,.06);transform:translateY(-1px)}
 .social-pill svg{width:12px;height:12px}
+
+/* ─── Sections ────────────────────────────────── */
 .section{padding:6rem 0}
 .section-alt{background:#fff}
 .section-dark{background:var(--navy)}
 .cat-label{display:flex;align-items:center;gap:1rem;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--ink);margin:2.5rem 0 1.5rem}
 .cat-label:first-of-type{margin-top:0}
 .cat-line{flex:1;height:1px;background:var(--border)}
+
+/* ─── Project Cards ───────────────────────────── */
 .projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem}
 .project-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s;text-decoration:none;color:inherit}
 .project-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1);border-color:rgba(201,168,76,.3)}
@@ -150,19 +148,84 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .project-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--blue);text-decoration:none;transition:gap .2s;align-self:flex-start}
 .project-link:hover{gap:9px}
 .project-link svg{width:11px;height:11px}
+
+/* ─── Cert Cards ─────────────────────────────────
+   KEY FIX: .cert-card is now an <a> tag itself.
+   No nested <a> inside — whole card is the link.
+   This guarantees reliable taps on Android & iOS.
+─────────────────────────────────────────────────── */
 .certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;margin-bottom:2.5rem}
-.cert-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;transition:transform .25s,box-shadow .25s,border-color .25s}
-.cert-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.07);border-color:rgba(201,168,76,.25)}
-.cert-img-wrap{height:175px;background:#f8f9fb;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;padding:8px;overflow:hidden}
-.cert-img-wrap a{display:flex;width:100%;height:100%;align-items:center;justify-content:center}
-.cert-img-wrap img{width:100%;height:100%;object-fit:contain}
-.cert-body{padding:1.1rem}
-.cert-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.5rem}
-.cert-name{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.35;text-decoration:none;flex:1;cursor:pointer;transition:color .2s}
-.cert-name:hover{color:var(--blue)}
-.cert-year{font-family:var(--mono);font-size:.62rem;font-weight:500;background:var(--cream);color:var(--muted);padding:.18rem .5rem;border-radius:4px;white-space:nowrap;margin-left:.5rem}
+
+.cert-card{
+  background:#fff;
+  border:1px solid var(--border);
+  border-radius:var(--r-lg);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  text-decoration:none;
+  color:inherit;
+  transition:transform .25s,box-shadow .25s,border-color .25s;
+  /* make the entire card a tap target */
+  -webkit-tap-highlight-color:transparent;
+  cursor:pointer;
+}
+.cert-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 10px 30px rgba(0,0,0,.07);
+  border-color:rgba(201,168,76,.3);
+}
+
+.cert-img-wrap{
+  height:180px;
+  background:#f5f6f8;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  padding:10px;
+}
+.cert-img-wrap img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  transition:transform .3s;
+}
+.cert-card:hover .cert-img-wrap img{transform:scale(1.03)}
+
+/* Placeholder when no image */
+.cert-img-placeholder{
+  width:100%;height:100%;
+  display:flex;align-items:center;justify-content:center;
+  font-size:2.5rem;
+  background:linear-gradient(135deg,#f0f4ff,#e6edf8);
+}
+
+.cert-body{padding:1.1rem;display:flex;flex-direction:column;flex:1}
+.cert-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.35rem}
+.cert-name{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.35;flex:1}
+.cert-year{font-family:var(--mono);font-size:.62rem;font-weight:500;background:var(--cream);color:var(--muted);padding:.18rem .5rem;border-radius:4px;white-space:nowrap;margin-left:.5rem;flex-shrink:0}
 .cert-issuer{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.04em}
-.cert-desc{font-size:.77rem;color:var(--muted);line-height:1.55}
+.cert-desc{font-size:.77rem;color:var(--muted);line-height:1.55;flex:1;margin-bottom:.9rem}
+
+/* "Ver certificado" label at bottom of card */
+.cert-open-label{
+  display:inline-flex;align-items:center;gap:5px;
+  font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;
+  color:var(--blue);
+  align-self:flex-start;
+  padding:.3rem .7rem;
+  border-radius:6px;
+  background:#eff6ff;
+  transition:background .2s;
+}
+.cert-card:hover .cert-open-label{background:#dbeafe}
+.cert-open-label.fcc{color:#c2410c;background:#fff7ed}
+.cert-card:hover .cert-open-label.fcc{background:#ffedd5}
+.cert-open-label svg{width:11px;height:11px}
+
+/* ─── About ───────────────────────────────────── */
 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:5rem;align-items:start}
 .about-text p{font-size:.95rem;font-weight:300;color:#3d4a5c;line-height:1.9;margin-bottom:1rem}
 .about-list{list-style:none;display:flex;flex-direction:column;gap:.55rem;margin-top:.5rem}
@@ -174,6 +237,8 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .skill-icon{font-size:1.25rem;flex-shrink:0;margin-top:1px}
 .skill-item h4{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
 .skill-item p{font-size:.76rem;color:var(--muted);line-height:1.55}
+
+/* ─── Contact ─────────────────────────────────── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .contact-intro h3{font-family:var(--serif);font-size:1.8rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:.6rem}
 .contact-intro p{font-size:.9rem;font-weight:300;color:rgba(255,255,255,.38);line-height:1.8;margin-bottom:1.5rem}
@@ -185,6 +250,8 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .contact-link svg{width:15px;height:15px;opacity:.4;flex-shrink:0}
 .contact-link:hover svg{opacity:.8}
 .contact-link span{font-family:var(--mono);font-size:.68rem;color:rgba(255,255,255,.2);margin-left:auto;letter-spacing:.04em}
+
+/* ─── Modal ───────────────────────────────────── */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
 .modal{background:#fff;border-radius:20px;max-width:560px;width:100%;max-height:90vh;overflow-y:auto;padding:2.25rem;position:relative;animation:modalIn .25s cubic-bezier(.2,.8,.2,1)}
@@ -199,7 +266,11 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .modal-section h4{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
 .modal-section p{font-size:.88rem;color:#3d4a5c;line-height:1.7}
 .modal-actions{display:flex;gap:.6rem;flex-wrap:wrap}
+
+/* ─── Footer ──────────────────────────────────── */
 footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;padding:1.75rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;border-top:1px solid rgba(255,255,255,.04)}
+
+/* ─── Scroll reveal ───────────────────────────── */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
 .reveal:nth-child(2){transition-delay:.08s}
@@ -207,420 +278,560 @@ footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;paddi
 .reveal:nth-child(4){transition-delay:.24s}
 .reveal:nth-child(5){transition-delay:.32s}
 .reveal:nth-child(6){transition-delay:.40s}
+
+/* ─── Responsive ──────────────────────────────── */
 @media(max-width:900px){.about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}}
-@media(max-width:768px){.nav-menu{display:none}.hamburger{display:flex}.section{padding:4rem 0}.projects-grid{grid-template-columns:1fr}.certs-grid{grid-template-columns:1fr 1fr}.hero-title{font-size:2.4rem}.about-grid{gap:2rem}}
-@media(max-width:480px){.certs-grid{grid-template-columns:1fr}.hero-actions{flex-direction:column}.hero-actions .btn{width:100%;justify-content:center}.container{padding:0 1.25rem}}
+@media(max-width:768px){
+  .nav-menu{display:none}.hamburger{display:flex}
+  .section{padding:4rem 0}
+  .projects-grid{grid-template-columns:1fr}
+  .certs-grid{grid-template-columns:1fr 1fr}
+  .hero-title{font-size:2.4rem}
+  .about-grid{gap:2rem}
+}
+@media(max-width:480px){
+  .certs-grid{grid-template-columns:1fr}
+  .hero-actions{flex-direction:column}
+  .hero-actions .btn{width:100%;justify-content:center}
+  .container{padding:0 1.25rem}
+}
 </style>
 </head>
 <body>
+
+<!-- ═══ NAV ═══════════════════════════════════════════════════ -->
 <nav id="navbar">
-<div class="nav-inner">
-<a href="#" class="nav-logo">Scherlock<span class="dot">.</span></a>
-<ul class="nav-menu" id="navMenu">
-<li><a href="#projetos" data-pt="Projetos" data-fr="Projets">Projetos</a></li>
-<li><a href="#certificacoes" data-pt="Certificações" data-fr="Certifications">Certificações</a></li>
-<li><a href="#sobre" data-pt="Sobre" data-fr="À propos">Sobre</a></li>
-<li><a href="#contato" class="nav-cta" data-pt="Contato" data-fr="Contact">Contato</a></li>
-<li>
-<div class="lang-toggle">
-<button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
-<button data-lang="fr" onclick="changeLang('fr')">FR</button>
-</div>
-</li>
-</ul>
-<div class="hamburger" id="hamburger" onclick="toggleMenu()">
-<span></span><span></span><span></span>
-</div>
-</div>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Scherlock<span class="dot">.</span></a>
+    <ul class="nav-menu" id="navMenu">
+      <li><a href="#projetos" data-pt="Projetos" data-fr="Projets">Projetos</a></li>
+      <li><a href="#certificacoes" data-pt="Certificações" data-fr="Certifications">Certificações</a></li>
+      <li><a href="#sobre" data-pt="Sobre" data-fr="À propos">Sobre</a></li>
+      <li><a href="#contato" class="nav-cta" data-pt="Contato" data-fr="Contact">Contato</a></li>
+      <li>
+        <div class="lang-toggle">
+          <button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
+          <button data-lang="fr" onclick="changeLang('fr')">FR</button>
+        </div>
+      </li>
+    </ul>
+    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
 </nav>
+
 <div class="mobile-menu" id="mobileMenu">
-<a href="#projetos" onclick="closeMenu()" data-pt="Projetos" data-fr="Projets">Projetos</a>
-<a href="#certificacoes" onclick="closeMenu()" data-pt="Certificações" data-fr="Certifications">Certificações</a>
-<a href="#sobre" onclick="closeMenu()" data-pt="Sobre" data-fr="À propos">Sobre</a>
-<a href="#contato" onclick="closeMenu()" data-pt="Contato" data-fr="Contact">Contato</a>
-<div class="mob-lang-row">
-<span data-pt="Idioma:" data-fr="Langue:">Idioma:</span>
-<div class="lang-toggle">
-<button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
-<button data-lang="fr" onclick="changeLang('fr')">FR</button>
+  <a href="#projetos" onclick="closeMenu()" data-pt="Projetos" data-fr="Projets">Projetos</a>
+  <a href="#certificacoes" onclick="closeMenu()" data-pt="Certificações" data-fr="Certifications">Certificações</a>
+  <a href="#sobre" onclick="closeMenu()" data-pt="Sobre" data-fr="À propos">Sobre</a>
+  <a href="#contato" onclick="closeMenu()" data-pt="Contato" data-fr="Contact">Contato</a>
+  <div class="mob-lang-row">
+    <span data-pt="Idioma:" data-fr="Langue:">Idioma:</span>
+    <div class="lang-toggle">
+      <button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
+      <button data-lang="fr" onclick="changeLang('fr')">FR</button>
+    </div>
+  </div>
 </div>
-</div>
-</div>
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════ -->
 <section id="hero">
-<div class="hero-inner">
-<div class="hero-label">
-<div class="hero-label-dot"></div>
-<span data-pt="Disponível para projetos" data-fr="Disponible pour projets">Disponível para projetos</span>
-</div>
-<h1 class="hero-title">
-Scherlock Hall,
-<strong data-pt="programador &amp; analista de dados." data-fr="développeur &amp; analyste de données.">programador &amp; analista de dados.</strong>
-</h1>
-<p class="hero-desc" data-pt="Desenvolvedor web e estudante de Ciências Econômicas (UnB). Construo soluções digitais funcionais e ajudo negócios a estruturarem sua presença online com clareza e profissionalismo." data-fr="Développeur web et étudiant en Sciences Économiques (UnB). Je construis des solutions numériques fonctionnelles et aide les entreprises à structurer leur présence en ligne avec clarté et professionnalisme.">Desenvolvedor web e estudante de Ciências Econômicas (UnB). Construo soluções digitais funcionais e ajudo negócios a estruturarem sua presença online com clareza e profissionalismo.</p>
-<div class="hero-actions">
-<a href="#projetos" class="btn btn-gold" data-pt="Ver projetos" data-fr="Voir les projets">Ver projetos</a>
-<a href="mailto:scherlockhallneto@gmail.com" class="btn btn-ghost-w" data-pt="Enviar e-mail" data-fr="Envoyer un e-mail">Enviar e-mail</a>
-</div>
-<div class="social-row">
-<a href="https://github.com/ScherlockHall" target="_blank" class="social-pill">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-GitHub
-</a>
-<a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="social-pill">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-LinkedIn
-</a>
-<a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="social-pill">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-Lattes
-</a>
-<a href="https://www.instagram.com/scherlockhall04" target="_blank" class="social-pill">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-Instagram
-</a>
-<a href="https://wa.me/33753964060" target="_blank" class="social-pill">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-WhatsApp
-</a>
-</div>
-</div>
+  <div class="hero-inner">
+    <div class="hero-label">
+      <div class="hero-label-dot"></div>
+      <span data-pt="Disponível para projetos" data-fr="Disponible pour projets">Disponível para projetos</span>
+    </div>
+    <h1 class="hero-title">
+      Scherlock Hall,
+      <strong data-pt="programador &amp; analista de dados." data-fr="développeur &amp; analyste de données.">programador &amp; analista de dados.</strong>
+    </h1>
+    <p class="hero-desc" data-pt="Desenvolvedor web e estudante de Ciências Econômicas (UnB). Construo soluções digitais funcionais e ajudo negócios a estruturarem sua presença online com clareza e profissionalismo." data-fr="Développeur web et étudiant en Sciences Économiques (UnB). Je construis des solutions numériques fonctionnelles et aide les entreprises à structurer leur présence en ligne avec clarté et professionnalisme.">Desenvolvedor web e estudante de Ciências Econômicas (UnB). Construo soluções digitais funcionais e ajudo negócios a estruturarem sua presença online com clareza e profissionalismo.</p>
+    <div class="hero-actions">
+      <a href="#projetos" class="btn btn-gold" data-pt="Ver projetos" data-fr="Voir les projets">Ver projetos</a>
+      <a href="/cdn-cgi/l/email-protection#c3b0a0aba6b1afaca0a8aba2afafada6b7ac83a4aea2aaafeda0acae" class="btn btn-ghost-w" data-pt="Enviar e-mail" data-fr="Envoyer un e-mail">Enviar e-mail</a>
+    </div>
+    <div class="social-row">
+      <a href="https://github.com/ScherlockHall" target="_blank" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        GitHub
+      </a>
+      <a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+        Lattes
+      </a>
+      <a href="https://www.instagram.com/scherlockhall04" target="_blank" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+        Instagram
+      </a>
+      <a href="https://wa.me/33753964060" target="_blank" class="social-pill">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+  </div>
 </section>
+
+<!-- ═══ PROJECTS ═══════════════════════════════════════════════ -->
 <section class="section" id="projetos">
-<div class="container">
-<span class="eyebrow" data-pt="Portfólio" data-fr="Portfolio">Portfólio</span>
-<h2 class="sec-title" data-pt="Projetos" data-fr="Projets">Projetos</h2>
-<div class="cat-label"><span data-pt="📊 Análise de Dados" data-fr="📊 Analyse de Données">📊 Análise de Dados</span><div class="cat-line"></div></div>
-<div class="projects-grid">
-<a class="project-card reveal" href="vaccine-misinformation-brazil/index.html" target="_blank">
-<div class="project-img-wrap">
-<img src="cards/impacto-da-desinformacao-sobre-vacina.png" alt="Vaccine Misinformation" loading="lazy">
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-blue">Dashboard</span><span class="tag tag-green">Google Trends</span><span class="tag tag-gray">Python</span></div>
-<h3 class="project-title" data-pt="💉 Desinformação sobre Vacinação no Brasil" data-fr="💉 Désinformation sur la Vaccination au Brésil">💉 Desinformação sobre Vacinação no Brasil</h3>
-<p class="project-desc" data-pt="Dashboard interativo analisando 69 meses de dados do Google Trends (2020–2025) sobre fake news de vacinas. Identifica padrões temporais e redução de 88% nas buscas desde junho/2021." data-fr="Tableau de bord analysant 69 mois de données Google Trends sur les fake news de vaccins. Identifie les patterns temporels et une réduction de 88% des recherches depuis juin 2021.">Dashboard interativo analisando 69 meses de dados do Google Trends (2020–2025) sobre fake news de vacinas. Identifica padrões temporais e redução de 88% nas buscas desde junho/2021.</p>
-<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</a>
-<a class="project-card reveal" href="infovac/index.html" target="_blank">
-<div class="project-img-wrap">
-<img src="cards/infovac.png" alt="Infovac" loading="lazy">
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-blue">Plataforma</span><span class="tag tag-green">Dados Públicos</span><span class="tag tag-gray">JavaScript</span></div>
-<h3 class="project-title" data-pt="💉🇧🇷 Infovac — Dados &amp; Desinformação" data-fr="💉🇧🇷 Infovac — Données &amp; Désinformation">💉🇧🇷 Infovac — Dados &amp; Desinformação</h3>
-<p class="project-desc" data-pt="Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo." data-fr="Plateforme avec données réelles sur la vaccination, fact-checking, quiz interactif, vidéos explicatives et visualisations basées sur des sources officielles du gouvernement.">Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo.</p>
-<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</a>
-</div>
-<div class="cat-label"><span data-pt="💻 Programação &amp; Web" data-fr="💻 Programmation &amp; Web">💻 Programação &amp; Web</span><div class="cat-line"></div></div>
-<div class="projects-grid">
-<a class="project-card reveal" href="https://mcshowdenatal.com.br" target="_blank">
-<div class="project-img-wrap">
-<img src="cards/mcshowdenatal.png" alt="MC Show de Natal" loading="lazy">
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-orange">Site Institucional</span><span class="tag tag-gray">HTML/CSS/JS</span></div>
-<h3 class="project-title">🎄 MC Show de Natal</h3>
-<p class="project-desc" data-pt="Site institucional para empresa com quase 20 anos de experiência em cenografia, iluminação personalizada e decorações natalinas para prefeituras e eventos corporativos." data-fr="Site institutionnel pour une entreprise avec près de 20 ans d'expérience en scénographie, éclairage personnalisé et décorations de Noël pour mairies et entreprises.">Site institucional para empresa com quase 20 anos de experiência em cenografia, iluminação personalizada e decorações natalinas para prefeituras e eventos corporativos.</p>
-<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</a>
-<a class="project-card reveal" href="site_sorteio/index.html" target="_blank">
-<div class="project-img-wrap">
-<img src="cards/sorteador-pro.png" alt="Sorteador Pro" loading="lazy">
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-blue">Aplicação Web</span><span class="tag tag-gray">JavaScript</span></div>
-<h3 class="project-title" data-pt="🎲 Sorteador Pro" data-fr="🎲 Tireur au Sort Pro">🎲 Sorteador Pro</h3>
-<p class="project-desc" data-pt="Aplicação de sorteio online com interface moderna, animações fluidas e múltiplos modos — ideal para eventos, rifas e dinâmicas em grupo." data-fr="Application de tirage au sort en ligne avec interface moderne, animations fluides et plusieurs modes — idéale pour événements, loteries et dynamiques de groupe.">Aplicação de sorteio online com interface moderna, animações fluidas e múltiplos modos — ideal para eventos, rifas e dinâmicas em grupo.</p>
-<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</a>
-<a class="project-card reveal" href="jogo-da-velha/index.html" target="_blank">
-<div class="project-img-wrap">
-<img src="cards/jogo-da-velha.png" alt="Jogo da Velha" loading="lazy">
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-pink">Algoritmo Minimax</span><span class="tag tag-gray">JavaScript</span></div>
-<h3 class="project-title" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable">🎮 Jogo da Velha Imbatível</h3>
-<p class="project-desc" data-pt="Implementação com algoritmo Minimax que torna o computador completamente invencível. Exercício de lógica e inteligência artificial aplicada." data-fr="Implémentation avec l'algorithme Minimax qui rend l'ordinateur complètement invincible. Exercice de logique et intelligence artificielle appliquée.">Implementação com algoritmo Minimax que torna o computador completamente invencível. Exercício de lógica e inteligência artificial aplicada.</p>
-<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</a>
-<div class="project-card reveal" onclick="openBioModal()" style="cursor:pointer">
-<div class="project-img-wrap">
-<img src="cards/bio-reviva.png" alt="Bio Reviva" loading="lazy">
-<span class="training-badge" data-pt="Projeto de Estudo" data-fr="Projet d'Étude">Projeto de Estudo</span>
-<div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-</div>
-<div class="project-body">
-<div class="project-tags"><span class="tag tag-green">Sustentabilidade</span><span class="tag tag-blue">HTML/CSS/JS</span><span class="tag tag-gold">Exercício</span></div>
-<h3 class="project-title">🌿 Bio Reviva</h3>
-<p class="project-desc" data-pt="Projeto de treinamento: site institucional sobre políticas de restauração de vegetação nativa, com base científica, abordagem integrada e mobilização de comunidade de prática." data-fr="Projet d'entraînement : site institutionnel sur les politiques de restauration de la végétation native, base scientifique, approche intégrée et mobilisation d'une communauté de pratique.">Projeto de treinamento: site institucional sobre políticas de restauração de vegetação nativa, com base científica, abordagem integrada e mobilização de comunidade de prática.</p>
-<span class="project-link" data-pt="Ver detalhes" data-fr="Voir les détails">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-</div>
-</div>
-</div>
-</div>
+  <div class="container">
+    <span class="eyebrow" data-pt="Portfólio" data-fr="Portfolio">Portfólio</span>
+    <h2 class="sec-title" data-pt="Projetos" data-fr="Projets">Projetos</h2>
+
+    <div class="cat-label"><span data-pt="📊 Análise de Dados" data-fr="📊 Analyse de Données">📊 Análise de Dados</span><div class="cat-line"></div></div>
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="vaccine-misinformation-brazil/index.html" target="_blank">
+        <div class="project-img-wrap">
+          <img src="cards/impacto-da-desinformacao-sobre-vacina.png" alt="Vaccine Misinformation" loading="lazy">
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-blue">Dashboard</span><span class="tag tag-green">Google Trends</span><span class="tag tag-gray">Python</span></div>
+          <h3 class="project-title" data-pt="💉 Desinformação sobre Vacinação no Brasil" data-fr="💉 Désinformation sur la Vaccination au Brésil">💉 Desinformação sobre Vacinação no Brasil</h3>
+          <p class="project-desc" data-pt="Dashboard interativo analisando 69 meses de dados do Google Trends (2020–2025) sobre fake news de vacinas. Identifica padrões temporais e redução de 88% nas buscas desde junho/2021." data-fr="Tableau de bord analysant 69 mois de données Google Trends sur les fake news de vaccins. Identifie les patterns temporels et une réduction de 88% des recherches depuis juin 2021.">Dashboard interativo analisando 69 meses de dados do Google Trends (2020–2025) sobre fake news de vacinas. Identifica padrões temporais e redução de 88% nas buscas desde junho/2021.</p>
+          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="infovac/index.html" target="_blank">
+        <div class="project-img-wrap">
+          <img src="cards/infovac.png" alt="Infovac" loading="lazy">
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-blue">Plataforma</span><span class="tag tag-green">Dados Públicos</span><span class="tag tag-gray">JavaScript</span></div>
+          <h3 class="project-title" data-pt="💉🇧🇷 Infovac — Dados &amp; Desinformação" data-fr="💉🇧🇷 Infovac — Données &amp; Désinformation">💉🇧🇷 Infovac — Dados &amp; Desinformação</h3>
+          <p class="project-desc" data-pt="Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo." data-fr="Plateforme avec données réelles sur la vaccination, fact-checking, quiz interactif, vidéos explicatives et visualisations basées sur des sources officielles du gouvernement.">Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo.</p>
+          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </a>
+
+    </div>
+
+    <div class="cat-label"><span data-pt="💻 Programação &amp; Web" data-fr="💻 Programmation &amp; Web">💻 Programação &amp; Web</span><div class="cat-line"></div></div>
+    <div class="projects-grid">
+
+      <a class="project-card reveal" href="https://mcshowdenatal.com.br" target="_blank">
+        <div class="project-img-wrap">
+          <img src="cards/mcshowdenatal.png" alt="MC Show de Natal" loading="lazy">
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-orange">Site Institucional</span><span class="tag tag-gray">HTML/CSS/JS</span></div>
+          <h3 class="project-title">🎄 MC Show de Natal</h3>
+          <p class="project-desc" data-pt="Site institucional para empresa com quase 20 anos de experiência em cenografia, iluminação personalizada e decorações natalinas para prefeituras e eventos corporativos." data-fr="Site institutionnel pour une entreprise avec près de 20 ans d'expérience en scénographie, éclairage personnalisé et décorations de Noël pour mairies et entreprises.">Site institucional para empresa com quase 20 anos de experiência em cenografia, iluminação personalizada e decorações natalinas para prefeituras e eventos corporativos.</p>
+          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="site_sorteio/index.html" target="_blank">
+        <div class="project-img-wrap">
+          <img src="cards/sorteador-pro.png" alt="Sorteador Pro" loading="lazy">
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-blue">Aplicação Web</span><span class="tag tag-gray">JavaScript</span></div>
+          <h3 class="project-title" data-pt="🎲 Sorteador Pro" data-fr="🎲 Tireur au Sort Pro">🎲 Sorteador Pro</h3>
+          <p class="project-desc" data-pt="Aplicação de sorteio online com interface moderna, animações fluidas e múltiplos modos — ideal para eventos, rifas e dinâmicas em grupo." data-fr="Application de tirage au sort en ligne avec interface moderne, animations fluides et plusieurs modes — idéale pour événements, loteries et dynamiques de groupe.">Aplicação de sorteio online com interface moderna, animações fluidas e múltiplos modos — ideal para eventos, rifas e dinâmicas em grupo.</p>
+          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </a>
+
+      <a class="project-card reveal" href="jogo-da-velha/index.html" target="_blank">
+        <div class="project-img-wrap">
+          <img src="cards/jogo-da-velha.png" alt="Jogo da Velha" loading="lazy">
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-pink">Algoritmo Minimax</span><span class="tag tag-gray">JavaScript</span></div>
+          <h3 class="project-title" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable">🎮 Jogo da Velha Imbatível</h3>
+          <p class="project-desc" data-pt="Implementação com algoritmo Minimax que torna o computador completamente invencível. Exercício de lógica e inteligência artificial aplicada." data-fr="Implémentation avec l'algorithme Minimax qui rend l'ordinateur complètement invincible. Exercice de logique et intelligence artificielle appliquée.">Implementação com algoritmo Minimax que torna o computador completamente invencível. Exercício de lógica e inteligência artificial aplicada.</p>
+          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </a>
+
+      <div class="project-card reveal" onclick="openBioModal()" style="cursor:pointer">
+        <div class="project-img-wrap">
+          <img src="cards/bio-reviva.png" alt="Bio Reviva" loading="lazy">
+          <span class="training-badge" data-pt="Projeto de Estudo" data-fr="Projet d'Étude">Projeto de Estudo</span>
+          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
+        </div>
+        <div class="project-body">
+          <div class="project-tags"><span class="tag tag-green">Sustentabilidade</span><span class="tag tag-blue">HTML/CSS/JS</span><span class="tag tag-gold">Exercício</span></div>
+          <h3 class="project-title">🌿 Bio Reviva</h3>
+          <p class="project-desc" data-pt="Projeto de treinamento: site institucional sobre políticas de restauração de vegetação nativa, com base científica, abordagem integrada e mobilização de comunidade de prática." data-fr="Projet d'entraînement : site institutionnel sur les politiques de restauration de la végétation native, base scientifique, approche intégrée et mobilisation d'une communauté de pratique.">Projeto de treinamento: site institucional sobre políticas de restauração de vegetação nativa, com base científica, abordagem integrada e mobilização de comunidade de prática.</p>
+          <span class="project-link" data-pt="Ver detalhes" data-fr="Voir les détails">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
+
+<!-- ═══ CERTIFICAÇÕES ══════════════════════════════════════════
+     FIX: Cada cert-card é agora uma tag <a> direta — sem <a> aninhados.
+     Isso garante clique confiável em Android, iOS e todos os browsers.
+════════════════════════════════════════════════════════════════ -->
 <section class="section section-alt" id="certificacoes">
-<div class="container">
-<span class="eyebrow" data-pt="Formação" data-fr="Formation">Formação</span>
-<h2 class="sec-title" data-pt="Certificações" data-fr="Certifications">Certificações</h2>
-<div class="cat-label"><span>📊 Google Data Analytics Certificate</span><div class="cat-line"></div></div>
-<div class="certs-grid">
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-foundations-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-foundations-2025.png" alt="Fundamentos" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-foundations-2025.pdf" target="_blank" class="cert-name" data-pt="Fundamentos: Dados, Dados, em Todo Lugar" data-fr="Fondements : Données, Données, Partout">Fundamentos: Dados, Dados, em Todo Lugar</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico." data-fr="Introduction aux concepts fondamentaux de l'analyse de données, aux écosystèmes de données et à la pensée analytique.">Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-ask-questions-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-ask-questions-2025.png" alt="" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-ask-questions-2025.pdf" target="_blank" class="cert-name" data-pt="Fazer Perguntas para Decisões Baseadas em Dados" data-fr="Poser des Questions pour des Décisions Basées sur les Données">Fazer Perguntas para Decisões Baseadas em Dados</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão." data-fr="Raisonnement structuré et formulation de questions orientées par les données pour la prise de décision.">Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-prepare-data-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-prepare-data-2025.png" alt="" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-prepare-data-2025.pdf" target="_blank" class="cert-name" data-pt="Preparar Dados para Exploração" data-fr="Préparer les Données pour l'Exploration">Preparar Dados para Exploração</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL." data-fr="Collecte, stockage et gestion éthique des données. Inclut une introduction à SQL.">Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-process-data-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-process-data-2025.png" alt="" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-process-data-2025.pdf" target="_blank" class="cert-name" data-pt="Processar Dados: do Sujo ao Limpo" data-fr="Traiter les Données : du Sale au Propre">Processar Dados: do Sujo ao Limpo</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises." data-fr="Techniques de nettoyage et d'organisation des données pour garantir qualité et fiabilité dans les analyses.">Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-analyze-data-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-analyze-data-2025.png" alt="" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-analyze-data-2025.pdf" target="_blank" class="cert-name" data-pt="Analisar Dados para Responder Perguntas" data-fr="Analyser les Données pour Répondre aux Questions">Analisar Dados para Responder Perguntas</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados." data-fr="Identifier des modèles et tirer des conclusions significatives pour répondre aux questions d'entreprise.">Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="certificados/google-data-analytics-share-data-2025.pdf" target="_blank"><img src="certificados/google-data-analytics-share-data-2025.png" alt="" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="certificados/google-data-analytics-share-data-2025.pdf" target="_blank" class="cert-name" data-pt="Compartilhar Dados pela Arte da Visualização" data-fr="Partager les Données par l'Art de la Visualisation">Compartilhar Dados pela Arte da Visualização</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">Google · Coursera</div>
-<p class="cert-desc" data-pt="Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante." data-fr="Visualisations efficaces et storytelling avec les données pour communiquer des insights clairement.">Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante.</p>
-</div>
-</div>
-</div>
-<div class="cat-label" style="margin-top:3rem"><span>🔶 freeCodeCamp</span><div class="cat-line"></div></div>
-<div class="certs-grid">
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank"><img src="certificados/Responsive-Web-Design.png" alt="Responsive Web Design" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" class="cert-name">Responsive Web Design</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis." data-fr="HTML5, CSS3, Flexbox et Grid pour créer des mises en page modernes et adaptables.">HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank"><img src="certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JS Algorithms" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" class="cert-name">JavaScript Algorithms &amp; DS</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+." data-fr="Logique de programmation, algorithmes efficaces et structures de données avec ES6+.">Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank"><img src="certificados/Front-End-Development-Libraries.png" alt="Front End Libraries" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" class="cert-name">Front End Libraries</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente." data-fr="React, Redux et bibliothèques modernes pour un développement front-end efficace.">React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank"><img src="certificados/Data-Visualization.png" alt="Data Visualization" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" class="cert-name">Data Visualization</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="Visualizações de dados eficazes com D3.js e outras ferramentas modernas." data-fr="Visualisations de données efficaces avec D3.js et d'autres outils modernes.">Visualizações de dados eficazes com D3.js e outras ferramentas modernas.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank"><img src="certificados/Legacy-Front-End.png" alt="Legacy Front End" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" class="cert-name">Legacy Front End</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web." data-fr="HTML, CSS, accessibilité, Flexbox et Grid — fondements solides du développement web.">HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web.</p>
-</div>
-</div>
-<div class="cert-card reveal">
-<div class="cert-img-wrap"><a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank"><img src="certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JS" loading="lazy"></a></div>
-<div class="cert-body">
-<div class="cert-header"><a href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" class="cert-name">Legacy JavaScript Algorithms &amp; DS</a><span class="cert-year">2025</span></div>
-<div class="cert-issuer">freeCodeCamp</div>
-<p class="cert-desc" data-pt="JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional." data-fr="JavaScript : fondamentaux, algorithmes, programmation orientée objet et fonctionnelle.">JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
-</div>
-</div>
-</div>
-</div>
+  <div class="container">
+    <span class="eyebrow" data-pt="Formação" data-fr="Formation">Formação</span>
+    <h2 class="sec-title" data-pt="Certificações" data-fr="Certifications">Certificações</h2>
+
+    <!-- Google Data Analytics -->
+    <div class="cat-label"><span>📊 Google Data Analytics Certificate</span><div class="cat-line"></div></div>
+    <div class="certs-grid">
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-foundations-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-foundations-2025.png" alt="Fundamentos: Dados, em Todo Lugar" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Fundamentos: Dados, Dados, em Todo Lugar" data-fr="Fondements : Données, Données, Partout">Fundamentos: Dados, Dados, em Todo Lugar</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico." data-fr="Introduction aux concepts fondamentaux de l'analyse de données, aux écosystèmes de données et à la pensée analytique.">Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-ask-questions-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-ask-questions-2025.png" alt="Fazer Perguntas para Decisões Baseadas em Dados" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Fazer Perguntas para Decisões Baseadas em Dados" data-fr="Poser des Questions pour Décisions Basées sur les Données">Fazer Perguntas para Decisões Baseadas em Dados</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão." data-fr="Raisonnement structuré et formulation de questions orientées par les données pour la prise de décision.">Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-prepare-data-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-prepare-data-2025.png" alt="Preparar Dados para Exploração" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Preparar Dados para Exploração" data-fr="Préparer les Données pour l'Exploration">Preparar Dados para Exploração</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL." data-fr="Collecte, stockage et gestion éthique des données. Inclut une introduction à SQL.">Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-process-data-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-process-data-2025.png" alt="Processar Dados" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Processar Dados: do Sujo ao Limpo" data-fr="Traiter les Données : du Sale au Propre">Processar Dados: do Sujo ao Limpo</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises." data-fr="Techniques de nettoyage et d'organisation des données pour garantir qualité et fiabilité dans les analyses.">Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-analyze-data-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-analyze-data-2025.png" alt="Analisar Dados" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Analisar Dados para Responder Perguntas" data-fr="Analyser les Données pour Répondre aux Questions">Analisar Dados para Responder Perguntas</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados." data-fr="Identifier des modèles et tirer des conclusions significatives pour répondre aux questions d'entreprise.">Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="certificados/google-data-analytics-share-data-2025.pdf" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/google-data-analytics-share-data-2025.png" alt="Compartilhar Dados" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name" data-pt="Compartilhar Dados pela Arte da Visualização" data-fr="Partager les Données par l'Art de la Visualisation">Compartilhar Dados pela Arte da Visualização</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">Google · Coursera</div>
+          <p class="cert-desc" data-pt="Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante." data-fr="Visualisations efficaces et storytelling avec les données pour communiquer des insights clairement.">Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante.</p>
+          <span class="cert-open-label" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+    </div><!-- /google -->
+
+    <!-- freeCodeCamp -->
+    <div class="cat-label" style="margin-top:3rem"><span>🔶 freeCodeCamp</span><div class="cat-line"></div></div>
+    <div class="certs-grid">
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/Responsive-Web-Design.png" alt="Responsive Web Design" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">Responsive Web Design</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis." data-fr="HTML5, CSS3, Flexbox et Grid pour créer des mises en page modernes et adaptables.">HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JS Algorithms" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">JavaScript Algorithms &amp; DS</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+." data-fr="Logique de programmation, algorithmes efficaces et structures de données avec ES6+.">Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/Front-End-Development-Libraries.png" alt="Front End Libraries" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">Front End Libraries</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente." data-fr="React, Redux et bibliothèques modernes pour un développement front-end efficace.">React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/Data-Visualization.png" alt="Data Visualization" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">Data Visualization</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="Visualizações de dados eficazes com D3.js e outras ferramentas modernas." data-fr="Visualisations de données efficaces avec D3.js et d'autres outils modernes.">Visualizações de dados eficazes com D3.js e outras ferramentas modernas.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/Legacy-Front-End.png" alt="Legacy Front End" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">Legacy Front End</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web." data-fr="HTML, CSS, accessibilité, Flexbox et Grid — fondements solides du développement web.">HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+      <a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" rel="noopener">
+        <div class="cert-img-wrap">
+          <img src="certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JS" loading="lazy">
+        </div>
+        <div class="cert-body">
+          <div class="cert-header">
+            <span class="cert-name">Legacy JavaScript Algorithms &amp; DS</span>
+            <span class="cert-year">2025</span>
+          </div>
+          <div class="cert-issuer">freeCodeCamp</div>
+          <p class="cert-desc" data-pt="JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional." data-fr="JavaScript : fondamentaux, algorithmes, programmation orientée objet et fonctionnelle.">JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
+          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →">Ver certificado →</span>
+        </div>
+      </a>
+
+    </div><!-- /fcc -->
+  </div>
 </section>
+
+<!-- ═══ SOBRE ═══════════════════════════════════════════════════ -->
 <section class="section" id="sobre">
-<div class="container">
-<span class="eyebrow" data-pt="Quem sou" data-fr="Qui je suis">Quem sou</span>
-<h2 class="sec-title" data-pt="Sobre mim" data-fr="À propos de moi">Sobre mim</h2>
-<div class="about-grid">
-<div class="about-text reveal">
-<p data-pt="Sou desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB). Trabalho na construção de sites funcionais, responsivos e bem estruturados, ajudando negócios a estruturarem sua presença digital com clareza e profissionalismo." data-fr="Je suis développeur web et étudiant en Sciences Économiques à l'Université de Brasília (UnB). Je travaille à la construction de sites fonctionnels, responsifs et bien structurés, aidant les entreprises à établir leur présence numérique avec clarté et professionnalisme.">Sou desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB). Trabalho na construção de sites funcionais, responsivos e bem estruturados, ajudando negócios a estruturarem sua presença digital com clareza e profissionalismo.</p>
-<p data-pt="Paralelamente, estou aprofundando minha formação em Ciência de Dados e Análise Econômica, integrando programação, economia e pensamento crítico para compreender problemas de forma estruturada." data-fr="En parallèle, j'approfondis ma formation en Science des Données et Analyse Économique, en intégrant programmation, économie et pensée critique pour comprendre les problèmes de manière structurée.">Paralelamente, estou aprofundando minha formação em Ciência de Dados e Análise Econômica, integrando programação, economia e pensamento crítico para compreender problemas de forma estruturada.</p>
-<p data-pt="Meu foco atual é evoluir de forma consistente — entregando soluções práticas no presente enquanto desenvolvo competências analíticas mais robustas para atuar, no futuro, em projetos que envolvam dados, economia e impacto social." data-fr="Mon objectif actuel est d'évoluer de manière cohérente — en livrant des solutions pratiques aujourd'hui tout en développant des compétences analytiques plus robustes pour agir, à l'avenir, sur des projets impliquant données, économie et impact social.">Meu foco atual é evoluir de forma consistente — entregando soluções práticas no presente enquanto desenvolvo competências analíticas mais robustas para atuar, no futuro, em projetos que envolvam dados, economia e impacto social.</p>
-<p data-pt="Acredito na construção gradual: agir, melhorar e consolidar habilidades com disciplina e autonomia." data-fr="Je crois en la construction graduelle : agir, s'améliorer et consolider les compétences avec discipline et autonomie.">Acredito na construção gradual: agir, melhorar e consolidar habilidades com disciplina e autonomia.</p>
-</div>
-<div class="skills-panel reveal">
-<div class="skill-item"><div class="skill-icon">💻</div><div><h4 data-pt="Desenvolvimento Web" data-fr="Développement Web">Desenvolvimento Web</h4><p>HTML5, CSS3, JavaScript ES6+, React, D3.js, Design Responsivo</p></div></div>
-<div class="skill-item"><div class="skill-icon">📊</div><div><h4 data-pt="Análise de Dados" data-fr="Analyse de Données">Análise de Dados</h4><p data-pt="Google Analytics, SQL, R, Tableau, BigQuery, Pensamento Analítico" data-fr="Google Analytics, SQL, R, Tableau, BigQuery, Pensée Analytique">Google Analytics, SQL, R, Tableau, BigQuery, Pensamento Analítico</p></div></div>
-<div class="skill-item"><div class="skill-icon">🎓</div><div><h4 data-pt="Formação Acadêmica" data-fr="Formation Académique">Formação Acadêmica</h4><p data-pt="Ciências Econômicas — UnB (em curso)" data-fr="Sciences Économiques — UnB (en cours)">Ciências Econômicas — UnB (em curso)</p></div></div>
-<div class="skill-item"><div class="skill-icon">🌍</div><div><h4 data-pt="Idiomas" data-fr="Langues">Idiomas</h4><p data-pt="Português (nativo) · Francês (fluente)" data-fr="Portugais (natif) · Français (courant)">Português (nativo) · Francês (fluente)</p></div></div>
-</div>
-</div>
-</div>
+  <div class="container">
+    <span class="eyebrow" data-pt="Quem sou" data-fr="Qui je suis">Quem sou</span>
+    <h2 class="sec-title" data-pt="Sobre mim" data-fr="À propos de moi">Sobre mim</h2>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-pt="Sou desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB). Trabalho na construção de sites funcionais, responsivos e bem estruturados, ajudando negócios a estruturarem sua presença digital com clareza e profissionalismo." data-fr="Je suis développeur web et étudiant en Sciences Économiques à l'Université de Brasília (UnB). Je travaille à la construction de sites fonctionnels, responsifs et bien structurés, aidant les entreprises à établir leur présence numérique avec clarté et professionnalisme.">Sou desenvolvedor web e estudante de Ciências Econômicas na Universidade de Brasília (UnB). Trabalho na construção de sites funcionais, responsivos e bem estruturados, ajudando negócios a estruturarem sua presença digital com clareza e profissionalismo.</p>
+        <p data-pt="Paralelamente, estou aprofundando minha formação em Ciência de Dados e Análise Econômica, integrando programação, economia e pensamento crítico para compreender problemas de forma estruturada." data-fr="En parallèle, j'approfondis ma formation en Science des Données et Analyse Économique, en intégrant programmation, économie et pensée critique pour comprendre les problèmes de manière structurée.">Paralelamente, estou aprofundando minha formação em Ciência de Dados e Análise Econômica, integrando programação, economia e pensamento crítico para compreender problemas de forma estruturada.</p>
+        <p data-pt="Meu foco atual é evoluir de forma consistente — entregando soluções práticas no presente enquanto desenvolvo competências analíticas mais robustas para projetos futuros que envolvam dados, economia e impacto social." data-fr="Mon objectif actuel est d'évoluer de manière cohérente — en livrant des solutions pratiques aujourd'hui tout en développant des compétences analytiques plus robustes pour des projets impliquant données, économie et impact social.">Meu foco atual é evoluir de forma consistente — entregando soluções práticas no presente enquanto desenvolvo competências analíticas mais robustas para projetos futuros que envolvam dados, economia e impacto social.</p>
+        <p data-pt="Acredito na construção gradual: agir, melhorar e consolidar habilidades com disciplina e autonomia." data-fr="Je crois en la construction graduelle : agir, s'améliorer et consolider les compétences avec discipline et autonomie.">Acredito na construção gradual: agir, melhorar e consolidar habilidades com disciplina e autonomia.</p>
+      </div>
+      <div class="skills-panel reveal">
+        <div class="skill-item"><div class="skill-icon">💻</div><div><h4 data-pt="Desenvolvimento Web" data-fr="Développement Web">Desenvolvimento Web</h4><p>HTML5, CSS3, JavaScript ES6+, React, D3.js, Design Responsivo</p></div></div>
+        <div class="skill-item"><div class="skill-icon">📊</div><div><h4 data-pt="Análise de Dados" data-fr="Analyse de Données">Análise de Dados</h4><p data-pt="Google Analytics, SQL, R, Tableau, BigQuery, Pensamento Analítico" data-fr="Google Analytics, SQL, R, Tableau, BigQuery, Pensée Analytique">Google Analytics, SQL, R, Tableau, BigQuery, Pensamento Analítico</p></div></div>
+        <div class="skill-item"><div class="skill-icon">🎓</div><div><h4 data-pt="Formação Acadêmica" data-fr="Formation Académique">Formação Acadêmica</h4><p data-pt="Ciências Econômicas — UnB (em curso)" data-fr="Sciences Économiques — UnB (en cours)">Ciências Econômicas — UnB (em curso)</p></div></div>
+        <div class="skill-item"><div class="skill-icon">🌍</div><div><h4 data-pt="Idiomas" data-fr="Langues">Idiomas</h4><p data-pt="Português (nativo) · Francês (fluente)" data-fr="Portugais (natif) · Français (courant)">Português (nativo) · Francês (fluente)</p></div></div>
+      </div>
+    </div>
+  </div>
 </section>
+
+<!-- ═══ CONTATO ═════════════════════════════════════════════════ -->
 <section class="section section-dark" id="contato">
-<div class="container">
-<span class="eyebrow" style="color:var(--gold)" data-pt="Vamos conversar" data-fr="Discutons">Vamos conversar</span>
-<h2 class="sec-title" style="color:#fff" data-pt="Contato" data-fr="Contact">Contato</h2>
-<div class="contact-grid">
-<div class="contact-intro reveal">
-<h3 data-pt="Aberto a novas oportunidades" data-fr="Ouvert aux nouvelles opportunités">Aberto a novas oportunidades</h3>
-<p data-pt="Tenho interesse em projetos que combinam tecnologia, dados e impacto social. Se você tem uma ideia ou quer colaborar, ficarei feliz em conversar." data-fr="Je suis intéressé par les projets qui combinent technologie, données et impact social. Si vous souhaitez collaborer, je serai ravi d'échanger.">Tenho interesse em projetos que combinam tecnologia, dados e impacto social. Se você tem uma ideia ou quer colaborar, ficarei feliz em conversar.</p>
-<a href="mailto:scherlockhallneto@gmail.com" class="contact-direct">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-scherlockhallneto@gmail.com
-</a>
-</div>
-<div class="contact-links reveal">
-<a href="mailto:scherlockhallneto@gmail.com" class="contact-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-scherlockhallneto@gmail.com<span>E-mail</span>
-</a>
-<a href="https://wa.me/33753964060" target="_blank" class="contact-link">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-+33 7 53 96 40 60<span>WhatsApp</span>
-</a>
-<a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="contact-link">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-LinkedIn<span>scherlock-hall</span>
-</a>
-<a href="https://github.com/ScherlockHall" target="_blank" class="contact-link">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-GitHub<span>ScherlockHall</span>
-</a>
-<a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="contact-link">
-<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-Currículo Lattes — CNPq<span>Lattes</span>
-</a>
-<a href="https://www.instagram.com/scherlockhall04" target="_blank" class="contact-link">
-<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-@scherlockhall04<span>Instagram</span>
-</a>
-</div>
-</div>
-</div>
+  <div class="container">
+    <span class="eyebrow" style="color:var(--gold)" data-pt="Vamos conversar" data-fr="Discutons">Vamos conversar</span>
+    <h2 class="sec-title" style="color:#fff" data-pt="Contato" data-fr="Contact">Contato</h2>
+    <div class="contact-grid">
+      <div class="contact-intro reveal">
+        <h3 data-pt="Aberto a novas oportunidades" data-fr="Ouvert aux nouvelles opportunités">Aberto a novas oportunidades</h3>
+        <p data-pt="Tenho interesse em projetos que combinam tecnologia, dados e impacto social. Se você tem uma ideia ou quer colaborar, ficarei feliz em conversar." data-fr="Je suis intéressé par les projets qui combinent technologie, données et impact social. Si vous souhaitez collaborer, je serai ravi d'échanger.">Tenho interesse em projetos que combinam tecnologia, dados e impacto social. Se você tem uma ideia ou quer colaborar, ficarei feliz em conversar.</p>
+        <a href="/cdn-cgi/l/email-protection#c0b3a3a8a5b2acafa3aba8a1acacaea5b4af80a7ada1a9aceea3afad" class="contact-direct">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span class="__cf_email__" data-cfemail="0774646f62756b68646c6f666b6b6962736847606a666e6b2964686a">[email&#160;protected]</span>
+        </a>
+      </div>
+      <div class="contact-links reveal">
+        <a href="/cdn-cgi/l/email-protection#e291818a87908e8d81898a838e8e8c87968da2858f838b8ecc818d8f" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <span class="__cf_email__" data-cfemail="88fbebe0edfae4e7ebe3e0e9e4e4e6edfce7c8efe5e9e1e4a6ebe7e5">[email&#160;protected]</span><span>E-mail</span>
+        </a>
+        <a href="https://wa.me/33753964060" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          +33 7 53 96 40 60<span>WhatsApp</span>
+        </a>
+        <a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          LinkedIn<span>scherlock-hall</span>
+        </a>
+        <a href="https://github.com/ScherlockHall" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+          GitHub<span>ScherlockHall</span>
+        </a>
+        <a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
+          Currículo Lattes — CNPq<span>Lattes</span>
+        </a>
+        <a href="https://www.instagram.com/scherlockhall04" target="_blank" class="contact-link">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
+          @scherlockhall04<span>Instagram</span>
+        </a>
+      </div>
+    </div>
+  </div>
 </section>
+
 <footer>
-<p data-pt="© 2025 Scherlock Hall — Todos os direitos reservados" data-fr="© 2025 Scherlock Hall — Tous droits réservés">© 2025 Scherlock Hall — Todos os direitos reservados</p>
+  <p data-pt="© 2025 Scherlock Hall — Todos os direitos reservados" data-fr="© 2025 Scherlock Hall — Tous droits réservés">© 2025 Scherlock Hall — Todos os direitos reservados</p>
 </footer>
+
+<!-- ═══ BIO REVIVA MODAL ════════════════════════════════════════ -->
 <div class="modal-overlay" id="bioModal" onclick="closeBioModalOutside(event)">
-<div class="modal">
-<button class="modal-close" onclick="closeBioModal()">✕</button>
-<div class="modal-training-badge">
-<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-<span data-pt="Projeto de Estudo e Treinamento" data-fr="Projet d'Étude et d'Entraînement">Projeto de Estudo e Treinamento</span>
+  <div class="modal">
+    <button class="modal-close" onclick="closeBioModal()">✕</button>
+    <div class="modal-training-badge">
+      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <span data-pt="Projeto de Estudo e Treinamento" data-fr="Projet d'Étude et d'Entraînement">Projeto de Estudo e Treinamento</span>
+    </div>
+    <h2>🌿 Bio Reviva</h2>
+    <p class="modal-sub" data-pt="Exercício profissional de design e desenvolvimento de site institucional — não se trata de uma encomenda real. Criado para praticar construção de identidade visual e comunicação ambiental." data-fr="Exercice professionnel de design et développement de site institutionnel — il ne s'agit pas d'une commande réelle. Créé pour pratiquer la construction d'identité visuelle et la communication environnementale.">Exercício profissional de design e desenvolvimento de site institucional — não se trata de uma encomenda real. Criado para praticar construção de identidade visual e comunicação ambiental.</p>
+    <div class="modal-tags">
+      <span class="tag tag-green">Sustentabilidade</span>
+      <span class="tag tag-blue">HTML/CSS/JS</span>
+      <span class="tag tag-gray">Design Institucional</span>
+      <span class="tag tag-gold">Exercício</span>
+    </div>
+    <div class="modal-section">
+      <h4 data-pt="Missão" data-fr="Mission">Missão</h4>
+      <p data-pt="Atuar de forma integrada à implementação de políticas de recuperação da vegetação nativa, promovendo um modelo de desenvolvimento sustentável e inclusivo." data-fr="Agir de manière intégrée à la mise en œuvre des politiques de récupération de la végétation native, en promouvant un modèle de développement durable et inclusif.">Atuar de forma integrada à implementação de políticas de recuperação da vegetação nativa, promovendo um modelo de desenvolvimento sustentável e inclusivo.</p>
+    </div>
+    <div class="modal-section">
+      <h4 data-pt="Base Científica" data-fr="Base Scientifique">Base Científica</h4>
+      <p data-pt="Soluções inovadoras de baixo carbono, baseadas em rigor científico e parcerias estratégicas para uma sociedade mais equitativa." data-fr="Solutions innovantes à faible émission de carbone, basées sur la rigueur scientifique et des partenariats stratégiques pour une société plus équitable.">Soluções inovadoras de baixo carbono, baseadas em rigor científico e parcerias estratégicas para uma sociedade mais equitativa.</p>
+    </div>
+    <div class="modal-section">
+      <h4 data-pt="Abordagem" data-fr="Approche">Abordagem</h4>
+      <p data-pt="Fortalecimento institucional, mobilização de comunidades de prática e conexão de fluxos financeiros para restauração de ecossistemas em todos os biomas." data-fr="Renforcement institutionnel, mobilisation de communautés de pratique et connexion de flux financiers pour la restauration des écosystèmes dans tous les biomes.">Fortalecimento institucional, mobilização de comunidades de prática e conexão de fluxos financeiros para restauração de ecossistemas em todos os biomas.</p>
+    </div>
+    <div class="modal-actions">
+      <a href="bio-reviva/index.html" target="_blank" class="btn btn-blue" data-pt="Ver o site" data-fr="Voir le site">Ver o site</a>
+      <button onclick="closeBioModal()" class="btn btn-ghost" data-pt="Fechar" data-fr="Fermer">Fechar</button>
+    </div>
+  </div>
 </div>
-<h2>🌿 Bio Reviva</h2>
-<p class="modal-sub" data-pt="Exercício profissional de design e desenvolvimento de site institucional — não se trata de uma encomenda real. Criado para praticar construção de identidade visual e comunicação ambiental." data-fr="Exercice professionnel de design et développement de site institutionnel — il ne s'agit pas d'une commande réelle. Créé pour pratiquer la construction d'identité visuelle et la communication environnementale.">Exercício profissional de design e desenvolvimento de site institucional — não se trata de uma encomenda real. Criado para praticar construção de identidade visual e comunicação ambiental.</p>
-<div class="modal-tags">
-<span class="tag tag-green">Sustentabilidade</span>
-<span class="tag tag-blue">HTML/CSS/JS</span>
-<span class="tag tag-gray">Design Institucional</span>
-<span class="tag tag-gold">Exercício</span>
-</div>
-<div class="modal-section">
-<h4 data-pt="Missão" data-fr="Mission">Missão</h4>
-<p data-pt="Atuar de forma integrada à implementação de políticas de recuperação da vegetação nativa, promovendo um modelo de desenvolvimento sustentável e inclusivo." data-fr="Agir de manière intégrée à la mise en œuvre des politiques de récupération de la végétation native, en promouvant un modèle de développement durable et inclusif.">Atuar de forma integrada à implementação de políticas de recuperação da vegetação nativa, promovendo um modelo de desenvolvimento sustentável e inclusivo.</p>
-</div>
-<div class="modal-section">
-<h4 data-pt="Base Científica" data-fr="Base Scientifique">Base Científica</h4>
-<p data-pt="Soluções inovadoras de baixo carbono, baseadas em rigor científico e parcerias estratégicas para uma sociedade mais equitativa." data-fr="Solutions innovantes à faible émission de carbone, basées sur la rigueur scientifique et des partenariats stratégiques pour une société plus équitable.">Soluções inovadoras de baixo carbono, baseadas em rigor científico e parcerias estratégicas para uma sociedade mais equitativa.</p>
-</div>
-<div class="modal-section">
-<h4 data-pt="Abordagem" data-fr="Approche">Abordagem</h4>
-<p data-pt="Fortalecimento institucional, mobilização de comunidades de prática e conexão de fluxos financeiros para restauração de ecossistemas em todos os biomas." data-fr="Renforcement institutionnel, mobilisation de communautés de pratique et connexion de flux financiers pour la restauration des écosystèmes dans tous les biomes.">Fortalecimento institucional, mobilização de comunidades de prática e conexão de fluxos financeiros para restauração de ecossistemas em todos os biomas.</p>
-</div>
-<div class="modal-actions">
-<a href="bio-reviva/index.html" target="_blank" class="btn btn-blue" data-pt="Ver o site" data-fr="Voir le site">Ver o site</a>
-<button onclick="closeBioModal()" class="btn btn-ghost" data-pt="Fechar" data-fr="Fermer">Fechar</button>
-</div>
-</div>
-</div>
-<script>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 let currentLang = 'pt';
+
 function changeLang(lang) {
-currentLang = lang;
-document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'fr';
-document.querySelectorAll('.lang-toggle button').forEach(b =>
-b.classList.toggle('active', b.dataset.lang === lang)
-);
-document.querySelectorAll('[data-pt]').forEach(el => {
-const val = el.getAttribute('data-' + lang);
-if (val !== null) el.textContent = val;
-});
+  currentLang = lang;
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'fr';
+  document.querySelectorAll('.lang-toggle button').forEach(b =>
+    b.classList.toggle('active', b.dataset.lang === lang)
+  );
+  document.querySelectorAll('[data-pt]').forEach(el => {
+    const val = el.getAttribute('data-' + lang);
+    if (val !== null) el.textContent = val;
+  });
 }
+
 window.addEventListener('scroll', () =>
-document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40)
-, { passive:true });
+  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40)
+, { passive: true });
+
 function toggleMenu() {
-document.getElementById('hamburger').classList.toggle('open');
-document.getElementById('mobileMenu').classList.toggle('open');
+  document.getElementById('hamburger').classList.toggle('open');
+  document.getElementById('mobileMenu').classList.toggle('open');
 }
 function closeMenu() {
-document.getElementById('hamburger').classList.remove('open');
-document.getElementById('mobileMenu').classList.remove('open');
+  document.getElementById('hamburger').classList.remove('open');
+  document.getElementById('mobileMenu').classList.remove('open');
 }
 document.addEventListener('click', e => {
-if (!document.getElementById('navbar').contains(e.target) &&
-!document.getElementById('mobileMenu').contains(e.target))
-closeMenu();
+  if (!document.getElementById('navbar').contains(e.target) &&
+      !document.getElementById('mobileMenu').contains(e.target))
+    closeMenu();
 });
+
+// Scroll reveal
 const obs = new IntersectionObserver(entries => {
-entries.forEach(e => {
-if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-});
-}, { threshold:.08, rootMargin:'0px 0px -50px 0px' });
+  entries.forEach(e => {
+    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+  });
+}, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
 function openBioModal() {
-document.getElementById('bioModal').classList.add('open');
-document.body.style.overflow = 'hidden';
+  document.getElementById('bioModal').classList.add('open');
+  document.body.style.overflow = 'hidden';
 }
 function closeBioModal() {
-document.getElementById('bioModal').classList.remove('open');
-document.body.style.overflow = '';
+  document.getElementById('bioModal').classList.remove('open');
+  document.body.style.overflow = '';
 }
 function closeBioModalOutside(e) {
-if (e.target === document.getElementById('bioModal')) closeBioModal();
+  if (e.target === document.getElementById('bioModal')) closeBioModal();
 }
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBioModal(); });
 </script>
