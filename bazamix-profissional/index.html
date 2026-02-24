@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BAZAMIX – Concreto e Argamassa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow:wght@300;400;500;600;700&family=Barlow+Condensed:wght@700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --orange: #F97316;
+    --orange-dark: #EA580C;
+    --dark: #0F0F0F;
+    --dark2: #1A1A1A;
+    --dark3: #262626;
+    --gray: #6B7280;
+    --light: #F5F5F0;
+    --white: #FFFFFF;
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { font-family:'Barlow',sans-serif; background:var(--dark); color:var(--light); overflow-x:hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 40px;
+    background:rgba(15,15,15,0.93);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid rgba(249,115,22,0.18);
+    transition:box-shadow .3s;
+  }
+  .nav-logo img { height:48px; display:block; }
+  .nav-links { display:flex; gap:34px; list-style:none; }
+  .nav-links a { text-decoration:none; color:var(--light); font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:600; transition:color .3s; }
+  .nav-links a:hover { color:var(--orange); }
+  .nav-cta { background:var(--orange); color:#fff; padding:11px 26px; border-radius:2px; font-size:12px; letter-spacing:2px; text-transform:uppercase; font-weight:700; text-decoration:none; transition:background .3s; white-space:nowrap; }
+  .nav-cta:hover { background:var(--orange-dark); }
+  .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; }
+  .hamburger span { display:block; width:26px; height:2px; background:var(--light); }
+  .mobile-menu { display:none; position:fixed; top:76px; left:0; right:0; background:var(--dark2); border-top:2px solid var(--orange); z-index:99; padding:24px; flex-direction:column; gap:4px; }
+  .mobile-menu a { color:var(--light); text-decoration:none; font-size:14px; letter-spacing:2px; text-transform:uppercase; font-weight:600; padding:13px 0; border-bottom:1px solid #2a2a2a; }
+  .mobile-menu a:last-child { color:#25D366; border:none; margin-top:8px; }
+  .mobile-menu.open { display:flex; }
+
+  /* ── HERO ── */
+  .hero {
+    min-height:100vh; display:flex; align-items:center;
+    padding:120px 40px 80px; position:relative; overflow:hidden;
+  }
+  .hero-bg {
+    position:absolute; inset:0;
+    background:url('hero-bg.jpg') center/cover no-repeat;
+    filter:brightness(.28) saturate(.4);
+  }
+  .hero-overlay {
+    position:absolute; inset:0;
+    background:linear-gradient(135deg,rgba(249,115,22,.13) 0%,transparent 55%,rgba(15,15,15,.75) 100%);
+  }
+  .hero-content { position:relative; max-width:800px; }
+  .hero-badge {
+    display:inline-flex; align-items:center; gap:8px;
+    background:var(--orange); color:#fff;
+    padding:6px 18px; font-size:11px; letter-spacing:3px; text-transform:uppercase; font-weight:700;
+    margin-bottom:28px;
+  }
+  .hero-badge::before { content:''; width:7px; height:7px; background:#fff; border-radius:50%; animation:pulse 1.6s infinite; }
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.3}}
+  .hero h1 { font-family:'Bebas Neue',sans-serif; font-size:clamp(62px,10vw,128px); line-height:.92; letter-spacing:2px; margin-bottom:26px; }
+  .hero h1 span { color:var(--orange); }
+  .hero p { font-size:clamp(15px,1.8vw,18px); font-weight:300; color:rgba(245,245,240,.74); max-width:520px; line-height:1.75; margin-bottom:42px; }
+  .hero-btns { display:flex; gap:16px; flex-wrap:wrap; }
+  .btn-primary { background:var(--orange); color:#fff; padding:16px 36px; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:700; text-decoration:none; border-radius:2px; transition:all .3s; display:inline-flex; align-items:center; gap:10px; }
+  .btn-primary:hover { background:var(--orange-dark); transform:translateY(-2px); box-shadow:0 12px 30px rgba(249,115,22,.35); }
+  .btn-outline { border:2px solid rgba(245,245,240,.35); color:var(--light); padding:16px 36px; font-size:13px; letter-spacing:2px; text-transform:uppercase; font-weight:700; text-decoration:none; border-radius:2px; transition:all .3s; }
+  .btn-outline:hover { border-color:var(--orange); color:var(--orange); }
+  .hero-stats { display:flex; gap:44px; margin-top:56px; }
+  .stat-n { font-family:'Bebas Neue',sans-serif; font-size:50px; color:var(--orange); line-height:1; }
+  .stat-l { font-size:11px; letter-spacing:2px; text-transform:uppercase; color:var(--gray); margin-top:2px; }
+
+  /* ── STRIP ── */
+  .strip { background:var(--dark2); border-top:2px solid var(--orange); border-bottom:1px solid #2a2a2a; padding:20px 40px; display:flex; align-items:center; justify-content:center; gap:48px; flex-wrap:wrap; }
+  .strip-item { display:flex; align-items:center; gap:12px; font-size:13px; font-weight:500; color:rgba(245,245,240,.75); letter-spacing:.3px; }
+  .strip-sep { width:1px; height:28px; background:rgba(255,255,255,.12); }
+
+  /* ── SECTION COMMON ── */
+  section { padding:100px 40px; }
+  .container { max-width:1200px; margin:0 auto; }
+  .section-label { font-size:11px; letter-spacing:4px; text-transform:uppercase; color:var(--orange); font-weight:700; margin-bottom:12px; }
+  .section-title { font-family:'Barlow Condensed',sans-serif; font-size:clamp(36px,5vw,60px); font-weight:900; line-height:1; text-transform:uppercase; margin-bottom:18px; }
+  .section-desc { color:rgba(245,245,240,.62); font-size:16px; line-height:1.75; max-width:520px; }
+
+  /* ── QUEM SOMOS ── */
+  .about { background:var(--dark2); }
+  .about-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; }
+  .about-imgs { display:grid; grid-template-columns:1fr; gap:10px; }
+  .about-imgs .img-main { height:300px; object-fit:cover; width:100%; }
+  .about-imgs .img-team { height:220px; object-fit:cover; width:100%; }
+  .features { display:grid; grid-template-columns:1fr 1fr; gap:22px; margin-top:36px; }
+  .feat { border-left:3px solid var(--orange); padding-left:16px; }
+  .feat h4 { font-size:14px; font-weight:700; text-transform:uppercase; letter-spacing:.5px; margin-bottom:4px; }
+  .feat p { font-size:13px; color:var(--gray); line-height:1.5; }
+
+  /* ── SERVIÇOS ── */
+  .services { background:var(--dark); position:relative; overflow:hidden; }
+  .services-bg-img {
+    position:absolute; inset:0;
+    background:url('services-bg.png') center/cover no-repeat;
+    filter:brightness(.08) saturate(.3);
+  }
+  .services-inner { position:relative; }
+  .services-header { display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:56px; }
+  .services-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:3px; }
+  .scard {
+    background:rgba(26,26,26,.95);
+    overflow:hidden; position:relative; cursor:default;
+    transition:all .35s;
+    border-bottom:3px solid transparent;
+  }
+  .scard:hover { border-bottom-color:var(--orange); transform:translateY(-4px); }
+  .scard-img { width:100%; height:180px; object-fit:cover; display:block; filter:brightness(.75) saturate(.7); transition:filter .35s; }
+  .scard:hover .scard-img { filter:brightness(.9) saturate(1); }
+  .scard-body { padding:24px 22px 28px; }
+  .scard-num { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:2px; color:var(--orange); margin-bottom:8px; }
+  .scard h3 { font-family:'Barlow Condensed',sans-serif; font-size:20px; font-weight:900; text-transform:uppercase; letter-spacing:.5px; margin-bottom:10px; }
+  .scard p { font-size:13px; color:var(--gray); line-height:1.6; }
+  .scard::before { content:''; position:absolute; top:0; left:0; width:3px; height:0; background:var(--orange); transition:height .35s; }
+  .scard:hover::before { height:100%; }
+
+  /* ── FROTA ── */
+  .fleet { background:var(--dark3); overflow:hidden; }
+  .fleet-layout { display:grid; grid-template-columns:1fr 1.35fr; align-items:stretch; }
+  .fleet-text { padding:80px 60px 80px 0; display:flex; flex-direction:column; justify-content:center; }
+  .fleet-img-wrap { position:relative; }
+  .fleet-img-wrap img.fleet-main { width:100%; height:100%; object-fit:cover; min-height:460px; display:block; }
+  .fleet-img-wrap::before { content:''; position:absolute; inset:0; background:linear-gradient(to right,var(--dark3) 0%,transparent 28%); z-index:1; }
+  .fleet-truck-badge {
+    position:absolute; bottom:24px; left:50%; transform:translateX(-50%);
+    z-index:2; background:rgba(15,15,15,.82); backdrop-filter:blur(8px);
+    padding:12px 20px; border:1px solid rgba(249,115,22,.35); border-radius:2px;
+    text-align:center;
+  }
+  .fleet-truck-badge img { height:56px; display:block; filter:drop-shadow(0 2px 8px rgba(0,0,0,.5)); }
+  .fleet-points { display:flex; flex-direction:column; gap:18px; margin:28px 0 36px; }
+  .fpoint { display:flex; align-items:flex-start; gap:14px; }
+  .fdot { width:8px; height:8px; background:var(--orange); border-radius:50%; flex-shrink:0; margin-top:7px; }
+  .fpoint p { font-size:15px; color:rgba(245,245,240,.7); line-height:1.65; }
+
+  /* ── EQUIPE / MEGA ── */
+  .team-banner {
+    position:relative; overflow:hidden; height:380px;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .team-banner img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; filter:brightness(.38) saturate(.6); }
+  .team-banner-content { position:relative; text-align:center; padding:0 40px; }
+  .team-banner h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,7vw,86px); letter-spacing:3px; color:#fff; margin-bottom:12px; }
+  .team-banner p { font-size:17px; color:rgba(255,255,255,.75); max-width:540px; margin:0 auto 32px; line-height:1.65; }
+
+  /* ── MAPA ── */
+  .map-section { background:var(--dark2); }
+  .map-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+  .contact-items { display:flex; flex-direction:column; gap:12px; margin:28px 0 32px; }
+  .citem { display:flex; align-items:center; gap:16px; padding:18px; background:var(--dark3); border-left:3px solid var(--orange); text-decoration:none; transition:background .3s; }
+  .citem:hover { background:#2f2f2f; }
+  .citem-icon { font-size:22px; flex-shrink:0; }
+  .citem-text h4 { font-size:10px; letter-spacing:2px; text-transform:uppercase; color:var(--orange); margin-bottom:2px; font-weight:700; }
+  .citem-text p { font-size:15px; color:var(--light); font-weight:500; }
+  .map-nav-btns { display:flex; flex-direction:column; gap:10px; }
+  .map-link { display:inline-flex; align-items:center; gap:8px; font-size:13px; font-weight:500; color:rgba(245,245,240,.6); text-decoration:none; letter-spacing:.3px; transition:color .3s; }
+  .map-link:hover { color:var(--orange); }
+  .map-embed { border-radius:3px; overflow:hidden; height:400px; }
+  .map-embed iframe { width:100%; height:100%; border:0; filter:grayscale(30%) invert(8%); }
+
+  /* ── CTA BANNER ── */
+  .cta-banner { background:var(--orange); padding:80px 40px; text-align:center; }
+  .cta-banner h2 { font-family:'Bebas Neue',sans-serif; font-size:clamp(40px,7vw,88px); letter-spacing:3px; color:#fff; margin-bottom:14px; }
+  .cta-banner p { color:rgba(255,255,255,.82); font-size:18px; margin-bottom:36px; }
+  .btn-white { background:#fff; color:var(--orange); padding:18px 48px; border-radius:2px; font-size:14px; letter-spacing:2px; text-transform:uppercase; font-weight:700; text-decoration:none; display:inline-flex; align-items:center; gap:12px; transition:all .3s; }
+  .btn-white:hover { transform:translateY(-3px); box-shadow:0 16px 40px rgba(0,0,0,.25); }
+
+  /* ── FOOTER ── */
+  footer { background:#080808; padding:60px 40px 28px; }
+  .footer-grid { display:grid; grid-template-columns:2fr 1fr 1fr; gap:56px; margin-bottom:44px; }
+  .f-logo img { height:44px; margin-bottom:16px; }
+  .f-desc { font-size:14px; color:var(--gray); line-height:1.7; max-width:290px; }
+  .f-col h4 { font-size:10px; letter-spacing:3px; text-transform:uppercase; color:var(--orange); font-weight:700; margin-bottom:18px; }
+  .f-col ul { list-style:none; display:flex; flex-direction:column; gap:10px; }
+  .f-col ul a { color:var(--gray); text-decoration:none; font-size:14px; transition:color .3s; }
+  .f-col ul a:hover { color:var(--light); }
+  .footer-bottom { border-top:1px solid #1a1a1a; padding-top:24px; display:flex; justify-content:space-between; }
+  .footer-bottom p { font-size:12px; color:#3a3a3a; }
+
+  /* ── WHATSAPP ── */
+  .wa-btn {
+    position:fixed; bottom:28px; right:28px; z-index:200;
+    width:64px; height:64px; border-radius:50%;
+    background:#25D366; display:flex; align-items:center; justify-content:center;
+    text-decoration:none; box-shadow:0 8px 28px rgba(37,211,102,.5);
+    animation:wabounce 2.2s infinite;
+    transition:all .3s;
+  }
+  .wa-btn:hover { transform:scale(1.1); box-shadow:0 14px 40px rgba(37,211,102,.65); animation:none; }
+  @keyframes wabounce{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+  .wa-btn svg { width:32px; height:32px; fill:#fff; }
+  .wa-tooltip { position:absolute; right:76px; background:var(--dark2); color:#fff; font-size:12px; font-weight:600; white-space:nowrap; padding:8px 14px; border-radius:3px; opacity:0; transition:opacity .3s; pointer-events:none; border:1px solid #333; }
+  .wa-btn:hover .wa-tooltip { opacity:1; }
+
+  /* ── RESPONSIVE ── */
+  @media(max-width:1024px){
+    .about-grid,.fleet-layout,.map-grid { grid-template-columns:1fr; }
+    .services-grid { grid-template-columns:repeat(2,1fr); }
+    .fleet-text { padding:60px 0 40px; }
+    .fleet-img-wrap img.fleet-main { min-height:320px; }
+    .footer-grid { grid-template-columns:1fr 1fr; gap:36px; }
+  }
+  @media(max-width:768px){
+    nav { padding:14px 20px; }
+    .nav-links,.nav-cta { display:none; }
+    .hamburger { display:flex; }
+    section { padding:64px 20px; }
+    .hero { padding:100px 20px 70px; }
+    .strip { gap:16px; padding:18px 20px; flex-direction:column; align-items:flex-start; }
+    .strip-sep { display:none; }
+    .services-header { flex-direction:column; gap:20px; align-items:flex-start; }
+    .services-grid { grid-template-columns:1fr; }
+    .about-imgs { grid-template-columns:1fr; }
+    .about-imgs .img-main,.about-imgs .img-team { height:200px; }
+    .features { grid-template-columns:1fr; }
+    .hero-btns { flex-direction:column; }
+    .footer-grid { grid-template-columns:1fr; }
+    .footer-bottom { flex-direction:column; gap:8px; }
+    .team-banner { height:auto; min-height:320px; padding:60px 20px; }
+    .team-banner-content { padding:0; }
+    .map-embed { height:280px; }
+    .wa-btn::before { display:none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="mainNav">
+  <a href="#home" class="nav-logo" style="text-decoration:none;">
+    <img src="logo-bazamix.png" alt="BAZAMIX – Concreto e Argamassa" style="height:46px; display:block;">
+  </a>
+  <ul class="nav-links">
+    <li><a href="#sobre">Quem Somos</a></li>
+    <li><a href="#servicos">Serviços</a></li>
+    <li><a href="#frota">Nossa Frota</a></li>
+    <li><a href="#contato">Contato</a></li>
+  </ul>
+  <a href="https://wa.me/554333768200?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="nav-cta">Pedir Orçamento</a>
+  <div class="hamburger" onclick="toggleMenu()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#sobre" onclick="toggleMenu()">Quem Somos</a>
+  <a href="#servicos" onclick="toggleMenu()">Serviços</a>
+  <a href="#frota" onclick="toggleMenu()">Nossa Frota</a>
+  <a href="#contato" onclick="toggleMenu()">Contato</a>
+  <a href="https://wa.me/554333768200?text=Olá!%20Gostaria%20de%20um%20orçamento.">💬 WhatsApp – Orçamento Rápido</a>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Concreto e Argamassa</div>
+    <h1>CONCRE<span>TI</span>ZANDO<br>SEUS SONHOS.</h1>
+    <p>Concreto usinado, argamassa e bombeamento com entrega direta na obra. Qualidade, agilidade e respeito ao meio ambiente em cada m³.</p>
+    <div class="hero-btns">
+      <a href="https://wa.me/554333768200?text=Olá!%20Quero%20solicitar%20um%20orçamento." class="btn-primary">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Solicitar Orçamento
+      </a>
+      <a href="#servicos" class="btn-outline">Ver Serviços</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="strip-item">
+    <img src="truck-mini.png" alt="Frota" style="height:32px; filter:brightness(0) invert(1); opacity:.9;">
+    <span>Frota própria de caminhões betoneira</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.9;flex-shrink:0;"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    <span>Logística planejada — entrega no prazo</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.9;flex-shrink:0;"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+    <span>Processo em conformidade com a ABNT NBR 14931</span>
+  </div>
+  <div class="strip-sep"></div>
+  <div class="strip-item">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="opacity:.9;flex-shrink:0;"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    <span>Responsabilidade ambiental em cada etapa</span>
+  </div>
+</div>
+
+<!-- QUEM SOMOS -->
+<section class="about" id="sobre">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-imgs">
+        <!-- Caminhão ao entardecer — imagem de impacto, ocupa topo inteiro -->
+        <img class="img-main" src="about-img.jpg" alt="Caminhão Betoneira BAZAMIX ao entardecer">
+        <!-- Equipe em mega construção — passa confiança humana -->
+        <img class="img-team" src="megaconstrucao.jpg" alt="Equipe BAZAMIX em grande obra">
+      </div>
+      <div>
+        <div class="section-label">Quem Somos</div>
+        <h2 class="section-title">EXPERIÊNCIA &<br>TECNOLOGIA</h2>
+        <p class="section-desc">A BAZAMIX une experiência e tecnologia para assegurar soluções inovadoras e excelentes. Contamos com uma equipe de profissionais experientes e qualificados para atendê-lo prontamente, com o melhor custo-benefício do mercado.</p>
+        <div class="features">
+          <div class="feat"><h4>Controle Total do Processo</h4><p>Da seleção dos materiais à entrega final, controlamos cada etapa com rigor técnico.</p></div>
+          <div class="feat"><h4>Normas ABNT NBR 14931</h4><p>Operamos em conformidade com todas as normas técnicas vigentes.</p></div>
+          <div class="feat"><h4>Frota Própria</h4><p>Caminhões betoneira modernos garantem logística eficiente e pontualidade.</p></div>
+          <div class="feat"><h4>Sustentabilidade</h4><p>Cuidado permanente com o meio ambiente em todos os nossos processos.</p></div>
+        </div>
+        <div style="margin-top:36px;">
+          <a href="https://wa.me/554333768200?text=Olá!%20Quero%20conhecer%20melhor%20a%20BAZAMIX." class="btn-primary">Falar com Nossa Equipe</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVIÇOS -->
+<section class="services" id="servicos">
+  <div class="services-bg-img"></div>
+  <div class="container services-inner">
+    <div class="services-header">
+      <div>
+        <div class="section-label">O que Oferecemos</div>
+        <h2 class="section-title">PRODUTOS &<br>SERVIÇOS</h2>
+      </div>
+      <a href="https://wa.me/554333768200?text=Olá!%20Gostaria%20de%20saber%20mais%20sobre%20os%20serviços." class="btn-primary">Falar com Especialista</a>
+    </div>
+    <div class="services-grid">
+
+      <div class="scard">
+        <img class="scard-img" src="interior-concreto curvo.png" alt="Concreto Alta Performance">
+        <div class="scard-body">
+          <div class="scard-num">— 01</div>
+          <h3>Concreto Alta Performance</h3>
+          <p>Para edifícios altos e estruturas que exigem máxima resistência. Especificado com critérios rigorosos de pré-projeto, agressividade do entorno e velocidade de execução.</p>
+        </div>
+      </div>
+
+      <div class="scard">
+        <img class="scard-img" src="interior-concreto.png" alt="Concreto Convencional">
+        <div class="scard-body">
+          <div class="scard-num">— 02</div>
+          <h3>Concreto Convencional</h3>
+          <p>O mais versátil. Ideal para fundações no solo, fôrmas, lajes e pisos. Aplicado com vibrador para garantir o adensamento correto e a resistência ideal da estrutura.</p>
+        </div>
+      </div>
+
+      <div class="scard">
+        <img class="scard-img" src="concreto-usinado.jpg" alt="Concreto Usinado">
+        <div class="scard-body">
+          <div class="scard-num">— 03</div>
+          <h3>Concreto Usinado</h3>
+          <p>Dosado em central (CDC) e entregue por betoneira. Fundamental para estacas, vigas, pilares, blocos, lajes e pisos. Reduz mão-de-obra e garante uniformidade da mistura.</p>
+        </div>
+      </div>
+
+      <div class="scard">
+        <img class="scard-img" src="argamassa.png" alt="Argamassa">
+        <div class="scard-body">
+          <div class="scard-num">— 04</div>
+          <h3>Argamassa</h3>
+          <p>Argamassa de alta qualidade para revestimentos e assentamentos. Produzida com controle técnico rigoroso, garante acabamento uniforme e durabilidade superior.</p>
+        </div>
+      </div>
+
+      <div class="scard">
+        <img class="scard-img" src="bomba.png" alt="Bomba Estacionária" style="object-fit:contain; background:#111; padding:20px;">
+        <div class="scard-body">
+          <div class="scard-num">— 05</div>
+          <h3>Bombeamento & Bomba Estacionária</h3>
+          <p>Impulsionamos o concreto do caminhão até o ponto exato de aplicação — vertical ou horizontal. Bomba estacionária disponível para grandes concretagens contínuas.</p>
+        </div>
+      </div>
+
+      <div class="scard">
+        <img class="scard-img" src="areia.png" alt="Areia e Pedra Brita">
+        <div class="scard-body">
+          <div class="scard-num">— 06</div>
+          <h3>Areia & Pedra Brita</h3>
+          <p>Fornecemos areia classificada e pedra brita de alta qualidade para complementar sua obra. Mesma logística eficiente e padrão BAZAMIX em todos os materiais.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- FROTA -->
+<section class="fleet" id="frota">
+  <div class="container" style="max-width:100%; padding:0;">
+    <div class="fleet-layout">
+      <div class="fleet-text" style="padding-left:40px;">
+        <div class="section-label">Logística</div>
+        <h2 class="section-title">NOSSA FROTA</h2>
+        <p class="section-desc">Frota própria de caminhões betoneira modernos para garantir que seu concreto chegue no horário certo, sem atrasos e com a qualidade preservada da central à obra.</p>
+        <div class="fleet-points">
+          <div class="fpoint"><div class="fdot"></div><p>Concreto processado em nossa planta e transportado diretamente, preservando qualidade e dosagem exata.</p></div>
+          <div class="fpoint"><div class="fdot"></div><p>Praticidade, organização e limpeza no canteiro de obras, independente do porte da construção.</p></div>
+          <div class="fpoint"><div class="fdot"></div><p>Cumprimento rigoroso dos horários acordados com o cliente, sem surpresas.</p></div>
+          <div class="fpoint"><div class="fdot"></div><p>Rastreamento e controle total do início ao fim de cada entrega.</p></div>
+        </div>
+        <a href="https://wa.me/554333768200?text=Olá!%20Quero%20agendar%20uma%20entrega." class="btn-primary" style="align-self:flex-start;">Agendar Entrega</a>
+      </div>
+      <div class="fleet-img-wrap" style="display:grid; grid-template-rows:1fr 1fr;">
+        <img class="fleet-main" src="fleet-img.jpg" alt="Frota BAZAMIX – 6 Caminhões Betoneira" style="min-height:230px;">
+        <img class="fleet-main" src="frota-movimento.jpg" alt="Caminhões BAZAMIX em movimento" style="min-height:230px;">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BANNER EQUIPE -->
+<div class="team-banner">
+  <img src="megaconstrucao.jpg" alt="Equipe BAZAMIX em grande obra">
+  <div class="team-banner-content">
+    <h2>QUALIDADE, AGILIDADE E RESPEITO AO MEIO AMBIENTE.</h2>
+    <p>Do atendimento personalizado ao resultado final, o que nos inspira é a satisfação de cada cliente e o orgulho de cada obra entregue.</p>
+    <a href="https://wa.me/554333768200?text=Olá!%20Quero%20fazer%20um%20orçamento." class="btn-primary">Solicitar Orçamento Agora</a>
+  </div>
+</div>
+
+<!-- CONTATO / MAPA -->
+<section class="map-section" id="contato">
+  <div class="container">
+    <div class="map-grid">
+      <div>
+        <div class="section-label">Onde Estamos</div>
+        <h2 class="section-title">VENHA NOS<br>VISITAR</h2>
+        <p class="section-desc">Estamos na Rodovia Luiz Beraldi, com fácil acesso. Abra no seu app de navegação com um toque.</p>
+        <div class="contact-items">
+          <div class="citem">
+            <div class="citem-icon">📍</div>
+            <div class="citem-text"><h4>Endereço</h4><p>Rodovia Luiz Beraldi, 9855 – Londrina, PR</p></div>
+          </div>
+          <a href="tel:4333768200" class="citem">
+            <div class="citem-icon">📞</div>
+            <div class="citem-text"><h4>Telefone</h4><p>(43) 3376-8200</p></div>
+          </a>
+          <a href="https://wa.me/554333768200" class="citem">
+            <div class="citem-icon">💬</div>
+            <div class="citem-text"><h4>WhatsApp</h4><p>(43) 3376-8200 – Resposta Rápida</p></div>
+          </a>
+          <a href="mailto:comercial@bazamix.com" class="citem">
+            <div class="citem-icon">✉️</div>
+            <div class="citem-text"><h4>E-mail</h4><p>comercial@bazamix.com</p></div>
+          </a>
+        </div>
+        <div class="map-nav-btns">
+          <a href="https://maps.google.com/?q=Rodovia+Luiz+Beraldi,+9855,+Londrina,+PR" target="_blank" class="map-link">
+            <img src="icon-googlemaps.png" alt="Google Maps" style="height:16px; width:16px; object-fit:contain;">
+            Abrir no Google Maps
+          </a>
+          <a href="https://waze.com/ul?q=Rodovia+Luiz+Beraldi+9855+Londrina" target="_blank" class="map-link">
+            <img src="icon-waze.png" alt="Waze" style="height:16px; width:16px; object-fit:contain;">
+            Abrir no Waze
+          </a>
+        </div>
+      </div>
+      <div class="map-embed">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3661.6!2d-51.18!3d-23.18!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sRodovia+Luiz+Beraldi+9855!5e0!3m2!1spt!2sbr!4v1" allowfullscreen loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<div class="cta-banner">
+  <h2>PRONTO PARA COMEÇAR SUA OBRA?</h2>
+  <p>Fale agora com nossa equipe e receba um orçamento personalizado em minutos.</p>
+  <a href="https://wa.me/554333768200?text=Olá!%20Quero%20solicitar%20um%20orçamento%20para%20minha%20obra." class="btn-white">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Falar no WhatsApp Agora
+  </a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="f-logo" style="margin-bottom:14px;">
+          <img src="logo-bazamix.png" alt="BAZAMIX" style="height:48px; display:block;">
+        </div>
+        <p class="f-desc">Qualidade, agilidade e respeito ao meio ambiente em cada entrega. Estamos preparados para atendê-lo com eficiência e agilidade.</p>
+        <div style="display:flex; gap:12px; margin-top:20px;">
+          <a href="https://facebook.com/bazamix" target="_blank" aria-label="Facebook" style="width:38px;height:38px;border-radius:4px;background:#1877F2;display:flex;align-items:center;justify-content:center;transition:opacity .3s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#fff"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg>
+          </a>
+          <a href="https://instagram.com/bazamix" target="_blank" aria-label="Instagram" style="width:38px;height:38px;border-radius:4px;background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);display:flex;align-items:center;justify-content:center;transition:opacity .3s;" onmouseover="this.style.opacity='.8'" onmouseout="this.style.opacity='1'">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="#fff" stroke="none"/></svg>
+          </a>
+        </div>
+      </div>
+      <div class="f-col">
+        <h4>Navegação</h4>
+        <ul>
+          <li><a href="#home">Home</a></li>
+          <li><a href="#sobre">Quem Somos</a></li>
+          <li><a href="#servicos">Serviços</a></li>
+          <li><a href="#frota">Nossa Frota</a></li>
+          <li><a href="#contato">Contato</a></li>
+        </ul>
+      </div>
+      <div class="f-col">
+        <h4>Fale Conosco</h4>
+        <ul>
+          <li><a href="tel:4333768200">(43) 3376-8200</a></li>
+          <li><a href="https://wa.me/554333768200">WhatsApp</a></li>
+          <li><a href="mailto:comercial@bazamix.com">comercial@bazamix.com</a></li>
+          <li><a href="https://facebook.com/bazamix" target="_blank">Facebook</a></li>
+          <li><a href="https://instagram.com/bazamix" target="_blank">Instagram</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 BAZAMIX – Concreto e Argamassa. Todos os direitos reservados.</p>
+      <p>Rodovia Luiz Beraldi, 9855 – Londrina, PR</p>
+    </div>
+  </div>
+</footer>
+
+<!-- WHATSAPP FLUTUANTE -->
+<a href="https://wa.me/554333768200?text=Olá!%20Gostaria%20de%20solicitar%20um%20orçamento." class="wa-btn" target="_blank" aria-label="WhatsApp">
+  <div class="wa-tooltip">Solicitar Orçamento</div>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<script>
+function toggleMenu() {
+  document.getElementById('mobileMenu').classList.toggle('open');
+}
+document.addEventListener('click', function(e) {
+  const m = document.getElementById('mobileMenu');
+  const h = document.querySelector('.hamburger');
+  if (m.classList.contains('open') && !m.contains(e.target) && !h.contains(e.target)) m.classList.remove('open');
+});
+window.addEventListener('scroll', () => {
+  document.getElementById('mainNav').style.boxShadow = window.scrollY > 50 ? '0 4px 30px rgba(0,0,0,.6)' : 'none';
+});
+</script>
+</body>
+</html>
