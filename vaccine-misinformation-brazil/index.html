@@ -147,6 +147,8 @@ font-size: 0.8em;
 margin-top: 8px;
 opacity: 0.9;
 }
+
+/* CHART CONTAINER COM BOTÃO FULLSCREEN */
 .chart-container {
 background: #f8f9fa;
 padding: 16px;
@@ -154,7 +156,120 @@ border-radius: 12px;
 margin-bottom: 24px;
 box-shadow: 0 3px 10px rgba(0,0,0,0.1);
 overflow: hidden;
+position: relative;
 }
+.chart-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 12px;
+flex-wrap: wrap;
+gap: 10px;
+}
+.chart-title {
+font-size: 1em;
+font-weight: 600;
+color: #1e3c72;
+}
+.fullscreen-btn {
+background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+color: white;
+border: none;
+padding: 8px 16px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+font-size: 12px;
+display: flex;
+align-items: center;
+gap: 6px;
+transition: all 0.3s ease;
+}
+.fullscreen-btn:hover {
+transform: translateY(-2px);
+box-shadow: 0 4px 12px rgba(30,60,114,0.3);
+}
+.fullscreen-btn svg {
+width: 16px;
+height: 16px;
+}
+
+/* OVERLAY FULLSCREEN */
+.chart-fullscreen-overlay {
+position: fixed;
+top: 0;
+left: 0;
+width: 100vw;
+height: 100vh;
+background: rgba(0,0,0,0.95);
+z-index: 9999;
+display: none;
+flex-direction: column;
+padding: 20px;
+}
+.chart-fullscreen-overlay.active {
+display: flex;
+}
+.fullscreen-header {
+display: flex;
+justify-content: space-between;
+align-items: center;
+margin-bottom: 16px;
+padding-bottom: 16px;
+border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+.fullscreen-title {
+color: white;
+font-size: 1.3em;
+font-weight: 600;
+}
+.close-fullscreen-btn {
+background: #ef4444;
+color: white;
+border: none;
+padding: 10px 20px;
+border-radius: 8px;
+cursor: pointer;
+font-weight: 600;
+font-size: 14px;
+display: flex;
+align-items: center;
+gap: 8px;
+transition: all 0.3s ease;
+}
+.close-fullscreen-btn:hover {
+background: #dc2626;
+transform: scale(1.05);
+}
+.fullscreen-chart-wrapper {
+flex: 1;
+background: white;
+border-radius: 12px;
+padding: 20px;
+overflow: hidden;
+position: relative;
+}
+.fullscreen-chart-wrapper canvas {
+max-width: 100%;
+max-height: 100%;
+}
+
+/* HINT PARA MOBILE */
+.chart-hint {
+font-size: 0.75em;
+color: #64748b;
+text-align: center;
+margin-top: 8px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 6px;
+}
+.chart-hint svg {
+width: 14px;
+height: 14px;
+}
+
 .insights {
 background: #fff3cd;
 border-left: 5px solid #ffc107;
@@ -322,6 +437,7 @@ left: 0;
 font-weight: bold;
 color: #4caf50;
 }
+
 /* RESPONSIVIDADE OTIMIZADA */
 @media (max-width: 768px) {
 body {
@@ -381,6 +497,18 @@ font-size: 0.75em;
 .chart-container {
 padding: 12px;
 }
+.chart-header {
+flex-direction: column;
+align-items: flex-start;
+}
+.fullscreen-btn {
+width: 100%;
+justify-content: center;
+}
+.chart-hint {
+flex-direction: column;
+text-align: center;
+}
 .insights, .correlation-box, .key-findings, .methodology {
 padding: 14px;
 }
@@ -403,7 +531,27 @@ padding: 16px 12px;
 footer p, footer a {
 font-size: 0.8em;
 }
+/* Fullscreen em mobile */
+.chart-fullscreen-overlay {
+padding: 10px;
 }
+.fullscreen-header {
+flex-direction: column;
+gap: 12px;
+text-align: center;
+}
+.fullscreen-title {
+font-size: 1.1em;
+}
+.close-fullscreen-btn {
+width: 100%;
+justify-content: center;
+}
+.fullscreen-chart-wrapper {
+padding: 12px;
+}
+}
+
 @media (max-width: 480px) {
 body {
 padding: 6px;
@@ -468,6 +616,13 @@ margin-top: 6px;
 padding: 10px;
 border-radius: 10px;
 }
+.fullscreen-btn {
+padding: 10px 14px;
+font-size: 11px;
+}
+.chart-hint {
+font-size: 0.7em;
+}
 .insights, .correlation-box, .key-findings, .methodology {
 padding: 12px;
 border-radius: 10px;
@@ -515,6 +670,7 @@ footer a {
 font-size: 0.75em;
 }
 }
+
 @media (max-width: 360px) {
 header h1 {
 font-size: 1em;
@@ -531,12 +687,18 @@ font-size: 1em;
 .correlation-box .correlation-value {
 font-size: 1.4em;
 }
+.fullscreen-btn {
+font-size: 10px;
+padding: 8px 12px;
 }
+}
+
 /* Evitar overflow horizontal */
 img, video, iframe, canvas {
 max-width: 100%;
 height: auto;
 }
+
 /* Garantir que textos longos quebrem */
 h1, h2, h3, h4, h5, h6, p, span, div, li, td, th {
 word-wrap: break-word;
@@ -544,14 +706,48 @@ overflow-wrap: break-word;
 hyphens: auto;
 -webkit-hyphens: auto;
 }
+
 /* Scroll suave para tabelas */
 .data-table {
 -webkit-overflow-scrolling: touch;
 }
+
 /* Melhorar toque em botões */
-.lang-btn, .card {
+.lang-btn, .card, .fullscreen-btn, .close-fullscreen-btn {
 -webkit-touch-callout: none;
 user-select: none;
+}
+
+/* Animação para o overlay */
+.chart-fullscreen-overlay {
+animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+from {
+opacity: 0;
+}
+to {
+opacity: 1;
+}
+}
+
+/* Orientação paisagem hint */
+.rotate-hint {
+display: none;
+}
+
+@media (orientation: portrait) and (max-width: 768px) {
+.rotate-hint {
+display: inline-flex;
+align-items: center;
+gap: 4px;
+background: rgba(255,193,7,0.2);
+padding: 4px 8px;
+border-radius: 4px;
+font-size: 0.7em;
+color: #856404;
+}
 }
 </style>
 </head>
@@ -585,6 +781,7 @@ Analisar a evolução temporal do interesse público por desinformação sobre v
 </p>
 </div>
 </div>
+
 <!-- Indicadores Principais -->
 <div class="section">
 <h2 data-pt="📊 Indicadores Principais" data-fr="📊 Indicateurs Principaux">
@@ -621,6 +818,7 @@ Redução desde o Pico
 </div>
 </div>
 </div>
+
 <!-- Achados Principais -->
 <div class="section">
 <h2 data-pt="✅ Achados Principais" data-fr="✅ Résultats principaux">
@@ -654,16 +852,50 @@ Redução de 88% nas buscas desde o pico, indicando normalização do discurso p
 </ul>
 </div>
 </div>
+
 <!-- Evolução Temporal -->
 <div class="section">
 <h2 data-pt="📈 Evolução Temporal das Buscas por Desinformação"
 data-fr="📈 Évolution temporelle des recherches de désinformation">
 📈 Evolução Temporal das Buscas por Desinformação
 </h2>
-<div class="chart-container">
+<div class="chart-container" id="timelineChartContainer">
+<div class="chart-header">
+<span class="chart-title" data-pt="Interesse de Busca ao Longo do Tempo (0-100)"
+data-fr="Intérêt de recherche au fil du temps (0-100)">
+Interesse de Busca ao Longo do Tempo (0-100)
+</span>
+<button class="fullscreen-btn" onclick="openFullscreen('timeline')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+</svg>
+<span data-pt="Ver em Tela Cheia" data-fr="Voir en plein écran">Ver em Tela Cheia</span>
+</button>
+</div>
 <canvas id="timelineChart"></canvas>
+<div class="chart-hint">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M12 16v-4m0-4h.01"></path>
+</svg>
+<span data-pt="Toque no botão acima para ver o gráfico completo"
+data-fr="Appuyez sur le bouton ci-dessus pour voir le graphique complet">
+Toque no botão acima para ver o gráfico completo
+</span>
+<span class="rotate-hint">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M23 4v6h-6M1 20v-6h6"></path>
+<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+</svg>
+<span data-pt="Gire o celular para melhor visualização"
+data-fr="Tournez le téléphone pour une meilleure visualisation">
+Gire o celular para melhor visualização
+</span>
+</span>
 </div>
 </div>
+</div>
+
 <!-- Correlação -->
 <div class="section">
 <h2 data-pt="🔗 Relação Temporal entre Desinformação e Interesse Público"
@@ -682,16 +914,50 @@ Uma correlação temporal positiva moderada (0.60) indica que o interesse por de
 </p>
 </div>
 </div>
+
 <!-- Comparação entre Termos -->
 <div class="section">
 <h2 data-pt="🔍 Comparação entre Termos de Busca"
 data-fr="🔍 Comparaison entre termes de recherche">
 🔍 Comparação entre Termos de Busca
 </h2>
-<div class="chart-container">
+<div class="chart-container" id="comparisonChartContainer">
+<div class="chart-header">
+<span class="chart-title" data-pt="Comparação do Volume Total por Termo"
+data-fr="Comparaison du volume total par terme">
+Comparação do Volume Total por Termo
+</span>
+<button class="fullscreen-btn" onclick="openFullscreen('comparison')">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"></path>
+</svg>
+<span data-pt="Ver em Tela Cheia" data-fr="Voir en plein écran">Ver em Tela Cheia</span>
+</button>
+</div>
 <canvas id="comparisonChart"></canvas>
+<div class="chart-hint">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<circle cx="12" cy="12" r="10"></circle>
+<path d="M12 16v-4m0-4h.01"></path>
+</svg>
+<span data-pt="Toque no botão acima para ver o gráfico completo"
+data-fr="Appuyez sur le bouton ci-dessus pour voir le graphique complet">
+Toque no botão acima para ver o gráfico completo
+</span>
+<span class="rotate-hint">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+<path d="M23 4v6h-6M1 20v-6h6"></path>
+<path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+</svg>
+<span data-pt="Gire o celular para melhor visualização"
+data-fr="Tournez le téléphone pour une meilleure visualisation">
+Gire o celular para melhor visualização
+</span>
+</span>
 </div>
 </div>
+</div>
+
 <!-- Top 5 Meses -->
 <div class="section">
 <h2 data-pt="📅 Top 5 Meses de Maior Interesse por Desinformação"
@@ -737,6 +1003,7 @@ data-fr="📅 Top 5 des mois de plus grand intérêt pour la désinformation">
 </table>
 </div>
 </div>
+
 <!-- Insights -->
 <div class="section">
 <h2 data-pt="💡 Principais Insights" data-fr="💡 Principaux aperçus">
@@ -774,6 +1041,7 @@ Em outubro de 2025, os níveis de busca permanecem 88% abaixo do pico, sugerindo
 </ul>
 </div>
 </div>
+
 <!-- Metodologia -->
 <div class="section">
 <h2 data-pt="🔬 Metodologia" data-fr="🔬 Méthodologie">
@@ -819,6 +1087,7 @@ Foi calculado o Coeficiente de Correlação de Pearson para avaliar a relação 
 </p>
 </div>
 </div>
+
 <!-- Sobre o Projeto -->
 <div class="section">
 <h2 data-pt="📁 Sobre o Projeto" data-fr="📁 À propos du projet">
@@ -870,6 +1139,7 @@ JavaScript, Chart.js, Papa Parse para análise e visualização de dados em ambi
 </div>
 </div>
 </div>
+
 <footer>
 <p data-pt="© 2025 Análise de Impacto da Desinformação na Vacinação | Dados públicos e abertos"
 data-fr="© 2025 Analyse de l'impact de la désinformation sur la vaccination | Données publiques et ouvertes">
@@ -889,6 +1159,23 @@ Fontes: Google Trends, OpenDataSUS, Our World In Data
 </p>
 </footer>
 </div>
+
+<!-- OVERLAY FULLSCREEN -->
+<div class="chart-fullscreen-overlay" id="fullscreenOverlay">
+<div class="fullscreen-header">
+<h2 class="fullscreen-title" id="fullscreenTitle">Gráfico em Tela Cheia</h2>
+<button class="close-fullscreen-btn" onclick="closeFullscreen()">
+<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:18px;height:18px;">
+<path d="M18 6L6 18M6 6l12 12"></path>
+</svg>
+<span data-pt="Fechar" data-fr="Fermer">Fechar</span>
+</button>
+</div>
+<div class="fullscreen-chart-wrapper">
+<canvas id="fullscreenChart"></canvas>
+</div>
+</div>
+
 <script>
 const csvData = `Mês,vacina faz mal: (Brasil),efeitos colaterais vacina covid: (Brasil),vacina mata: (Brasil),vacina causa autismo: (Brasil)
 2020-01,6,0,3,0
@@ -961,9 +1248,12 @@ const csvData = `Mês,vacina faz mal: (Brasil),efeitos colaterais vacina covid: 
 2025-08,8,4,7,0
 2025-09,11,4,9,2
 2025-10,9,5,8,1`;
+
 let currentLang = 'pt';
-let timelineChart, comparisonChart;
+let timelineChart, comparisonChart, fullscreenChart;
 let chartData = null;
+let currentFullscreenChart = null;
+
 const translations = {
 pt: {
 months: ['jan', 'fev', 'mar', 'abr', 'mai', 'jun', 'jul', 'ago', 'set', 'out', 'nov', 'dez'],
@@ -978,7 +1268,8 @@ timeline: 'Interesse de Busca ao Longo do Tempo (0-100)',
 comparison: 'Comparação do Volume Total por Termo'
 },
 comparisonLabels: ['Vacina faz mal', 'Efeitos colaterais COVID', 'Vacina mata', 'Vacina causa autismo'],
-volumeLabel: 'Volume Total de Buscas (2020-2025)'
+volumeLabel: 'Volume Total de Buscas (2020-2025)',
+fullscreenTitle: 'Gráfico em Tela Cheia'
 },
 fr: {
 months: ['janv', 'févr', 'mars', 'avr', 'mai', 'juin', 'juil', 'août', 'sept', 'oct', 'nov', 'déc'],
@@ -993,15 +1284,18 @@ timeline: 'Intérêt de recherche au fil du temps (0-100)',
 comparison: 'Comparaison du volume total par terme'
 },
 comparisonLabels: ['Vaccin fait mal', 'Effets secondaires COVID', 'Vaccin tue', 'Vaccin cause autisme'],
-volumeLabel: 'Volume total de recherches (2020-2025)'
+volumeLabel: 'Volume total de recherches (2020-2025)',
+fullscreenTitle: 'Graphique en plein écran'
 }
 };
+
 function translateMonth(monthStr, lang) {
 const [year, month] = monthStr.split('-');
 const monthIndex = parseInt(month) - 1;
 const monthName = translations[lang].months[monthIndex];
 return monthName + ' ' + year;
 }
+
 function setLanguage(lang) {
 currentLang = lang;
 // Atualiza botões ativos
@@ -1020,17 +1314,24 @@ el.textContent = translation;
 });
 // Atualiza os gráficos
 updateCharts();
+// Atualiza título fullscreen se aberto
+if (document.getElementById('fullscreenOverlay').classList.contains('active')) {
+document.getElementById('fullscreenTitle').textContent = translations[lang].fullscreenTitle;
 }
+}
+
 function updateCharts() {
 if (!chartData) return;
 const lang = currentLang;
 const t = translations[lang];
 const translatedLabels = chartData.labels.map(label => translateMonth(label, lang));
+
 // Atualizar o mês do pico
 const maxEfeitos = Math.max(...chartData.efeitosColaterais);
 const maxIndex = chartData.efeitosColaterais.indexOf(maxEfeitos);
 const peakMonthFormatted = translateMonth(chartData.labels[maxIndex], lang);
 document.getElementById('peakMonth').textContent = peakMonthFormatted;
+
 if (timelineChart) {
 timelineChart.data.labels = translatedLabels;
 timelineChart.data.datasets[0].label = t.labels.term1;
@@ -1040,13 +1341,219 @@ timelineChart.data.datasets[3].label = t.labels.term4;
 timelineChart.options.plugins.title.text = t.chartTitles.timeline;
 timelineChart.update();
 }
+
 if (comparisonChart) {
 comparisonChart.data.labels = t.comparisonLabels;
 comparisonChart.data.datasets[0].label = t.volumeLabel;
 comparisonChart.options.plugins.title.text = t.chartTitles.comparison;
 comparisonChart.update();
 }
+
+// Atualizar gráfico fullscreen se estiver aberto
+if (fullscreenChart && currentFullscreenChart) {
+updateFullscreenChart();
 }
+}
+
+// FUNÇÕES FULLSCREEN
+function openFullscreen(chartType) {
+const overlay = document.getElementById('fullscreenOverlay');
+const title = document.getElementById('fullscreenTitle');
+const t = translations[currentLang];
+
+title.textContent = t.fullscreenTitle;
+overlay.classList.add('active');
+currentFullscreenChart = chartType;
+
+// Criar gráfico fullscreen
+setTimeout(() => {
+createFullscreenChart(chartType);
+}, 100);
+
+// Prevenir scroll do body
+document.body.style.overflow = 'hidden';
+}
+
+function closeFullscreen() {
+const overlay = document.getElementById('fullscreenOverlay');
+overlay.classList.remove('active');
+
+// Destruir gráfico fullscreen
+if (fullscreenChart) {
+fullscreenChart.destroy();
+fullscreenChart = null;
+}
+
+// Restaurar scroll do body
+document.body.style.overflow = '';
+}
+
+function createFullscreenChart(chartType) {
+const ctx = document.getElementById('fullscreenChart').getContext('2d');
+const t = translations[currentLang];
+const translatedLabels = chartData.labels.map(label => translateMonth(label, currentLang));
+
+if (fullscreenChart) {
+fullscreenChart.destroy();
+}
+
+if (chartType === 'timeline') {
+fullscreenChart = new Chart(ctx, {
+type: 'line',
+data: {
+labels: translatedLabels,
+datasets: [
+{
+label: t.labels.term1,
+data: chartData.vacinaFazMal,
+borderColor: '#ff6384',
+backgroundColor: 'rgba(255, 99, 132, 0.1)',
+tension: 0.4,
+fill: true
+},
+{
+label: t.labels.term2,
+data: chartData.efeitosColaterais,
+borderColor: '#36a2eb',
+backgroundColor: 'rgba(54, 162, 235, 0.1)',
+tension: 0.4,
+fill: true
+},
+{
+label: t.labels.term3,
+data: chartData.vacinaMata,
+borderColor: '#ff9f40',
+backgroundColor: 'rgba(255, 159, 64, 0.1)',
+tension: 0.4,
+fill: true
+},
+{
+label: t.labels.term4,
+data: chartData.vacinaCausaAutismo,
+borderColor: '#4bc0c0',
+backgroundColor: 'rgba(75, 192, 192, 0.1)',
+tension: 0.4,
+fill: true
+}
+]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: {
+position: 'top',
+labels: {
+font: { size: 14 },
+usePointStyle: true,
+boxWidth: 12
+}
+},
+title: {
+display: true,
+text: t.chartTitles.timeline,
+font: { size: 18, weight: 'bold' }
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+max: 100,
+ticks: {
+font: { size: 12 }
+}
+},
+x: {
+ticks: {
+maxRotation: 45,
+minRotation: 45,
+font: { size: 11 }
+}
+}
+}
+}
+});
+} else if (chartType === 'comparison') {
+const totals = [
+chartData.vacinaFazMal.reduce((a, b) => a + b, 0),
+chartData.efeitosColaterais.reduce((a, b) => a + b, 0),
+chartData.vacinaMata.reduce((a, b) => a + b, 0),
+chartData.vacinaCausaAutismo.reduce((a, b) => a + b, 0)
+];
+
+fullscreenChart = new Chart(ctx, {
+type: 'bar',
+data: {
+labels: t.comparisonLabels,
+datasets: [{
+label: t.volumeLabel,
+data: totals,
+backgroundColor: [
+'rgba(255, 99, 132, 0.7)',
+'rgba(54, 162, 235, 0.7)',
+'rgba(255, 159, 64, 0.7)',
+'rgba(75, 192, 192, 0.7)'
+],
+borderColor: [
+'rgb(255, 99, 132)',
+'rgb(54, 162, 235)',
+'rgb(255, 159, 64)',
+'rgb(75, 192, 192)'
+],
+borderWidth: 2
+}]
+},
+options: {
+responsive: true,
+maintainAspectRatio: false,
+plugins: {
+legend: { display: false },
+title: {
+display: true,
+text: t.chartTitles.comparison,
+font: { size: 18, weight: 'bold' }
+}
+},
+scales: {
+y: {
+beginAtZero: true,
+ticks: {
+callback: function(value) {
+return value.toLocaleString();
+},
+font: { size: 12 }
+}
+},
+x: {
+ticks: {
+font: { size: 11 }
+}
+}
+}
+}
+});
+}
+}
+
+function updateFullscreenChart() {
+if (!fullscreenChart || !currentFullscreenChart) return;
+createFullscreenChart(currentFullscreenChart);
+}
+
+// Fechar fullscreen com ESC
+document.addEventListener('keydown', function(e) {
+if (e.key === 'Escape') {
+closeFullscreen();
+}
+});
+
+// Fechar fullscreen ao clicar fora do gráfico
+document.getElementById('fullscreenOverlay').addEventListener('click', function(e) {
+if (e.target === this) {
+closeFullscreen();
+}
+});
+
 Papa.parse(csvData, {
 header: true,
 dynamicTyping: true,
@@ -1058,6 +1565,7 @@ const vacinaFazMal = data.map(row => row['vacina faz mal: (Brasil)']);
 const efeitosColaterais = data.map(row => row['efeitos colaterais vacina covid: (Brasil)']);
 const vacinaMata = data.map(row => row['vacina mata: (Brasil)']);
 const vacinaCausaAutismo = data.map(row => row['vacina causa autismo: (Brasil)']);
+
 chartData = {
 labels: labels,
 vacinaFazMal: vacinaFazMal,
@@ -1065,15 +1573,19 @@ efeitosColaterais: efeitosColaterais,
 vacinaMata: vacinaMata,
 vacinaCausaAutismo: vacinaCausaAutismo
 };
+
 const maxEfeitos = Math.max(...efeitosColaterais);
 const maxIndex = efeitosColaterais.indexOf(maxEfeitos);
 const currentValue = efeitosColaterais[efeitosColaterais.length - 1];
 const reduction = Math.round(((maxEfeitos - currentValue) / maxEfeitos) * 100);
 const peakMonthFormatted = translateMonth(labels[maxIndex], currentLang);
+
 document.getElementById('peakMonth').textContent = peakMonthFormatted;
 document.getElementById('reduction').textContent = `-${reduction}%`;
+
 const translatedLabels = labels.map(label => translateMonth(label, currentLang));
 const t = translations[currentLang];
+
 const ctx1 = document.getElementById('timelineChart').getContext('2d');
 timelineChart = new Chart(ctx1, {
 type: 'line',
@@ -1153,12 +1665,14 @@ font: { size: 9 }
 }
 }
 });
+
 const totals = [
 vacinaFazMal.reduce((a, b) => a + b, 0),
 efeitosColaterais.reduce((a, b) => a + b, 0),
 vacinaMata.reduce((a, b) => a + b, 0),
 vacinaCausaAutismo.reduce((a, b) => a + b, 0)
 ];
+
 const ctx2 = document.getElementById('comparisonChart').getContext('2d');
 comparisonChart = new Chart(ctx2, {
 type: 'bar',
