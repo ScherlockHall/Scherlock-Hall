@@ -24,21 +24,21 @@
 <link rel="manifest" href="site.webmanifest">
 <script type="application/ld+json">
 {
-  "@context": "https://schema.org",
-  "@type": "Person",
-  "name": "Scherlock Hall",
-  "url": "https://scherlockhall.github.io/Scherlock-Hall/",
-  "sameAs": [
-    "https://github.com/ScherlockHall",
-    "https://www.linkedin.com/in/scherlock-hall-929773383",
-    "http://lattes.cnpq.br/8597239590066524",
-    "https://www.instagram.com/scherlockhall04"
-  ],
-  "jobTitle": "Front-End Developer",
-  "description": "Freelance Front-End Developer especialista em responsividade e mobile-first.",
-  "alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade de Brasília", "alternateName": "UnB" },
-  "knowsLanguage": ["pt", "fr"],
-  "knowsAbout": ["Responsive Web Design", "Mobile-First Development", "JavaScript", "HTML5", "CSS3"]
+"@context": "https://schema.org",
+"@type": "Person",
+"name": "Scherlock Hall",
+"url": "https://scherlockhall.github.io/Scherlock-Hall/",
+"sameAs": [
+"https://github.com/ScherlockHall",
+"https://www.linkedin.com/in/scherlock-hall-929773383",
+"http://lattes.cnpq.br/8597239590066524",
+"https://www.instagram.com/scherlockhall04"
+],
+"jobTitle": "Front-End Developer",
+"description": "Freelance Front-End Developer especialista em responsividade e mobile-first.",
+"alumniOf": { "@type": "CollegeOrUniversity", "name": "Universidade de Brasília", "alternateName": "UnB" },
+"knowsLanguage": ["pt", "fr"],
+"knowsAbout": ["Responsive Web Design", "Mobile-First Development", "JavaScript", "HTML5", "CSS3"]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -46,64 +46,36 @@
 <style>
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 :root{
-  --ink:#0b0f17;--navy:#101828;--navy2:#1a2435;
-  --cream:#f7f3ec;--paper:#faf8f4;
-  --gold:#c9a84c;--gold-l:#e8c97a;
-  --blue:#2563eb;--blue-s:#1d4ed8;
-  --teal:#0d9488;--muted:#64748b;
-  --border:rgba(0,0,0,.08);--border-d:rgba(255,255,255,.07);
-  --serif:'Instrument Serif',Georgia,serif;
-  --sans:'Outfit',system-ui,sans-serif;
-  --mono:'DM Mono',monospace;
-  --r:10px;--r-lg:18px;--nav-h:60px;
+--ink:#0b0f17;--navy:#101828;--navy2:#1a2435;
+--cream:#f7f3ec;--paper:#faf8f4;
+--gold:#c9a84c;--gold-l:#e8c97a;
+--blue:#2563eb;--blue-s:#1d4ed8;
+--teal:#0d9488;--muted:#64748b;
+--border:rgba(0,0,0,.08);--border-d:rgba(255,255,255,.07);
+--serif:'Instrument Serif',Georgia,serif;
+--sans:'Outfit',system-ui,sans-serif;
+--mono:'DM Mono',monospace;
+--r:10px;--r-lg:18px;--nav-h:60px;
 }
 html{scroll-behavior:smooth}
 body{font-family:var(--sans);background:var(--paper);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
 .container{max-width:1100px;margin:0 auto;padding:0 2rem}
 .eyebrow{display:inline-flex;align-items:center;gap:.45rem;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:.9rem}
 .eyebrow::before{content:'';display:block;width:24px;height:1.5px;background:var(--gold);flex-shrink:0}
-.sec-title{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;letter-spacing:-.03em;color:var(--ink);line-height:1.1;margin-bottom:.6rem}
-
+.sec-title{font-family:var(--serif);font-size:clamp(2rem,4.5vw,3rem);font-weight:400;letter-spacing:-.03em;color:var(--ink);line-height:1.1;margin-bottom:.6rem;text-align:center}
 /* ─── Lang Banner ─────────────────────────────── */
-#lang-banner{
-  position:fixed;bottom:0;left:0;right:0;z-index:300;
-  background:var(--navy);
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:.75rem 2rem;
-  display:flex;align-items:center;justify-content:center;gap:1rem;
-  flex-wrap:wrap;
-  transform:translateY(100%);
-  transition:transform .4s cubic-bezier(.2,.8,.2,1);
-  font-family:var(--mono);font-size:.74rem;
-}
+#lang-banner{position:fixed;bottom:0;left:0;right:0;z-index:300;background:var(--navy);border-top:1px solid rgba(255,255,255,.08);padding:.75rem 2rem;display:flex;align-items:center;justify-content:center;gap:1rem;flex-wrap:wrap;transform:translateY(100%);transition:transform .4s cubic-bezier(.2,.8,.2,1);font-family:var(--mono);font-size:.74rem}
 #lang-banner.visible{transform:translateY(0)}
 .lang-banner-text{color:rgba(255,255,255,.5);letter-spacing:.03em}
 .lang-banner-detected{color:var(--gold-l);font-weight:500}
 .lang-banner-actions{display:flex;gap:.5rem;align-items:center}
-.lang-banner-keep{
-  background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);
-  border:1px solid rgba(255,255,255,.12);
-  padding:.28rem .9rem;border-radius:6px;cursor:pointer;
-  font:500 .72rem var(--mono);letter-spacing:.04em;
-  transition:all .2s;
-}
+.lang-banner-keep{background:rgba(255,255,255,.07);color:rgba(255,255,255,.7);border:1px solid rgba(255,255,255,.12);padding:.28rem .9rem;border-radius:6px;cursor:pointer;font:500 .72rem var(--mono);letter-spacing:.04em;transition:all .2s}
 .lang-banner-keep:hover{background:rgba(255,255,255,.12);color:#fff}
-.lang-banner-pt{
-  color:rgba(255,255,255,.35);
-  padding:.28rem .9rem;border-radius:6px;cursor:pointer;
-  font:500 .72rem var(--mono);letter-spacing:.04em;
-  transition:all .2s;border:1px solid transparent;
-  text-decoration:none;
-}
+.lang-banner-pt{color:rgba(255,255,255,.35);padding:.28rem .9rem;border-radius:6px;cursor:pointer;font:500 .72rem var(--mono);letter-spacing:.04em;transition:all .2s;border:1px solid transparent;text-decoration:none}
 .lang-banner-pt:hover{color:rgba(255,255,255,.7);border-color:rgba(255,255,255,.1)}
 .lang-banner-sep{color:rgba(255,255,255,.15)}
-.lang-banner-dismiss{
-  background:none;border:none;color:rgba(255,255,255,.2);
-  cursor:pointer;font-size:.9rem;padding:.2rem .4rem;
-  transition:color .2s;margin-left:.5rem;
-}
+.lang-banner-dismiss{background:none;border:none;color:rgba(255,255,255,.2);cursor:pointer;font-size:.9rem;padding:.2rem .4rem;transition:color .2s;margin-left:.5rem}
 .lang-banner-dismiss:hover{color:rgba(255,255,255,.5)}
-
 /* ─── Nav ─────────────────────────────────────── */
 nav{position:fixed;top:0;left:0;width:100%;z-index:200;height:var(--nav-h);display:flex;align-items:center;background:rgba(11,15,23,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid var(--border-d);transition:box-shadow .3s}
 nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
@@ -128,7 +100,6 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .mobile-menu a{padding:.65rem .9rem;border-radius:8px;color:rgba(255,255,255,.65);text-decoration:none;font-size:.95rem;font-weight:500;transition:all .2s}
 .mobile-menu a:hover{background:rgba(255,255,255,.06);color:#fff}
 .mob-lang-row{display:flex;align-items:center;gap:.6rem;padding:.5rem .9rem;color:rgba(255,255,255,.3);font-size:.78rem;font-family:var(--mono);border-top:1px solid var(--border-d);margin-top:.4rem;padding-top:.8rem}
-
 /* ─── Hero ────────────────────────────────────── */
 #hero{min-height:100vh;display:flex;align-items:center;background:var(--navy);padding:calc(var(--nav-h) + 4rem) 2rem 5rem;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px),repeating-linear-gradient(90deg,transparent,transparent 79px,rgba(255,255,255,.025) 79px,rgba(255,255,255,.025) 80px)}
@@ -138,10 +109,10 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .hero-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(201,168,76,.12);border:1px solid rgba(201,168,76,.25);border-radius:100px;padding:.3rem .9rem;font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;color:var(--gold);margin-bottom:2rem}
 .hero-label-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s ease-in-out infinite}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.7)}}
-.hero-title{font-family:var(--serif);font-size:clamp(2.6rem,6.5vw,4.8rem);font-weight:400;font-style:italic;line-height:1.05;letter-spacing:-.025em;color:#fff;margin-bottom:1.4rem}
+.hero-title{font-family:var(--serif);font-size:clamp(2.6rem,6.5vw,4.8rem);font-weight:400;font-style:italic;line-height:1.05;letter-spacing:-.025em;color:#fff;margin-bottom:1.4rem;text-align:center}
 .hero-title strong{font-style:normal;font-weight:400;color:var(--gold-l);display:block}
-.hero-desc{font-size:1.02rem;font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;max-width:520px;margin-bottom:2.4rem}
-.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.hero-desc{font-size:1.02rem;font-weight:300;color:rgba(255,255,255,.48);line-height:1.85;max-width:520px;margin-bottom:2.4rem;text-align:center;margin-left:auto;margin-right:auto}
+.hero-actions{display:flex;gap:.8rem;flex-wrap:wrap;margin-bottom:2.5rem;justify-content:center}
 .btn{display:inline-flex;align-items:center;gap:7px;padding:.7rem 1.5rem;border-radius:8px;font:600 .88rem var(--sans);text-decoration:none;transition:all .22s;cursor:pointer;border:none;white-space:nowrap}
 .btn-gold{background:var(--gold);color:var(--ink)}
 .btn-gold:hover{background:var(--gold-l);transform:translateY(-2px);box-shadow:0 6px 20px rgba(201,168,76,.35)}
@@ -151,40 +122,25 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .btn-ghost:hover{border-color:var(--blue);color:var(--blue);background:rgba(37,99,235,.06);transform:translateY(-2px)}
 .btn-blue{background:var(--blue);color:#fff}
 .btn-blue:hover{background:var(--blue-s);transform:translateY(-2px);box-shadow:0 6px 20px rgba(37,99,235,.3)}
-.social-row{display:flex;gap:.5rem;flex-wrap:wrap}
+.social-row{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
 .social-pill{display:inline-flex;align-items:center;gap:6px;padding:.32rem .8rem;border-radius:100px;border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.45);font-size:.76rem;font-weight:500;text-decoration:none;transition:all .2s}
 .social-pill:hover{border-color:rgba(201,168,76,.4);color:var(--gold-l);background:rgba(201,168,76,.06);transform:translateY(-1px)}
 .social-pill svg{width:12px;height:12px}
-
 /* ─── Sections ────────────────────────────────── */
 .section{padding:6rem 0}
 .section-alt{background:#fff}
 .section-dark{background:var(--navy)}
-.cat-label{display:flex;align-items:center;gap:1rem;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--ink);margin:2.5rem 0 1.5rem}
+.cat-label{display:flex;align-items:center;gap:1rem;font-family:var(--serif);font-size:1.2rem;font-style:italic;color:var(--ink);margin:2.5rem 0 1.5rem;justify-content:center;text-align:center}
 .cat-label:first-of-type{margin-top:0}
-.cat-line{flex:1;height:1px;background:var(--border)}
-
+.cat-line{flex:1;height:1px;background:var(--border);max-width:200px}
 /* ─── Services strip ──────────────────────────── */
-.services-strip{
-  display:flex;flex-wrap:wrap;gap:.55rem;
-  margin-top:1.5rem;padding-top:1.5rem;
-  border-top:1px solid rgba(255,255,255,.07);
-}
-.service-pill{
-  display:inline-flex;align-items:center;gap:5px;
-  padding:.3rem .85rem;border-radius:100px;
-  border:1px solid rgba(201,168,76,.2);
-  color:rgba(255,255,255,.45);
-  font-family:var(--mono);font-size:.67rem;font-weight:500;
-  letter-spacing:.05em;
-  transition:all .2s;
-}
+.services-strip{display:flex;flex-wrap:wrap;gap:.55rem;margin-top:1.5rem;padding-top:1.5rem;border-top:1px solid rgba(255,255,255,.07);justify-content:center}
+.service-pill{display:inline-flex;align-items:center;gap:5px;padding:.3rem .85rem;border-radius:100px;border:1px solid rgba(201,168,76,.2);color:rgba(255,255,255,.45);font-family:var(--mono);font-size:.67rem;font-weight:500;letter-spacing:.05em;transition:all .2s}
 .service-pill::before{content:'✔';font-size:.6rem;color:var(--gold);opacity:.7}
 .service-pill:hover{border-color:rgba(201,168,76,.5);color:var(--gold-l);background:rgba(201,168,76,.06)}
-
 /* ─── Project Cards ───────────────────────────── */
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem}
-.project-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s;text-decoration:none;color:inherit}
+.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:1.25rem;justify-items:center;width:100%;max-width:1000px;margin:0 auto}
+.project-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;cursor:pointer;transition:transform .28s cubic-bezier(.2,.8,.2,1),box-shadow .28s,border-color .28s;text-decoration:none;color:inherit;width:100%;max-width:100%}
 .project-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(0,0,0,.1);border-color:rgba(201,168,76,.3)}
 .project-img-wrap{position:relative;overflow:hidden;height:196px;background:linear-gradient(135deg,#e8edf5,#d0d9ec)}
 .project-img-wrap img{width:100%;height:100%;object-fit:cover;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
@@ -200,32 +156,27 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .plan-badge-profissional{background:rgba(20,20,20,.85);color:#F97316}
 .plan-badge-premium{background:rgba(193,96,10,.85);color:#fff}
 .project-body{padding:1.25rem;flex:1;display:flex;flex-direction:column}
-.project-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.75rem}
+.project-tags{display:flex;gap:.3rem;flex-wrap:wrap;margin-bottom:.75rem;justify-content:center}
 .tag{font-family:var(--mono);font-size:.62rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:.18rem .6rem;border-radius:100px}
 .tag-blue{background:#eff6ff;color:#1d4ed8}.tag-green{background:#f0fdf4;color:#15803d}
 .tag-gray{background:#f1f5f9;color:#475569}.tag-orange{background:#fff7ed;color:#c2410c}
 .tag-pink{background:#fdf2f8;color:#9d174d}.tag-gold{background:#fffbeb;color:#92400e}
 .tag-dark{background:#1a1a1a;color:#F97316}
 .tag-terra{background:#fff4ee;color:#c1600a}
-.project-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;letter-spacing:-.01em;line-height:1.35}
-.project-desc{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem}
-.project-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--blue);text-decoration:none;transition:gap .2s;align-self:flex-start}
+.tag-orange-bold{background:#ffedd5;color:#c2410c}
+.project-title{font-family:var(--serif);font-size:1.1rem;font-weight:400;color:var(--ink);margin-bottom:.4rem;letter-spacing:-.01em;line-height:1.35;text-align:center}
+.project-desc{font-size:.82rem;font-weight:300;color:var(--muted);line-height:1.7;flex:1;margin-bottom:1rem;text-align:center}
+.project-link{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.72rem;font-weight:500;letter-spacing:.04em;color:var(--blue);text-decoration:none;transition:gap .2s}
 .project-link:hover{gap:9px}
 .project-link svg{width:11px;height:11px}
-
 /* ─── BAZAMIX group card ──────────────────────── */
-.bazamix-intro{
-  background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);
-  padding:1.5rem 1.75rem;margin-bottom:1.25rem;
-  display:flex;align-items:flex-start;gap:1.25rem;
-}
+.bazamix-intro{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);padding:1.5rem 1.75rem;margin-bottom:1.25rem;display:flex;align-items:flex-start;gap:1.25rem;max-width:800px;margin-left:auto;margin-right:auto}
 .bazamix-intro-icon{font-size:1.6rem;flex-shrink:0;margin-top:2px}
 .bazamix-intro h3{font-family:var(--serif);font-size:1.15rem;font-weight:400;color:var(--ink);margin-bottom:.3rem;letter-spacing:-.01em}
 .bazamix-intro p{font-size:.83rem;font-weight:300;color:var(--muted);line-height:1.7}
-
 /* ─── Cert Cards ──────────────────────────────── */
-.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;margin-bottom:2.5rem}
-.cert-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;-webkit-tap-highlight-color:transparent;cursor:pointer}
+.certs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:1.25rem;justify-items:center;width:100%;max-width:1000px;margin:0 auto}
+.cert-card{background:#fff;border:1px solid var(--border);border-radius:var(--r-lg);overflow:hidden;display:flex;flex-direction:column;text-decoration:none;color:inherit;transition:transform .25s,box-shadow .25s,border-color .25s;-webkit-tap-highlight-color:transparent;cursor:pointer;width:100%;max-width:100%}
 .cert-card:hover{transform:translateY(-4px);box-shadow:0 10px 30px rgba(0,0,0,.07);border-color:rgba(201,168,76,.3)}
 .cert-img-wrap{height:180px;background:#f5f6f8;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;padding:10px}
 .cert-img-wrap img{width:100%;height:100%;object-fit:contain;transition:transform .3s}
@@ -235,14 +186,13 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .cert-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.35rem}
 .cert-name{font-size:.9rem;font-weight:600;color:var(--ink);line-height:1.35;flex:1}
 .cert-year{font-family:var(--mono);font-size:.62rem;font-weight:500;background:var(--cream);color:var(--muted);padding:.18rem .5rem;border-radius:4px;white-space:nowrap;margin-left:.5rem;flex-shrink:0}
-.cert-issuer{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.04em}
-.cert-desc{font-size:.77rem;color:var(--muted);line-height:1.55;flex:1;margin-bottom:.9rem}
-.cert-open-label{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;color:var(--blue);align-self:flex-start;padding:.3rem .7rem;border-radius:6px;background:#eff6ff;transition:background .2s}
+.cert-issuer{font-family:var(--mono);font-size:.68rem;color:var(--muted);margin-bottom:.5rem;letter-spacing:.04em;text-align:center}
+.cert-desc{font-size:.77rem;color:var(--muted);line-height:1.55;flex:1;margin-bottom:.9rem;text-align:center}
+.cert-open-label{display:inline-flex;align-items:center;gap:5px;font-family:var(--mono);font-size:.68rem;font-weight:500;letter-spacing:.06em;color:var(--blue);padding:.3rem .7rem;border-radius:6px;background:#eff6ff;transition:background .2s}
 .cert-card:hover .cert-open-label{background:#dbeafe}
 .cert-open-label.fcc{color:#c2410c;background:#fff7ed}
 .cert-card:hover .cert-open-label.fcc{background:#ffedd5}
 .cert-open-label svg{width:11px;height:11px}
-
 /* ─── About ───────────────────────────────────── */
 .about-grid{display:grid;grid-template-columns:1.15fr .85fr;gap:5rem;align-items:start}
 .about-text p{font-size:.95rem;font-weight:300;color:#3d4a5c;line-height:1.9;margin-bottom:1rem}
@@ -255,19 +205,11 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .skill-icon{font-size:1.25rem;flex-shrink:0;margin-top:1px}
 .skill-item h4{font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.2rem}
 .skill-item p{font-size:.76rem;color:var(--muted);line-height:1.55}
-
 /* ─── CTA Banner ──────────────────────────────── */
-.cta-banner{
-  background:var(--navy);border-radius:var(--r-lg);
-  padding:2.25rem 2.5rem;margin-top:4rem;
-  display:flex;align-items:center;justify-content:space-between;
-  gap:2rem;flex-wrap:wrap;
-  border:1px solid rgba(201,168,76,.15);
-}
+.cta-banner{background:var(--navy);border-radius:var(--r-lg);padding:2.25rem 2.5rem;margin-top:4rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;border:1px solid rgba(201,168,76,.15)}
 .cta-banner-text h3{font-family:var(--serif);font-size:1.5rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:.35rem}
 .cta-banner-text p{font-size:.88rem;font-weight:300;color:rgba(255,255,255,.4);line-height:1.7}
 .cta-banner-actions{display:flex;gap:.7rem;flex-wrap:wrap;flex-shrink:0}
-
 /* ─── Contact ─────────────────────────────────── */
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
 .contact-intro h3{font-family:var(--serif);font-size:1.8rem;font-weight:400;font-style:italic;color:#fff;margin-bottom:.6rem}
@@ -280,7 +222,6 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .contact-link svg{width:15px;height:15px;opacity:.4;flex-shrink:0}
 .contact-link:hover svg{opacity:.8}
 .contact-link span{font-family:var(--mono);font-size:.68rem;color:rgba(255,255,255,.2);margin-left:auto;letter-spacing:.04em}
-
 /* ─── Modal ───────────────────────────────────── */
 .modal-overlay{display:none;position:fixed;inset:0;z-index:300;background:rgba(0,0,0,.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;padding:1rem}
 .modal-overlay.open{display:flex}
@@ -296,10 +237,8 @@ nav.scrolled{box-shadow:0 4px 40px rgba(0,0,0,.4)}
 .modal-section h4{font-family:var(--mono);font-size:.68rem;font-weight:500;color:var(--gold);text-transform:uppercase;letter-spacing:.12em;margin-bottom:.4rem}
 .modal-section p{font-size:.88rem;color:#3d4a5c;line-height:1.7}
 .modal-actions{display:flex;gap:.6rem;flex-wrap:wrap}
-
 /* ─── Footer ──────────────────────────────────── */
 footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;padding:1.75rem;font-family:var(--mono);font-size:.72rem;letter-spacing:.04em;border-top:1px solid rgba(255,255,255,.04)}
-
 /* ─── Scroll reveal ───────────────────────────── */
 .reveal{opacity:0;transform:translateY(22px);transition:opacity .65s cubic-bezier(.2,.8,.2,1),transform .65s cubic-bezier(.2,.8,.2,1)}
 .reveal.visible{opacity:1;transform:translateY(0)}
@@ -308,823 +247,467 @@ footer{background:var(--ink);color:rgba(255,255,255,.22);text-align:center;paddi
 .reveal:nth-child(4){transition-delay:.24s}
 .reveal:nth-child(5){transition-delay:.32s}
 .reveal:nth-child(6){transition-delay:.40s}
-
 /* ─── Responsive ──────────────────────────────── */
 @media(max-width:900px){.about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}.cta-banner{flex-direction:column;text-align:center}.cta-banner-actions{justify-content:center}}
 @media(max-width:768px){
-  .nav-menu{display:none}.hamburger{display:flex}
-  .section{padding:4rem 0}
-  .projects-grid{grid-template-columns:1fr}
-  .certs-grid{grid-template-columns:1fr 1fr}
-  .hero-title{font-size:2.4rem}
-  .about-grid{gap:2rem}
-  #lang-banner{padding:.75rem 1.25rem;gap:.6rem}
-  .lang-banner-text{display:none}
-  .bazamix-intro{flex-direction:column;gap:.75rem}
+.nav-menu{display:none}.hamburger{display:flex}
+.section{padding:4rem 0}
+.projects-grid{grid-template-columns:1fr}
+.certs-grid{grid-template-columns:1fr 1fr}
+.hero-title{font-size:2.4rem}
+.about-grid{gap:2rem}
+#lang-banner{padding:.75rem 1.25rem;gap:.6rem}
+.lang-banner-text{display:none}
+.bazamix-intro{flex-direction:column;gap:.75rem}
 }
 @media(max-width:480px){
-  .certs-grid{grid-template-columns:1fr}
-  .hero-actions{flex-direction:column}
-  .hero-actions .btn{width:100%;justify-content:center}
-  .container{padding:0 1.25rem}
+.certs-grid{grid-template-columns:1fr}
+.hero-actions{flex-direction:column}
+.hero-actions .btn{width:100%;justify-content:center}
+.container{padding:0 1.25rem}
 }
 </style>
 </head>
 <body>
-
 <!-- ═══ LANG BANNER ════════════════════════════════════════════ -->
 <div id="lang-banner">
-  <span class="lang-banner-text" id="banner-text">Idioma detectado automaticamente:</span>
-  <span class="lang-banner-detected" id="banner-detected"></span>
-  <div class="lang-banner-actions">
-    <button class="lang-banner-keep" id="banner-keep" onclick="dismissBanner()">Manter</button>
-    <span class="lang-banner-sep">·</span>
-    <button class="lang-banner-pt" id="banner-switch" onclick="switchToPt()">Português</button>
-  </div>
-  <button class="lang-banner-dismiss" onclick="dismissBanner()" aria-label="Fechar">✕</button>
+<span class="lang-banner-text" id="banner-text">Idioma detectado automaticamente:</span>
+<span class="lang-banner-detected" id="banner-detected"></span>
+<div class="lang-banner-actions">
+<button class="lang-banner-keep" id="banner-keep" onclick="dismissBanner()">Manter</button>
+<span class="lang-banner-sep">·</span>
+<button class="lang-banner-pt" id="banner-switch" onclick="switchToPt()">Português</button>
 </div>
-
+<button class="lang-banner-dismiss" onclick="dismissBanner()" aria-label="Fechar">✕</button>
+</div>
 <!-- ═══ NAV ═══════════════════════════════════════════════════ -->
 <nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Scherlock<span class="dot">.</span></a>
-    <ul class="nav-menu" id="navMenu">
-      <li><a href="#projetos" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</a></li>
-      <li><a href="#certificacoes" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</a></li>
-      <li><a href="#sobre" data-pt="Sobre" data-fr="À propos" data-en="About" data-es="Sobre mí">Sobre</a></li>
-      <li><a href="#contato" class="nav-cta" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</a></li>
-      <li>
-        <div class="lang-toggle">
-          <button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
-          <button data-lang="fr" onclick="changeLang('fr')">FR</button>
-          <button data-lang="en" onclick="changeLang('en')">EN</button>
-          <button data-lang="es" onclick="changeLang('es')">ES</button>
-        </div>
-      </li>
-    </ul>
-    <div class="hamburger" id="hamburger" onclick="toggleMenu()">
-      <span></span><span></span><span></span>
-    </div>
-  </div>
-</nav>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="#projetos" onclick="closeMenu()" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</a>
-  <a href="#certificacoes" onclick="closeMenu()" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</a>
-  <a href="#sobre" onclick="closeMenu()" data-pt="Sobre" data-fr="À propos" data-en="About" data-es="Sobre mí">Sobre</a>
-  <a href="#contato" onclick="closeMenu()" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</a>
-  <div class="mob-lang-row">
-    <span data-pt="Idioma:" data-fr="Langue:" data-en="Language:" data-es="Idioma:">Idioma:</span>
-    <div class="lang-toggle">
-      <button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
-      <button data-lang="fr" onclick="changeLang('fr')">FR</button>
-      <button data-lang="en" onclick="changeLang('en')">EN</button>
-      <button data-lang="es" onclick="changeLang('es')">ES</button>
-    </div>
-  </div>
+<div class="nav-inner">
+<a href="#" class="nav-logo">Scherlock<span class="dot">.</span></a>
+<ul class="nav-menu" id="navMenu">
+<li><a href="#projetos" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</a></li>
+<li><a href="#certificacoes" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</a></li>
+<li><a href="#sobre" data-pt="Sobre" data-fr="À propos" data-en="About" data-es="Sobre mí">Sobre</a></li>
+<li><a href="#contato" class="nav-cta" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</a></li>
+<li>
+<div class="lang-toggle">
+<button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
+<button data-lang="fr" onclick="changeLang('fr')">FR</button>
+<button data-lang="en" onclick="changeLang('en')">EN</button>
+<button data-lang="es" onclick="changeLang('es')">ES</button>
 </div>
-
+</li>
+</ul>
+<div class="hamburger" id="hamburger" onclick="toggleMenu()">
+<span></span><span></span><span></span>
+</div>
+</div>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+<a href="#projetos" onclick="closeMenu()" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</a>
+<a href="#certificacoes" onclick="closeMenu()" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</a>
+<a href="#sobre" onclick="closeMenu()" data-pt="Sobre" data-fr="À propos" data-en="About" data-es="Sobre mí">Sobre</a>
+<a href="#contato" onclick="closeMenu()" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</a>
+<div class="mob-lang-row">
+<span data-pt="Idioma:" data-fr="Langue:" data-en="Language:" data-es="Idioma:">Idioma:</span>
+<div class="lang-toggle">
+<button class="active" data-lang="pt" onclick="changeLang('pt')">PT</button>
+<button data-lang="fr" onclick="changeLang('fr')">FR</button>
+<button data-lang="en" onclick="changeLang('en')">EN</button>
+<button data-lang="es" onclick="changeLang('es')">ES</button>
+</div>
+</div>
+</div>
 <!-- ═══ HERO ═══════════════════════════════════════════════════ -->
 <section id="hero">
-  <div class="hero-inner">
-    <div class="hero-label">
-      <div class="hero-label-dot"></div>
-      <span data-pt="Disponível para projetos · 🇧🇷 PT &amp; 🇫🇷 FR" data-fr="Disponible pour des projets · 🇧🇷 PT &amp; 🇫🇷 FR" data-en="Available for projects · 🇧🇷 PT &amp; 🇫🇷 FR" data-es="Disponible para proyectos · 🇧🇷 PT &amp; 🇫🇷 FR">Disponível para projetos · 🇧🇷 PT &amp; 🇫🇷 FR</span>
-    </div>
-    <h1 class="hero-title">
-      Scherlock Hall,
-      <strong
-        data-pt="especialista em responsividade &amp; mobile-first."
-        data-fr="spécialiste en responsive design &amp; mobile-first."
-        data-en="responsive web specialist &amp; mobile-first developer."
-        data-es="especialista en responsividad &amp; mobile-first."
-      >especialista em responsividade &amp; mobile-first.</strong>
-    </h1>
-    <p class="hero-desc"
-      data-pt="Construo e otimizo sites rápidos, adaptados para mobile, com entrega ágil e comunicação direta. Atendo clientes em português e francês."
-      data-fr="Je construis et optimise des sites rapides, adaptés au mobile, avec une livraison rapide et une communication directe. J'accompagne les clients en portugais et en français."
-      data-en="I build and optimize fast, mobile-adapted websites with quick delivery and direct communication. Available in Portuguese and French."
-      data-es="Construyo y optimizo sitios rápidos, adaptados para mobile, con entrega ágil y comunicación directa. Atiendo clientes en portugués y francés."
-    >Construo e otimizo sites rápidos, adaptados para mobile, com entrega ágil e comunicação direta. Atendo clientes em português e francês.</p>
-    <div class="hero-actions">
-      <a href="#projetos" class="btn btn-gold" data-pt="Ver projetos" data-fr="Voir les projets" data-en="View projects" data-es="Ver proyectos">Ver projetos</a>
-      <a href="mailto:scherlockhall@email.com" class="btn btn-ghost-w" data-pt="Enviar e-mail" data-fr="Envoyer un e-mail" data-en="Send e-mail" data-es="Enviar e-mail">Enviar e-mail</a>
-    </div>
-    <!-- Services strip -->
-    <div class="services-strip">
-      <span class="service-pill" data-pt="Otimização mobile" data-fr="Optimisation mobile" data-en="Mobile optimization" data-es="Optimización mobile">Otimização mobile</span>
-      <span class="service-pill" data-pt="Landing pages" data-fr="Landing pages" data-en="Landing pages" data-es="Landing pages">Landing pages</span>
-      <span class="service-pill" data-pt="Redesign de layout" data-fr="Refonte de layout" data-en="Layout redesign" data-es="Rediseño de layout">Redesign de layout</span>
-      <span class="service-pill" data-pt="Sites institucionais" data-fr="Sites institutionnels" data-en="Business websites" data-es="Sitios institucionales">Sites institucionais</span>
-      <span class="service-pill" data-pt="Performance &amp; UX" data-fr="Performance &amp; UX" data-en="Performance &amp; UX" data-es="Rendimiento &amp; UX">Performance &amp; UX</span>
-    </div>
-    <div class="social-row" style="margin-top:1.5rem">
-      <a href="https://github.com/ScherlockHall" target="_blank" class="social-pill">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-        GitHub
-      </a>
-      <a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="social-pill">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-        LinkedIn
-      </a>
-      <a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="social-pill">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-        Lattes
-      </a>
-      <a href="https://www.instagram.com/scherlockhall04" target="_blank" class="social-pill">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-        Instagram
-      </a>
-      <a href="https://wa.me/33753964060" target="_blank" class="social-pill">
-        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-        WhatsApp
-      </a>
-    </div>
-  </div>
+<div class="hero-inner">
+<div class="hero-label">
+<div class="hero-label-dot"></div>
+<span data-pt="Disponível para projetos · 🇧🇷 PT &amp; 🇫🇷 FR" data-fr="Disponible pour des projets · 🇧🇷 PT &amp; 🇫🇷 FR" data-en="Available for projects · 🇧🇷 PT &amp; 🇫🇷 FR" data-es="Disponible para proyectos · 🇧🇷 PT &amp; 🇫🇷 FR">Disponível para projetos · 🇧🇷 PT &amp; 🇫🇷 FR</span>
+</div>
+<h1 class="hero-title">
+Scherlock Hall,
+<strong data-pt="especialista em responsividade &amp; mobile-first." data-fr="spécialiste en responsive design &amp; mobile-first." data-en="responsive web specialist &amp; mobile-first developer." data-es="especialista en responsividad &amp; mobile-first.">especialista em responsividade &amp; mobile-first.</strong>
+</h1>
+<p class="hero-desc" data-pt="Construo e otimizo sites rápidos, adaptados para mobile, com entrega ágil e comunicação direta. Atendo clientes em português e francês." data-fr="Je construis et optimise des sites rapides, adaptés au mobile, avec une livraison rapide et une communication directe. J'accompagne les clients en portugais et en français." data-en="I build and optimize fast, mobile-adapted websites with quick delivery and direct communication. Available in Portuguese and French." data-es="Construyo y optimizo sitios rápidos, adaptados para mobile, con entrega ágil y comunicación directa. Atiendo clientes en portugués y francés.">Construo e otimizo sites rápidos, adaptados para mobile, com entrega ágil e comunicação direta. Atendo clientes em português e francês.</p>
+<div class="hero-actions">
+<a href="#projetos" class="btn btn-gold" data-pt="Ver projetos" data-fr="Voir les projets" data-en="View projects" data-es="Ver proyectos">Ver projetos</a>
+<a href="mailto:scherlockhall@email.com" class="btn btn-ghost-w" data-pt="Enviar e-mail" data-fr="Envoyer un e-mail" data-en="Send e-mail" data-es="Enviar e-mail">Enviar e-mail</a>
+</div>
+<div class="services-strip">
+<span class="service-pill" data-pt="Otimização mobile" data-fr="Optimisation mobile" data-en="Mobile optimization" data-es="Optimización mobile">Otimização mobile</span>
+<span class="service-pill" data-pt="Landing pages" data-fr="Landing pages" data-en="Landing pages" data-es="Landing pages">Landing pages</span>
+<span class="service-pill" data-pt="Redesign de layout" data-fr="Refonte de layout" data-en="Layout redesign" data-es="Rediseño de layout">Redesign de layout</span>
+<span class="service-pill" data-pt="Sites institucionais" data-fr="Sites institutionnels" data-en="Business websites" data-es="Sitios institucionales">Sites institucionais</span>
+<span class="service-pill" data-pt="Performance &amp; UX" data-fr="Performance &amp; UX" data-en="Performance &amp; UX" data-es="Rendimiento &amp; UX">Performance &amp; UX</span>
+</div>
+<div class="social-row" style="margin-top:1.5rem">
+<a href="https://github.com/ScherlockHall" target="_blank" class="social-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub</a>
+<a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="social-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn</a>
+<a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="social-pill"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Lattes</a>
+<a href="https://www.instagram.com/scherlockhall04" target="_blank" class="social-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>Instagram</a>
+<a href="https://wa.me/33753964060" target="_blank" class="social-pill"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>WhatsApp</a>
+</div>
+</div>
 </section>
-
 <!-- ═══ PROJECTS ═══════════════════════════════════════════════ -->
 <section class="section" id="projetos">
-  <div class="container">
-    <span class="eyebrow" data-pt="Portfólio" data-fr="Portfolio" data-en="Portfolio" data-es="Portafolio">Portfólio</span>
-    <h2 class="sec-title" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</h2>
-
-    <!-- Programação & Web -->
-    <div class="cat-label"><span data-pt="💻 Programação &amp; Web" data-fr="💻 Programmation &amp; Web" data-en="💻 Programming &amp; Web" data-es="💻 Programación &amp; Web">💻 Programação &amp; Web</span><div class="cat-line"></div></div>
-    <div class="projects-grid">
-
-      <a class="project-card reveal" href="https://mcshowdenatal.com.br" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/mcshowdenatal.png" alt="MC Show de Natal" loading="lazy">
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-orange">Site Institucional</span><span class="tag tag-gray">HTML/CSS/JS</span><span class="tag tag-blue">Responsivo</span></div>
-          <h3 class="project-title">🎄 MC Show de Natal</h3>
-          <p class="project-desc"
-            data-pt="Site institucional responsivo para empresa com quase 20 anos de experiência em cenografia e iluminação natalina. Layout mobile-first com foco em conversão e clareza visual para prefeituras e eventos corporativos."
-            data-fr="Site institutionnel responsif pour une entreprise avec près de 20 ans d'expérience en scénographie et éclairage de Noël. Layout mobile-first axé sur la conversion et la clarté visuelle."
-            data-en="Responsive institutional website for a company with nearly 20 years of experience in scenography and Christmas lighting. Mobile-first layout focused on conversion and visual clarity for city halls and corporate events."
-            data-es="Sitio institucional responsivo para empresa con casi 20 años de experiencia en escenografía e iluminación navideña. Layout mobile-first con foco en conversión y claridad visual."
-          >Site institucional responsivo para empresa com quase 20 anos de experiência em cenografia e iluminação natalina. Layout mobile-first com foco em conversão e clareza visual para prefeituras e eventos corporativos.</p>
-          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="site_sorteio/index.html" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/sorteador-pro.png" alt="Sorteador Pro" loading="lazy">
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-blue">Aplicação Web</span><span class="tag tag-gray">JavaScript</span><span class="tag tag-green">Mobile-Ready</span></div>
-          <h3 class="project-title" data-pt="🎲 Sorteador Pro" data-fr="🎲 Tireur au Sort Pro" data-en="🎲 Lottery Pro" data-es="🎲 Sorteador Pro">🎲 Sorteador Pro</h3>
-          <p class="project-desc"
-            data-pt="App web de sorteio com interface moderna e animações fluidas. Funciona em qualquer dispositivo — DOM manipulation avançada, lógica JavaScript e design limpo."
-            data-fr="App web de tirage au sort avec interface moderne et animations fluides. Fonctionne sur tout appareil — manipulation DOM avancée, logique JavaScript et design épuré."
-            data-en="Web lottery app with modern interface and smooth animations. Works on any device — advanced DOM manipulation, JavaScript logic and clean design."
-            data-es="App web de sorteo con interfaz moderna y animaciones fluidas. Funciona en cualquier dispositivo — DOM manipulation avanzada, lógica JavaScript y diseño limpio."
-          >App web de sorteio com interface moderna e animações fluidas. Funciona em qualquer dispositivo — DOM manipulation avançada, lógica JavaScript e design limpo.</p>
-          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="jogo-da-velha/index.html" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/jogo-da-velha.png" alt="Jogo da Velha" loading="lazy">
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-pink">Algoritmo Minimax</span><span class="tag tag-gray">JavaScript</span><span class="tag tag-blue">Responsivo</span></div>
-          <h3 class="project-title" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable" data-en="🎮 Unbeatable Tic-Tac-Toe" data-es="🎮 Tres en Raya Imbatible">🎮 Jogo da Velha Imbatível</h3>
-          <p class="project-desc"
-            data-pt="Interface adaptável com algoritmo Minimax — jogável em qualquer tela. JavaScript avançado com lógica de IA aplicada e experiência de jogo sem travamentos em mobile."
-            data-fr="Interface adaptable avec algorithme Minimax — jouable sur n'importe quel écran. JavaScript avancé avec logique IA appliquée et expérience de jeu fluide sur mobile."
-            data-en="Adaptive interface with Minimax algorithm — playable on any screen. Advanced JavaScript with applied AI logic and seamless gaming experience on mobile."
-            data-es="Interfaz adaptable con algoritmo Minimax — jugable en cualquier pantalla. JavaScript avanzado con lógica de IA aplicada y experiencia de juego fluida en mobile."
-          >Interface adaptável com algoritmo Minimax — jogável em qualquer tela. JavaScript avançado com lógica de IA aplicada e experiência de jogo sem travamentos em mobile.</p>
-          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <div class="project-card reveal" onclick="openBioModal()" style="cursor:pointer">
-        <div class="project-img-wrap">
-          <img src="cards/bio-reviva.png" alt="Bio Reviva" loading="lazy">
-          <span class="training-badge" data-pt="Demo" data-fr="Démo" data-en="Demo" data-es="Demo">Demo</span>
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-green">Sustentabilidade</span><span class="tag tag-blue">HTML/CSS/JS</span><span class="tag tag-gold">Responsivo</span></div>
-          <h3 class="project-title">🌿 Bio Reviva</h3>
-          <p class="project-desc"
-            data-pt="Site institucional responsivo sobre políticas de restauração de vegetação nativa. Layout mobile-first com seções estruturadas, tipografia hierárquica e experiência de navegação fluida em qualquer dispositivo."
-            data-fr="Site institutionnel responsive sur les politiques de restauration de la végétation native. Layout mobile-first avec sections structurées, typographie hiérarchique et navigation fluide sur tous les appareils."
-            data-en="Responsive institutional website about native vegetation restoration policies. Mobile-first layout with structured sections, hierarchical typography and smooth navigation on any device."
-            data-es="Sitio institucional responsivo sobre políticas de restauración de vegetación nativa. Layout mobile-first con secciones estructuradas, tipografía jerárquica y navegación fluida en cualquier dispositivo."
-          >Site institucional responsivo sobre políticas de restauração de vegetação nativa. Layout mobile-first com seções estruturadas, tipografia hierárquica e experiência de navegação fluida em qualquer dispositivo.</p>
-          <span class="project-link" data-pt="Ver detalhes" data-fr="Voir les détails" data-en="View details" data-es="Ver detalles">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- BAZAMIX -->
-    <div class="cat-label" style="margin-top:2.5rem">
-      <span data-pt="🏗️ Redesign &amp; Identidade Visual" data-fr="🏗️ Refonte &amp; Identité Visuelle" data-en="🏗️ Redesign &amp; Visual Identity" data-es="🏗️ Rediseño &amp; Identidad Visual">🏗️ Redesign &amp; Identidade Visual</span>
-      <div class="cat-line"></div>
-    </div>
-
-    <div class="bazamix-intro reveal">
-      <div class="bazamix-intro-icon">🏢</div>
-      <div>
-        <h3 data-pt="BAZAMIX — Reposicionamento de Marca" data-fr="BAZAMIX — Repositionnement de Marque" data-en="BAZAMIX — Brand Repositioning" data-es="BAZAMIX — Reposicionamiento de Marca">BAZAMIX — Reposicionamento de Marca</h3>
-        <p
-          data-pt="Redesign completo de identidade visual para empresa de concreto e argamassa. Três versões responsivas com abordagens distintas — cada uma entrega uma experiência de marca diferente, todas otimizadas para mobile e conversão."
-          data-fr="Refonte complète d'identité visuelle pour une entreprise de béton et mortier. Trois versions responsives aux approches distinctes — chacune livrant une expérience de marque différente, toutes optimisées pour mobile et conversion."
-          data-en="Complete visual identity redesign for a concrete and mortar company. Three responsive versions with distinct approaches — each delivering a different brand experience, all optimized for mobile and conversion."
-          data-es="Rediseño completo de identidad visual para empresa de hormigón y mortero. Tres versiones responsivas con enfoques distintos — cada una entrega una experiencia de marca diferente, todas optimizadas para mobile y conversión."
-        >Redesign completo de identidade visual para empresa de concreto e argamassa. Três versões responsivas com abordagens distintas — cada uma entrega uma experiência de marca diferente, todas otimizadas para mobile e conversão.</p>
-      </div>
-    </div>
-
-    <div class="projects-grid">
-
-      <a class="project-card reveal" href="bazamix-essencial/" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/bazamix-essencial.png" alt="BAZAMIX Plano Essencial" loading="lazy">
-          <span class="plan-badge plan-badge-essencial" data-pt="Plano Essencial" data-fr="Plan Essentiel" data-en="Essential Plan" data-es="Plan Esencial">Plano Essencial</span>
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-blue">Corporativo</span><span class="tag tag-gray">Azul Marinho</span><span class="tag tag-gray">Mobile-First</span></div>
-          <h3 class="project-title" data-pt="🔵 Versão Corporativa" data-fr="🔵 Version Corporative" data-en="🔵 Corporate Version" data-es="🔵 Versión Corporativa">🔵 Versão Corporativa</h3>
-          <p class="project-desc"
-            data-pt="Layout responsivo em azul marinho e laranja. Identidade profissional com split-screen hero, seção de processo estruturado e navegação clara. Otimizado para licitações e clientes institucionais."
-            data-fr="Layout responsive en bleu marine et orange. Identité professionnelle avec hero en écran partagé, section de processus structuré et navigation claire. Optimisé pour les appels d'offres et clients institutionnels."
-            data-en="Responsive layout in navy blue and orange. Professional identity with split-screen hero, structured process section and clear navigation. Optimized for tenders and institutional clients."
-            data-es="Layout responsivo en azul marino y naranja. Identidad profesional con hero de pantalla dividida, sección de proceso estructurado y navegación clara. Optimizado para licitaciones y clientes institucionales."
-          >Layout responsivo em azul marinho e laranja. Identidade profissional com split-screen hero, seção de processo estruturado e navegação clara. Otimizado para licitações e clientes institucionais.</p>
-          <span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="bazamix-profissional/" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/bazamix-profissional.png" alt="BAZAMIX Plano Profissional" loading="lazy">
-          <span class="plan-badge plan-badge-profissional" data-pt="Plano Profissional" data-fr="Plan Professionnel" data-en="Professional Plan" data-es="Plan Profesional">Plano Profissional</span>
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-dark">Industrial</span><span class="tag tag-orange">Dark Theme</span><span class="tag tag-gray">Mobile-First</span></div>
-          <h3 class="project-title" data-pt="⚫ Versão Industrial" data-fr="⚫ Version Industrielle" data-en="⚫ Industrial Version" data-es="⚫ Versión Industrial">⚫ Versão Industrial</h3>
-          <p class="project-desc"
-            data-pt="Layout responsivo escuro com tipografia bold e acento laranja vibrante. Hero de tela cheia adaptado para mobile, cards de serviço com hover intenso. Comunicação de alto impacto para construtoras de grande porte."
-            data-fr="Layout responsive sombre avec typographie bold et accent orange vibrant. Hero plein écran adapté au mobile, cards de service avec hover intense. Communication à fort impact pour les grandes entreprises de construction."
-            data-en="Dark responsive layout with bold typography and vibrant orange accent. Full-screen hero adapted for mobile, service cards with intense hover. High-impact communication for large construction companies."
-            data-es="Layout responsivo oscuro con tipografía bold y acento naranja vibrante. Hero de pantalla completa adaptado para mobile, cards de servicio con hover intenso. Comunicación de alto impacto para constructoras de gran escala."
-          >Layout responsivo escuro com tipografia bold e acento laranja vibrante. Hero de tela cheia adaptado para mobile, cards de serviço com hover intenso. Comunicação de alto impacto para construtoras de grande porte.</p>
-          <span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="bazamix-premium/" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/bazamix-premium.png" alt="BAZAMIX Plano Premium" loading="lazy">
-          <span class="plan-badge plan-badge-premium" data-pt="Plano Premium" data-fr="Plan Premium" data-en="Premium Plan" data-es="Plan Premium">Plano Premium</span>
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-terra">Editorial</span><span class="tag tag-gold">Terracota</span><span class="tag tag-gray">Mobile-First</span></div>
-          <h3 class="project-title" data-pt="🟤 Versão Editorial" data-fr="🟤 Version Éditoriale" data-en="🟤 Editorial Version" data-es="🟤 Versión Editorial">🟤 Versão Editorial</h3>
-          <p class="project-desc"
-            data-pt="Layout responsivo em tons de creme e terracota com tipografia serifada Playfair Display. Experiência visual sofisticada em qualquer dispositivo — ideal para obras de alto padrão e clientes que valorizam estética premium."
-            data-fr="Layout responsive en tons crème et terre cuite avec typographie Playfair Display. Expérience visuelle sophistiquée sur tous les appareils — idéal pour les constructions haut de gamme et clients valorisant l'esthétique premium."
-            data-en="Responsive layout in cream and terracotta tones with Playfair Display typography. Sophisticated visual experience on any device — ideal for high-end construction and clients who value premium aesthetics."
-            data-es="Layout responsivo en tonos crema y terracota con tipografía Playfair Display. Experiencia visual sofisticada en cualquier dispositivo — ideal para obras de alto estándar y clientes que valoran la estética premium."
-          >Layout responsivo em tons de creme e terracota com tipografia serifada Playfair Display. Experiência visual sofisticada em qualquer dispositivo — ideal para obras de alto padrão e clientes que valorizam estética premium.</p>
-          <span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-    </div>
-  </div>
-    <!-- Análise de Dados -->
-    <div class="cat-label" style="margin-top:2.5rem">
-      <span data-pt="📊 Diferencial: Data-Driven UX" data-fr="📊 Différenciateur : Data-Driven UX" data-en="📊 Differentiator: Data-Driven UX" data-es="📊 Diferenciador: Data-Driven UX">📊 Diferencial: Data-Driven UX</span>
-      <div class="cat-line"></div>
-    </div>
-    <p style="font-size:.82rem;color:var(--muted);font-family:var(--sans);margin-bottom:1.25rem;font-weight:300;max-width:580px;"
-      data-pt="Conhecimento em dados complementa o trabalho de front-end — entender comportamento do usuário torna interfaces mais eficientes."
-      data-fr="La connaissance des données complète le travail front-end — comprendre le comportement des utilisateurs rend les interfaces plus efficaces."
-      data-en="Data knowledge complements front-end work — understanding user behavior makes interfaces more effective."
-      data-es="El conocimiento en datos complementa el trabajo front-end — entender el comportamiento del usuario hace las interfaces más eficientes."
-    >Conhecimento em dados complementa o trabalho de front-end — entender comportamento do usuário torna interfaces mais eficientes.</p>
-    <div class="projects-grid">
-
-      <a class="project-card reveal" href="vaccine-misinformation-brazil/index.html" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/impacto-da-desinformacao-sobre-vacina.png" alt="Vaccine Misinformation" loading="lazy">
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-blue">Dashboard</span><span class="tag tag-green">Google Trends</span><span class="tag tag-gray">Python</span></div>
-          <h3 class="project-title" data-pt="💉 Dashboard de Dados em Saúde Pública" data-fr="💉 Dashboard de Données en Santé Publique" data-en="💉 Public Health Data Dashboard" data-es="💉 Dashboard de Datos en Salud Pública">💉 Dashboard de Dados em Saúde Pública</h3>
-          <p class="project-desc"
-            data-pt="Dashboard interativo com 69 meses de dados reais (2020–2025). Gráficos de tendência, análise temporal e visualizações limpas — demonstrando como dados podem guiar decisões de UX e comunicação."
-            data-fr="Tableau de bord interactif avec 69 mois de données réelles (2020–2025). Graphiques de tendance, analyse temporelle et visualisations claires — démontrant comment les données peuvent guider les décisions UX et de communication."
-            data-en="Interactive dashboard with 69 months of real data (2020–2025). Trend charts, temporal analysis and clean visualizations — showing how data can drive UX and communication decisions."
-            data-es="Dashboard interactivo con 69 meses de datos reales (2020–2025). Gráficos de tendencia, análisis temporal y visualizaciones limpias — demostrando cómo los datos pueden guiar decisiones de UX y comunicación."
-          >Dashboard interativo com 69 meses de dados reais (2020–2025). Gráficos de tendência, análise temporal e visualizações limpas — demonstrando como dados podem guiar decisões de UX e comunicação.</p>
-          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-      <a class="project-card reveal" href="infovac/index.html" target="_blank">
-        <div class="project-img-wrap">
-          <img src="cards/infovac.png" alt="Infovac" loading="lazy">
-          <div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div>
-        </div>
-        <div class="project-body">
-          <div class="project-tags"><span class="tag tag-blue">Plataforma</span><span class="tag tag-green">Dados Públicos</span><span class="tag tag-gray">JavaScript</span></div>
-          <h3 class="project-title" data-pt="💉🇧🇷 Infovac — Dados &amp; Desinformação" data-fr="💉🇧🇷 Infovac — Données &amp; Désinformation" data-en="💉🇧🇷 Infovac — Data &amp; Misinformation" data-es="💉🇧🇷 Infovac — Datos &amp; Desinformación">💉🇧🇷 Infovac — Dados &amp; Desinformação</h3>
-          <p class="project-desc"
-            data-pt="Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo."
-            data-fr="Plateforme avec données réelles sur la vaccination, fact-checking, quiz interactif, vidéos explicatives et visualisations basées sur des sources officielles du gouvernement."
-            data-en="Platform with real vaccination data, fake news fact-checking, interactive quiz, informational videos and visualizations with official government sources."
-            data-es="Plataforma con datos reales sobre vacunación, verificación de fake news, quiz interactivo, videos informativos y visualizaciones con fuentes oficiales del gobierno."
-          >Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo.</p>
-          <span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
-        </div>
-      </a>
-
-    </div>
-
-
+<div class="container">
+<span class="eyebrow" data-pt="Portfólio" data-fr="Portfolio" data-en="Portfolio" data-es="Portafolio">Portfólio</span>
+<h2 class="sec-title" data-pt="Projetos" data-fr="Projets" data-en="Projects" data-es="Proyectos">Projetos</h2>
+<!-- Programação & Web -->
+<div class="cat-label"><span data-pt="💻 Programação &amp; Web" data-fr="💻 Programmation &amp; Web" data-en="💻 Programming &amp; Web" data-es="💻 Programación &amp; Web">💻 Programação &amp; Web</span><div class="cat-line"></div></div>
+<div class="projects-grid">
+<a class="project-card reveal" href="https://mcshowdenatal.com.br" target="_blank">
+<div class="project-img-wrap"><img src="cards/mcshowdenatal.png" alt="MC Show de Natal" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-orange">Site Institucional</span><span class="tag tag-gray">HTML/CSS/JS</span><span class="tag tag-blue">Responsivo</span></div>
+<h3 class="project-title">🎄 MC Show de Natal</h3>
+<p class="project-desc" data-pt="Site institucional responsivo para empresa com quase 20 anos de experiência em cenografia e iluminação natalina. Layout mobile-first com foco em conversão e clareza visual para prefeituras e eventos corporativos." data-fr="Site institutionnel responsif pour une entreprise avec près de 20 ans d'expérience en scénographie et éclairage de Noël. Layout mobile-first axé sur la conversion et la clarté visuelle." data-en="Responsive institutional website for a company with nearly 20 years of experience in scenography and Christmas lighting. Mobile-first layout focused on conversion and visual clarity for city halls and corporate events." data-es="Sitio institucional responsivo para empresa con casi 20 años de experiencia en escenografía e iluminación navideña. Layout mobile-first con foco en conversión y claridad visual.">Site institucional responsivo para empresa com quase 20 anos de experiência em cenografia e iluminação natalina. Layout mobile-first com foco em conversão e clareza visual para prefeituras e eventos corporativos.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="https://adrianocremonez.fr" target="_blank">
+<div class="project-img-wrap"><img src="cards/adriano-cremonez.png" alt="Adriano Cremonez BTP" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-orange-bold">Site Empresarial</span><span class="tag tag-blue">Responsivo</span><span class="tag tag-gold">Conversão</span></div>
+<h3 class="project-title">🔨 Adriano Cremonez BTP</h3>
+<p class="project-desc" data-pt="Site profissional para empresa de construção civil na França. Design mobile-first focado em converter visitantes em clientes através de formulário de orçamento integrado ao WhatsApp. Layout otimizado para apresentar serviços de renovação, pintura e trabalhos de construção em Île-de-France com navegação clara e chamadas para ação estratégicas." data-fr="Site professionnel pour entreprise de construction en France. Design mobile-first axé sur la conversion des visiteurs en clients via un formulaire de devis intégré à WhatsApp. Layout optimisé pour présenter les services de rénovation, peinture et travaux de construction en Île-de-France avec navigation claire et appels à l'action stratégiques." data-en="Professional website for construction company in France. Mobile-first design focused on converting visitors into clients through quote form integrated with WhatsApp. Optimized layout to showcase renovation, painting and construction services in Île-de-France with clear navigation and strategic calls-to-action." data-es="Sitio profesional para empresa de construcción en Francia. Diseño mobile-first enfocado en convertir visitantes en clientes mediante formulario de presupuesto integrado con WhatsApp. Layout optimizado para presentar servicios de renovación, pintura y trabajos de construcción en Île-de-France con navegación clara y llamadas a la acción estratégicas.">Site profissional para empresa de construção civil na França. Design mobile-first focado em converter visitantes em clientes através de formulário de orçamento integrado ao WhatsApp. Layout otimizado para apresentar serviços de renovação, pintura e trabalhos de construção em Île-de-France com navegação clara e chamadas para ação estratégicas.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="site_sorteio/index.html" target="_blank">
+<div class="project-img-wrap"><img src="cards/sorteador-pro.png" alt="Sorteador Pro" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-blue">Aplicação Web</span><span class="tag tag-gray">JavaScript</span><span class="tag tag-green">Mobile-Ready</span></div>
+<h3 class="project-title" data-pt="🎲 Sorteador Pro" data-fr="🎲 Tireur au Sort Pro" data-en="🎲 Lottery Pro" data-es="🎲 Sorteador Pro">🎲 Sorteador Pro</h3>
+<p class="project-desc" data-pt="App web de sorteio com interface moderna e animações fluidas. Funciona em qualquer dispositivo — DOM manipulation avançada, lógica JavaScript e design limpo." data-fr="App web de tirage au sort avec interface moderne et animations fluides. Fonctionne sur tout appareil — manipulation DOM avancée, logique JavaScript et design épuré." data-en="Web lottery app with modern interface and smooth animations. Works on any device — advanced DOM manipulation, JavaScript logic and clean design." data-es="App web de sorteo con interfaz moderna y animaciones fluidas. Funciona en cualquier dispositivo — DOM manipulation avanzada, lógica JavaScript y diseño limpio.">App web de sorteio com interface moderna e animações fluidas. Funciona em qualquer dispositivo — DOM manipulation avançada, lógica JavaScript e design limpo.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="jogo-da-velha/index.html" target="_blank">
+<div class="project-img-wrap"><img src="cards/jogo-da-velha.png" alt="Jogo da Velha" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-pink">Algoritmo Minimax</span><span class="tag tag-gray">JavaScript</span><span class="tag tag-blue">Responsivo</span></div>
+<h3 class="project-title" data-pt="🎮 Jogo da Velha Imbatível" data-fr="🎮 Morpion Imbattable" data-en="🎮 Unbeatable Tic-Tac-Toe" data-es="🎮 Tres en Raya Imbatible">🎮 Jogo da Velha Imbatível</h3>
+<p class="project-desc" data-pt="Interface adaptável com algoritmo Minimax — jogável em qualquer tela. JavaScript avançado com lógica de IA aplicada e experiência de jogo sem travamentos em mobile." data-fr="Interface adaptable avec algorithme Minimax — jouable sur n'importe quel écran. JavaScript avancé avec logique IA appliquée et expérience de jeu fluide sur mobile." data-en="Adaptive interface with Minimax algorithm — playable on any screen. Advanced JavaScript with applied AI logic and seamless gaming experience on mobile." data-es="Interfaz adaptable con algoritmo Minimax — jugable en cualquier pantalla. JavaScript avanzado con lógica de IA aplicada y experiencia de juego fluida en mobile.">Interface adaptável com algoritmo Minimax — jogável em qualquer tela. JavaScript avançado com lógica de IA aplicada e experiência de jogo sem travamentos em mobile.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<div class="project-card reveal" onclick="openBioModal()" style="cursor:pointer">
+<div class="project-img-wrap"><img src="cards/bio-reviva.png" alt="Bio Reviva" loading="lazy"><span class="training-badge" data-pt="Demo" data-fr="Démo" data-en="Demo" data-es="Demo">Demo</span><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-green">Sustentabilidade</span><span class="tag tag-blue">HTML/CSS/JS</span><span class="tag tag-gold">Responsivo</span></div>
+<h3 class="project-title">🌿 Bio Reviva</h3>
+<p class="project-desc" data-pt="Site institucional responsivo sobre políticas de restauração de vegetação nativa. Layout mobile-first com seções estruturadas, tipografia hierárquica e experiência de navegação fluida em qualquer dispositivo." data-fr="Site institutionnel responsive sur les politiques de restauration de la végétation native. Layout mobile-first avec sections structurées, typographie hiérarchique et navigation fluide sur tous les appareils." data-en="Responsive institutional website about native vegetation restoration policies. Mobile-first layout with structured sections, hierarchical typography and smooth navigation on any device." data-es="Sitio institucional responsivo sobre políticas de restauración de vegetación nativa. Layout mobile-first con secciones estructuradas, tipografía jerárquica y navegación fluida en cualquier dispositivo.">Site institucional responsivo sobre políticas de restauração de vegetação nativa. Layout mobile-first com seções estruturadas, tipografia hierárquica e experiência de navegação fluida em qualquer dispositivo.</p>
+<span class="project-link" data-pt="Ver detalhes" data-fr="Voir les détails" data-en="View details" data-es="Ver detalles">Ver detalhes <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</div>
+</div>
+<!-- BAZAMIX -->
+<div class="cat-label" style="margin-top:2.5rem"><span data-pt="🏗️ Redesign &amp; Identidade Visual" data-fr="🏗️ Refonte &amp; Identité Visuelle" data-en="🏗️ Redesign &amp; Visual Identity" data-es="🏗️ Rediseño &amp; Identidad Visual">🏗️ Redesign &amp; Identidade Visual</span><div class="cat-line"></div></div>
+<div class="bazamix-intro reveal">
+<div class="bazamix-intro-icon">🏢</div>
+<div>
+<h3 data-pt="BAZAMIX — Reposicionamento de Marca" data-fr="BAZAMIX — Repositionnement de Marque" data-en="BAZAMIX — Brand Repositioning" data-es="BAZAMIX — Reposicionamiento de Marca">BAZAMIX — Reposicionamento de Marca</h3>
+<p data-pt="Redesign completo de identidade visual para empresa de concreto e argamassa. Três versões responsivas com abordagens distintas — cada uma entrega uma experiência de marca diferente, todas otimizadas para mobile e conversão." data-fr="Refonte complète d'identité visuelle pour une entreprise de béton et mortier. Trois versions responsives aux approches distinctes — chacune livrant une expérience de marque différente, toutes optimisées pour mobile et conversion." data-en="Complete visual identity redesign for a concrete and mortar company. Three responsive versions with distinct approaches — each delivering a different brand experience, all optimized for mobile and conversion." data-es="Rediseño completo de identidad visual para empresa de hormigón y mortero. Tres versiones responsivas con enfoques distintos — cada una entrega una experiencia de marca diferente, todas optimizadas para mobile y conversión.">Redesign completo de identidade visual para empresa de concreto e argamassa. Três versões responsivas com abordagens distintas — cada uma entrega uma experiência de marca diferente, todas otimizadas para mobile e conversão.</p>
+</div>
+</div>
+<div class="projects-grid">
+<a class="project-card reveal" href="bazamix-essencial/" target="_blank">
+<div class="project-img-wrap"><img src="cards/bazamix-essencial.png" alt="BAZAMIX Plano Essencial" loading="lazy"><span class="plan-badge plan-badge-essencial" data-pt="Plano Essencial" data-fr="Plan Essentiel" data-en="Essential Plan" data-es="Plan Esencial">Plano Essencial</span><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-blue">Corporativo</span><span class="tag tag-gray">Azul Marinho</span><span class="tag tag-gray">Mobile-First</span></div>
+<h3 class="project-title" data-pt="🔵 Versão Corporativa" data-fr="🔵 Version Corporative" data-en="🔵 Corporate Version" data-es="🔵 Versión Corporativa">🔵 Versão Corporativa</h3>
+<p class="project-desc" data-pt="Layout responsivo em azul marinho e laranja. Identidade profissional com split-screen hero, seção de processo estruturado e navegação clara. Otimizado para licitações e clientes institucionais." data-fr="Layout responsive en bleu marine et orange. Identité professionnelle avec hero en écran partagé, section de processus structuré et navigation claire. Optimisé pour les appels d'offres et clients institutionnels." data-en="Responsive layout in navy blue and orange. Professional identity with split-screen hero, structured process section and clear navigation. Optimized for tenders and institutional clients." data-es="Layout responsivo en azul marino y naranja. Identidad profesional con hero de pantalla dividida, sección de proceso estructurado y navegación clara. Optimizado para licitaciones y clientes institucionales.">Layout responsivo em azul marinho e laranja. Identidade profissional com split-screen hero, seção de processo estruturado e navegação clara. Otimizado para licitações e clientes institucionais.</p>
+<span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="bazamix-profissional/" target="_blank">
+<div class="project-img-wrap"><img src="cards/bazamix-profissional.png" alt="BAZAMIX Plano Profissional" loading="lazy"><span class="plan-badge plan-badge-profissional" data-pt="Plano Profissional" data-fr="Plan Professionnel" data-en="Professional Plan" data-es="Plan Profesional">Plano Profissional</span><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-dark">Industrial</span><span class="tag tag-orange">Dark Theme</span><span class="tag tag-gray">Mobile-First</span></div>
+<h3 class="project-title" data-pt="⚫ Versão Industrial" data-fr="⚫ Version Industrielle" data-en="⚫ Industrial Version" data-es="⚫ Versión Industrial">⚫ Versão Industrial</h3>
+<p class="project-desc" data-pt="Layout responsivo escuro com tipografia bold e acento laranja vibrante. Hero de tela cheia adaptado para mobile, cards de serviço com hover intenso. Comunicação de alto impacto para construtoras de grande porte." data-fr="Layout responsive sombre avec typographie bold et accent orange vibrant. Hero plein écran adapté au mobile, cards de service avec hover intense. Communication à fort impact pour les grandes entreprises de construction." data-en="Dark responsive layout with bold typography and vibrant orange accent. Full-screen hero adapted for mobile, service cards with intense hover. High-impact communication for large construction companies." data-es="Layout responsivo oscuro con tipografía bold y acento naranja vibrante. Hero de pantalla completa adaptado para mobile, cards de servicio con hover intenso. Comunicación de alto impacto para constructoras de gran escala.">Layout responsivo escuro com tipografia bold e acento laranja vibrante. Hero de tela cheia adaptado para mobile, cards de serviço com hover intenso. Comunicação de alto impacto para construtoras de grande porte.</p>
+<span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="bazamix-premium/" target="_blank">
+<div class="project-img-wrap"><img src="cards/bazamix-premium.png" alt="BAZAMIX Plano Premium" loading="lazy"><span class="plan-badge plan-badge-premium" data-pt="Plano Premium" data-fr="Plan Premium" data-en="Premium Plan" data-es="Plan Premium">Plano Premium</span><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-terra">Editorial</span><span class="tag tag-gold">Terracota</span><span class="tag tag-gray">Mobile-First</span></div>
+<h3 class="project-title" data-pt="🟤 Versão Editorial" data-fr="🟤 Version Éditoriale" data-en="🟤 Editorial Version" data-es="🟤 Versión Editorial">🟤 Versão Editorial</h3>
+<p class="project-desc" data-pt="Layout responsivo em tons de creme e terracota com tipografia serifada Playfair Display. Experiência visual sofisticada em qualquer dispositivo — ideal para obras de alto padrão e clientes que valorizam estética premium." data-fr="Layout responsive en tons crème et terre cuite avec typographie Playfair Display. Expérience visuelle sophistiquée sur tous les appareils — idéal pour les constructions haut de gamme et clients valorisant l'esthétique premium." data-en="Responsive layout in cream and terracotta tones with Playfair Display typography. Sophisticated visual experience on any device — ideal for high-end construction and clients who value premium aesthetics." data-es="Layout responsivo en tonos crema y terracota con tipografía Playfair Display. Experiencia visual sofisticada en cualquier dispositivo — ideal para obras de alto estándar y clientes que valoran la estética premium.">Layout responsivo em tons de creme e terracota com tipografia serifada Playfair Display. Experiência visual sofisticada em qualquer dispositivo — ideal para obras de alto padrão e clientes que valorizam estética premium.</p>
+<span class="project-link" data-pt="Ver versão" data-fr="Voir la version" data-en="View version" data-es="Ver versión">Ver versão <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+</div>
+</div>
+<!-- Análise de Dados -->
+<div class="cat-label" style="margin-top:2.5rem"><span data-pt="📊 Diferencial: Data-Driven UX" data-fr="📊 Différenciateur : Data-Driven UX" data-en="📊 Differentiator: Data-Driven UX" data-es="📊 Diferenciador: Data-Driven UX">📊 Diferencial: Data-Driven UX</span><div class="cat-line"></div></div>
+<p style="font-size:.82rem;color:var(--muted);font-family:var(--sans);margin-bottom:1.25rem;font-weight:300;max-width:580px;margin:0 auto 1.25rem auto;text-align:center" data-pt="Conhecimento em dados complementa o trabalho de front-end — entender comportamento do usuário torna interfaces mais eficientes." data-fr="La connaissance des données complète le travail front-end — comprendre le comportement des utilisateurs rend les interfaces plus efficaces." data-en="Data knowledge complements front-end work — understanding user behavior makes interfaces more effective." data-es="El conocimiento en datos complementa el trabajo front-end — entender el comportamiento del usuario hace las interfaces más eficientes.">Conhecimento em dados complementa o trabalho de front-end — entender comportamento do usuário torna interfaces mais eficientes.</p>
+<div class="projects-grid">
+<a class="project-card reveal" href="vaccine-misinformation-brazil/index.html" target="_blank">
+<div class="project-img-wrap"><img src="cards/impacto-da-desinformacao-sobre-vacina.png" alt="Vaccine Misinformation" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-blue">Dashboard</span><span class="tag tag-green">Google Trends</span><span class="tag tag-gray">Python</span></div>
+<h3 class="project-title" data-pt="💉 Dashboard de Dados em Saúde Pública" data-fr="💉 Dashboard de Données en Santé Publique" data-en="💉 Public Health Data Dashboard" data-es="💉 Dashboard de Datos en Salud Pública">💉 Dashboard de Dados em Saúde Pública</h3>
+<p class="project-desc" data-pt="Dashboard interativo com 69 meses de dados reais (2020–2025). Gráficos de tendência, análise temporal e visualizações limpas — demonstrando como dados podem guiar decisões de UX e comunicação." data-fr="Tableau de bord interactif avec 69 mois de données réelles (2020–2025). Graphiques de tendance, analyse temporelle et visualisations claires — démontrant comment les données peuvent guider les décisions UX et de communication." data-en="Interactive dashboard with 69 months of real data (2020–2025). Trend charts, temporal analysis and clean visualizations — showing how data can drive UX and communication decisions." data-es="Dashboard interactivo con 69 meses de datos reales (2020–2025). Gráficos de tendencia, análisis temporal y visualizaciones limpias — demostrando cómo los datos pueden guiar decisiones de UX y comunicación.">Dashboard interativo com 69 meses de dados reais (2020–2025). Gráficos de tendência, análise temporal e visualizações limpas — demonstrando como dados podem guiar decisões de UX e comunicação.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+<a class="project-card reveal" href="infovac/index.html" target="_blank">
+<div class="project-img-wrap"><img src="cards/infovac.png" alt="Infovac" loading="lazy"><div class="proj-overlay"><div class="proj-overlay-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></div></div></div>
+<div class="project-body">
+<div class="project-tags"><span class="tag tag-blue">Plataforma</span><span class="tag tag-green">Dados Públicos</span><span class="tag tag-gray">JavaScript</span></div>
+<h3 class="project-title" data-pt="💉🇧🇷 Infovac — Dados &amp; Desinformação" data-fr="💉🇧🇷 Infovac — Données &amp; Désinformation" data-en="💉🇧🇷 Infovac — Data &amp; Misinformation" data-es="💉🇧🇷 Infovac — Datos &amp; Desinformación">💉🇧🇷 Infovac — Dados &amp; Desinformação</h3>
+<p class="project-desc" data-pt="Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo." data-fr="Plateforme avec données réelles sur la vaccination, fact-checking, quiz interactif, vidéos explicatives et visualisations basées sur des sources officielles du gouvernement." data-en="Platform with real vaccination data, fake news fact-checking, interactive quiz, informational videos and visualizations with official government sources." data-es="Plataforma con datos reales sobre vacunación, verificación de fake news, quiz interactivo, videos informativos y visualizaciones con fuentes oficiales del gobierno.">Plataforma com dados reais sobre vacinação, checagem de fake news, quiz interativo, vídeos informativos e visualizações com fontes oficiais do governo.</p>
+<span class="project-link" data-pt="Ver projeto" data-fr="Voir le projet" data-en="View project" data-es="Ver proyecto">Ver projeto <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="9 18 15 12 9 6"/></svg></span>
+</div>
+</a>
+</div>
+</div>
 </section>
-
 <!-- ═══ CERTIFICAÇÕES ══════════════════════════════════════════ -->
 <section class="section section-alt" id="certificacoes">
-  <div class="container">
-    <span class="eyebrow" data-pt="Formação" data-fr="Formation" data-en="Training" data-es="Formación">Formação</span>
-    <h2 class="sec-title" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</h2>
-
-        <div class="cat-label"><span>🔶 freeCodeCamp — Front-End</span><div class="cat-line"></div></div>
-
-    <div class="certs-grid">
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/Responsive-Web-Design.png" alt="Responsive Web Design" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">Responsive Web Design</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis a qualquer dispositivo." data-fr="HTML5, CSS3, Flexbox et Grid pour créer des mises en page modernes et adaptables à tous les appareils." data-en="HTML5, CSS3, Flexbox and Grid for building modern layouts that adapt to any device." data-es="HTML5, CSS3, Flexbox y Grid para crear layouts modernos y adaptables a cualquier dispositivo.">HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis a qualquer dispositivo.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JS Algorithms" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">JavaScript Algorithms &amp; DS</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+." data-fr="Logique de programmation, algorithmes efficaces et structures de données avec ES6+." data-en="Programming logic, efficient algorithms and data structures with ES6+." data-es="Lógica de programación, algoritmos eficientes y estructuras de datos con ES6+.">Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/Front-End-Development-Libraries.png" alt="Front End Libraries" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">Front End Libraries</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente." data-fr="React, Redux et bibliothèques modernes pour un développement front-end efficace." data-en="React, Redux and other modern libraries for efficient front-end development." data-es="React, Redux y otras bibliotecas modernas para desarrollo front-end eficiente.">React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/Data-Visualization.png" alt="Data Visualization" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">Data Visualization</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="Visualizações de dados eficazes com D3.js e outras ferramentas modernas." data-fr="Visualisations de données efficaces avec D3.js et d'autres outils modernes." data-en="Effective data visualizations with D3.js and other modern tools." data-es="Visualizaciones de datos eficaces con D3.js y otras herramientas modernas.">Visualizações de dados eficazes com D3.js e outras ferramentas modernas.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/Legacy-Front-End.png" alt="Legacy Front End" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">Legacy Front End</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web." data-fr="HTML, CSS, accessibilité, Flexbox et Grid — fondements solides du développement web." data-en="HTML, CSS, accessibility, Flexbox and Grid — solid foundations of web development." data-es="HTML, CSS, accesibilidad, Flexbox y Grid — fundamentos sólidos del desarrollo web.">HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JS" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header"><span class="cert-name">Legacy JavaScript Algorithms &amp; DS</span><span class="cert-year">2025</span></div>
-          <div class="cert-issuer">freeCodeCamp</div>
-          <p class="cert-desc" data-pt="JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional." data-fr="JavaScript : fondamentaux, algorithmes, programmation orientée objet et fonctionnelle." data-en="JavaScript: fundamentals, algorithms, object-oriented and functional programming." data-es="JavaScript: fundamentos, algoritmos, programación orientada a objetos y funcional.">JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
-          <span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
-        </div>
-      </a>
-
-    </div>
-  </div>    <div class="cat-label" style="margin-top:3rem">
-      <span data-pt="📊 Google Data Analytics — Complementar" data-fr="📊 Google Data Analytics — Complémentaire" data-en="📊 Google Data Analytics — Complementary" data-es="📊 Google Data Analytics — Complementario">📊 Google Data Analytics — Complementar</span>
-      <div class="cat-line"></div>
-    </div>
-    <p style="font-size:.8rem;color:var(--muted);font-family:var(--sans);margin-bottom:1.25rem;font-weight:300;max-width:560px;"
-      data-pt="Formação em dados que reforça a capacidade de tomar decisões de interface baseadas em comportamento real do usuário."
-      data-fr="Formation en données qui renforce la capacité à prendre des décisions d'interface basées sur le comportement réel des utilisateurs."
-      data-en="Data training that reinforces the ability to make interface decisions based on real user behavior."
-      data-es="Formación en datos que refuerza la capacidad de tomar decisiones de interfaz basadas en el comportamiento real del usuario."
-    >Formação em dados que reforça a capacidade de tomar decisões de interface baseadas em comportamento real do usuário.</p>
-
-    <div class="certs-grid">
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-foundations-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-foundations-2025.png" alt="Fundamentos: Dados, em Todo Lugar" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Fundamentos: Dados, Dados, em Todo Lugar" data-fr="Fondements : Données, Données, Partout" data-en="Foundations: Data, Data, Everywhere" data-es="Fundamentos: Datos, Datos, en Todas Partes">Fundamentos: Dados, Dados, em Todo Lugar</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico." data-fr="Introduction aux concepts fondamentaux de l'analyse de données, aux écosystèmes de données et à la pensée analytique." data-en="Introduction to the fundamental concepts of data analysis, data ecosystems and analytical thinking." data-es="Introducción a los conceptos fundamentales del análisis de datos, ecosistemas de datos y pensamiento analítico.">Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-ask-questions-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-ask-questions-2025.png" alt="Fazer Perguntas" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Fazer Perguntas para Decisões Baseadas em Dados" data-fr="Poser des Questions pour Décisions Basées sur les Données" data-en="Ask Questions to Make Data-Driven Decisions" data-es="Hacer Preguntas para Decisiones Basadas en Datos">Fazer Perguntas para Decisões Baseadas em Dados</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão." data-fr="Raisonnement structuré et formulation de questions orientées par les données pour la prise de décision." data-en="Structured reasoning and formulating data-driven questions for decision-making." data-es="Razonamiento estructurado y formulación de preguntas orientadas por datos para la toma de decisiones.">Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-prepare-data-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-prepare-data-2025.png" alt="Preparar Dados" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Preparar Dados para Exploração" data-fr="Préparer les Données pour l'Exploration" data-en="Prepare Data for Exploration" data-es="Preparar Datos para la Exploración">Preparar Dados para Exploração</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL." data-fr="Collecte, stockage et gestion éthique des données. Inclut une introduction à SQL." data-en="Ethical data collection, storage and management. Includes an introduction to SQL." data-es="Recopilación, almacenamiento y gestión ética de datos. Incluye introducción a SQL.">Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-process-data-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-process-data-2025.png" alt="Processar Dados" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Processar Dados: do Sujo ao Limpo" data-fr="Traiter les Données : du Sale au Propre" data-en="Process Data: from Dirty to Clean" data-es="Procesar Datos: de lo Sucio a lo Limpio">Processar Dados: do Sujo ao Limpo</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises." data-fr="Techniques de nettoyage et d'organisation des données pour garantir qualité et fiabilité dans les analyses." data-en="Data cleaning and organization techniques to ensure quality and reliability in analyses." data-es="Técnicas de limpieza y organización de datos para garantizar calidad y confiabilidad en los análisis.">Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-analyze-data-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-analyze-data-2025.png" alt="Analisar Dados" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Analisar Dados para Responder Perguntas" data-fr="Analyser les Données pour Répondre aux Questions" data-en="Analyze Data to Answer Questions" data-es="Analizar Datos para Responder Preguntas">Analisar Dados para Responder Perguntas</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados." data-fr="Identifier des modèles et tirer des conclusions significatives pour répondre aux questions d'entreprise." data-en="Identify patterns and draw meaningful conclusions to answer business questions with data." data-es="Identificar patrones y extraer conclusiones significativas para responder preguntas de negocio con datos.">Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-      <a class="cert-card reveal" href="certificados/google-data-analytics-share-data-2025.pdf" target="_blank" rel="noopener">
-        <div class="cert-img-wrap"><img src="certificados/google-data-analytics-share-data-2025.png" alt="Compartilhar Dados" loading="lazy"></div>
-        <div class="cert-body">
-          <div class="cert-header">
-            <span class="cert-name" data-pt="Compartilhar Dados pela Arte da Visualização" data-fr="Partager les Données par l'Art de la Visualisation" data-en="Share Data Through the Art of Visualization" data-es="Compartir Datos por el Arte de la Visualización">Compartilhar Dados pela Arte da Visualização</span>
-            <span class="cert-year">2025</span>
-          </div>
-          <div class="cert-issuer">Google · Coursera</div>
-          <p class="cert-desc" data-pt="Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante." data-fr="Visualisations efficaces et storytelling avec les données pour communiquer des insights clairement." data-en="Effective visualizations and data storytelling to communicate insights clearly and impactfully." data-es="Visualizaciones eficaces y storytelling con datos para comunicar insights de forma clara e impactante.">Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante.</p>
-          <span class="cert-open-label">Ver certificado →</span>
-        </div>
-      </a>
-
-    </div>
-
-    
+<div class="container">
+<span class="eyebrow" data-pt="Formação" data-fr="Formation" data-en="Training" data-es="Formación">Formação</span>
+<h2 class="sec-title" data-pt="Certificações" data-fr="Certifications" data-en="Certifications" data-es="Certificaciones">Certificações</h2>
+<div class="cat-label"><span>🔶 freeCodeCamp — Front-End</span><div class="cat-line"></div></div>
+<div class="certs-grid">
+<a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/responsive-web-design" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/Responsive-Web-Design.png" alt="Responsive Web Design" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">Responsive Web Design</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis a qualquer dispositivo." data-fr="HTML5, CSS3, Flexbox et Grid pour créer des mises en page modernes et adaptables à tous les appareils." data-en="HTML5, CSS3, Flexbox and Grid for building modern layouts that adapt to any device." data-es="HTML5, CSS3, Flexbox y Grid para crear layouts modernos y adaptables a cualquier dispositivo.">HTML5, CSS3, Flexbox e Grid para criação de layouts modernos e adaptáveis a qualquer dispositivo.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/javascript-algorithms-and-data-structures-v8" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/JavaScript-Algorithms-and-Data-Structures.png" alt="JS Algorithms" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">JavaScript Algorithms &amp; DS</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+." data-fr="Logique de programmation, algorithmes efficaces et structures de données avec ES6+." data-en="Programming logic, efficient algorithms and data structures with ES6+." data-es="Lógica de programación, algoritmos eficientes y estructuras de datos con ES6+.">Lógica de programação, algoritmos eficientes e estruturas de dados com ES6+.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/front-end-development-libraries" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/Front-End-Development-Libraries.png" alt="Front End Libraries" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">Front End Libraries</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente." data-fr="React, Redux et bibliothèques modernes pour un développement front-end efficace." data-en="React, Redux and other modern libraries for efficient front-end development." data-es="React, Redux y otras bibliotecas modernas para desarrollo front-end eficiente.">React, Redux e outras bibliotecas modernas para desenvolvimento front-end eficiente.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="https://www.freecodecamp.org/certification/scherlockhall/data-visualization" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/Data-Visualization.png" alt="Data Visualization" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">Data Visualization</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="Visualizações de dados eficazes com D3.js e outras ferramentas modernas." data-fr="Visualisations de données efficaces avec D3.js et d'autres outils modernes." data-en="Effective data visualizations with D3.js and other modern tools." data-es="Visualizaciones de datos eficaces con D3.js y otras herramientas modernas.">Visualizações de dados eficazes com D3.js e outras ferramentas modernas.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/legacy-front-end" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/Legacy-Front-End.png" alt="Legacy Front End" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">Legacy Front End</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web." data-fr="HTML, CSS, accessibilité, Flexbox et Grid — fondements solides du développement web." data-en="HTML, CSS, accessibility, Flexbox and Grid — solid foundations of web development." data-es="HTML, CSS, accesibilidad, Flexbox y Grid — fundamentos sólidos del desarrollo web.">HTML, CSS, acessibilidade, Flexbox e Grid — fundamentos sólidos do desenvolvimento web.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="https://www.freecodecamp.org/portuguese/certification/scherlockhall/javascript-algorithms-and-data-structures" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/Legacy-JavaScript-Algorithms-and-Data-Structures.png" alt="Legacy JS" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name">Legacy JavaScript Algorithms &amp; DS</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">freeCodeCamp</div>
+<p class="cert-desc" data-pt="JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional." data-fr="JavaScript : fondamentaux, algorithmes, programmation orientée objet et fonctionnelle." data-en="JavaScript: fundamentals, algorithms, object-oriented and functional programming." data-es="JavaScript: fundamentos, algoritmos, programación orientada a objetos y funcional.">JavaScript: fundamentos, algoritmos, programação orientada a objetos e funcional.</p>
+<span class="cert-open-label fcc" data-pt="Ver certificado →" data-fr="Voir le certificat →" data-en="View certificate →" data-es="Ver certificado →">Ver certificado →</span>
+</div>
+</a>
+</div>
+</div>
+<div class="cat-label" style="margin-top:3rem"><span data-pt="📊 Google Data Analytics — Complementar" data-fr="📊 Google Data Analytics — Complémentaire" data-en="📊 Google Data Analytics — Complementary" data-es="📊 Google Data Analytics — Complementario">📊 Google Data Analytics — Complementar</span><div class="cat-line"></div></div>
+<p style="font-size:.8rem;color:var(--muted);font-family:var(--sans);margin:0 auto 1.25rem auto;font-weight:300;max-width:560px;text-align:center" data-pt="Formação em dados que reforça a capacidade de tomar decisões de interface baseadas em comportamento real do usuário." data-fr="Formation en données qui renforce la capacité à prendre des décisions d'interface basées sur le comportement réel des utilisateurs." data-en="Data training that reinforces the ability to make interface decisions based on real user behavior." data-es="Formación en datos que refuerza la capacidad de tomar decisiones de interfaz basadas en el comportamiento real del usuario.">Formação em dados que reforça a capacidade de tomar decisões de interface baseadas em comportamento real do usuário.</p>
+<div class="certs-grid">
+<a class="cert-card reveal" href="certificados/google-data-analytics-foundations-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-foundations-2025.png" alt="Fundamentos: Dados, em Todo Lugar" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Fundamentos: Dados, Dados, em Todo Lugar" data-fr="Fondements : Données, Données, Partout" data-en="Foundations: Data, Data, Everywhere" data-es="Fundamentos: Datos, Datos, en Todas Partes">Fundamentos: Dados, Dados, em Todo Lugar</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico." data-fr="Introduction aux concepts fondamentaux de l'analyse de données, aux écosystèmes de données et à la pensée analytique." data-en="Introduction to the fundamental concepts of data analysis, data ecosystems and analytical thinking." data-es="Introducción a los conceptos fundamentales del análisis de datos, ecosistemas de datos y pensamiento analítico.">Introdução aos conceitos fundamentais da análise de dados, ecossistemas de dados e pensamento analítico.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="certificados/google-data-analytics-ask-questions-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-ask-questions-2025.png" alt="Fazer Perguntas" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Fazer Perguntas para Decisões Baseadas em Dados" data-fr="Poser des Questions pour Décisions Basées sur les Données" data-en="Ask Questions to Make Data-Driven Decisions" data-es="Hacer Preguntas para Decisiones Basadas en Datos">Fazer Perguntas para Decisões Baseadas em Dados</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão." data-fr="Raisonnement structuré et formulation de questions orientées par les données pour la prise de décision." data-en="Structured reasoning and formulating data-driven questions for decision-making." data-es="Razonamiento estructurado y formulación de preguntas orientadas por datos para la toma de decisiones.">Raciocínio estruturado e formulação de perguntas orientadas por dados para tomada de decisão.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="certificados/google-data-analytics-prepare-data-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-prepare-data-2025.png" alt="Preparar Dados" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Preparar Dados para Exploração" data-fr="Préparer les Données pour l'Exploration" data-en="Prepare Data for Exploration" data-es="Preparar Datos para la Exploración">Preparar Dados para Exploração</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL." data-fr="Collecte, stockage et gestion éthique des données. Inclut une introduction à SQL." data-en="Ethical data collection, storage and management. Includes an introduction to SQL." data-es="Recopilación, almacenamiento y gestión ética de datos. Incluye introducción a SQL.">Coleta, armazenamento e gerenciamento ético de dados. Inclui introdução ao SQL.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="certificados/google-data-analytics-process-data-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-process-data-2025.png" alt="Processar Dados" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Processar Dados: do Sujo ao Limpo" data-fr="Traiter les Données : du Sale au Propre" data-en="Process Data: from Dirty to Clean" data-es="Procesar Datos: de lo Sucio a lo Limpio">Processar Dados: do Sujo ao Limpo</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises." data-fr="Techniques de nettoyage et d'organisation des données pour garantir qualité et fiabilité dans les analyses." data-en="Data cleaning and organization techniques to ensure quality and reliability in analyses." data-es="Técnicas de limpieza y organización de datos para garantizar calidad y confiabilidad en los análisis.">Técnicas de limpeza e organização de dados para garantir qualidade e confiabilidade nas análises.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="certificados/google-data-analytics-analyze-data-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-analyze-data-2025.png" alt="Analisar Dados" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Analisar Dados para Responder Perguntas" data-fr="Analyser les Données pour Répondre aux Questions" data-en="Analyze Data to Answer Questions" data-es="Analizar Datos para Responder Preguntas">Analisar Dados para Responder Perguntas</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados." data-fr="Identifier des modèles et tirer des conclusions significatives pour répondre aux questions d'entreprise." data-en="Identify patterns and draw meaningful conclusions to answer business questions with data." data-es="Identificar patrones y extraer conclusiones significativas para responder preguntas de negocio con datos.">Identificar padrões e tirar conclusões significativas para responder perguntas de negócio com dados.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+<a class="cert-card reveal" href="certificados/google-data-analytics-share-data-2025.pdf" target="_blank" rel="noopener">
+<div class="cert-img-wrap"><img src="certificados/google-data-analytics-share-data-2025.png" alt="Compartilhar Dados" loading="lazy"></div>
+<div class="cert-body">
+<div class="cert-header"><span class="cert-name" data-pt="Compartilhar Dados pela Arte da Visualização" data-fr="Partager les Données par l'Art de la Visualisation" data-en="Share Data Through the Art of Visualization" data-es="Compartir Datos por el Arte de la Visualización">Compartilhar Dados pela Arte da Visualização</span><span class="cert-year">2025</span></div>
+<div class="cert-issuer">Google · Coursera</div>
+<p class="cert-desc" data-pt="Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante." data-fr="Visualisations efficaces et storytelling avec les données pour communiquer des insights clairement." data-en="Effective visualizations and data storytelling to communicate insights clearly and impactfully." data-es="Visualizaciones eficaces y storytelling con datos para comunicar insights de forma clara e impactante.">Visualizações eficazes e storytelling com dados para comunicar insights de forma clara e impactante.</p>
+<span class="cert-open-label">Ver certificado →</span>
+</div>
+</a>
+</div>
+</div>
 </section>
-
 <!-- ═══ SOBRE ═══════════════════════════════════════════════════ -->
 <section class="section" id="sobre">
-  <div class="container">
-    <span class="eyebrow" data-pt="Quem sou" data-fr="Qui je suis" data-en="Who I am" data-es="Quién soy">Quem sou</span>
-    <h2 class="sec-title" data-pt="Sobre mim" data-fr="À propos de moi" data-en="About me" data-es="Sobre mí">Sobre mim</h2>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p
-          data-pt="Sou desenvolvedor Front-End freelancer, certificado pela freeCodeCamp em Responsive Web Design e JavaScript. Minha especialização é construir e otimizar sites para dispositivos móveis e diferentes tamanhos de tela."
-          data-fr="Je suis développeur Front-End freelance, certifié par freeCodeCamp en Responsive Web Design et JavaScript. Ma spécialisation est la création et l'optimisation de sites pour appareils mobiles et différentes tailles d'écran."
-          data-en="I am a freelance Front-End Developer certified by freeCodeCamp in Responsive Web Design and JavaScript. My specialization is building and optimizing websites for mobile devices and different screen sizes."
-          data-es="Soy desarrollador Front-End freelancer, certificado por freeCodeCamp en Responsive Web Design y JavaScript. Mi especialización es construir y optimizar sitios para dispositivos móviles y diferentes tamaños de pantalla."
-        >Sou desenvolvedor Front-End freelancer, certificado pela freeCodeCamp em Responsive Web Design e JavaScript. Minha especialização é construir e otimizar sites para dispositivos móveis e diferentes tamanhos de tela.</p>
-        <p
-          data-pt="Meu foco é desenvolvimento mobile-first: estrutura responsiva com Flexbox e CSS Grid, HTML e CSS limpos e organizados, funcionalidades interativas com JavaScript, e melhorias de performance e usabilidade."
-          data-fr="Mon focus est le développement mobile-first : structure responsive avec Flexbox et CSS Grid, HTML et CSS propres et organisés, fonctionnalités interactives avec JavaScript, et améliorations de performance et d'utilisabilité."
-          data-en="My focus is mobile-first development: responsive structure with Flexbox and CSS Grid, clean and organized HTML & CSS, interactive JavaScript features, and performance and usability improvements."
-          data-es="Mi foco es el desarrollo mobile-first: estructura responsiva con Flexbox y CSS Grid, HTML y CSS limpios y organizados, funcionalidades interactivas con JavaScript, y mejoras de rendimiento y usabilidad."
-        >Meu foco é desenvolvimento mobile-first: estrutura responsiva com Flexbox e CSS Grid, HTML e CSS limpos e organizados, funcionalidades interativas com JavaScript, e melhorias de performance e usabilidade.</p>
-        <p
-          data-pt="Trabalho com mentalidade prática: execução rápida, comunicação clara e soluções que funcionam em cenários reais de negócio."
-          data-fr="Je travaille avec un état d'esprit pratique : exécution rapide, communication claire et solutions qui fonctionnent dans des scénarios d'entreprise réels."
-          data-en="I work with a practical mindset: fast execution, clear communication and solutions that work in real business scenarios."
-          data-es="Trabajo con mentalidad práctica: ejecución rápida, comunicación clara y soluciones que funcionan en escenarios reales de negocio."
-        >Trabalho com mentalidade prática: execução rápida, comunicação clara e soluções que funcionam em cenários reais de negócio.</p>
-        <p
-          data-pt="Tenho formação complementar em análise de dados e Ciências Econômicas (UnB), o que me ajuda a entender o comportamento do usuário e tomar decisões de interface mais estratégicas — mas meu foco comercial principal é o desenvolvimento front-end responsivo."
-          data-fr="J'ai une formation complémentaire en analyse de données et Sciences Économiques (UnB), ce qui m'aide à comprendre le comportement des utilisateurs et à prendre des décisions d'interface plus stratégiques — mais mon focus commercial principal est le développement front-end responsive."
-          data-en="I have a complementary background in data analysis and Economic Sciences (UnB), which helps me understand user behavior and make more strategic interface decisions — but my main commercial focus is responsive front-end development."
-          data-es="Tengo formación complementaria en análisis de datos y Ciencias Económicas (UnB), lo que me ayuda a entender el comportamiento del usuario y tomar decisiones de interfaz más estratégicas — pero mi foco comercial principal es el desarrollo front-end responsivo."
-        >Tenho formação complementar em análise de dados e Ciências Econômicas (UnB), o que me ajuda a entender o comportamento do usuário e tomar decisões de interface mais estratégicas — mas meu foco comercial principal é o desenvolvimento front-end responsivo.</p>
-      </div>
-      <div class="skills-panel reveal">
-        <div class="skill-item">
-          <div class="skill-icon">📱</div>
-          <div>
-            <h4 data-pt="Especialidade Principal" data-fr="Spécialité Principale" data-en="Core Specialty" data-es="Especialidad Principal">Especialidade Principal</h4>
-            <p>Responsive Web Design · Mobile-First · Flexbox · CSS Grid · Performance &amp; UX</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-icon">💻</div>
-          <div>
-            <h4 data-pt="Desenvolvimento Web" data-fr="Développement Web" data-en="Web Development" data-es="Desarrollo Web">Desenvolvimento Web</h4>
-            <p>HTML5 · CSS3 · JavaScript ES6+ · React · D3.js · DOM Manipulation · Git</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-icon">📊</div>
-          <div>
-            <h4 data-pt="Análise de Dados" data-fr="Analyse de Données" data-en="Data Analysis" data-es="Análisis de Datos">Análise de Dados</h4>
-            <p data-pt="SQL · R · Tableau · BigQuery · Google Analytics — base complementar ao front-end" data-fr="SQL · R · Tableau · BigQuery · Google Analytics — base complémentaire au front-end" data-en="SQL · R · Tableau · BigQuery · Google Analytics — complementary to front-end work" data-es="SQL · R · Tableau · BigQuery · Google Analytics — base complementaria al front-end">SQL · R · Tableau · BigQuery · Google Analytics — base complementar ao front-end</p>
-          </div>
-        </div>
-        <div class="skill-item">
-          <div class="skill-icon">🌍</div>
-          <div>
-            <h4 data-pt="Idiomas" data-fr="Langues" data-en="Languages" data-es="Idiomas">Idiomas</h4>
-            <p data-pt="Português (nativo) · Francês (fluente)" data-fr="Portugais (natif) · Français (courant)" data-en="Portuguese (native) · French (fluent)" data-es="Portugués (nativo) · Francés (fluido)">Português (nativo) · Francês (fluente)</p>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+<div class="container">
+<span class="eyebrow" data-pt="Quem sou" data-fr="Qui je suis" data-en="Who I am" data-es="Quién soy">Quem sou</span>
+<h2 class="sec-title" data-pt="Sobre mim" data-fr="À propos de moi" data-en="About me" data-es="Sobre mí">Sobre mim</h2>
+<div class="about-grid">
+<div class="about-text reveal">
+<p data-pt="Sou desenvolvedor Front-End freelancer, certificado pela freeCodeCamp em Responsive Web Design e JavaScript. Minha especialização é construir e otimizar sites para dispositivos móveis e diferentes tamanhos de tela." data-fr="Je suis développeur Front-End freelance, certifié par freeCodeCamp en Responsive Web Design et JavaScript. Ma spécialisation est la création et l'optimisation de sites pour appareils mobiles et différentes tailles d'écran." data-en="I am a freelance Front-End Developer certified by freeCodeCamp in Responsive Web Design and JavaScript. My specialization is building and optimizing websites for mobile devices and different screen sizes." data-es="Soy desarrollador Front-End freelancer, certificado por freeCodeCamp en Responsive Web Design y JavaScript. Mi especialización es construir y optimizar sitios para dispositivos móviles y diferentes tamaños de pantalla.">Sou desenvolvedor Front-End freelancer, certificado pela freeCodeCamp em Responsive Web Design e JavaScript. Minha especialização é construir e otimizar sites para dispositivos móveis e diferentes tamanhos de tela.</p>
+<p data-pt="Meu foco é desenvolvimento mobile-first: estrutura responsiva com Flexbox e CSS Grid, HTML e CSS limpos e organizados, funcionalidades interativas com JavaScript, e melhorias de performance e usabilidade." data-fr="Mon focus est le développement mobile-first : structure responsive avec Flexbox et CSS Grid, HTML et CSS propres et organisés, fonctionnalités interactives avec JavaScript, et améliorations de performance et d'utilisabilité." data-en="My focus is mobile-first development: responsive structure with Flexbox and CSS Grid, clean and organized HTML & CSS, interactive JavaScript features, and performance and usability improvements." data-es="Mi foco es el desarrollo mobile-first: estructura responsiva con Flexbox y CSS Grid, HTML y CSS limpios y organizados, funcionalidades interactivas con JavaScript, y mejoras de rendimiento y usabilidad.">Meu foco é desenvolvimento mobile-first: estrutura responsiva com Flexbox e CSS Grid, HTML e CSS limpos e organizados, funcionalidades interativas com JavaScript, e melhorias de performance e usabilidade.</p>
+<p data-pt="Trabalho com mentalidade prática: execução rápida, comunicação clara e soluções que funcionam em cenários reais de negócio." data-fr="Je travaille avec un état d'esprit pratique : exécution rapide, communication claire et solutions qui fonctionnent dans des scénarios d'entreprise réels." data-en="I work with a practical mindset: fast execution, clear communication and solutions that work in real business scenarios." data-es="Trabajo con mentalidad práctica: ejecución rápida, comunicación clara y soluciones que funcionan en escenarios reales de negocio.">Trabalho com mentalidade prática: execução rápida, comunicação clara e soluções que funcionam em cenários reais de negócio.</p>
+<p data-pt="Tenho formação complementar em análise de dados e Ciências Econômicas (UnB), o que me ajuda a entender o comportamento do usuário e tomar decisões de interface mais estratégicas — mas meu foco comercial principal é o desenvolvimento front-end responsivo." data-fr="J'ai une formation complémentaire en analyse de données et Sciences Économiques (UnB), ce qui m'aide à comprendre le comportement des utilisateurs et à prendre des décisions d'interface plus stratégiques — mais mon focus commercial principal est le développement front-end responsive." data-en="I have a complementary background in data analysis and Economic Sciences (UnB), which helps me understand user behavior and make more strategic interface decisions — but my main commercial focus is responsive front-end development." data-es="Tengo formación complementaria en análisis de datos y Ciencias Económicas (UnB), lo que me ayuda a entender el comportamiento del usuario y tomar decisiones de interfaz más estratégicas — pero mi foco comercial principal es el desarrollo front-end responsivo.">Tenho formação complementar em análise de dados e Ciências Econômicas (UnB), o que me ajuda a entender o comportamento do usuário e tomar decisões de interface mais estratégicas — mas meu foco comercial principal é o desenvolvimento front-end responsivo.</p>
+</div>
+<div class="skills-panel reveal">
+<div class="skill-item">
+<div class="skill-icon">📱</div>
+<div><h4 data-pt="Especialidade Principal" data-fr="Spécialité Principale" data-en="Core Specialty" data-es="Especialidad Principal">Especialidade Principal</h4><p>Responsive Web Design · Mobile-First · Flexbox · CSS Grid · Performance &amp; UX</p></div>
+</div>
+<div class="skill-item">
+<div class="skill-icon">💻</div>
+<div><h4 data-pt="Desenvolvimento Web" data-fr="Développement Web" data-en="Web Development" data-es="Desarrollo Web">Desenvolvimento Web</h4><p>HTML5 · CSS3 · JavaScript ES6+ · React · D3.js · DOM Manipulation · Git</p></div>
+</div>
+<div class="skill-item">
+<div class="skill-icon">📊</div>
+<div><h4 data-pt="Análise de Dados" data-fr="Analyse de Données" data-en="Data Analysis" data-es="Análisis de Datos">Análise de Dados</h4><p data-pt="SQL · R · Tableau · BigQuery · Google Analytics — base complementar ao front-end" data-fr="SQL · R · Tableau · BigQuery · Google Analytics — base complémentaire au front-end" data-en="SQL · R · Tableau · BigQuery · Google Analytics — complementary to front-end work" data-es="SQL · R · Tableau · BigQuery · Google Analytics — base complementaria al front-end">SQL · R · Tableau · BigQuery · Google Analytics — base complementar ao front-end</p></div>
+</div>
+<div class="skill-item">
+<div class="skill-icon">🌍</div>
+<div><h4 data-pt="Idiomas" data-fr="Langues" data-en="Languages" data-es="Idiomas">Idiomas</h4><p data-pt="Português (nativo) · Francês (fluente)" data-fr="Portugais (natif) · Français (courant)" data-en="Portuguese (native) · French (fluent)" data-es="Portugués (nativo) · Francés (fluido)">Português (nativo) · Francês (fluente)</p></div>
+</div>
+</div>
+</div>
+</div>
 </section>
-
 <!-- ═══ CONTATO ═════════════════════════════════════════════════ -->
 <section class="section section-dark" id="contato">
-  <div class="container">
-    <span class="eyebrow" style="color:var(--gold)" data-pt="Vamos conversar" data-fr="Discutons" data-en="Let's talk" data-es="Hablemos">Vamos conversar</span>
-    <h2 class="sec-title" style="color:#fff" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</h2>
-    <div class="contact-grid">
-      <div class="contact-intro reveal">
-        <h3
-          data-pt="Precisa de um site responsivo?"
-          data-fr="Besoin d'un site responsive ?"
-          data-en="Need a responsive website?"
-          data-es="¿Necesitas un sitio responsivo?"
-        >Precisa de um site responsivo?</h3>
-        <p
-          data-pt="Site com layout quebrado no mobile, precisa de uma landing page rápida ou quer reformular sua presença digital? Trabalho com entrega ágil e comunicação direta. Entre em contato — vamos resolver."
-          data-fr="Site avec un layout cassé sur mobile, besoin d'une landing page rapide ou vous souhaitez repenser votre présence digitale ? Je travaille avec livraison rapide et communication directe. Contactez-moi — on va résoudre ça."
-          data-en="Site broken on mobile, need a fast landing page or want to redesign your digital presence? I work with fast delivery and direct communication. Get in touch — let's get it done."
-          data-es="¿Sitio con layout roto en mobile, necesitas una landing page rápida o quieres reformular tu presencia digital? Trabajo con entrega ágil y comunicación directa. Contáctame — lo resolvemos."
-        >Site com layout quebrado no mobile, precisa de uma landing page rápida ou quer reformular sua presença digital? Trabalho com entrega ágil e comunicação direta. Entre em contato — vamos resolver.</p>
-        <a href="mailto:scherlockhall@email.com" class="contact-direct">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          scherlockhall@email.com
-        </a>
-      </div>
-      <div class="contact-links reveal">
-        <a href="mailto:scherlockhall@email.com" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          scherlockhall@email.com<span>E-mail</span>
-        </a>
-        <a href="https://wa.me/33753964060" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
-          +33 7 53 96 40 60<span>WhatsApp</span>
-        </a>
-        <a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
-          LinkedIn<span>scherlock-hall</span>
-        </a>
-        <a href="https://github.com/ScherlockHall" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
-          GitHub<span>ScherlockHall</span>
-        </a>
-        <a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
-          Currículo Lattes — CNPq<span>Lattes</span>
-        </a>
-        <a href="https://www.instagram.com/scherlockhall04" target="_blank" class="contact-link">
-          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>
-          @scherlockhall04<span>Instagram</span>
-        </a>
-      </div>
-    </div>
-
-    <!-- CTA Banner de Conversão -->
-    <div class="cta-banner reveal">
-      <div class="cta-banner-text">
-        <h3
-          data-pt="Site quebrado no mobile? Precisa de uma landing page?"
-          data-fr="Site cassé sur mobile ? Besoin d'une landing page ?"
-          data-en="Site broken on mobile? Need a landing page?"
-          data-es="¿Sitio roto en mobile? ¿Necesitas una landing page?"
-        >Site quebrado no mobile? Precisa de uma landing page?</h3>
-        <p
-          data-pt="Entrego soluções responsivas rápidas e funcionais. Comunicação direta, prazo claro, resultado real."
-          data-fr="Je livre des solutions responsives rapides et fonctionnelles. Communication directe, délai clair, résultat concret."
-          data-en="I deliver fast, functional responsive solutions. Direct communication, clear timeline, real results."
-          data-es="Entrego soluciones responsivas rápidas y funcionales. Comunicación directa, plazo claro, resultado real."
-        >Entrego soluções responsivas rápidas e funcionais. Comunicação direta, prazo claro, resultado real.</p>
-      </div>
-      <div class="cta-banner-actions">
-        <a href="https://wa.me/33753964060" target="_blank" class="btn btn-gold"
-          data-pt="Chamar no WhatsApp" data-fr="Contacter sur WhatsApp" data-en="Message on WhatsApp" data-es="Escribir en WhatsApp"
-        >Chamar no WhatsApp</a>
-        <a href="mailto:scherlockhall@email.com" class="btn btn-ghost-w"
-          data-pt="Enviar e-mail" data-fr="Envoyer un e-mail" data-en="Send e-mail" data-es="Enviar e-mail"
-        >Enviar e-mail</a>
-      </div>
-    </div>
-
-  </div>
+<div class="container">
+<span class="eyebrow" style="color:var(--gold)" data-pt="Vamos conversar" data-fr="Discutons" data-en="Let's talk" data-es="Hablemos">Vamos conversar</span>
+<h2 class="sec-title" style="color:#fff" data-pt="Contato" data-fr="Contact" data-en="Contact" data-es="Contacto">Contato</h2>
+<div class="contact-grid">
+<div class="contact-intro reveal">
+<h3 data-pt="Precisa de um site responsivo?" data-fr="Besoin d'un site responsive ?" data-en="Need a responsive website?" data-es="¿Necesitas un sitio responsivo?">Precisa de um site responsivo?</h3>
+<p data-pt="Site com layout quebrado no mobile, precisa de uma landing page rápida ou quer reformular sua presença digital? Trabalho com entrega ágil e comunicação direta. Entre em contato — vamos resolver." data-fr="Site avec un layout cassé sur mobile, besoin d'une landing page rapide ou vous souhaitez repenser votre présence digitale ? Je travaille avec livraison rapide et communication directe. Contactez-moi — on va résoudre ça." data-en="Site broken on mobile, need a fast landing page or want to redesign your digital presence? I work with fast delivery and direct communication. Get in touch — let's get it done." data-es="¿Sitio con layout roto en mobile, necesitas una landing page rápida o quieres reformular tu presencia digital? Trabajo con entrega ágil y comunicación directa. Contáctame — lo resolvemos.">Site com layout quebrado no mobile, precisa de uma landing page rápida ou quer reformular sua presença digital? Trabalho com entrega ágil e comunicação direta. Entre em contato — vamos resolver.</p>
+<a href="mailto:scherlockhall@email.com" class="contact-direct"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>scherlockhall@email.com</a>
+</div>
+<div class="contact-links reveal">
+<a href="mailto:scherlockhall@email.com" class="contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>scherlockhall@email.com<span>E-mail</span></a>
+<a href="https://wa.me/33753964060" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>+33 7 53 96 40 60<span>WhatsApp</span></a>
+<a href="https://www.linkedin.com/in/scherlock-hall-929773383" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>LinkedIn<span>scherlock-hall</span></a>
+<a href="https://github.com/ScherlockHall" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>GitHub<span>ScherlockHall</span></a>
+<a href="http://lattes.cnpq.br/8597239590066524" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.121 2.121 0 013 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Currículo Lattes — CNPq<span>Lattes</span></a>
+<a href="https://www.instagram.com/scherlockhall04" target="_blank" class="contact-link"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/></svg>@scherlockhall04<span>Instagram</span></a>
+</div>
+</div>
+<div class="cta-banner reveal">
+<div class="cta-banner-text">
+<h3 data-pt="Site quebrado no mobile? Precisa de uma landing page?" data-fr="Site cassé sur mobile ? Besoin d'une landing page ?" data-en="Site broken on mobile? Need a landing page?" data-es="¿Sitio roto en mobile? ¿Necesitas una landing page?">Site quebrado no mobile? Precisa de uma landing page?</h3>
+<p data-pt="Entrego soluções responsivas rápidas e funcionais. Comunicação direta, prazo claro, resultado real." data-fr="Je livre des solutions responsives rapides et fonctionnelles. Communication directe, délai clair, résultat concret." data-en="I deliver fast, functional responsive solutions. Direct communication, clear timeline, real results." data-es="Entrego soluciones responsivas rápidas y funcionales. Comunicación directa, plazo claro, resultado real.">Entrego soluções responsivas rápidas e funcionais. Comunicação direta, prazo claro, resultado real.</p>
+</div>
+<div class="cta-banner-actions">
+<a href="https://wa.me/33753964060" target="_blank" class="btn btn-gold" data-pt="Chamar no WhatsApp" data-fr="Contacter sur WhatsApp" data-en="Message on WhatsApp" data-es="Escribir en WhatsApp">Chamar no WhatsApp</a>
+<a href="mailto:scherlockhall@email.com" class="btn btn-ghost-w" data-pt="Enviar e-mail" data-fr="Envoyer un e-mail" data-en="Send e-mail" data-es="Enviar e-mail">Enviar e-mail</a>
+</div>
+</div>
+</div>
 </section>
-
 <footer>
-  <p data-pt="© 2025 Scherlock Hall — Todos os direitos reservados" data-fr="© 2025 Scherlock Hall — Tous droits réservés" data-en="© 2025 Scherlock Hall — All rights reserved" data-es="© 2025 Scherlock Hall — Todos los derechos reservados">© 2025 Scherlock Hall — Todos os direitos reservados</p>
+<p data-pt="© 2025 Scherlock Hall — Todos os direitos reservados" data-fr="© 2025 Scherlock Hall — Tous droits réservés" data-en="© 2025 Scherlock Hall — All rights reserved" data-es="© 2025 Scherlock Hall — Todos los derechos reservados">© 2025 Scherlock Hall — Todos os direitos reservados</p>
 </footer>
-
 <!-- ═══ BIO REVIVA MODAL ════════════════════════════════════════ -->
 <div class="modal-overlay" id="bioModal" onclick="closeBioModalOutside(event)">
-  <div class="modal">
-    <button class="modal-close" onclick="closeBioModal()">✕</button>
-    <div class="modal-training-badge">
-      <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
-      <span data-pt="Projeto de Estudo e Treinamento" data-fr="Projet d'Étude et d'Entraînement" data-en="Study and Training Project" data-es="Proyecto de Estudio y Entrenamiento">Projeto de Estudo e Treinamento</span>
-    </div>
-    <h2>🌿 Bio Reviva</h2>
-    <p class="modal-sub"
-      data-pt="Exercício profissional de design e desenvolvimento — site institucional responsivo com foco em mobile-first. Demonstra construção de identidade visual, tipografia hierárquica e layout adaptável a qualquer dispositivo."
-      data-fr="Exercice professionnel de design et développement — site institutionnel responsive avec focus mobile-first. Démontre la construction d'identité visuelle, typographie hiérarchique et layout adaptable à tous les appareils."
-      data-en="Professional design and development exercise — responsive institutional website with mobile-first focus. Demonstrates visual identity building, hierarchical typography and layout adaptable to any device."
-      data-es="Ejercicio profesional de diseño y desarrollo — sitio institucional responsivo con foco mobile-first. Demuestra construcción de identidad visual, tipografía jerárquica y layout adaptable a cualquier dispositivo."
-    >Exercício profissional de design e desenvolvimento — site institucional responsivo com foco em mobile-first. Demonstra construção de identidade visual, tipografia hierárquica e layout adaptável a qualquer dispositivo.</p>
-    <div class="modal-tags">
-      <span class="tag tag-green">Sustentabilidade</span>
-      <span class="tag tag-blue">Mobile-First</span>
-      <span class="tag tag-gray">HTML/CSS/JS</span>
-      <span class="tag tag-gold">Responsivo</span>
-    </div>
-    <div class="modal-section">
-      <h4 data-pt="O que foi construído" data-fr="Ce qui a été construit" data-en="What was built" data-es="Lo que se construyó">O que foi construído</h4>
-      <p data-pt="Site institucional completo com hero responsivo, seções estruturadas, cards de conteúdo e navegação adaptável a qualquer tamanho de tela." data-fr="Site institutionnel complet avec hero responsive, sections structurées, cards de contenu et navigation adaptable à toutes les tailles d'écran." data-en="Complete institutional website with responsive hero, structured sections, content cards and navigation adaptable to any screen size." data-es="Sitio institucional completo con hero responsivo, secciones estructuradas, cards de contenido y navegación adaptable a cualquier tamaño de pantalla.">Site institucional completo com hero responsivo, seções estruturadas, cards de conteúdo e navegação adaptável a qualquer tamanho de tela.</p>
-    </div>
-    <div class="modal-section">
-      <h4 data-pt="Tecnologias" data-fr="Technologies" data-en="Technologies" data-es="Tecnologías">Tecnologias</h4>
-      <p>HTML5 · CSS3 · JavaScript · Flexbox · CSS Grid · Mobile-First Design</p>
-    </div>
-    <div class="modal-section">
-      <h4 data-pt="Problema que resolve" data-fr="Problème résolu" data-en="Problem it solves" data-es="Problema que resuelve">Problema que resolve</h4>
-      <p data-pt="Demonstra capacidade de entregar presença digital profissional, com identidade visual coerente e experiência fluida em dispositivos móveis." data-fr="Démontre la capacité à livrer une présence digitale professionnelle, avec identité visuelle cohérente et expérience fluide sur appareils mobiles." data-en="Demonstrates the ability to deliver professional digital presence, with coherent visual identity and smooth experience on mobile devices." data-es="Demuestra capacidad para entregar presencia digital profesional, con identidad visual coherente y experiencia fluida en dispositivos móviles.">Demonstra capacidade de entregar presença digital profissional, com identidade visual coerente e experiência fluida em dispositivos móveis.</p>
-    </div>
-    <div class="modal-actions">
-      <a href="bio-reviva/index.html" target="_blank" class="btn btn-blue" data-pt="Ver o site" data-fr="Voir le site" data-en="View website" data-es="Ver el sitio">Ver o site</a>
-      <button onclick="closeBioModal()" class="btn btn-ghost" data-pt="Fechar" data-fr="Fermer" data-en="Close" data-es="Cerrar">Fechar</button>
-    </div>
-  </div>
+<div class="modal">
+<button class="modal-close" onclick="closeBioModal()">✕</button>
+<div class="modal-training-badge"><svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><span data-pt="Projeto de Estudo e Treinamento" data-fr="Projet d'Étude et d'Entraînement" data-en="Study and Training Project" data-es="Proyecto de Estudio y Entrenamiento">Projeto de Estudo e Treinamento</span></div>
+<h2>🌿 Bio Reviva</h2>
+<p class="modal-sub" data-pt="Exercício profissional de design e desenvolvimento — site institucional responsivo com foco em mobile-first. Demonstra construção de identidade visual, tipografia hierárquica e layout adaptável a qualquer dispositivo." data-fr="Exercice professionnel de design et développement — site institutionnel responsive avec focus mobile-first. Démontre la construction d'identité visuelle, typographie hiérarchique et layout adaptable à tous les appareils." data-en="Professional design and development exercise — responsive institutional website with mobile-first focus. Demonstrates visual identity building, hierarchical typography and layout adaptable to any device." data-es="Ejercicio profesional de diseño y desarrollo — sitio institucional responsivo con foco mobile-first. Demuestra construcción de identidad visual, tipografía jerárquica y layout adaptable a cualquier dispositivo.">Exercício profissional de design e desenvolvimento — site institucional responsivo com foco em mobile-first. Demonstra construção de identidade visual, tipografia hierárquica e layout adaptável a qualquer dispositivo.</p>
+<div class="modal-tags"><span class="tag tag-green">Sustentabilidade</span><span class="tag tag-blue">Mobile-First</span><span class="tag tag-gray">HTML/CSS/JS</span><span class="tag tag-gold">Responsivo</span></div>
+<div class="modal-section"><h4 data-pt="O que foi construído" data-fr="Ce qui a été construit" data-en="What was built" data-es="Lo que se construyó">O que foi construído</h4><p data-pt="Site institucional completo com hero responsivo, seções estruturadas, cards de conteúdo e navegação adaptável a qualquer tamanho de tela." data-fr="Site institutionnel complet avec hero responsive, sections structurées, cards de contenu et navigation adaptable à toutes les tailles d'écran." data-en="Complete institutional website with responsive hero, structured sections, content cards and navigation adaptable to any screen size." data-es="Sitio institucional completo con hero responsivo, secciones estructuradas, cards de contenido y navegación adaptable a cualquier tamaño de pantalla.">Site institucional completo com hero responsivo, seções estruturadas, cards de conteúdo e navegação adaptável a qualquer tamanho de tela.</p></div>
+<div class="modal-section"><h4 data-pt="Tecnologias" data-fr="Technologies" data-en="Technologies" data-es="Tecnologías">Tecnologias</h4><p>HTML5 · CSS3 · JavaScript · Flexbox · CSS Grid · Mobile-First Design</p></div>
+<div class="modal-section"><h4 data-pt="Problema que resolve" data-fr="Problème résolu" data-en="Problem it solves" data-es="Problema que resuelve">Problema que resolve</h4><p data-pt="Demonstra capacidade de entregar presença digital profissional, com identidade visual coerente e experiência fluida em dispositivos móveis." data-fr="Démontre la capacité à livrer une présence digitale professionnelle, avec identité visuelle cohérente et expérience fluide sur appareils mobiles." data-en="Demonstrates the ability to deliver professional digital presence, with coherent visual identity and smooth experience on mobile devices." data-es="Demuestra capacidad para entregar presencia digital profesional, con identidad visual coherente y experiencia fluida en dispositivos móviles.">Demonstra capacidade de entregar presença digital profissional, com identidade visual coerente e experiência fluida em dispositivos móveis.</p></div>
+<div class="modal-actions"><a href="bio-reviva/index.html" target="_blank" class="btn btn-blue" data-pt="Ver o site" data-fr="Voir le site" data-en="View website" data-es="Ver el sitio">Ver o site</a><button onclick="closeBioModal()" class="btn btn-ghost" data-pt="Fechar" data-fr="Fermer" data-en="Close" data-es="Cerrar">Fechar</button></div>
 </div>
-
+</div>
 <script>
-// ─── Linguagem ──────────────────────────────────────────────────
 let currentLang = 'pt';
-
-const langNames = {
-  pt: 'Português',
-  fr: 'Français',
-  en: 'English',
-  es: 'Español'
-};
-
-const bannerStrings = {
-  text:   { pt: 'Idioma detectado automaticamente:', fr: 'Langue détectée automatiquement :', en: 'Language auto-detected:', es: 'Idioma detectado automáticamente:' },
-  keep:   { pt: 'Manter', fr: 'Conserver', en: 'Keep', es: 'Mantener' },
-  switchPt: { pt: 'Português', fr: 'Portugais', en: 'Portuguese', es: 'Portugués' }
-};
-
+const langNames = {pt: 'Português',fr: 'Français',en: 'English',es: 'Español'};
+const bannerStrings = {text: { pt: 'Idioma detectado automaticamente:', fr: 'Langue détectée automatiquement :', en: 'Language auto-detected:', es: 'Idioma detectado automáticamente:' },keep: { pt: 'Manter', fr: 'Conserver', en: 'Keep', es: 'Mantener' },switchPt: { pt: 'Português', fr: 'Portugais', en: 'Portuguese', es: 'Portugués' }};
 function changeLang(lang) {
-  currentLang = lang;
-  const langMap = { pt: 'pt-BR', fr: 'fr', en: 'en', es: 'es' };
-  document.documentElement.lang = langMap[lang] || lang;
-  document.querySelectorAll('.lang-toggle button').forEach(b =>
-    b.classList.toggle('active', b.dataset.lang === lang)
-  );
-  document.querySelectorAll('[data-pt]').forEach(el => {
-    const val = el.getAttribute('data-' + lang);
-    if (val !== null) el.textContent = val;
-  });
+currentLang = lang;
+const langMap = { pt: 'pt-BR', fr: 'fr', en: 'en', es: 'es' };
+document.documentElement.lang = langMap[lang] || lang;
+document.querySelectorAll('.lang-toggle button').forEach(b => b.classList.toggle('active', b.dataset.lang === lang));
+document.querySelectorAll('[data-pt]').forEach(el => {const val = el.getAttribute('data-' + lang);if (val !== null) el.textContent = val;});
 }
-
-// ─── Detecção automática ────────────────────────────────────────
 (function detectLang() {
-  const map = {
-    'pt': 'pt', 'pt-BR': 'pt', 'pt-PT': 'pt',
-    'fr': 'fr', 'fr-FR': 'fr', 'fr-BE': 'fr', 'fr-CH': 'fr', 'fr-CA': 'fr',
-    'en': 'en', 'en-US': 'en', 'en-GB': 'en', 'en-AU': 'en',
-    'es': 'es', 'es-ES': 'es', 'es-MX': 'es', 'es-AR': 'es', 'es-CL': 'es'
-  };
-
-  const nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'pt';
-  const detected = map[nav] || map[nav.split('-')[0]] || 'pt';
-
-  if (detected !== 'pt') {
-    changeLang(detected);
-    document.getElementById('banner-text').textContent = bannerStrings.text[detected];
-    document.getElementById('banner-detected').textContent = langNames[detected];
-    document.getElementById('banner-keep').textContent = bannerStrings.keep[detected];
-    document.getElementById('banner-switch').textContent = bannerStrings.switchPt[detected];
-    setTimeout(() => {
-      document.getElementById('lang-banner').classList.add('visible');
-    }, 600);
-  }
+const map = {'pt': 'pt', 'pt-BR': 'pt', 'pt-PT': 'pt','fr': 'fr', 'fr-FR': 'fr', 'fr-BE': 'fr', 'fr-CH': 'fr', 'fr-CA': 'fr','en': 'en', 'en-US': 'en', 'en-GB': 'en', 'en-AU': 'en','es': 'es', 'es-ES': 'es', 'es-MX': 'es', 'es-AR': 'es', 'es-CL': 'es'};
+const nav = (navigator.languages && navigator.languages[0]) || navigator.language || 'pt';
+const detected = map[nav] || map[nav.split('-')[0]] || 'pt';
+if (detected !== 'pt') {
+changeLang(detected);
+document.getElementById('banner-text').textContent = bannerStrings.text[detected];
+document.getElementById('banner-detected').textContent = langNames[detected];
+document.getElementById('banner-keep').textContent = bannerStrings.keep[detected];
+document.getElementById('banner-switch').textContent = bannerStrings.switchPt[detected];
+setTimeout(() => {document.getElementById('lang-banner').classList.add('visible');}, 600);
+}
 })();
-
-function dismissBanner() {
-  const b = document.getElementById('lang-banner');
-  b.style.transform = 'translateY(100%)';
-  setTimeout(() => b.style.display = 'none', 400);
-}
-
-function switchToPt() {
-  changeLang('pt');
-  dismissBanner();
-}
-
-// ─── Nav scroll ─────────────────────────────────────────────────
-window.addEventListener('scroll', () =>
-  document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40)
-, { passive: true });
-
-// ─── Menu mobile ────────────────────────────────────────────────
-function toggleMenu() {
-  document.getElementById('hamburger').classList.toggle('open');
-  document.getElementById('mobileMenu').classList.toggle('open');
-}
-function closeMenu() {
-  document.getElementById('hamburger').classList.remove('open');
-  document.getElementById('mobileMenu').classList.remove('open');
-}
-document.addEventListener('click', e => {
-  if (!document.getElementById('navbar').contains(e.target) &&
-      !document.getElementById('mobileMenu').contains(e.target))
-    closeMenu();
-});
-
-// ─── Scroll reveal ───────────────────────────────────────────────
-const obs = new IntersectionObserver(entries => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
-  });
-}, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
+function dismissBanner() {const b = document.getElementById('lang-banner');b.style.transform = 'translateY(100%)';setTimeout(() => b.style.display = 'none', 400);}
+function switchToPt() {changeLang('pt');dismissBanner();}
+window.addEventListener('scroll', () => document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 40), { passive: true });
+function toggleMenu() {document.getElementById('hamburger').classList.toggle('open');document.getElementById('mobileMenu').classList.toggle('open');}
+function closeMenu() {document.getElementById('hamburger').classList.remove('open');document.getElementById('mobileMenu').classList.remove('open');}
+document.addEventListener('click', e => {if (!document.getElementById('navbar').contains(e.target) && !document.getElementById('mobileMenu').contains(e.target)) closeMenu();});
+const obs = new IntersectionObserver(entries => {entries.forEach(e => {if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }});}, { threshold: .08, rootMargin: '0px 0px -50px 0px' });
 document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
-
-// ─── Modais ──────────────────────────────────────────────────────
-function openBioModal() {
-  document.getElementById('bioModal').classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-function closeBioModal() {
-  document.getElementById('bioModal').classList.remove('open');
-  document.body.style.overflow = '';
-}
-function closeBioModalOutside(e) {
-  if (e.target === document.getElementById('bioModal')) closeBioModal();
-}
+function openBioModal() {document.getElementById('bioModal').classList.add('open');document.body.style.overflow = 'hidden';}
+function closeBioModal() {document.getElementById('bioModal').classList.remove('open');document.body.style.overflow = '';}
+function closeBioModalOutside(e) {if (e.target === document.getElementById('bioModal')) closeBioModal();}
 document.addEventListener('keydown', e => { if (e.key === 'Escape') closeBioModal(); });
 </script>
 </body>
