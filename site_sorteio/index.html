@@ -1,9 +1,11 @@
-!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pt-BR">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
   <title>🎰 Sorteador Pro - Cassino</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Righteous&family=Orbitron:wght@400;700;900&display=swap"
@@ -13,14 +15,27 @@
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    html,
+    body {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      position: fixed;
+      top: 0;
+      left: 0;
     }
 
     body {
       font-family: 'Orbitron', -apple-system, BlinkMacSystemFont, sans-serif;
       background: #0a0a0a;
       min-height: 100vh;
-      overflow-x: hidden;
+      min-height: 100dvh;
       color: #ffd700;
+      touch-action: pan-y;
+      -webkit-overflow-scrolling: touch;
     }
 
     /* CANVAS DE FUNDO */
@@ -55,12 +70,12 @@
       top: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, #ff1493, #ffd700, #00ff00, #00bfff, #ff1493);
       background-size: 200% 100%;
       animation: neon-flow 3s linear infinite;
       z-index: 100;
-      box-shadow: 0 0 20px #ff1493, 0 0 40px #ffd700, 0 0 60px #00ff00;
+      box-shadow: 0 0 15px #ff1493, 0 0 30px #ffd700;
     }
 
     @keyframes neon-flow {
@@ -78,12 +93,12 @@
       bottom: 0;
       left: 0;
       right: 0;
-      height: 4px;
+      height: 3px;
       background: linear-gradient(90deg, #ffd700, #ff1493, #00bfff, #00ff00, #ffd700);
       background-size: 200% 100%;
       animation: neon-flow 3s linear infinite reverse;
       z-index: 100;
-      box-shadow: 0 0 20px #ffd700, 0 0 40px #ff1493, 0 0 60px #00bfff;
+      box-shadow: 0 0 15px #ffd700, 0 0 30px #ff1493;
     }
 
     /* NAIPES FLUTUANTES */
@@ -100,9 +115,9 @@
 
     .suit {
       position: absolute;
-      font-size: 2rem;
-      opacity: 0.15;
-      animation: float-suit 15s infinite ease-in-out;
+      font-size: 1.5rem;
+      opacity: 0.1;
+      animation: float-suit 20s infinite ease-in-out;
     }
 
     .suit:nth-child(1) {
@@ -174,54 +189,54 @@
       }
 
       10% {
-        opacity: 0.2;
+        opacity: 0.15;
       }
 
       90% {
-        opacity: 0.2;
+        opacity: 0.15;
       }
 
       100% {
-        transform: translateY(-100px) rotate(360deg) scale(1.5);
+        transform: translateY(-50px) rotate(360deg) scale(1.3);
         opacity: 0;
       }
     }
 
-    /* LUZES PISCANDO LATERAIS */
+    /* LUZES PISCANDO LATERAIS - OCULTAS NO MOBILE */
     .casino-lights {
       position: fixed;
       top: 50%;
       transform: translateY(-50%);
       display: flex;
       flex-direction: column;
-      gap: 30px;
+      gap: 25px;
       z-index: 3;
       pointer-events: none;
     }
 
     .casino-lights.left {
-      left: 10px;
+      left: 8px;
     }
 
     .casino-lights.right {
-      right: 10px;
+      right: 8px;
     }
 
     .light-bulb {
-      width: 12px;
-      height: 12px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
       animation: bulb-blink 0.5s infinite alternate;
     }
 
     .light-bulb:nth-child(odd) {
       background: #ffd700;
-      box-shadow: 0 0 10px #ffd700, 0 0 20px #ffd700, 0 0 30px #ffd700;
+      box-shadow: 0 0 8px #ffd700, 0 0 15px #ffd700;
     }
 
     .light-bulb:nth-child(even) {
       background: #ff1493;
-      box-shadow: 0 0 10px #ff1493, 0 0 20px #ff1493, 0 0 30px #ff1493;
+      box-shadow: 0 0 8px #ff1493, 0 0 15px #ff1493;
     }
 
     @keyframes bulb-blink {
@@ -232,96 +247,106 @@
 
       100% {
         opacity: 1;
-        transform: scale(1.2);
+        transform: scale(1.1);
       }
     }
 
     /* PÁGINAS */
     .page {
       display: none;
-      min-height: 100vh;
-      padding: 30px 20px;
-      position: relative;
+      height: 100vh;
+      height: 100dvh;
+      width: 100%;
+      padding: 50px 15px 20px;
+      position: fixed;
+      top: 0;
+      left: 0;
       z-index: 10;
-      animation: fadeIn 0.5s ease-in-out;
+      animation: fadeIn 0.4s ease-out;
+      overflow-y: auto;
+      overflow-x: hidden;
+      -webkit-overflow-scrolling: touch;
     }
 
     .page.active {
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-start;
     }
 
     @keyframes fadeIn {
       from {
         opacity: 0;
-        transform: translateY(20px);
+        transform: scale(0.98);
       }
 
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: scale(1);
       }
     }
 
     .game-container {
       width: 100%;
-      max-width: 650px;
+      max-width: 500px;
       margin: 0 auto;
       position: relative;
       z-index: 10;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
 
     /* HEADER */
     .game-header {
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 20px;
+      flex-shrink: 0;
     }
 
     .logo {
-      font-size: 5rem;
-      margin-bottom: 15px;
+      font-size: 3.5rem;
+      margin-bottom: 8px;
       animation: bounce 2s infinite, glow-pulse 1.5s infinite alternate;
       display: inline-block;
-      filter: drop-shadow(0 0 20px #ffd700);
+      filter: drop-shadow(0 0 15px #ffd700);
     }
 
     @keyframes bounce {
 
       0%,
       100% {
-        transform: translateY(0) rotate(-5deg);
+        transform: translateY(0) rotate(-3deg);
       }
 
       50% {
-        transform: translateY(-15px) rotate(5deg);
+        transform: translateY(-10px) rotate(3deg);
       }
     }
 
     @keyframes glow-pulse {
       0% {
-        filter: drop-shadow(0 0 20px #ffd700);
+        filter: drop-shadow(0 0 15px #ffd700);
       }
 
       100% {
-        filter: drop-shadow(0 0 40px #ff1493);
+        filter: drop-shadow(0 0 30px #ff1493);
       }
     }
 
     .game-title {
       font-family: 'Righteous', cursive;
-      font-size: 3rem;
+      font-size: 2rem;
       font-weight: 900;
-      margin-bottom: 10px;
+      margin-bottom: 5px;
       background: linear-gradient(135deg, #ffd700 0%, #ffed4e 25%, #ffd700 50%, #b8860b 75%, #ffd700 100%);
       background-size: 200% auto;
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
       animation: shine 3s linear infinite;
-      text-shadow: none;
-      filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.5));
+      filter: drop-shadow(1px 1px 2px rgba(0, 0, 0, 0.5));
     }
 
     @keyframes shine {
@@ -335,10 +360,10 @@
     }
 
     .game-subtitle {
-      font-size: 1rem;
+      font-size: 0.75rem;
       color: #c0c0c0;
       font-weight: 400;
-      letter-spacing: 3px;
+      letter-spacing: 2px;
       text-transform: uppercase;
     }
 
@@ -346,16 +371,15 @@
     .game-card {
       background: linear-gradient(145deg, rgba(13, 77, 43, 0.9) 0%, rgba(10, 10, 10, 0.95) 100%);
       backdrop-filter: blur(15px);
-      border-radius: 20px;
-      padding: 35px;
+      border-radius: 16px;
+      padding: 20px;
       box-shadow:
-        0 10px 40px rgba(0, 0, 0, 0.5),
-        inset 0 1px 0 rgba(255, 215, 0, 0.3),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.5);
-      border: 2px solid;
-      border-image: linear-gradient(135deg, #ffd700, #b8860b, #ffd700) 1;
+        0 8px 30px rgba(0, 0, 0, 0.5),
+        inset 0 1px 0 rgba(255, 215, 0, 0.3);
+      border: 2px solid rgba(255, 215, 0, 0.5);
       position: relative;
       overflow: hidden;
+      flex-shrink: 0;
     }
 
     .game-card::before {
@@ -370,6 +394,7 @@
           rgba(255, 215, 0, 0.03) 50%,
           transparent 70%);
       animation: card-shine 4s linear infinite;
+      pointer-events: none;
     }
 
     @keyframes card-shine {
@@ -383,7 +408,7 @@
     }
 
     .card-section {
-      margin-bottom: 30px;
+      margin-bottom: 20px;
       position: relative;
       z-index: 1;
     }
@@ -391,24 +416,24 @@
     .game-label {
       display: flex;
       align-items: center;
-      font-size: 1rem;
+      font-size: 0.85rem;
       font-weight: 700;
-      margin-bottom: 15px;
-      gap: 10px;
+      margin-bottom: 10px;
+      gap: 8px;
       color: #ffd700;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
     }
 
     .label-icon {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
 
     .game-select,
     .game-input {
       width: 100%;
-      padding: 15px 20px;
-      font-size: 1rem;
+      padding: 12px 15px;
+      font-size: 0.95rem;
       font-family: 'Orbitron', sans-serif;
       border: 2px solid rgba(255, 215, 0, 0.3);
       border-radius: 10px;
@@ -416,6 +441,15 @@
       color: #ffd700;
       font-weight: 500;
       transition: all 0.3s;
+      -webkit-appearance: none;
+      appearance: none;
+    }
+
+    .game-select {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23ffd700' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 15px center;
+      padding-right: 40px;
     }
 
     .game-select option {
@@ -427,8 +461,8 @@
     .game-input:focus {
       outline: none;
       border-color: #ffd700;
-      background: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      background-color: rgba(0, 0, 0, 0.9);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
     .game-input::placeholder {
@@ -438,13 +472,13 @@
     /* GRADE DE NÚMEROS */
     .number-grid {
       display: grid;
-      grid-template-columns: repeat(6, 1fr);
-      gap: 10px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
     }
 
     .num-btn {
-      padding: 15px 10px;
-      font-size: 1.2rem;
+      padding: 14px 8px;
+      font-size: 1.1rem;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
       border: 2px solid rgba(255, 215, 0, 0.4);
@@ -452,74 +486,48 @@
       background: linear-gradient(145deg, rgba(139, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.5) 100%);
       color: #ffd700;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       position: relative;
       overflow: hidden;
+      min-height: 50px;
     }
 
-    .num-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.2), transparent);
-      transition: left 0.5s;
-    }
-
-    .num-btn:hover::before {
-      left: 100%;
-    }
-
-    .num-btn:hover {
-      background: linear-gradient(145deg, rgba(139, 0, 0, 0.5) 0%, rgba(26, 107, 60, 0.3) 100%);
-      transform: translateY(-2px);
-      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
+    .num-btn:active {
+      transform: scale(0.95);
     }
 
     .num-btn.active {
       background: linear-gradient(135deg, #ffd700 0%, #b8860b 100%);
       color: #0a0a0a;
       border-color: #ffd700;
-      box-shadow: 0 0 30px rgba(255, 215, 0, 0.5);
-      transform: scale(1.05);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.5);
+      transform: scale(1.02);
     }
 
     /* BOTÕES */
     .game-btn {
       width: 100%;
-      padding: 18px 30px;
-      font-size: 1.1rem;
+      padding: 16px 25px;
+      font-size: 1rem;
       font-family: 'Orbitron', sans-serif;
       font-weight: 700;
       border: none;
-      border-radius: 10px;
+      border-radius: 12px;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 10px;
+      gap: 8px;
       position: relative;
       overflow: hidden;
       text-transform: uppercase;
-      letter-spacing: 2px;
+      letter-spacing: 1px;
+      min-height: 54px;
     }
 
-    .game-btn::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
-      transition: left 0.5s;
-    }
-
-    .game-btn:hover::before {
-      left: 100%;
+    .game-btn:active {
+      transform: scale(0.98);
     }
 
     .game-btn-primary {
@@ -540,29 +548,16 @@
       }
     }
 
-    .game-btn-primary:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(255, 215, 0, 0.4);
-    }
-
     .game-btn-danger {
       background: linear-gradient(135deg, #c41e3a 0%, #8b0000 50%, #c41e3a 100%);
       background-size: 200% 100%;
       color: #ffd700;
       border: 3px solid #ffd700;
-      font-size: 1.5rem;
-      padding: 25px 50px;
+      font-size: 1.3rem;
+      padding: 20px 40px;
       animation: btn-shine 2s linear infinite;
-      box-shadow:
-        0 0 20px rgba(255, 215, 0, 0.3),
-        inset 0 0 20px rgba(255, 215, 0, 0.1);
-    }
-
-    .game-btn-danger:hover {
-      transform: scale(1.05);
-      box-shadow:
-        0 0 40px rgba(255, 215, 0, 0.5),
-        0 0 60px rgba(196, 30, 58, 0.5);
+      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      min-height: 60px;
     }
 
     .game-btn-danger:disabled {
@@ -570,7 +565,6 @@
       border-color: #555;
       color: #666;
       cursor: not-allowed;
-      transform: none;
       animation: none;
       box-shadow: none;
     }
@@ -581,34 +575,27 @@
       border: 2px solid rgba(255, 215, 0, 0.5);
     }
 
-    .game-btn-secondary:hover {
-      background: linear-gradient(145deg, rgba(26, 107, 60, 0.7) 0%, rgba(0, 0, 0, 0.9) 100%);
-      border-color: #ffd700;
-      transform: translateY(-3px);
-      box-shadow: 0 5px 20px rgba(255, 215, 0, 0.2);
-    }
-
     .btn-icon {
-      font-size: 1.3rem;
+      font-size: 1.2rem;
     }
 
     .btn-arrow {
-      font-size: 1.5rem;
+      font-size: 1.3rem;
       margin-left: auto;
     }
 
     /* GRADE DE NOMES */
     .names-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-      gap: 15px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
       position: relative;
       z-index: 1;
     }
 
     .nome-input {
-      padding: 15px 20px;
-      font-size: 1rem;
+      padding: 12px 15px;
+      font-size: 0.9rem;
       font-family: 'Orbitron', sans-serif;
       border: 2px solid rgba(255, 215, 0, 0.3);
       border-radius: 10px;
@@ -616,24 +603,27 @@
       color: #ffd700;
       font-weight: 500;
       transition: all 0.3s;
+      min-height: 48px;
     }
 
     .nome-input:focus {
       outline: none;
       border-color: #ffd700;
       background: rgba(0, 0, 0, 0.9);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
     }
 
     .nome-input::placeholder {
       color: rgba(255, 215, 0, 0.5);
+      font-size: 0.8rem;
     }
 
     /* SLOT MACHINE */
     .slot-machine-wrapper {
-      margin: 40px 0;
+      margin: 25px 0;
       display: flex;
       justify-content: center;
+      flex-shrink: 0;
     }
 
     .slot-machine {
@@ -642,12 +632,12 @@
 
     .slot-glow {
       position: absolute;
-      top: -30px;
-      left: -30px;
-      right: -30px;
-      bottom: -30px;
-      background: radial-gradient(circle, rgba(255, 215, 0, 0.3) 0%, transparent 70%);
-      border-radius: 30px;
+      top: -20px;
+      left: -20px;
+      right: -20px;
+      bottom: -20px;
+      background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 70%);
+      border-radius: 20px;
       animation: pulse-glow 2s infinite;
     }
 
@@ -661,23 +651,22 @@
 
       50% {
         opacity: 1;
-        transform: scale(1.05);
+        transform: scale(1.03);
       }
     }
 
     .slot-frame {
       position: relative;
-      width: 480px;
-      height: 200px;
+      width: 320px;
+      height: 140px;
       background: linear-gradient(145deg, #1a1a1a, #0a0a0a);
-      border-radius: 20px;
-      padding: 25px;
+      border-radius: 15px;
+      padding: 15px;
       box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.8),
-        inset 0 2px 10px rgba(255, 215, 0, 0.2),
-        inset 0 -5px 20px rgba(0, 0, 0, 0.5);
-      border: 4px solid;
-      border-image: linear-gradient(135deg, #ffd700, #b8860b, #ffd700, #b8860b, #ffd700) 1;
+        0 15px 40px rgba(0, 0, 0, 0.8),
+        inset 0 2px 8px rgba(255, 215, 0, 0.2);
+      border: 3px solid;
+      border-image: linear-gradient(135deg, #ffd700, #b8860b, #ffd700) 1;
     }
 
     .slot-window {
@@ -685,11 +674,9 @@
       width: 100%;
       height: 100%;
       background: linear-gradient(180deg, #000 0%, #0a0a0a 50%, #000 100%);
-      border-radius: 10px;
+      border-radius: 8px;
       overflow: hidden;
-      box-shadow:
-        inset 0 10px 30px rgba(0, 0, 0, 0.9),
-        inset 0 0 50px rgba(255, 215, 0, 0.1);
+      box-shadow: inset 0 8px 20px rgba(0, 0, 0, 0.9);
     }
 
     .slot-reel {
@@ -700,30 +687,25 @@
     }
 
     .slot-item {
-      height: 150px;
+      height: 110px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 3rem;
+      font-size: 2rem;
       font-family: 'Righteous', cursive;
       font-weight: 800;
       color: #ffd700;
-      text-shadow:
-        0 0 10px #ffd700,
-        0 0 20px #ffd700,
-        0 4px 15px rgba(0, 0, 0, 0.8);
+      text-shadow: 0 0 8px #ffd700, 0 3px 10px rgba(0, 0, 0, 0.8);
       background: linear-gradient(180deg, #1a6b3c 0%, #0d4d2b 50%, #1a6b3c 100%);
       border-bottom: 2px solid rgba(255, 215, 0, 0.3);
     }
 
     .slot-item:nth-child(4n+1) {
       background: linear-gradient(180deg, #c41e3a 0%, #8b0000 50%, #c41e3a 100%);
-      color: #ffd700;
     }
 
     .slot-item:nth-child(4n+2) {
       background: linear-gradient(180deg, #1a6b3c 0%, #0d4d2b 50%, #1a6b3c 100%);
-      color: #ffd700;
     }
 
     .slot-item:nth-child(4n+3) {
@@ -737,37 +719,37 @@
       top: 50%;
       transform: translateY(-50%);
       z-index: 10;
-      filter: drop-shadow(0 0 15px #ffd700);
+      filter: drop-shadow(0 0 10px #ffd700);
     }
 
     .slot-pointer-left {
-      left: -20px;
+      left: -15px;
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 25px 25px 25px 0;
+      border-width: 18px 18px 18px 0;
       border-color: transparent #ffd700 transparent transparent;
       animation: pointer-pulse 0.5s infinite alternate;
     }
 
     .slot-pointer-right {
-      right: -20px;
+      right: -15px;
       width: 0;
       height: 0;
       border-style: solid;
-      border-width: 25px 0 25px 25px;
+      border-width: 18px 0 18px 18px;
       border-color: transparent transparent transparent #ffd700;
       animation: pointer-pulse 0.5s infinite alternate;
     }
 
     @keyframes pointer-pulse {
       0% {
-        filter: drop-shadow(0 0 10px #ffd700);
+        filter: drop-shadow(0 0 8px #ffd700);
         transform: translateY(-50%) scale(1);
       }
 
       100% {
-        filter: drop-shadow(0 0 25px #ff1493);
+        filter: drop-shadow(0 0 20px #ff1493);
         transform: translateY(-50%) scale(1.1);
       }
     }
@@ -786,51 +768,35 @@
     .resultado-card {
       background: linear-gradient(145deg, rgba(26, 107, 60, 0.95) 0%, rgba(10, 10, 10, 0.98) 100%);
       backdrop-filter: blur(20px);
-      border-radius: 25px;
-      padding: 50px 40px;
+      border-radius: 20px;
+      padding: 30px 25px;
       text-align: center;
-      box-shadow:
-        0 20px 60px rgba(0, 0, 0, 0.6),
-        inset 0 1px 0 rgba(255, 215, 0, 0.4);
-      border: 3px solid;
-      border-image: linear-gradient(135deg, #ffd700, #ff1493, #ffd700, #ff1493, #ffd700) 1;
-      animation: scaleIn 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.6);
+      border: 2px solid rgba(255, 215, 0, 0.5);
+      animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       position: relative;
       z-index: 1001;
       overflow: hidden;
-    }
-
-    .resultado-card::before {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg,
-          transparent 30%,
-          rgba(255, 215, 0, 0.05) 50%,
-          transparent 70%);
-      animation: card-shine 2s linear infinite;
+      width: 100%;
     }
 
     @keyframes scaleIn {
       0% {
         opacity: 0;
-        transform: scale(0.5) rotate(-5deg);
+        transform: scale(0.8);
       }
 
       100% {
         opacity: 1;
-        transform: scale(1) rotate(0deg);
+        transform: scale(1);
       }
     }
 
     .trophy-icon {
-      font-size: 6rem;
-      margin-bottom: 20px;
+      font-size: 4rem;
+      margin-bottom: 15px;
       animation: trophy-bounce 1s infinite;
-      filter: drop-shadow(0 0 30px #ffd700);
+      filter: drop-shadow(0 0 20px #ffd700);
     }
 
     @keyframes trophy-bounce {
@@ -841,23 +807,23 @@
       }
 
       50% {
-        transform: scale(1.2) rotate(5deg);
+        transform: scale(1.15) rotate(5deg);
       }
     }
 
     .resultado-titulo {
       font-family: 'Righteous', cursive;
-      font-size: 2rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 25px;
+      margin-bottom: 20px;
       color: #ffd700;
-      text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+      text-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
       position: relative;
       z-index: 1;
     }
 
     .resultado-nome-wrapper {
-      margin: 30px 0;
+      margin: 20px 0;
       position: relative;
       z-index: 1;
     }
@@ -865,36 +831,31 @@
     .resultado-nome {
       display: inline-block;
       font-family: 'Righteous', cursive;
-      font-size: 3.5rem;
+      font-size: 2.5rem;
       font-weight: 900;
       color: #ffd700;
-      text-shadow:
-        0 0 20px #ffd700,
-        0 0 40px #ff1493,
-        0 4px 30px rgba(0, 0, 0, 0.8);
-      padding: 20px 40px;
-      border-radius: 15px;
+      text-shadow: 0 0 15px #ffd700, 0 0 30px #ff1493;
+      padding: 15px 30px;
+      border-radius: 12px;
       background: linear-gradient(145deg, rgba(139, 0, 0, 0.5), rgba(196, 30, 58, 0.3));
-      border: 3px solid #ffd700;
+      border: 2px solid #ffd700;
       animation: winner-glow 1s infinite alternate;
     }
 
     @keyframes winner-glow {
       0% {
-        box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
-        transform: scale(1);
+        box-shadow: 0 0 15px rgba(255, 215, 0, 0.5);
       }
 
       100% {
-        box-shadow: 0 0 50px rgba(255, 215, 0, 0.8), 0 0 80px rgba(255, 20, 147, 0.5);
-        transform: scale(1.05);
+        box-shadow: 0 0 40px rgba(255, 215, 0, 0.8), 0 0 60px rgba(255, 20, 147, 0.4);
       }
     }
 
     .resultado-message {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       font-weight: 600;
-      margin-top: 20px;
+      margin-top: 15px;
       color: #ffd700;
       position: relative;
       z-index: 1;
@@ -903,31 +864,30 @@
     /* CONTROLE DE SOM */
     .sound-control {
       position: fixed;
-      top: 20px;
-      right: 20px;
+      top: 12px;
+      right: 12px;
       z-index: 1000;
       display: flex;
-      gap: 10px;
+      gap: 8px;
     }
 
     .sound-btn {
-      width: 50px;
-      height: 50px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       background: linear-gradient(145deg, rgba(26, 107, 60, 0.8), rgba(0, 0, 0, 0.9));
       border: 2px solid #ffd700;
       color: #ffd700;
-      font-size: 1.5rem;
+      font-size: 1.2rem;
       cursor: pointer;
-      transition: all 0.3s;
+      transition: all 0.2s;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .sound-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+    .sound-btn:active {
+      transform: scale(0.95);
     }
 
     .sound-btn.muted {
@@ -938,15 +898,14 @@
     /* FOOTER */
     .game-footer {
       text-align: center;
-      padding: 20px;
+      padding: 15px;
       color: rgba(255, 215, 0, 0.6);
-      font-size: 0.85rem;
-      position: relative;
+      font-size: 0.75rem;
+      position: fixed;
+      bottom: 5px;
+      left: 0;
+      right: 0;
       z-index: 10;
-    }
-
-    .footer-text {
-      margin-bottom: 5px;
     }
 
     .footer-text a {
@@ -956,91 +915,94 @@
       transition: all 0.3s;
     }
 
-    .footer-text a:hover {
-      color: #ff1493;
-      text-shadow: 0 0 15px #ffd700;
-    }
-
-    /* RESPONSIVO */
-    @media (max-width: 768px) {
-      .game-title {
-        font-size: 2.2rem;
+    /* ===== DESKTOP / TABLET MAIOR ===== */
+    @media (min-width: 768px) {
+      .page {
+        padding: 40px 25px;
+        justify-content: center;
       }
 
       .logo {
-        font-size: 4rem;
+        font-size: 4.5rem;
+      }
+
+      .game-title {
+        font-size: 2.5rem;
+      }
+
+      .game-subtitle {
+        font-size: 0.9rem;
+      }
+
+      .game-card {
+        padding: 30px;
       }
 
       .number-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(6, 1fr);
+        gap: 10px;
+      }
+
+      .num-btn {
+        padding: 15px 10px;
+        font-size: 1.2rem;
+      }
+
+      .names-grid {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 12px;
       }
 
       .slot-frame {
-        width: 350px;
-        height: 160px;
+        width: 400px;
+        height: 170px;
         padding: 20px;
       }
 
       .slot-item {
-        height: 120px;
-        font-size: 2.2rem;
+        height: 130px;
+        font-size: 2.5rem;
       }
 
-      .resultado-nome {
-        font-size: 2.5rem;
-        padding: 15px 25px;
+      .resultado-card {
+        padding: 40px 35px;
       }
 
       .trophy-icon {
-        font-size: 4rem;
-      }
-
-      .casino-lights {
-        display: none;
-      }
-
-      .game-card {
-        padding: 25px;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .names-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .slot-frame {
-        width: 290px;
-        height: 130px;
-        padding: 15px;
-      }
-
-      .slot-item {
-        height: 100px;
-        font-size: 1.8rem;
-      }
-
-      .game-title {
-        font-size: 1.8rem;
+        font-size: 5rem;
       }
 
       .resultado-titulo {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
       }
 
       .resultado-nome {
+        font-size: 3rem;
+      }
+
+      .casino-lights {
+        display: flex;
+      }
+
+      .suit {
         font-size: 2rem;
+        opacity: 0.15;
+      }
+    }
+
+    @media (min-width: 1024px) {
+      .game-container {
+        max-width: 550px;
       }
 
-      .sound-control {
-        top: 15px;
-        right: 15px;
+      .slot-frame {
+        width: 450px;
+        height: 180px;
       }
 
-      .sound-btn {
-        width: 40px;
-        height: 40px;
-        font-size: 1.2rem;
+      .slot-item {
+        height: 140px;
+        font-size: 2.8rem;
       }
     }
   </style>
@@ -1080,12 +1042,8 @@
     <div class="light-bulb"></div>
     <div class="light-bulb"></div>
     <div class="light-bulb"></div>
-    <div class="light-bulb"></div>
-    <div class="light-bulb"></div>
   </div>
   <div class="casino-lights right">
-    <div class="light-bulb"></div>
-    <div class="light-bulb"></div>
     <div class="light-bulb"></div>
     <div class="light-bulb"></div>
     <div class="light-bulb"></div>
@@ -1243,7 +1201,6 @@
     let sfxEnabled = true;
     let musicNodes = [];
 
-    // Inicializar AudioContext
     function initAudio() {
       if (!audioContext) {
         audioContext = new (window.AudioContext || window.webkitAudioContext)();
@@ -1251,30 +1208,6 @@
       return audioContext;
     }
 
-    // Tocar nota
-    function playNote(frequency, startTime, duration, type = 'sine', volume = 0.1) {
-      const ctx = initAudio();
-      const osc = ctx.createOscillator();
-      const gain = ctx.createGain();
-
-      osc.type = type;
-      osc.frequency.setValueAtTime(frequency, startTime);
-
-      gain.gain.setValueAtTime(0, startTime);
-      gain.gain.linearRampToValueAtTime(volume, startTime + 0.05);
-      gain.gain.setValueAtTime(volume, startTime + duration - 0.1);
-      gain.gain.linearRampToValueAtTime(0, startTime + duration);
-
-      osc.connect(gain);
-      gain.connect(ctx.destination);
-
-      osc.start(startTime);
-      osc.stop(startTime + duration);
-
-      return { osc, gain };
-    }
-
-    // Som de clique
     function playClick() {
       if (!sfxEnabled) return;
       const ctx = initAudio();
@@ -1285,7 +1218,7 @@
       osc.frequency.setValueAtTime(800, ctx.currentTime);
       osc.frequency.exponentialRampToValueAtTime(400, ctx.currentTime + 0.1);
 
-      gain.gain.setValueAtTime(0.1, ctx.currentTime);
+      gain.gain.setValueAtTime(0.08, ctx.currentTime);
       gain.gain.exponentialRampToValueAtTime(0.01, ctx.currentTime + 0.1);
 
       osc.connect(gain);
@@ -1295,7 +1228,6 @@
       osc.stop(ctx.currentTime + 0.1);
     }
 
-    // Som de giro de slot
     function playSpinSound() {
       if (!sfxEnabled) return;
       const ctx = initAudio();
@@ -1309,7 +1241,7 @@
         osc.type = 'square';
         osc.frequency.setValueAtTime(200 + Math.random() * 100, ctx.currentTime);
 
-        gain.gain.setValueAtTime(0.05, ctx.currentTime);
+        gain.gain.setValueAtTime(0.04, ctx.currentTime);
         gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.03);
 
         osc.connect(gain);
@@ -1319,20 +1251,19 @@
         osc.stop(ctx.currentTime + 0.03);
 
         if (girando) {
-          setTimeout(tick, 50);
+          setTimeout(tick, 60);
         }
       }
 
       tick();
     }
 
-    // Som de vitória
     function playWinSound() {
       if (!sfxEnabled) return;
       const ctx = initAudio();
       const now = ctx.currentTime;
 
-      const notes = [523.25, 659.25, 783.99, 1046.50]; // C5, E5, G5, C6
+      const notes = [523.25, 659.25, 783.99, 1046.50];
 
       notes.forEach((freq, i) => {
         const osc = ctx.createOscillator();
@@ -1342,7 +1273,7 @@
         osc.frequency.setValueAtTime(freq, now + i * 0.15);
 
         gain.gain.setValueAtTime(0, now + i * 0.15);
-        gain.gain.linearRampToValueAtTime(0.15, now + i * 0.15 + 0.05);
+        gain.gain.linearRampToValueAtTime(0.12, now + i * 0.15 + 0.05);
         gain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.15 + 0.5);
 
         osc.connect(gain);
@@ -1353,18 +1284,16 @@
       });
     }
 
-    // Música ambiente de cassino (loop procedural)
     function startCasinoMusic() {
       if (!musicEnabled) return;
 
       const ctx = initAudio();
 
-      // Criar notas do acorde
       const chords = [
-        [130.81, 164.81, 196.00], // C3, E3, G3
-        [146.83, 185.00, 220.00], // D3, F#3, A3
-        [164.81, 207.65, 246.94], // E3, G#3, B3
-        [174.61, 220.00, 261.63], // F3, A3, C4
+        [130.81, 164.81, 196.00],
+        [146.83, 185.00, 220.00],
+        [164.81, 207.65, 246.94],
+        [174.61, 220.00, 261.63],
       ];
 
       let chordIndex = 0;
@@ -1387,8 +1316,8 @@
           filter.frequency.setValueAtTime(800, now);
 
           gain.gain.setValueAtTime(0, now);
-          gain.gain.linearRampToValueAtTime(0.03, now + 0.5);
-          gain.gain.setValueAtTime(0.03, now + 1.5);
+          gain.gain.linearRampToValueAtTime(0.025, now + 0.5);
+          gain.gain.setValueAtTime(0.025, now + 1.5);
           gain.gain.linearRampToValueAtTime(0, now + 2);
 
           osc.connect(filter);
@@ -1420,7 +1349,6 @@
       musicNodes = [];
     }
 
-    // Toggle música
     $('#btn-music').click(function () {
       $(this).toggleClass('muted');
       musicEnabled = !musicEnabled;
@@ -1433,18 +1361,20 @@
       }
     });
 
-    // Toggle efeitos sonoros
     $('#btn-sfx').click(function () {
       $(this).toggleClass('muted');
       sfxEnabled = !sfxEnabled;
     });
 
     // ============================================================================
-    // CANVAS DE FUNDO ANIMADO
+    // CANVAS DE FUNDO ANIMADO - OTIMIZADO PARA MOBILE
     // ============================================================================
 
     const bgCanvas = document.getElementById('casino-bg');
     const bgCtx = bgCanvas.getContext('2d');
+
+    // Detectar se é mobile para reduzir partículas
+    const isMobile = window.innerWidth <= 768;
 
     function resizeCanvas() {
       bgCanvas.width = window.innerWidth;
@@ -1453,9 +1383,9 @@
     resizeCanvas();
     window.addEventListener('resize', resizeCanvas);
 
-    // Partículas
+    // Partículas - quantidade reduzida no mobile
     const particles = [];
-    const particleCount = 100;
+    const particleCount = isMobile ? 40 : 80;
 
     class Particle {
       constructor() {
@@ -1465,10 +1395,10 @@
       reset() {
         this.x = Math.random() * bgCanvas.width;
         this.y = Math.random() * bgCanvas.height;
-        this.size = Math.random() * 3 + 1;
-        this.speedY = Math.random() * 0.5 + 0.2;
-        this.speedX = (Math.random() - 0.5) * 0.3;
-        this.opacity = Math.random() * 0.5 + 0.2;
+        this.size = Math.random() * 2.5 + 1;
+        this.speedY = Math.random() * 0.4 + 0.2;
+        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.opacity = Math.random() * 0.4 + 0.2;
         this.color = ['#ffd700', '#ff1493', '#00ff00', '#00bfff'][Math.floor(Math.random() * 4)];
         this.twinkle = Math.random() * Math.PI * 2;
       }
@@ -1476,7 +1406,7 @@
       update() {
         this.y -= this.speedY;
         this.x += this.speedX;
-        this.twinkle += 0.05;
+        this.twinkle += 0.04;
 
         if (this.y < -10) {
           this.y = bgCanvas.height + 10;
@@ -1492,20 +1422,12 @@
         bgCtx.globalAlpha = currentOpacity;
         bgCtx.fill();
         bgCtx.globalAlpha = 1;
-
-        // Brilho
-        bgCtx.beginPath();
-        bgCtx.arc(this.x, this.y, this.size * 2, 0, Math.PI * 2);
-        bgCtx.fillStyle = this.color;
-        bgCtx.globalAlpha = currentOpacity * 0.3;
-        bgCtx.fill();
-        bgCtx.globalAlpha = 1;
       }
     }
 
-    // Fichas decorativas
+    // Fichas - quantidade reduzida no mobile
     const chips = [];
-    const chipCount = 15;
+    const chipCount = isMobile ? 6 : 12;
 
     class Chip {
       constructor() {
@@ -1515,13 +1437,13 @@
       reset() {
         this.x = Math.random() * bgCanvas.width;
         this.y = Math.random() * bgCanvas.height;
-        this.size = Math.random() * 30 + 20;
+        this.size = Math.random() * 25 + 18;
         this.rotation = Math.random() * Math.PI * 2;
-        this.rotationSpeed = (Math.random() - 0.5) * 0.02;
-        this.speedY = Math.random() * 0.3 + 0.1;
-        this.speedX = (Math.random() - 0.5) * 0.2;
+        this.rotationSpeed = (Math.random() - 0.5) * 0.015;
+        this.speedY = Math.random() * 0.25 + 0.1;
+        this.speedX = (Math.random() - 0.5) * 0.15;
         this.color = ['#c41e3a', '#1a6b3c', '#ffd700', '#0a0a0a'][Math.floor(Math.random() * 4)];
-        this.opacity = 0.1 + Math.random() * 0.1;
+        this.opacity = 0.08 + Math.random() * 0.08;
       }
 
       update() {
@@ -1541,22 +1463,19 @@
         bgCtx.rotate(this.rotation);
         bgCtx.globalAlpha = this.opacity;
 
-        // Desenhar ficha
         bgCtx.beginPath();
         bgCtx.arc(0, 0, this.size, 0, Math.PI * 2);
         bgCtx.fillStyle = this.color;
         bgCtx.fill();
 
-        // Borda
         bgCtx.beginPath();
-        bgCtx.arc(0, 0, this.size * 0.8, 0, Math.PI * 2);
+        bgCtx.arc(0, 0, this.size * 0.75, 0, Math.PI * 2);
         bgCtx.strokeStyle = '#ffd700';
         bgCtx.lineWidth = 2;
         bgCtx.stroke();
 
-        // Detalhes internos
         bgCtx.beginPath();
-        bgCtx.arc(0, 0, this.size * 0.3, 0, Math.PI * 2);
+        bgCtx.arc(0, 0, this.size * 0.25, 0, Math.PI * 2);
         bgCtx.strokeStyle = '#ffd700';
         bgCtx.lineWidth = 2;
         bgCtx.stroke();
@@ -1566,7 +1485,6 @@
       }
     }
 
-    // Inicializar partículas e fichas
     for (let i = 0; i < particleCount; i++) {
       particles.push(new Particle());
     }
@@ -1574,18 +1492,15 @@
       chips.push(new Chip());
     }
 
-    // Loop de animação do fundo
     function animateBackground() {
-      bgCtx.fillStyle = 'rgba(10, 10, 10, 0.1)';
+      bgCtx.fillStyle = 'rgba(10, 10, 10, 0.15)';
       bgCtx.fillRect(0, 0, bgCanvas.width, bgCanvas.height);
 
-      // Desenhar fichas
       chips.forEach(chip => {
         chip.update();
         chip.draw();
       });
 
-      // Desenhar partículas
       particles.forEach(particle => {
         particle.update();
         particle.draw();
@@ -1605,14 +1520,12 @@
     let nomes = [];
     let girando = false;
 
-    // Mostrar campo customizado
     $('#acao').change(function () {
       const val = $(this).val();
       $('#acao-custom').toggle(val === '');
       playClick();
     });
 
-    // Selecionar número
     $('.num-btn').click(function () {
       $('.num-btn').removeClass('active');
       $(this).addClass('active');
@@ -1620,7 +1533,6 @@
       playClick();
     });
 
-    // Ir para página 2
     $('#btn-proximo1').click(function () {
       playClick();
 
@@ -1635,7 +1547,6 @@
         return;
       }
 
-      // Remover emoji se existir
       acao = acao.replace(/[^\w\sÀ-ÿ]/g, '').trim();
 
       $('#titulo-nomes').text(`Digite os Nomes`);
@@ -1648,7 +1559,6 @@
       goToPage(2);
     });
 
-    // Ir para página 3
     $('#btn-proximo2').click(function () {
       playClick();
 
@@ -1672,7 +1582,6 @@
       goToPage(3);
     });
 
-    // Criar a máquina caça-níquel
     function criarSlotMachine() {
       const slotReel = $('#slot-reel');
       slotReel.empty();
@@ -1687,7 +1596,6 @@
       slotReel.css('top', '0px');
     }
 
-    // Girar slot machine
     $('#btn-girar').click(function () {
       if (girando) return;
 
@@ -1697,20 +1605,19 @@
       playSpinSound();
 
       const slotReel = $('#slot-reel');
-      const itemHeight = window.innerWidth <= 480 ? 100 : (window.innerWidth <= 768 ? 120 : 150);
+      const isMobileView = window.innerWidth <= 480;
+      const itemHeight = isMobileView ? 110 : (window.innerWidth <= 768 ? 130 : 140);
 
-      // Escolher vencedor aleatório
       const indiceVencedor = Math.floor(Math.random() * nomes.length);
       const nomeVencedor = nomes[indiceVencedor];
 
-      // Calcular posição final
       const voltasCompletas = 18;
       const posicaoFinalItem = (voltasCompletas * nomes.length) + indiceVencedor;
-      const posicaoFinal = -(posicaoFinalItem * itemHeight) + (itemHeight / 2 - 75);
+      const posicaoFinal = -(posicaoFinalItem * itemHeight) + (itemHeight / 2 - 55);
 
       let posicaoAtual = 0;
       let velocidade = 10;
-      const velocidadeMaxima = 100;
+      const velocidadeMaxima = 90;
       const aceleracao = 3;
       const desaceleracao = 0.97;
       let fase = 'acelerando';
@@ -1722,7 +1629,7 @@
             fase = 'constante';
           }
         } else if (fase === 'constante') {
-          if (posicaoAtual <= posicaoFinal + 2500) {
+          if (posicaoAtual <= posicaoFinal + 2000) {
             fase = 'desacelerando';
           }
         } else if (fase === 'desacelerando') {
@@ -1736,10 +1643,9 @@
         if (fase === 'desacelerando' && posicaoAtual <= posicaoFinal) {
           slotReel.css('top', posicaoFinal + 'px');
 
-          // Aguardar antes de mostrar resultado
           setTimeout(() => {
             mostrarVencedor(nomeVencedor);
-          }, 1500);
+          }, 1200);
 
           return;
         }
@@ -1750,7 +1656,6 @@
       requestAnimationFrame(animar);
     });
 
-    // Mostrar vencedor com confetes
     function mostrarVencedor(nome) {
       playWinSound();
 
@@ -1763,7 +1668,6 @@
       girando = false;
     }
 
-    // Sistema de confetes
     function iniciarConfetes() {
       const canvas = document.getElementById('confetti-canvas');
       const ctx = canvas.getContext('2d');
@@ -1778,13 +1682,13 @@
         constructor() {
           this.x = Math.random() * canvas.width;
           this.y = -20;
-          this.w = Math.random() * 12 + 6;
-          this.h = Math.random() * 6 + 3;
+          this.w = Math.random() * 10 + 5;
+          this.h = Math.random() * 5 + 3;
           this.cor = cores[Math.floor(Math.random() * cores.length)];
-          this.velocidadeY = Math.random() * 4 + 3;
-          this.velocidadeX = Math.random() * 3 - 1.5;
+          this.velocidadeY = Math.random() * 3 + 2;
+          this.velocidadeX = Math.random() * 2 - 1;
           this.rotacao = Math.random() * 360;
-          this.velocidadeRotacao = Math.random() * 15 - 7.5;
+          this.velocidadeRotacao = Math.random() * 12 - 6;
         }
 
         update() {
@@ -1804,19 +1708,19 @@
           ctx.rotate(this.rotacao * Math.PI / 180);
           ctx.fillStyle = this.cor;
           ctx.shadowColor = this.cor;
-          ctx.shadowBlur = 10;
+          ctx.shadowBlur = 8;
           ctx.fillRect(-this.w / 2, -this.h / 2, this.w, this.h);
           ctx.restore();
         }
       }
 
-      for (let i = 0; i < 250; i++) {
+      for (let i = 0; i < 150; i++) {
         confetes.push(new Confete());
       }
 
       let animando = true;
       let frameCount = 0;
-      const duracaoTotal = 400;
+      const duracaoTotal = 300;
 
       function animar() {
         if (!animando) return;
@@ -1835,7 +1739,7 @@
         } else {
           let alpha = 1;
           function fadeOut() {
-            alpha -= 0.02;
+            alpha -= 0.025;
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             ctx.globalAlpha = alpha;
 
@@ -1856,14 +1760,8 @@
       }
 
       animar();
-
-      window.addEventListener('resize', () => {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      });
     }
 
-    // Reiniciar
     $('#btn-reiniciar').click(function () {
       playClick();
 
@@ -1881,16 +1779,19 @@
       girando = false;
     });
 
-    // Função de navegação
     function goToPage(pageNum) {
       $('.page').removeClass('active').hide();
       $(`#page${pageNum}`).addClass('active').show();
     }
 
-    // Alerta customizado
     function mostrarAlerta(mensagem) {
       alert(mensagem);
     }
+
+    // Prevenir zoom em mobile
+    document.addEventListener('gesturestart', function (e) {
+      e.preventDefault();
+    });
   </script>
 </body>
 
