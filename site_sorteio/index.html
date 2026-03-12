@@ -480,11 +480,14 @@
       margin-left: auto;
     }
 
-    /* GRADE DE NOMES */
+    /* GRADE DE NOMES - COLUNA ÚNICA CENTRALIZADA */
     .names-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 8px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      width: 100%;
+      max-width: 350px;
+      margin: 0 auto;
     }
 
     .nome-input {
@@ -797,8 +800,8 @@
       }
 
       .names-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
+        max-width: 400px;
+        gap: 12px;
       }
 
       .slot-frame {
